@@ -29,6 +29,8 @@
                 @csrf
                 @method('put')
                 <div class="form-group">
+                    <label for="code">Code:</label>
+                    <input type="text" class="form-control" id="code" name="code" value="{{ old('code', $invoice->code) }}">
                     <label for="expedition_date">Expedition date:</label>
                     <input type="text" class="form-control" id="expedition_date" name="expedition_date" value="{{ old('expedition_date', $invoice->expedition_date) }}">
                     <label for="due_date">Due date:</label>

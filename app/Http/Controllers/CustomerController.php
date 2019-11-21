@@ -5,8 +5,6 @@ use App\Customer;
 use App\Http\Requests\Customer\StoreRequest;
 use App\Http\Requests\Customer\UpdateRequest;
 
-
-
 class CustomerController extends Controller
 {
     public function index()
@@ -44,7 +42,8 @@ class CustomerController extends Controller
             'customer' => $customer]);
     }
 
-    public function update(validateCustomer $request, Customer $id)
+
+    public function update(UpdateRequest $request, Customer $customer)
     {
         $customer->name = $request->get('name');
         $customer->document = $request->get('document');
@@ -52,7 +51,8 @@ class CustomerController extends Controller
         $customer->phone = $request->get('phone');
         $customer->address = $request->get('address');
         $customer->save();
-        return redirect('/customers');
+
+        return redirect()->route('customers.index');
     }
 
     public function destroy($id)

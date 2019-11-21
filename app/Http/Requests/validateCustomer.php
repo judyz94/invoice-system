@@ -18,7 +18,7 @@ class validateCustomer extends FormRequest
             'name' => 'required|min:5',
             'document' => 'required|unique:customers',
             'email' => Rule::unique('customers', 'email')->ignore($customer->id),
-            'phone' => 'required|min:7',
+            'phone' => 'required',
             'address' => 'required'
         ];
     }

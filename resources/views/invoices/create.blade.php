@@ -28,6 +28,8 @@
             <form action="/invoices" method="POST">
                 @csrf
                 <div class="form-group">
+                    <label for="code">Code:</label>
+                    <input type="text" class="form-control" id="code" name="code" placeholder="Type a consecutive code" value="{{ old('code') }}">
                     <label for="expedition_date">Expedition date:</label>
                     <input type="text" class="form-control" id="expedition_date" name="expedition_date" placeholder="YYYY/MM/DD" value="{{ old('expedition_date') }}">
                     <label for="due_date">Due date:</label>

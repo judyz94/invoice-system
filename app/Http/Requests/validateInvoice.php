@@ -14,6 +14,7 @@ class validateInvoice extends FormRequest
     public function rules()
     {
         return [
+            'code' => 'required',
             'expedition_date' => 'required',
             'due_date' => 'required|date|after_or_equal:expedition_date',
             'receipt_date' => 'required|date|after_or_equal:expedition_date',

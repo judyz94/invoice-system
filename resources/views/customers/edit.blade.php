@@ -25,7 +25,7 @@
                     </ul>
                 </div>
             @endif
-            <form action="/customers/{{ $customer->id }}" method="POST">
+            <form action="{{ route('customers.update', $customer) }}" method="POST">
                 @csrf
                 @method('put')
                 <div class="form-group">

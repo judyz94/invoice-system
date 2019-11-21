@@ -21,6 +21,7 @@ class InvoiceController extends Controller
     public function store(validateInvoice $request)
     {
         $invoice = new Invoice();
+        $invoice->code = $request->get('code');
         $invoice->expedition_date = $request->get('expedition_date');
         $invoice->due_date = $request->get('due_date');
         $invoice->receipt_date = $request->get('receipt_date');
@@ -45,6 +46,7 @@ class InvoiceController extends Controller
     public function update(validateInvoice $request, $id)
     {
         $invoice = Invoice::findOrFail($id);
+        $invoice->code = $request->get('code');
         $invoice->expedition_date = $request->get('expedition_date');
         $invoice->due_date = $request->get('due_date');
         $invoice->receipt_date = $request->get('receipt_date');
