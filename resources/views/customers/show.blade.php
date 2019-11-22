@@ -6,12 +6,12 @@
     <div class="row">
         <div class="col">
             <br>
-            <a class="btn btn-secondary" href="/invoices">Back to Customers</a><br><br>
+            <a class="btn btn-secondary" href="/customers">Back to Customers</a><br><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h3>Customer {{ $invoice->name}}</h3><br>
+            <h3>Customer {{ $customer->name}}</h3><br>
         </div>
     </div>
     <div class="row">

@@ -7,21 +7,11 @@ use Illuminate\Validation\Rule;
 
 class StoreRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
@@ -32,7 +22,7 @@ class StoreRequest extends FormRequest
                 'email',
                 Rule::unique('customers', 'email')
             ],
-            'phone' => 'required|min:7',
+            'phone' => 'required',
             'address' => 'required'
         ];
     }

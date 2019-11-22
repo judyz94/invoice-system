@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="033606af-925d-431b-b42b-b623f34705b8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/customers/show.blade.php" afterDir="false" />
+    <list default="true" id="033606af-925d-431b-b42b-b623f34705b8" name="Default Changelist" comment="Creación template show customer">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Customer/StoreRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Customer/StoreRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Customer/UpdateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Customer/UpdateRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customers/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/show.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -223,7 +228,7 @@
       <workItem from="1574105301135" duration="17828000" />
       <workItem from="1574169665330" duration="40396000" />
       <workItem from="1574264786271" duration="37288000" />
-      <workItem from="1574342885814" duration="25790000" />
+      <workItem from="1574342885814" duration="28477000" />
     </task>
     <servers />
   </component>
@@ -245,5 +250,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Creación template show customer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creación template show customer" />
   </component>
 </project>

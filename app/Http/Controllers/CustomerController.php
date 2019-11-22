@@ -30,9 +30,10 @@ class CustomerController extends Controller
         return redirect('/customers');
     }
 
-    public function show($id)
+    public function show(Customer $customer)
     {
-        //
+        return view('customers.show', [
+            'customer' => $customer ]);
     }
 
     public function edit(Customer $customer)
@@ -40,7 +41,6 @@ class CustomerController extends Controller
         return view('customers.edit', [
             'customer' => $customer]);
     }
-
 
     public function update(UpdateRequest $request, Customer $customer)
     {

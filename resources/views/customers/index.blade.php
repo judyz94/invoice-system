@@ -2,7 +2,6 @@
 
 @section('title')Customers
 @endsection
-
 @section('content')
     <div class="row">
         <div class="col">
@@ -25,6 +24,7 @@
                         <td>{{ $customer->email }}</td>
                         <td>{{ $customer->phone }}</td>
                         <td>{{ $customer->address }}</td>
+                        <td><a href="/customers/{{ $customer->id }}">{{ $customer->document }}</a></td>
                         <td><a href="/customers/{{ $customer->id }}/edit">Edit</a></td>
                         <td><a href="/customers/{{ $customer->id }}/confirmDelete">Delete</a></td>
                     </tr>
