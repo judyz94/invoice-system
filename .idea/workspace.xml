@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="033606af-925d-431b-b42b-b623f34705b8" name="Default Changelist" comment="Creación template show customer">
-      <change afterPath="$PROJECT_DIR$/app/InvoicesProducts.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Invoice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/InvoiceProduct.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/InvoicesProducts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/InvoiceProduct.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_19_014043_create_table_invoices_products.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_22_190005_create_invoices_products_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_22_180426_create_column_invoice_id_in_invoices_products.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -230,7 +227,7 @@
       <workItem from="1574169665330" duration="40396000" />
       <workItem from="1574264786271" duration="37288000" />
       <workItem from="1574342885814" duration="31120000" />
-      <workItem from="1574432052911" duration="15161000" />
+      <workItem from="1574432052911" duration="20074000" />
     </task>
     <servers />
   </component>
