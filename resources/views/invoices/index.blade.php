@@ -19,10 +19,10 @@
                 @foreach($invoices as $invoice)
                     <tr>
                         <td><a href="/invoices/{{ $invoice->id }}">{{ $invoice->code }}</a></td>
-                        <td>{{ $invoice->expedition_date }}</td>
+                        {{--<td>{{ $invoice->expedition_date }}</td>
                         <td>{{ $invoice->due_date }}</td>
                         <td>{{ $invoice->receipt_date }}</td>
-                        {{--<td>{{ $invoice->sale_description }}</td>
+                        <td>{{ $invoice->sale_description }}</td>
                         <td>{{ $invoice->total }}</td>
                         <td>{{ $invoice->vat }}</td>
                         <td>{{ $invoice->total_including_vat }}</td>

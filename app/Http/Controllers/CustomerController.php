@@ -35,9 +35,8 @@ class CustomerController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit(Customer $customer)
     {
-        $customer = Customer::findOrFail($id);
         return view('customers.edit', [
             'customer' => $customer]);
     }
@@ -55,16 +54,14 @@ class CustomerController extends Controller
         return redirect()->route('customers.index');
     }
 
-    public function destroy($id)
+    public function destroy(Customer $customer)
     {
-        $customer = Customer::findOrFail($id);
         $customer->delete();
         return redirect('/customers');
     }
 
-    public function confirmDelete($id)
+    public function confirmDelete(Customer $customer)
     {
-        $customer = Customer::findOrFail($id);
         return view('customers.confirmDelete', [
         'customer' => $customer]);
     }

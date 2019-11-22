@@ -31,21 +31,20 @@ class InvoiceController extends Controller
         return redirect('/invoices');
     }
 
-    public function show($id)
+    public function show(Invoice $invoice)
     {
-        //
+        return view('invoices.show', [
+            'invoice' => $invoice ]);
     }
 
-    public function edit($id)
+    public function edit(Invoice $invoice)
     {
-        $invoice = Invoice::findOrFail($id);
         return view('invoices.edit', [
             'invoice' => $invoice ]);
     }
 
-    public function update(validateInvoice $request, $id)
+    public function update(validateInvoice $request, Invoice $invoice)
     {
-        $invoice = Invoice::findOrFail($id);
         $invoice->code = $request->get('code');
         $invoice->expedition_date = $request->get('expedition_date');
         $invoice->due_date = $request->get('due_date');
@@ -56,17 +55,15 @@ class InvoiceController extends Controller
         return redirect('/invoices');
     }
 
-    public function destroy($id)
+    public function destroy(Invoice $invoice)
     {
-        $invoice = Invoice::findOrFail($id);
         $invoice->delete();
         return redirect('/invoices');
 
     }
 
-    public function confirmDelete($id)
+    public function confirmDelete(Invoice $invoice)
     {
-        $invoice = Invoice::findOrFail($id);
         return view('invoices.confirmDelete', [
         'invoice' => $invoice ]);
     }
