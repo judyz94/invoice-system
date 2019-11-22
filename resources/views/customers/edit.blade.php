@@ -43,7 +43,7 @@
                 <br>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
-        </div>3
+        </div>
     </div>
 @endsection
 

@@ -18,13 +18,11 @@
             <table class="table">
                 @foreach($customers as $customer)
                     <tr>
-                        <td>{{ $customer->id }}</td>
+                        <td><a href="customers/{{ $customer->id }}">{{ $customer->document }}</a></td>
                         <td>{{ $customer->name }}</td>
-                        <td>{{ $customer->document }}</td>
-                        <td>{{ $customer->email }}</td>
+                        {{--<td>{{ $customer->email }}</td>
                         <td>{{ $customer->phone }}</td>
-                        <td>{{ $customer->address }}</td>
-                        <td><a href="/customers/{{ $customer->id }}">{{ $customer->document }}</a></td>
+                        <td>{{ $customer->address }}</td>--}}
                         <td><a href="/customers/{{ $customer->id }}/edit">Edit</a></td>
                         <td><a href="/customers/{{ $customer->id }}/confirmDelete">Delete</a></td>
                     </tr>
