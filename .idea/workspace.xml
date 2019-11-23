@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="033606af-925d-431b-b42b-b623f34705b8" name="Default Changelist" comment="Creación template show customer">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_11_23_203157_create_column_prueba_in_invoices.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_17_183619_create_table_cities.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_17_183619_create_table_cities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_17_190348_create_table_sellers.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_17_190348_create_table_sellers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_19_012603_create_table_customers.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_19_012603_create_table_customers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_22_171834_create_column_city_id_in_sellers.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_22_171834_create_column_city_id_in_sellers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_22_173012_create_column_city_id_in_customers.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_22_173012_create_column_city_id_in_customers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_19_012957_create_table_invoices.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_19_012957_create_table_invoices.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_19_013846_create_table_products.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_19_013846_create_table_products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_21_222020_create_column_code_in_invoices.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_21_222020_create_column_code_in_invoices.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_22_175303_create_column_customer_id_in_invoices.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_22_175303_create_column_customer_id_in_invoices.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_22_175424_create_column_seller_id_in_invoices.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_22_175424_create_column_seller_id_in_invoices.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_22_190005_create_invoices_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_22_190005_create_invoices_products_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_22_233614_create_columns_invoice_id_in_invoices_products.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_22_233614_create_columns_invoice_id_in_invoices_products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_22_234309_create_column_product_id_in_invoices_products.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_22_234309_create_column_product_id_in_invoices_products.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -233,7 +235,7 @@
       <workItem from="1574264786271" duration="37288000" />
       <workItem from="1574342885814" duration="31120000" />
       <workItem from="1574432052911" duration="39131000" />
-      <workItem from="1574534125327" duration="2210000" />
+      <workItem from="1574534125327" duration="3736000" />
     </task>
     <servers />
   </component>
