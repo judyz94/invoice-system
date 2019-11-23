@@ -10,3 +10,7 @@ Route::get('/customers/{id}/confirmDelete', 'CustomerController@confirmDelete');
 Route::get('/customers/{customer}/invoices/create', 'InvoiceController@create');
 Route::post('/customers/{customer}/invoices', 'InvoiceController@store');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
