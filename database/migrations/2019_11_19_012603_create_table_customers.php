@@ -13,9 +13,9 @@ class CreateTableCustomers extends Migration
             $table->string('name', 100);
             $table->bigInteger('document')->unique();
             $table->string('email', 40)->unique();
-            $table->bigInteger('phone');
-            $table->string('address', 40);
-            $table->timestamps();
+            $table->bigInteger('phone')->nullable();
+            $table->string('address', 40)->nullable();
+            $table->timestampsTz();
         });
     }
 

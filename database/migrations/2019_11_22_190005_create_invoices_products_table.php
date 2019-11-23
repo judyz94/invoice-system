@@ -10,11 +10,9 @@ class CreateInvoicesProductsTable extends Migration
     {
         Schema::create('invoices_products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('invoice_id');
-            $table->unsignedBigInteger('product_id');
             $table->float('price');
             $table->integer('quantity');
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 

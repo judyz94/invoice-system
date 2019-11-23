@@ -9,7 +9,7 @@ class CreateColumnCodeInInvoices extends Migration
     public function up()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            $table->string('code');
+            $table->string('code', 20)->after('id');
         });
     }
 

@@ -9,14 +9,18 @@ class CreateColumnSellerIdInInvoices extends Migration
     public function up()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            $table->unsignedBigInteger('seller_id');
+            $table->unsignedBigInteger('seller_id')->after('receipt_date');
+            $table->foreign('seller_id')
+                ->references('id')->on('sellers')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
     public function down()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            $table->dropColumn('seller_id');
+            $table->dropForeign('invoices_seller_id_foreign');
         });
     }
 }
