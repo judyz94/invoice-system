@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h3>Customer {{ $customer->name}}</h3><br>
+            <h3>Customer {{ $customer->id}}</h3><br>
         </div>
     </div>
     <div class="row">
@@ -30,21 +30,10 @@
                 @endforeach
             </table>
         </div>
-        {{--}}<div class="row">
+    </div>
+    <div class="row">
         <div class="col">
-            <h4>Personal information</h4>
-            <table class="table">
-                @foreach($customers as $customer)
-                    <tr>
-                        <td>{{ $customer->name }}</td>
-                        <td>{{ $customer->document }}</td>
-                        <td>{{ $customer->email }}</td>
-                        <td>{{ $customer->phone }}</td>
-                        <td>{{ $customer->address }}</td>
-                    </tr>
-                @endforeach
-            </table>
+            <a class="btn btn-primary" href="/customers/{{ $customer->id }}/invoices/create">New invoice</a>
         </div>
-        </div>--}}
     </div>
 @endsection

@@ -25,6 +25,7 @@ class CustomerController extends Controller
         $customer->document = $request->get('document');
         $customer->email = $request->get('email');
         $customer->phone = $request->get('phone');
+        $customer->city_id = $customer->id;
         $customer->address = $request->get('address');
         $customer->save();
         return redirect('/customers');
@@ -48,6 +49,7 @@ class CustomerController extends Controller
         $customer->document = $request->get('document');
         $customer->email = $request->get('email');
         $customer->phone = $request->get('phone');
+        $customer->city_id = $customer->id;
         $customer->address = $request->get('address');
         $customer->save();
 
