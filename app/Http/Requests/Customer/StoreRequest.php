@@ -22,8 +22,6 @@ class StoreRequest extends FormRequest
                 'email',
                 Rule::unique('customers', 'email')
             ],
-            'phone' => 'required',
-            'address' => 'required'
         ];
     }
 }

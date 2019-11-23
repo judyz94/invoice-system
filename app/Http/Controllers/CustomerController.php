@@ -54,14 +54,16 @@ class CustomerController extends Controller
         return redirect()->route('customers.index');
     }
 
-    public function destroy(Customer $customer)
+    public function destroy($id)
     {
+        $customer = Customer::findOrFail($id);
         $customer->delete();
         return redirect('/customers');
     }
 
-    public function confirmDelete(Customer $customer)
+    public function confirmDelete($id)
     {
+        $customer = Customer::findOrFail($id);
         return view('customers.confirmDelete', [
         'customer' => $customer]);
     }

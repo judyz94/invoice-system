@@ -55,15 +55,17 @@ class InvoiceController extends Controller
         return redirect('/invoices');
     }
 
-    public function destroy(Invoice $invoice)
+    public function destroy($id)
     {
+        $invoice = Invoice::findOrFail($id);
         $invoice->delete();
         return redirect('/invoices');
 
     }
 
-    public function confirmDelete(Invoice $invoice)
+    public function confirmDelete($id)
     {
+        $invoice = Invoice::findOrFail($id);
         return view('invoices.confirmDelete', [
         'invoice' => $invoice ]);
     }

@@ -26,8 +26,6 @@ class UpdateRequest extends FormRequest
                 'email',
                 Rule::unique('customers', 'email')->ignore($this->route('customer')->id)
             ],
-            'phone' => 'required',
-            'address' => 'required'
         ];
     }
 }
