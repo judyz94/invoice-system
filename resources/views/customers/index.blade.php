@@ -20,9 +20,10 @@
                     <tr>
                         <td><a href="customers/{{ $customer->id }}">{{ $customer->document }}</a></td>
                         <td>{{ $customer->name }}</td>
-                        {{--<td>{{ $customer->email }}</td>
+                        <td>{{ $customer->email }}</td>
                         <td>{{ $customer->phone }}</td>
-                        <td>{{ $customer->address }}</td>--}}
+                        <td>{{ $customer->city_id }}</td>
+                        <td>{{ $customer->address }}</td>
                         <td><a href="/customers/{{ $customer->id }}/edit">Edit</a></td>
                         <td><a href="/customers/{{ $customer->id }}/confirmDelete">Delete</a></td>
                     </tr>

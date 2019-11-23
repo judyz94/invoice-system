@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="033606af-925d-431b-b42b-b623f34705b8" name="Default Changelist" comment="Creación template show customer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/customers/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/invoices/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/invoices/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/show.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -166,11 +168,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\invoice_system\resources\views\customers" />
+      <recent name="C:\xampp\htdocs\invoice_system\resources\views\customers\shows" />
       <recent name="C:\xampp\htdocs\invoice_system\public" />
       <recent name="C:\xampp\htdocs\invoice_system\views" />
       <recent name="C:\xampp\htdocs\invoice_system" />
-      <recent name="C:\xampp\htdocs\invoice_system\app" />
-      <recent name="C:\xampp\htdocs\invoice_system\categories" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -226,7 +228,7 @@
       <workItem from="1574169665330" duration="40396000" />
       <workItem from="1574264786271" duration="37288000" />
       <workItem from="1574342885814" duration="31120000" />
-      <workItem from="1574432052911" duration="30462000" />
+      <workItem from="1574432052911" duration="36027000" />
     </task>
     <servers />
   </component>

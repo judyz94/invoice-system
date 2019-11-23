@@ -16,7 +16,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h4>Register</h4>
+            <h4>Associated invoices</h4>
             <table class="table">
                 @foreach($customer->invoices as $invoice)
                     <tr>
@@ -30,5 +30,21 @@
                 @endforeach
             </table>
         </div>
+        {{--}}<div class="row">
+        <div class="col">
+            <h4>Personal information</h4>
+            <table class="table">
+                @foreach($customers as $customer)
+                    <tr>
+                        <td>{{ $customer->name }}</td>
+                        <td>{{ $customer->document }}</td>
+                        <td>{{ $customer->email }}</td>
+                        <td>{{ $customer->phone }}</td>
+                        <td>{{ $customer->address }}</td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
+        </div>--}}
     </div>
 @endsection
