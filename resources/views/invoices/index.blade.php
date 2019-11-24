@@ -18,7 +18,7 @@
             <table class="table">
                 @foreach($invoices as $invoice)
                     <tr>
-                        <td><a href="/invoices/{{ $invoice->id }}">{{ $invoice->code }}</a></td>
+                        <td><a href="/invoices/{{ $invoice->id }}">{{ $invoice->id }}</a></td>
                         <td><a href="/invoices/{{ $invoice->id }}/edit">Edit</a></td>
                         <td><a href="/invoices/{{ $invoice->id }}/confirmDelete">Delete</a></td>
                     </tr>

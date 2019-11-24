@@ -10,7 +10,7 @@ class Invoice extends Model
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'invoices_products')
-            ->using('App\InvoiceProduct')
+            ->using('App\Product')
             ->withPivot([
                 'price',
                 'quantity',

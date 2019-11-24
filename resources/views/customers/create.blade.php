@@ -37,7 +37,12 @@
                     <label for="phone">Phone:</label>
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="Type a phone" value="{{ old('phone') }}">
                     <label for="city_id">City:</label>
-                    <input type="text" class="form-control" id="city" name="city" placeholder="Type a city" value="{{ old('city') }}">
+                    <select class="form-control" id="city_id" name="city_id">
+                        @foreach($cities as $city)
+                            <option value="">Select a city</option>
+                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                        @endforeach
+                    </select>
                     <label for="address">Address:</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="Type a address" value="{{ old('address') }}">
                 </div>
