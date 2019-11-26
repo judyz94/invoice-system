@@ -1,17 +1,16 @@
-@extends ('layouts.base')
+@extends ('layouts.app')
 
-@section('title')Create Products
+@section('title')Create Product Details
 @endsection
 @section('content')
     <div class="row">
         <div class="col">
-            <br>
-            <a class="btn btn-secondary" href="/products">Back to Products</a><br><br>
+            <a class="btn btn-secondary" href="/products">Back to Invoices</a><br><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h1>New Product</h1>
+            <br><h1>New Product Details</h1>
         </div>
     </div>
     <div class="row">

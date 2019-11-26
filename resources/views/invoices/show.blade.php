@@ -1,17 +1,16 @@
-@extends ('layouts.base')
+@extends ('layouts.app')
 
 @section('title')Invoice
 @endsection
 @section('content')
     <div class="row">
         <div class="col">
-            <br>
             <a class="btn btn-secondary" href="/invoices">Back to Invoices</a><br><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h3>Invoice no. {{ $invoice->id}}</h3><br>
+            <br><h3>Invoice # {{ $invoice->id}}</h3><br>
         </div>
     </div>
     <div class="row">
@@ -41,7 +40,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <a class="btn btn-primary" href="/invoices/{{ $invoice->id }}/products/create">New product</a>
+            <a class="btn btn-primary" href="/invoices/{{ $invoice->id }}/products/edit">Edit Product Details</a>
         </div>
     </div>
 @endsection

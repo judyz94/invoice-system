@@ -1,17 +1,16 @@
-@extends ('layouts.base')
+@extends ('layouts.app')
 
 @section('title')Customer
 @endsection
 @section('content')
     <div class="row">
         <div class="col">
-            <br>
             <a class="btn btn-secondary" href="/customers">Back to Customers</a><br><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h3>Customer {{ $customer->id}}</h3><br>
+            <br><h3>Customer # {{ $customer->id}}</h3><br>
         </div>
     </div>
     <div class="row">

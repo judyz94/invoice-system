@@ -1,6 +1,6 @@
-@extends ('layouts.base')
+@extends ('layouts.app')
 
-@section('title')Products
+@section('title')Products Details
 @endsection
 @section('content')
     <div class="row">

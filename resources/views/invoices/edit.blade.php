@@ -1,4 +1,4 @@
-@extends ('layouts.base')
+@extends ('layouts.app')
 
 @section('title')Edit Invoices
 @endsection
@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h3>Edit Invoice {{ $invoice->id }}</h3><br>
+            <h3>Edit Invoice # {{ $invoice->id }}</h3><br>
         </div>
     </div>
     <div class="row">

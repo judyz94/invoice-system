@@ -1,17 +1,16 @@
-@extends ('layouts.base')
+@extends ('layouts.app')
 
-@section('title')Product
+@section('title')Product Details
 @endsection
 @section('content')
     <div class="row">
         <div class="col">
-            <br>
             <a class="btn btn-secondary" href="/products">Back to Products</a><br><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h3>Product no. {{ $product->id}}</h3><br>
+            <br><h3>Product # {{ $product->id}}</h3><br>
         </div>
     </div>
     <div class="row">

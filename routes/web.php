@@ -18,7 +18,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('products', 'InvoiceProductController');
 Route::get('/products/{id}/confirmDelete', 'InvoiceProductController@confirmDelete');
 
-Route::get('/invoices/{invoice}/products/create', 'InvoiceProductController@create');
+Route::get('/invoices/{invoice}/products/edit', 'InvoiceProductController@edit');
 Route::post('/invoices/{invoice}/products', 'InvoiceProductController@store');
 
 Route::get('invoiceproduct', 'InvoiceProductController@invoicesProducts');
