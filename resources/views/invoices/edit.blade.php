@@ -37,8 +37,8 @@
                     <input type="text" class="form-control" id="receipt_date" name="receipt_date" value="{{ old('receipt_date', $invoice->receipt_date) }}">
                     <label for="seller">Seller:</label>
                     <select class="form-control" id="seller_id" name="seller_id">
+                        <option value="">Select seller document</option>
                         @foreach($sellers as $seller)
-                            <option value="">Select seller document</option>
                             <option value="{{ $seller->id }}">{{ $seller->document }}</option>
                         @endforeach
                     </select>
@@ -46,8 +46,8 @@
                     <input type="text" class="form-control" id="sale_description" name="sale_description" value="{{ old('sale_description', $invoice->sale_description) }}">
                     <label for="customer">Customer:</label>
                     <select class="form-control" id="customer_id" name="customer_id">
+                        <option value="">Select customer document</option>
                         @foreach($customers as $customer)
-                            <option value="">Select customer document</option>
                             <option value="{{ $customer->id }}">{{ $customer->document }}</option>
                         @endforeach
                     </select>

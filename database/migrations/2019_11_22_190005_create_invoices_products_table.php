@@ -17,7 +17,7 @@ class CreateInvoicesProductsTable extends Migration
                 ->onUpdate('cascade');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')
-                ->references('id')->on('products')
+                ->references('id')->on('invoicesProducts')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->float('price');

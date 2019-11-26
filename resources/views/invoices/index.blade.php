@@ -45,6 +45,7 @@
                         <td>{{ $invoice->vat }}</td>
                         <td>{{ $invoice->total_including_vat }}</td>
                         <td>{{ $invoice->status }}</td>
+                        <td><a href="/invoices/{{ $invoice->id }}/invoicesProducts/create">Add Details</a></td>
                         <td><a href="/invoices/{{ $invoice->id }}/edit">Edit</a></td>
                         <td><a href="/invoices/{{ $invoice->id }}/confirmDelete">Delete</a></td>
                     </tr>

@@ -15,7 +15,8 @@ class InvoiceProductController extends Controller
      */
     public function index()
     {
-        return view('products.index', [
+        return view('invoices.index', [
+            'invoices' => Invoice::all(),
             'products' => Product::all()
         ]);
     }
@@ -27,8 +28,9 @@ class InvoiceProductController extends Controller
      */
     public function create()
     {
+        $invoices = Invoice::all();
         $products = Product::all();
-        return view('products.create', compact( 'products'));
+        return view('invoicesProducts.create', compact( 'products', 'invoices'));
     }
 
     /**
@@ -54,7 +56,7 @@ class InvoiceProductController extends Controller
     public function show(Product $product)
     {
         $products = Product::all();
-        return view('invoices.show', compact('products'),[
+        return view('invoices.show', compact('products'), [
             'product' => $product ]);
     }
 
@@ -64,9 +66,11 @@ class InvoiceProductController extends Controller
      * @param Product $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Invoice $invoice, Product $product)
     {
-        return view('products.edit', [
+        $invoices = Invoice::all();
+        $products = Product::all();
+        return view('invoicesProducts.edit', compact( 'products', 'invoices'), [
             'product' => $product ]);
     }
 
@@ -85,7 +89,7 @@ class InvoiceProductController extends Controller
         $product->price = $request->get('price');
         $product->quantity = $request->get('quantity');
         $product->save();
-        return redirect('/products');
+        return redirect('/invoicesProducts');
     }
 
     /**
@@ -98,13 +102,13 @@ class InvoiceProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $product->delete();
-        return redirect('/products');
+        return redirect('/invoicesProducts');
     }
 
     public function confirmDelete($id)
     {
         $product = Product::findOrFail($id);
-        return view('products.confirmDelete', [
+        return view('invoicesProducts.confirmDelete', [
             'product' => $product ]);
     }
 }

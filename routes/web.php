@@ -15,11 +15,14 @@ Route::post('/customers/{customer}/invoices', 'InvoiceController@store');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('products', 'InvoiceProductController');
-Route::get('/products/{id}/confirmDelete', 'InvoiceProductController@confirmDelete');
 
-Route::get('/invoices/{invoice}/products/edit', 'InvoiceProductController@edit');
-Route::post('/invoices/{invoice}/products', 'InvoiceProductController@store');
+
+Route::resource('invoicesProducts', 'InvoiceProductController');
+Route::get('/invoicesProducts/{id}/confirmDelete', 'InvoiceProductController@confirmDelete');
+Route::get('/invoices/{invoice}/invoicesProducts/create', 'InvoiceProductController@create');
+Route::get('/invoices/{invoice}/invoicesProducts/edit', 'InvoiceProductController@edit');
+
+Route::post('/invoices/{invoice}/invoicesProducts', 'InvoiceProductController@store');
 
 Route::get('invoiceproduct', 'InvoiceProductController@invoicesProducts');
 
