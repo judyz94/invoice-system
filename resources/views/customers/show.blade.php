@@ -19,7 +19,7 @@
             <h4>Associated invoices</h4>
             <table class="table">
                 @foreach($customer->invoices as $invoice)
-                    <tr>
+                    <td>
                         <td>{{ $invoice->id }}</td>
                         <td>{{ $invoice->expedition_date }}</td>
                         <td>{{ $invoice->due_date }}</td>

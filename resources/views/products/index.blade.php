@@ -16,14 +16,21 @@
     <div class="row">
         <div class="col">
             <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Product name</th>
+                </thead>
+                <tbody>
                 @foreach($products as $product)
                     <tr>
                         <td><a href="/products/{{ $product->id }}">{{ $product->id }}</a></td>
-                            <td>{{ $product->name }}</td>
+                        <td>{{ $product->name }}</td>
                         <td><a href="/products/{{ $product->id }}/edit">Edit</a></td>
                         <td><a href="/products/{{ $product->id }}/confirmDelete">Delete</a></td>
                     </tr>
                 @endforeach
+                </tbody>
             </table>
         </div>
     </div>

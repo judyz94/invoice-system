@@ -24,10 +24,7 @@ class StoreInvoiceProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_id' => 'required',
-            'invoice_id' => 'required',
-            'price' => 'required',
-            'quantity' => 'required'
+            'name' => 'required|min:3',
         ];
     }
 }

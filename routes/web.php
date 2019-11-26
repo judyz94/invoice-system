@@ -22,3 +22,4 @@ Route::get('/invoices/{invoice}/products/create', 'InvoiceProductController@crea
 Route::post('/invoices/{invoice}/products', 'InvoiceProductController@store');
 
 Route::get('invoiceproduct', 'InvoiceProductController@invoicesProducts');
+
