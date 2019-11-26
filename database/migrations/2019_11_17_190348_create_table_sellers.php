@@ -6,10 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTableSellers extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::create('sellers', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->integerIncrements('id');
             $table->string('name', 100);
             $table->bigInteger('document')->unique();
             $table->string('email', 40)->unique();
@@ -19,6 +24,11 @@ class CreateTableSellers extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         Schema::dropIfExists('sellers');

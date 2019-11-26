@@ -6,10 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateColumnsInvoiceIdInInvoicesProducts extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::table('invoices_products', function (Blueprint $table) {
-            $table->unsignedBigInteger('invoice_id')->after('id');
+            $table->unsignedInteger('invoice_id')->after('id');
             $table->foreign('invoice_id')
                 ->references('id')->on('invoices')
                 ->onDelete('cascade')
@@ -17,6 +22,11 @@ class CreateColumnsInvoiceIdInInvoicesProducts extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         Schema::table('invoices_products', function (Blueprint $table) {

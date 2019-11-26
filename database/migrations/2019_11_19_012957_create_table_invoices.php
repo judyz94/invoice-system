@@ -6,10 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTableInvoices extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::create('invoices', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->integerIncrements('id');
             $table->dateTimeTz('expedition_date');
             $table->dateTimeTz('due_date');
             $table->dateTimeTz('receipt_date');
@@ -22,6 +27,11 @@ class CreateTableInvoices extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         Schema::dropIfExists('invoices');
