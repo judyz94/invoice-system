@@ -18,14 +18,30 @@
         <div class="col">
             <h4>Invoice details</h4>
             <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Product name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+                </thead>
+                <tbody>
                 @foreach($invoice->products as $product)
                     <tr>
-                        <td>{{ $product->product_id }}</td>
+                        <td>{{ $product->id }}</td>
+                        <td>{{ $product->name }}</td>
                         <td>{{ $product->pivot->price }}</td>
                         <td>{{ $product->pivot->quantity }}</td>
                     </tr>
                 @endforeach
+                </tbody>
             </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary" href="/invoices/{{ $invoice->id }}/products/create">New product</a>
         </div>
     </div>
 @endsection

@@ -2,30 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="206b8493-95a9-4bf5-b714-7e900e269a30" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/InvoiceProductController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/products/confirmDelete.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/products/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/products/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/products/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/invoice_system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/invoice_system.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/StoreInvoiceProductRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InvoiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SellerController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/validateInvoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/validateInvoice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InvoiceProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InvoiceProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Invoice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/InvoiceProduct.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_21_222020_create_column_code_in_invoices.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customers/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customers/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customers/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/invoices/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_22_190005_create_invoices_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_22_190005_create_invoices_products_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_22_233614_create_columns_invoice_id_in_invoices_products.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_22_234309_create_column_product_id_in_invoices_products.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/invoices/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/invoices/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/invoices/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,7 +24,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -184,7 +174,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574614064070</updated>
-      <workItem from="1574614083036" duration="23954000" />
+      <workItem from="1574614083036" duration="24499000" />
+      <workItem from="1574698481922" duration="25256000" />
     </task>
     <servers />
   </component>
@@ -196,7 +187,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

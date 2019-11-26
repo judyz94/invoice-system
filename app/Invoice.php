@@ -9,12 +9,10 @@ class Invoice extends Model
 {
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class, 'invoices_products')
-            ->using('App\Product')
-            ->withPivot([
+        return $this->belongsToMany(Product::class,'invoices_products', 'invoice_id', 'product_id')
+            ->withPivot(
                 'price',
-                'quantity',
-            ]);
+                'quantity');
     }
 
     public function customer(): BelongsTo

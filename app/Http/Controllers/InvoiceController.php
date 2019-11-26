@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Http\Requests\validateInvoice;
 use App\Invoice;
+use App\Product;
 use App\Seller;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,8 @@ class InvoiceController extends Controller
         $customers = Customer::all();
         $sellers = Seller::all();
         return view('invoices.show', compact( 'sellers', 'customers'), [
-            'invoice' => $invoice ]);
+            'invoice' => $invoice
+        ]);
     }
 
     public function edit(Invoice $invoice)

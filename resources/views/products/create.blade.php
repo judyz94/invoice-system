@@ -28,16 +28,8 @@
             <form action="/products" method="POST">
                 @csrf
                 <div class="form-group">
-                    <select class="form-control" id="product_id" name="product_id">
-                        @foreach($products as $product)
-                            <option value="">Select a product name</option>
-                            <option value="{{ $product->id }}">{{ $product->name }}</option>
-                        @endforeach
-                    </select>
-                    <label for="price">Price:</label>
-                    <input type="text" class="form-control" id="price" name="price" placeholder="Type a price" value="{{ old('price') }}">
-                    <label for="quantity">Quantity:</label>
-                    <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Type a quantity" value="{{ old('quantity') }}">
+                    <label for="price">Name:</label>
+                    <input type="text" class="form-control" id="product" name="product" placeholder="Type a product name" value="{{ old('product') }}">
                 </div>
                 <br>
                 <button class="btn btn-primary" type="submit">Submit</button>

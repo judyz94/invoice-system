@@ -16,6 +16,17 @@
     <div class="row">
         <div class="col">
             <table class="table">
+            <thead>
+            <tr>
+                <th>Document</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>City</th>
+                <th>Address</th>
+            </tr>
+            </thead>
+                <tbody>
                 @foreach($customers as $customer)
                     <tr>
                         <td><a href="customers/{{ $customer->id }}">{{ $customer->document }}</a></td>
@@ -28,6 +39,7 @@
                         <td><a href="/customers/{{ $customer->id }}/confirmDelete">Delete</a></td>
                     </tr>
                 @endforeach
+                </tbody>
             </table>
         </div>
     </div>

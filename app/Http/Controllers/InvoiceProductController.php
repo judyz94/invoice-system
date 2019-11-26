@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\StoreInvoiceProductRequest;
 use App\Product;
+use App\Invoice;
 use Illuminate\Http\Request;
 
 class InvoiceProductController extends Controller
@@ -32,18 +34,14 @@ class InvoiceProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param StoreInvoiceProductRequest $request
+     * @param Invoice $invoice
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreInvoiceProductRequest $request, Invoice $invoice)
     {
-        $product = new Product();
-        $product->id = $request->get('id');
-        $product->name = $request->get('name');
-        $product->price = $request->get('price');
-        $product->quantity = $request->get('quantity');
-        $product->save();
-        return redirect('/products');
+        $invoice->products()->attach(request('product_id'), $request->validated());
+        return redirect('invoices.show', $invoice);
     }
 
     /**
@@ -56,7 +54,7 @@ class InvoiceProductController extends Controller
     public function show(Product $product)
     {
         $products = Product::all();
-        return view('products.show', compact('products'),[
+        return view('invoices.show', compact('products'),[
             'product' => $product ]);
     }
 
@@ -82,7 +80,8 @@ class InvoiceProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $product->id = $request->get('id');
-        $product->name = $request->get('name');
+        $product->invoice_id = $request->get('invoice_id');
+        $product->product_id = $request->get('product_id');
         $product->price = $request->get('price');
         $product->quantity = $request->get('quantity');
         $product->save();
@@ -97,14 +96,14 @@ class InvoiceProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Invoice::findOrFail($id);
+        $product = Product::findOrFail($id);
         $product->delete();
         return redirect('/products');
     }
 
     public function confirmDelete($id)
     {
-        $product = Invoice::findOrFail($id);
+        $product = Product::findOrFail($id);
         return view('products.confirmDelete', [
             'product' => $product ]);
     }
