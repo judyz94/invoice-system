@@ -24,13 +24,15 @@ class InvoiceProductController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param Invoice $invoice
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Invoice $invoice)
     {
         $invoices = Invoice::all();
         $products = Product::all();
-        return view('invoicesProducts.create', compact( 'products', 'invoices'));
+        return view('invoicesProducts.create', compact( 'products', 'invoices'), [
+            'invoice' => $invoice ]);
     }
 
     /**
@@ -42,8 +44,12 @@ class InvoiceProductController extends Controller
      */
     public function store(StoreInvoiceProductRequest $request, Invoice $invoice)
     {
-        $invoice->products()->attach(request('product_id'), $request->validated());
-        return redirect('invoices.show', $invoice);
+        $invoice->products()->attach(request('product_id'), [
+            'invoice_id' => request('invoice_id'),
+            'price' => request('price'),
+            'quantity' => request('quantity')],
+        $request->validated());
+        return redirect()->route('invoices.show', $invoice);
     }
 
     /**
@@ -63,6 +69,7 @@ class InvoiceProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @param Invoice $invoice
      * @param Product $product
      * @return \Illuminate\Http\Response
      */

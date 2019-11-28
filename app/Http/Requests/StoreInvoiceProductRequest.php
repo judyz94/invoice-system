@@ -24,7 +24,7 @@ class StoreInvoiceProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3',
+
         ];
     }
 }

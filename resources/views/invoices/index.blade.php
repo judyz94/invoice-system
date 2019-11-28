@@ -22,12 +22,8 @@
                     <th>Expedition date</th>
                     <th>Due date</th>
                     <th>Receipt date</th>
-                    <th>Seller</th>
                     <th>Sale description</th>
-                    <th>Customer</th>
-                    <th>Total</th>
-                    <th>VAT</th>
-                    <th>Total including VAT</th>
+                    <th>Total with VAT</th>
                     <th>Status</th>
                 </tr>
                 </thead>
@@ -38,16 +34,12 @@
                         <td>{{ $invoice->expedition_date }}</td>
                         <td>{{ $invoice->due_date }}</td>
                         <td>{{ $invoice->receipt_date }}</td>
-                        <td>{{ $invoice->seller_id }}</td>
                         <td>{{ $invoice->sale_description }}</td>
-                        <td>{{ $invoice->customer_id }}</td>
-                        <td>{{ $invoice->total }}</td>
-                        <td>{{ $invoice->vat }}</td>
                         <td>{{ $invoice->total_including_vat }}</td>
                         <td>{{ $invoice->status }}</td>
-                        <td><a href="/invoices/{{ $invoice->id }}/invoicesProducts/create">Add Details</a></td>
-                        <td><a href="/invoices/{{ $invoice->id }}/edit">Edit</a></td>
-                        <td><a href="/invoices/{{ $invoice->id }}/confirmDelete">Delete</a></td>
+                        <td><a class="btn btn-primary" href="/invoices/{{ $invoice->id }}/invoicesProducts/create">Add Details</a></td>
+                        <td><a class="btn btn-secondary" href="/invoices/{{ $invoice->id }}/edit">Edit</a></td>
+                        <td><a class="btn btn-secondary" href="/invoices/{{ $invoice->id }}/confirmDelete">Delete</a></td>
                     </tr>
                 @endforeach
                 </tbody>

@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <br><h1>New Product Details</h1>
+            <br><h1>New Product Details # {{ $invoice->id }}</h1>
         </div>
     </div>
     <div class="row">

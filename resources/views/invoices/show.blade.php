@@ -23,6 +23,10 @@
                     <th>Product name</th>
                     <th>Price</th>
                     <th>Quantity</th>
+                    <th>Seller</th>
+                    <th>Customer</th>
+                    <th>Total</th>
+                    <th>VAT</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,15 +36,15 @@
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->pivot->price }}</td>
                         <td>{{ $product->pivot->quantity }}</td>
+                        <td>{{ $invoice->seller_id }}</td>
+                        <td>{{ $invoice->customer_id }}</td>
+                        <td>{{ $invoice->total }}</td>
+                        <td>{{ $invoice->vat }}</td>
+                        <td><a class="btn btn-primary" href="/invoices/{{ $invoice->id }}/invoicesProducts/edit">Edit Details</a></td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <a class="btn btn-primary" href="/invoices/{{ $invoice->id }}/invoicesProducts/edit">Edit Details</a>
         </div>
     </div>
 @endsection

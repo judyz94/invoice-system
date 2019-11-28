@@ -18,6 +18,7 @@
             <table class="table">
             <thead>
             <tr>
+                <th>#</th>
                 <th>Document</th>
                 <th>Full Name</th>
                 <th>Email</th>
@@ -29,14 +30,16 @@
                 <tbody>
                 @foreach($customers as $customer)
                     <tr>
+                        <td>{{ $customer->id }}</td>
                         <td><a href="customers/{{ $customer->id }}">{{ $customer->document }}</a></td>
                         <td>{{ $customer->name }}</td>
                         <td>{{ $customer->email }}</td>
                         <td>{{ $customer->phone }}</td>
                         <td>{{ $customer->city_id }}</td>
                         <td>{{ $customer->address }}</td>
-                        <td><a href="/customers/{{ $customer->id }}/edit">Edit</a></td>
-                        <td><a href="/customers/{{ $customer->id }}/confirmDelete">Delete</a></td>
+                        <td><a class="btn btn-primary" href="/customers/{{ $customer->id }}/invoices/create">New invoice</a></td>
+                        <td><a class="btn btn-secondary" href="/customers/{{ $customer->id }}/edit">Edit</a></td>
+                        <td><a class="btn btn-secondary" href="/customers/{{ $customer->id }}/confirmDelete">Delete</a></td>
                     </tr>
                 @endforeach
                 </tbody>
