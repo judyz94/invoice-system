@@ -78,25 +78,25 @@ class InvoiceProductController extends Controller
         $invoices = Invoice::all();
         $products = Product::all();
         return view('invoicesProducts.edit', compact( 'products', 'invoices'), [
-            'product' => $product ]);
+            'product' => $product,
+            'invoice' => $invoice]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param Product $product
+     * @param StoreInvoiceProductRequest $request
+     * @param Invoice $invoice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(StoreInvoiceProductRequest $request, Invoice $invoice)
     {
-        $product->id = $request->get('id');
-        $product->invoice_id = $request->get('invoice_id');
-        $product->product_id = $request->get('product_id');
-        $product->price = $request->get('price');
-        $product->quantity = $request->get('quantity');
-        $product->save();
-        return redirect('/invoicesProducts');
+        $invoice->products()->attach(request('product_id'), [
+            'invoice_id' => request('invoice_id'),
+            'price' => request('price'),
+            'quantity' => request('quantity')],
+            $request->validated());
+        return redirect()->route('invoices.show', $invoice);
     }
 
     /**

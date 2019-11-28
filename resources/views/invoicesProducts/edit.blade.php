@@ -5,12 +5,12 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <a class="btn btn-secondary" href="/invoices">Back to Invoices</a><br><br>
+            <a class="btn btn-secondary" href="/invoices/{{ $invoice->id }}">Back to Invoices Details</a><br><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <br><h1>Edit Product Details</h1>
+            <br><h3>Edit Product Details</h3><br>
         </div>
     </div>
     <div class="row">
