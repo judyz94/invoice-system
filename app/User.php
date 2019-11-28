@@ -2,6 +2,10 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
+use App\Invoice;
+
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -18,6 +22,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class, 'user_id', 'id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

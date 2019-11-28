@@ -24,7 +24,7 @@
                     </ul>
                 </div>
             @endif
-            <form action="/invoicesProducts/" method="POST">
+            <form action="/invoicesProducts/{{ $invoice->id }}" method="POST">
                 @csrf
                 @method('put')
                 <div class="form-group">

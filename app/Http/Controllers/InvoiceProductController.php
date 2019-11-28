@@ -15,7 +15,7 @@ class InvoiceProductController extends Controller
      */
     public function index()
     {
-        return view('invoices.index', [
+        return view('invoicesProducts.index', [
             'invoices' => Invoice::all(),
             'products' => Product::all()
         ]);
@@ -73,12 +73,11 @@ class InvoiceProductController extends Controller
      * @param Product $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Invoice $invoice, Product $product)
+    public function edit(Invoice $invoice)
     {
         $invoices = Invoice::all();
         $products = Product::all();
         return view('invoicesProducts.edit', compact( 'products', 'invoices'), [
-            'product' => $product,
             'invoice' => $invoice]);
     }
 
@@ -91,7 +90,7 @@ class InvoiceProductController extends Controller
      */
     public function update(StoreInvoiceProductRequest $request, Invoice $invoice)
     {
-        $invoice->products()->attach(request('product_id'), [
+        $invoice->products()->updateExistingPivot(request('product_id'), [
             'invoice_id' => request('invoice_id'),
             'price' => request('price'),
             'quantity' => request('quantity')],

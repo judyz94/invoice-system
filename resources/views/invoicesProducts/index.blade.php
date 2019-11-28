@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 
-@section('title')Products Details
+@section('title')Products
 @endsection
 @section('content')
     <div class="row">
@@ -26,8 +26,8 @@
                     <tr>
                         <td><a href="/products/{{ $product->id }}">{{ $product->id }}</a></td>
                         <td>{{ $product->name }}</td>
-                        <td><a href="/products/{{ $product->id }}/edit">Edit</a></td>
-                        <td><a href="/products/{{ $product->id }}/confirmDelete">Delete</a></td>
+                        <td><a class="btn btn-secondary" href="/invoicesProducts/{{ $product->id }}/edit">Edit</a></td>
+                        <td><a class="btn btn-secondary" href="/invoicesProducts/{{ $product->id }}/confirmDelete">Delete</a></td>
                     </tr>
                 @endforeach
                 </tbody>

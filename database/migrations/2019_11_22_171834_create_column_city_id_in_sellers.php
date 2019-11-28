@@ -9,7 +9,7 @@ class CreateColumnCityIdInSellers extends Migration
     public function up()
     {
         Schema::table('sellers', function (Blueprint $table) {
-            $table->unsignedBigInteger('city_id')->after('phone');
+            $table->unsignedInteger('city_id')->after('phone');
             $table->foreign('city_id')
                 ->references('id')->on('cities')
                 ->onDelete('cascade')

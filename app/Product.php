@@ -8,7 +8,7 @@ class Product extends Model
 {
     public function invoices(): BelongsToMany
     {
-        return $this->belongsToMany(Invoice::class,'invoices_products', 'product_id', 'invoice_id')
+        return $this->belongsToMany(Invoice::class,'invoice_product', 'product_id', 'invoice_id')
             ->withPivot(
                 'price',
                 'quantity');

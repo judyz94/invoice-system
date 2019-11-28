@@ -9,7 +9,7 @@ class CreateColumnCustomerIdInInvoices extends Migration
     public function up()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            $table->unsignedBigInteger('customer_id')->after('sale_description');
+            $table->unsignedInteger('customer_id')->after('sale_description');
             $table->foreign('customer_id')
                  ->references('id')->on('customers')
                  ->onDelete('cascade')

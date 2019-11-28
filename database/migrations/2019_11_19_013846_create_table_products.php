@@ -8,15 +8,15 @@ class CreateTableProducts extends Migration
 {
     public function up()
     {
-        Schema::create('invoicesProducts', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name', 100);
+        Schema::create('products', function (Blueprint $table) {
+            $table->integerIncrements('id');
+            $table->string('name', 150);
             $table->timestampsTz();
         });
     }
     public function down()
     {
-        Schema::dropIfExists('invoicesProducts');
+        Schema::dropIfExists('products');
     }
 }
 

@@ -40,7 +40,7 @@
                         <td>{{ $invoice->customer_id }}</td>
                         <td>{{ $invoice->total }}</td>
                         <td>{{ $invoice->vat }}</td>
-                        <td><a class="btn btn-primary" href="/invoices/{{ $invoice->id }}/invoicesProducts/edit">Edit Details</a></td>
+                        <td><a class="btn btn-primary" href="/invoicesProducts/{{ $invoice->id }}/edit">Edit Details</a></td>
                     </tr>
                 @endforeach
                 </tbody>
