@@ -32,14 +32,14 @@
                     <select class="form-control" id="invoice_id" name="invoice_id">
                         <option value="">Select a invoice number</option>
                         @foreach($invoices as $invoice)
-                            <option value="{{ $invoice->id }}">{{ $invoice->id }}</option>
+                            <option value="{{ $invoice->id }}">{{ old('id', $invoice->id) }}</option>
                         @endforeach
                     </select>
                     <label for="product_id">Product name:</label>
                     <select class="form-control" id="product_id" name="product_id">
                         <option value="">Select a product name</option>
                         @foreach($products as $product)
-                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                            <option value="{{ $product->id }}">{{ old('name', $product->name) }}</option>
                         @endforeach
                     </select>
                     <label for="price">Price:</label>

@@ -19,7 +19,7 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>#</th>
+                    <th># Product</th>
                     <th>Product name</th>
                     <th>Price</th>
                     <th>Quantity</th>

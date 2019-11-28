@@ -38,9 +38,8 @@
                     <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $customer->phone) }}">
                     <label for="city">City:</label>
                     <select class="form-control" id="city_id" name="city_id">
-                        <option value="">Select a city</option>
                         @foreach($cities as $city)
-                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                            <option value="{{ $city->id }}">{{ old('name', $city->name) }}</option>
                         @endforeach
                     </select>
                     <label for="address">Address:</label>
