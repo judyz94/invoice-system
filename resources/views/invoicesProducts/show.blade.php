@@ -20,6 +20,7 @@
                 @foreach($product->invoices as $invoice)
                     <tr>
                         <td>{{ $invoice->id }}</td>
+                        <td>{{ $invoice->code }}</td>
                         <td>{{ $invoice->expedition_date }}</td>
                         <td>{{ $invoice->due_date }}</td>
                         <td>{{ $invoice->receipt_date }}</td>
@@ -28,7 +29,7 @@
                         <td>{{ $invoice->customer_id }}</td>
                         <td>{{ $invoice->total }}</td>
                         <td>{{ $invoice->vat }}</td>
-                        <td>{{ $invoice->total_including_vat }}</td>
+                        <td>{{ $invoice->total_with_vat }}</td>
                         <td>{{ $invoice->status }}</td>
                     </tr>
                 @endforeach

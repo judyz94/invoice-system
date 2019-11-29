@@ -5,12 +5,12 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <br><a class="btn btn-secondary" href="/customers">Back to Customers</a><br><br>
+            <br><a class="btn btn-secondary" href="/customers">Back to Customers</a><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h1>New Customer</h1>
+            <br><h2><strong>New Customer</strong></h2><br>
         </div>
     </div>
     <div class="row">

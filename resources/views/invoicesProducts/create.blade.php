@@ -5,12 +5,12 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <a class="btn btn-secondary" href="/invoices">Back to Invoices</a><br><br>
+            <a class="btn btn-secondary" href="/invoices">Back to Invoices</a><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <br><h1>New Details Invoice # {{ $invoice->id }}</h1>
+            <br><h2><strong>New Details Invoice # {{ $invoice->code }}</strong></h2><br>
         </div>
     </div>
     <div class="row">
@@ -31,7 +31,7 @@
                     <select class="form-control" id="invoice_id" name="invoice_id">
                         <option value="">Select a invoice number</option>
                         @foreach($invoices as $invoice)
-                            <option value="{{ $invoice->id }}">{{ $invoice->id }}</option>
+                            <option value="{{ $invoice->id }}">{{ $invoice->code }}</option>
                         @endforeach
                     </select>
                     <label for="product_id">Product name:</label>

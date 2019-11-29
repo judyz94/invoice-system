@@ -6,6 +6,7 @@ use App\Http\Requests\validateInvoice;
 use App\Invoice;
 use App\Product;
 use App\Seller;
+use App\User;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -21,13 +22,15 @@ class InvoiceController extends Controller
     {
         $customers = Customer::all();
         $sellers = Seller::all();
-        return view('invoices.create', compact( 'sellers', 'customers'));
+        $users = User::all();
+        return view('invoices.create', compact( 'sellers', 'customers', 'users'));
     }
 
     public function store(validateInvoice $request)
     {
         $invoice = new Invoice();
         $invoice->id = $request->get('id');
+        $invoice->code = $request->get('code');
         $invoice->expedition_date = $request->get('expedition_date');
         $invoice->due_date = $request->get('due_date');
         $invoice->receipt_date = $request->get('receipt_date');
@@ -35,6 +38,7 @@ class InvoiceController extends Controller
         $invoice->sale_description = $request->get('sale_description');
         $invoice->customer_id = $request->get('customer_id');
         $invoice->status = $request->get('status');
+        $invoice->user_id = $request->get('user_id');
         $invoice->save();
         return redirect('/invoices');
     }
@@ -43,7 +47,8 @@ class InvoiceController extends Controller
     {
         $customers = Customer::all();
         $sellers = Seller::all();
-        return view('invoices.show', compact( 'sellers', 'customers'), [
+        $users = User::all();
+        return view('invoices.show', compact( 'sellers', 'customers', 'users'), [
             'invoice' => $invoice
         ]);
     }
@@ -52,12 +57,14 @@ class InvoiceController extends Controller
     {
         $customers = Customer::all();
         $sellers = Seller::all();
-        return view('invoices.edit', compact( 'sellers', 'customers'), [
+        $users = User::all();
+        return view('invoices.edit', compact( 'sellers', 'customers', 'users'), [
             'invoice' => $invoice ]);
     }
 
     public function update(validateInvoice $request, Invoice $invoice)
     {
+        $invoice->code = $request->get('code');
         $invoice->expedition_date = $request->get('expedition_date');
         $invoice->due_date = $request->get('due_date');
         $invoice->receipt_date = $request->get('receipt_date');
@@ -65,6 +72,7 @@ class InvoiceController extends Controller
         $invoice->sale_description = $request->get('sale_description');
         $invoice->customer_id = $request->get('customer_id');
         $invoice->status = $request->get('status');
+        $invoice->user_id = $request->get('user_id');
         $invoice->save();
         return redirect('/invoices');
     }

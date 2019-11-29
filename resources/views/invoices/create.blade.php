@@ -6,12 +6,12 @@
     <div class="row">
         <div class="col">
             <br>
-            <a class="btn btn-secondary" href="/invoices">Back to Invoices</a><br><br>
+            <a class="btn btn-secondary" href="/invoices">Back to Invoices</a><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h1>New Invoice</h1>
+            <br><h2><strong>New Invoice</strong></h2><br>
         </div>
     </div>
     <div class="row">
@@ -28,6 +28,8 @@
             <form action="/invoices" method="POST">
                 @csrf
                 <div class="form-group">
+                    <label for="code">Code #:</label>
+                    <input type="text" class="form-control" id="code" name="code" placeholder="Type a code 'A0001'" value="{{ old('code') }}">
                     <label for="expedition_date">Expedition date:</label>
                     <input type="text" class="form-control" id="expedition_date" name="expedition_date" placeholder="YYYY/MM/DD" value="{{ old('expedition_date') }}">
                     <label for="due_date">Due date:</label>
@@ -58,6 +60,13 @@
                         <option value="overdue" {{ 'status'  == 'overdue' ? 'selected' : '' }}>Overdue</option>
                         <option value="paid" {{ 'status'  == 'paid' ? 'selected' : '' }}>Paid</option>
                         <option value="cancelled" {{ 'status'  == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                    </select>
+                    <label for="user_id">User:</label>
+                    <select class="form-control" id="user_id" name="user_id">
+                        <option value="">Select user name</option>
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <br>

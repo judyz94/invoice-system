@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h3>Edit Invoice # {{ $invoice->id }}</h3><br>
+            <h3>Edit Invoice # {{ $invoice->code }}</h3><br>
         </div>
     </div>
     <div class="row">
@@ -29,6 +29,8 @@
                 @csrf
                 @method('put')
                 <div class="form-group">
+                    <label for="code">Code:</label>
+                    <input type="text" class="form-control" id="code" name="code" value="{{ old('code', $invoice->code) }}">
                     <label for="expedition_date">Expedition date:</label>
                     <input type="text" class="form-control" id="expedition_date" name="expedition_date" value="{{ old('expedition_date', $invoice->expedition_date) }}">
                     <label for="due_date">Due date:</label>
@@ -56,6 +58,12 @@
                     <option value="overdue" {{ $invoice->status == 'overdue' ? 'selected' : '' }}>Overdue</option>
                     <option value="paid" {{ $invoice->status == 'paid' ? 'selected' : '' }}>Paid</option>
                     <option value="cancelled" {{ $invoice->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                    </select>
+                    <label for="user">User:</label>
+                    <select class="form-control" id="user_id" name="user_id">
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}">{{ old('name', $user->name) }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <br>
