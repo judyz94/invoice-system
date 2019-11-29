@@ -5,13 +5,12 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <br>
-            <a class="btn btn-secondary" href="/invoices">Back to Invoices</a><br>
+            <a class="btn btn-secondary" href="/invoices">Back to Invoices</a><br><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <br><h2><strong>New Invoice</strong></h2><br>
+            <br><h3><strong>New Invoice</strong></h3><br>
         </div>
     </div>
     <div class="row">
@@ -28,8 +27,8 @@
             <form action="/invoices" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="code">Code #:</label>
-                    <input type="text" class="form-control" id="code" name="code" placeholder="Type a code 'A0001'" value="{{ old('code') }}">
+                    <label for="code">Code:</label>
+                    <input type="text" class="form-control" id="code" name="code" placeholder="Type a code with format 'A0001'" value="{{ old('code') }}">
                     <label for="expedition_date">Expedition date:</label>
                     <input type="text" class="form-control" id="expedition_date" name="expedition_date" placeholder="YYYY/MM/DD" value="{{ old('expedition_date') }}">
                     <label for="due_date">Due date:</label>
@@ -38,7 +37,7 @@
                     <input type="text" class="form-control" id="receipt_date" name="receipt_date" placeholder="YYYY/MM/DD" value="{{ old('receipt_date') }}">
                     <label for="seller">Seller:</label>
                     <select class="form-control" id="seller_id" name="seller_id">
-                        <option value="">Select seller document</option>
+                        <option value="">Select seller ID</option>
                         @foreach($sellers as $seller)
                             <option value="{{ $seller->id }}">{{ $seller->document }}</option>
                         @endforeach
@@ -47,7 +46,7 @@
                     <input type="text" class="form-control" id="sale_description" name="sale_description" placeholder="Type a sale description" value="{{ old('sale_description') }}">
                     <label for="customer">Customer:</label>
                     <select class="form-control" id="customer_id" name="customer_id">
-                        <option value="">Select customer document</option>
+                        <option value="">Select customer ID</option>
                         @foreach($customers as $customer)
                             <option value="{{ $customer->id }}">{{ $customer->document }}</option>
                         @endforeach

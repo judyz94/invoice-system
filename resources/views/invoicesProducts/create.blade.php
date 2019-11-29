@@ -5,12 +5,12 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <a class="btn btn-secondary" href="/invoices">Back to Invoices</a><br>
+            <a class="btn btn-secondary" href="/invoices">Back to Invoices</a><br><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <br><h2><strong>New Details Invoice # {{ $invoice->code }}</strong></h2><br>
+            <br><h3><strong>New Details Invoice #{{ $invoice->code }}</strong></h3><br>
         </div>
     </div>
     <div class="row">
@@ -27,9 +27,9 @@
             <form action="/invoicesProducts" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="invoice_id">Invoice number:</label>
+                    <label for="invoice_id">Invoice code:</label>
                     <select class="form-control" id="invoice_id" name="invoice_id">
-                        <option value="">Select a invoice number</option>
+                        <option value="">Select a invoice code</option>
                         @foreach($invoices as $invoice)
                             <option value="{{ $invoice->id }}">{{ $invoice->code }}</option>
                         @endforeach

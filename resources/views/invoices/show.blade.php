@@ -10,12 +10,12 @@
     </div>
     <div class="row">
         <div class="col">
-            <br><h3>Invoice # {{ $invoice->code}}</h3><br>
+            <br><h3><strong>Invoice #{{ $invoice->code}}</strong></h3><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h4>Invoice details</h4>
+            <h4>Invoice details</h4><br>
             <table class="table">
                 <thead>
                 <tr>
@@ -28,6 +28,7 @@
                     <th>Total</th>
                     <th>VAT</th>
                     <th>Created by</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,11 +38,11 @@
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->pivot->price }}</td>
                         <td>{{ $product->pivot->quantity }}</td>
-                        <td>{{ $invoice->seller_id }}</td>
-                        <td>{{ $invoice->customer_id }}</td>
+                        <td>{{ $invoice->seller->document }}</td>
+                        <td>{{ $invoice->customer->document }}</td>
                         <td>{{ $invoice->total }}</td>
                         <td>{{ $invoice->vat }}</td>
-                        <td>{{ $invoice->user_id }}</td>
+                        <td>{{ $invoice->user->name }}</td>
                         <td><a class="btn btn-primary btn-sm" href="/invoicesProducts/{{ $invoice->id }}/edit">Edit Details</a></td>
                     </tr>
                 @endforeach

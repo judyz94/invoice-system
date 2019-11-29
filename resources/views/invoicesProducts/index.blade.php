@@ -20,6 +20,7 @@
                 <tr>
                     <th>#</th>
                     <th>Product name</th>
+                    <th>Actions</th>
                 </thead>
                 <tbody>
                 @foreach($products as $product)

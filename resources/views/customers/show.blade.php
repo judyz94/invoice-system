@@ -10,12 +10,12 @@
     </div>
     <div class="row">
         <div class="col">
-            <br><h3>Customer # {{ $customer->id}}</h3><br>
+            <br><h3><strong>Customer ID {{ $customer->document}}</strong></h3><br><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h4>Associated invoices</h4>
+            <h4>Associated invoices</h4><br>
             <table class="table">
                 <thead>
                 <tr>
@@ -27,6 +27,7 @@
                     <th>Total with VAT</th>
                     <th>Status</th>
                     <th>Created by</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -39,7 +40,7 @@
                         <td>{{ $invoice->sale_description }}</td>
                         <td>{{ $invoice->total_with_vat }}</td>
                         <td>{{ $invoice->status }}</td>
-                        <td>{{ $invoice->user_id }}</td>
+                        <td>{{ $invoice->user->name }}</td>
                         <td><a class="btn btn-primary btn-sm" href="/invoices/{{ $invoice->id }}/edit">Edit Invoice</a></td>
                     </tr>
                 @endforeach

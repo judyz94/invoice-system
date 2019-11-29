@@ -5,12 +5,12 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <br><a class="btn btn-secondary" href="/customers">Back to Customers</a><br>
+            <a class="btn btn-secondary" href="/customers">Back to Customers</a><br><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <br><h2><strong>New Customer</strong></h2><br>
+            <br><h3><strong>New Customer</strong></h3><br>
         </div>
     </div>
     <div class="row">
@@ -29,8 +29,8 @@
                 <div class="form-group">
                     <label for="name">Full name:</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Type a full name" value="{{ old('name') }}">
-                    <label for="document">Document:</label>
-                    <input type="text" class="form-control" id="document" name="document" placeholder="Type a document" value="{{ old('document') }}">
+                    <label for="document">ID:</label>
+                    <input type="text" class="form-control" id="document" name="document" placeholder="Type a ID" value="{{ old('document') }}">
                     <label for="email">Email:</label>
                     <input type="text" class="form-control" id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}">
                     <label for="phone">Phone:</label>

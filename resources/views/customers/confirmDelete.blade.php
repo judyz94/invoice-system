@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <br><h3>Delete Customer # {{ $customer->id }}</h3><br>
+            <br><h3><strong>Delete Customer ID {{ $customer->document }}</strong></h3><br>
         </div>
     </div>
     <div class="row">

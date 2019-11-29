@@ -10,8 +10,9 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        return view('customers.index', [
-            'customers' => Customer::all()
+        $cities = City::all();
+        return view('customers.index',  compact('cities'), [
+            'customers' => Customer::all(),
         ]);
     }
 

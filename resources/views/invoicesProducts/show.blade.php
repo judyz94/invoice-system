@@ -10,12 +10,12 @@
     </div>
     <div class="row">
         <div class="col">
-            <br><h3>Product # {{ $product->id}}</h3><br>
+            <br><h3><strong>Product #{{ $product->id}}</strong></h3><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h4>Invoice details</h4>
+            <h4>Invoice details</h4><br>
             <table class="table">
                 @foreach($product->invoices as $invoice)
                     <tr>

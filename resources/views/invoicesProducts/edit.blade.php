@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 
-@section('title')Edit Product Details
+@section('title')Edit Invoice Details
 @endsection
 @section('content')
     <div class="row">
@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <br><h3>Edit Product Details</h3><br>
+            <br><h3><strong>Edit Invoice Details</strong></h3><br>
         </div>
     </div>
     <div class="row">
@@ -28,7 +28,7 @@
                 @csrf
                 @method('put')
                 <div class="form-group">
-                    <label for="invoice_id">Invoice number:</label>
+                    <label for="invoice_id">Invoice code #:</label>
                     <select class="form-control" id="invoice_id" name="invoice_id">
                         <option value="">Select a invoice number</option>
                         @foreach($invoices as $invoice)

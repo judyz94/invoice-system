@@ -25,6 +25,7 @@
                     <th>Sale description</th>
                     <th>Total with VAT</th>
                     <th>Status</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
