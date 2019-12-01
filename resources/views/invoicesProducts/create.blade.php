@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 
-@section('title')Create Product Details
+@section('title')Create Invoice Details
 @endsection
 @section('content')
     <div class="row">
@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <br><h3><strong>New Details Invoice #{{ $invoice->code }}</strong></h3><br>
+            <br><h3><strong>New Invoice Details</strong></h3><br>
         </div>
     </div>
     <div class="row">

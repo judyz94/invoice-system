@@ -16,34 +16,29 @@
     <div class="row">
         <div class="col">
             <h4>Invoice details</h4><br>
-            <table class="table">
+            <table class="table table-sm table-bordered">
                 <thead>
                 <tr>
-                    <th>Product #</th>
+                    <th>Detail #</th>
                     <th>Product name</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Seller</th>
-                    <th>Customer</th>
-                    <th>Total</th>
-                    <th>VAT</th>
-                    <th>Created by</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($invoice->products as $product)
                     <tr>
-                        <td>{{ $product->id }}</td>
+                        <td>{{ $product->pivot->id }}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->pivot->price }}</td>
                         <td>{{ $product->pivot->quantity }}</td>
-                        <td>{{ $invoice->seller->document }}</td>
-                        <td>{{ $invoice->customer->document }}</td>
-                        <td>{{ $invoice->total }}</td>
-                        <td>{{ $invoice->vat }}</td>
-                        <td>{{ $invoice->user->name }}</td>
-                        <td><a class="btn btn-primary btn-sm" href="/invoicesProducts/{{ $invoice->id }}/edit">Edit Details</a></td>
+                        <div class="btn-group">
+                            <td>
+                                <a class="btn btn-secondary btn-sm" href="/invoicesProducts/{{ $invoice->id }}/edit">Edit Detail</a>
+                                <a class="btn btn-secondary btn-sm" href="/invoicesProducts/{{ $invoice->id }}/confirmDelete">Delete Detail</a>
+                            </td>
+                        </div>
                     </tr>
                 @endforeach
                 </tbody>

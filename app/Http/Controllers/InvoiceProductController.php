@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use Faker\ORM\Spot\Populator;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreInvoiceProductRequest;
 use App\Product;
 use App\Invoice;
-use Illuminate\Http\Request;
 
 class InvoiceProductController extends Controller
 {
@@ -24,22 +25,19 @@ class InvoiceProductController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @param Invoice $invoice
      * @return \Illuminate\Http\Response
      */
     public function create(Invoice $invoice)
     {
         $invoices = Invoice::all();
         $products = Product::all();
-        return view('invoicesProducts.create', compact( 'products', 'invoices'), [
-            'invoice' => $invoice ]);
+        return view('invoicesProducts.create', compact( 'products', 'invoices'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreInvoiceProductRequest $request
-     * @param Invoice $invoice
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreInvoiceProductRequest $request, Invoice $invoice)
@@ -48,17 +46,16 @@ class InvoiceProductController extends Controller
             'invoice_id' => request('invoice_id'),
             'price' => request('price'),
             'quantity' => request('quantity')],
-        $request->validated());
+            $request->validated());
         return redirect()->route('invoices.show', $invoice);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param Product $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
     public function show(Product $product)
     {
         $products = Product::all();
@@ -69,23 +66,24 @@ class InvoiceProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Invoice $invoice
-     * @param Product $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Invoice $invoice)
+    public function edit(Invoice $invoice, Product $product)
     {
         $invoices = Invoice::all();
         $products = Product::all();
         return view('invoicesProducts.edit', compact( 'products', 'invoices'), [
-            'invoice' => $invoice]);
+            'product' => $product,
+            'invoice' => $invoice ]);
     }
+
 
     /**
      * Update the specified resource in storage.
      *
-     * @param StoreInvoiceProductRequest $request
-     * @param Invoice $invoice
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(StoreInvoiceProductRequest $request, Invoice $invoice)
@@ -104,17 +102,19 @@ class InvoiceProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product, Invoice $invoice)
     {
-        $product = Product::findOrFail($id);
-        $product->delete();
-        return redirect('/invoicesProducts');
+        $product = Product::all();
+        $invoice->products()->detach();
+        return redirect()->route('invoices.show', $invoice);
     }
 
     public function confirmDelete($id)
     {
+        $invoice = Invoice::all();
         $product = Product::findOrFail($id);
         return view('invoicesProducts.confirmDelete', [
+            'invoice' => $invoice,
             'product' => $product ]);
     }
 }

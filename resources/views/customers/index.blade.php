@@ -15,7 +15,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <table class="table">
+            <table class="table table-sm table-bordered">
             <thead>
             <tr>
                 <th>Document</th>

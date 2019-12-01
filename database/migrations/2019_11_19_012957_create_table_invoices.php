@@ -11,10 +11,10 @@ class CreateTableInvoices extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->string('code');
-            $table->dateTimeTz('expedition_date');
-            $table->dateTimeTz('due_date');
-            $table->dateTimeTz('receipt_date');
-            $table->mediumText('sale_description');
+            $table->date('expedition_date');
+            $table->date('due_date');
+            $table->date('receipt_date');
+            $table->text('sale_description');
             $table->float('total');
             $table->float('vat')->default(0.19);
             $table->float('total_with_vat');
