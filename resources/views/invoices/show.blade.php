@@ -15,7 +15,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h4>Invoice details</h4><br>
+            <h4>Invoice details</h4>
             <table class="table table-sm table-bordered">
                 <thead>
                 <tr>

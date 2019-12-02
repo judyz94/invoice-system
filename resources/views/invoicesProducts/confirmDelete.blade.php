@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <a class="btn btn-secondary" href="/invoices/{{ $invoice }}">Back to Invoice Details</a><br><br>
+            <a class="btn btn-secondary" href="/invoices/{{ $invoice->id }}">Back to Invoice Details</a><br><br>
         </div>
     </div>
     <div class="row">

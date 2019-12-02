@@ -79,16 +79,19 @@ class InvoiceProductController extends Controller
      */
     public function destroy(Product $product, Invoice $invoice)
     {
+        $invoice = Invoice::findOrFail($invoice->id);
         $invoice->products()->detach($product->id);
         return redirect()->route('invoices.show', $invoice);
+
     }
 
     public function confirmDelete(Product $product, Invoice $invoice)
     {
-        $invoice = Invoice::findOrFail($invoice->id);
-        $product = Product::findOrFail($product->id);
-        return view('invoicesProducts.confirmDelete', [
-            'product' => $product,
-            'invoice' => $invoice ]);
+        $invoices = Invoice::all();
+        $products = Product::all();
+        return view('invoicesProducts.confirmDelete', compact('products', 'invoices'), [
+            'invoice' => $invoice,
+            'product' => $product]);
     }
+
 }

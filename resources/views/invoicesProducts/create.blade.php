@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <br><h3><strong>New Invoice Details</strong></h3><br>
+            <br><h3><strong>New Invoice Detail</strong></h3><br>
         </div>
     </div>
     <div class="row">
