@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Invoice extends Model
 {
-    protected $fillable = [ 'price' , 'quantity'];
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class,'invoice_product', 'invoice_id', 'product_id')
+        return $this->belongsToMany(Product::class)
             ->withPivot(
                 'price',
                 'quantity');

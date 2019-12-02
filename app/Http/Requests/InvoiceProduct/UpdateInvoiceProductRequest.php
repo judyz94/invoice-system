@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
-
+namespace App\Http\Requests\InvoiceProduct;
+use App\Invoice;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreInvoiceProductRequest extends FormRequest
+class UpdateInvoiceProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,10 @@ class StoreInvoiceProductRequest extends FormRequest
     public function rules()
     {
         return [
-
+            'product_id' => 'required',
+            'invoice_id' => 'required',
+            'price' => 'required',
+            'quantity' => 'required'
         ];
     }
 }

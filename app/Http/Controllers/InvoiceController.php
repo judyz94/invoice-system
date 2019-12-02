@@ -43,12 +43,13 @@ class InvoiceController extends Controller
         return redirect('/invoices');
     }
 
-    public function show(Invoice $invoice)
+    public function show(Invoice $invoice, Product $product)
     {
+        $products = Product::all();
         $customers = Customer::all();
         $sellers = Seller::all();
         $users = User::all();
-        return view('invoices.show', compact( 'sellers', 'customers', 'users'), [
+        return view('invoices.show', compact( 'sellers', 'customers', 'users', 'products'), [
             'invoice' => $invoice
         ]);
     }

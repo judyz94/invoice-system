@@ -10,12 +10,12 @@
     </div>
     <div class="row">
         <div class="col">
-            <br><h3><strong>Delete Detail #{{ $product->id}}</strong></h3><br>
+            <br><h3><strong>Delete Detail of Invoice #{{ $invoice->code }}</strong></h3><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <form action="/invoicesProducts/{{ $product->id }}" method="POST">
+            <form action="/invoices/{{ $invoice->id }}/products/{{ $product->id }}" method="POST">
                 @csrf
                 @method('delete')
                 <button class="btn btn-primary" type="submit">Delete</button>

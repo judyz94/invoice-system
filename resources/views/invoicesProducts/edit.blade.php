@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <br><h3><strong>Edit Invoice Details</strong></h3><br>
+            <br><h3><strong>Edit Detail of Invoice #{{ $invoice->code }} </strong></h3><br>
         </div>
     </div>
     <div class="row">
@@ -24,7 +24,7 @@
                     </ul>
                 </div>
             @endif
-            <form action="/invoicesProducts/{{ $product->id }}" method="POST">
+            <form action="/invoices/{{ $invoice->id }}/products/{{ $product->id }}" method="POST">
                 @csrf
                 @method('put')
                 <div class="form-group">

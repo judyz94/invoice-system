@@ -3,41 +3,33 @@
 namespace App\Http\Controllers;
 use Faker\ORM\Spot\Populator;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreInvoiceProductRequest;
+use App\Http\Requests\InvoiceProduct\StoreInvoiceProductRequest;
+use App\Http\Requests\InvoiceProduct\UpdateInvoiceProductRequest;
 use App\Product;
 use App\Invoice;
+use Whoops\Handler\PrettyPageHandler;
 
 class InvoiceProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('invoicesProducts.index', [
-            'invoices' => Invoice::all(),
-            'products' => Product::all()
-        ]);
-    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Invoice $invoice)
+    public function create(Invoice $invoice, Product $product)
     {
         $invoices = Invoice::all();
         $products = Product::all();
-        return view('invoicesProducts.create', compact( 'products', 'invoices'));
+        return view('invoicesProducts.create', compact('products', 'invoices'), [
+            'invoice' => $invoice,
+            'product' => $product]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreInvoiceProductRequest $request, Invoice $invoice)
@@ -50,71 +42,53 @@ class InvoiceProductController extends Controller
         return redirect()->route('invoices.show', $invoice);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
-    {
-        $products = Product::all();
-        return view('invoices.show', compact('products'), [
-            'product' => $product ]);
-    }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Invoice $invoice, Product $product)
     {
         $invoices = Invoice::all();
         $products = Product::all();
-        return view('invoicesProducts.edit', compact( 'products', 'invoices'), [
-            'product' => $product,
-            'invoice' => $invoice ]);
+        return view('invoicesProducts.edit', compact('products', 'invoices'), [
+            'invoice' => $invoice,
+            'product' => $product]);
     }
-
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreInvoiceProductRequest $request, Invoice $invoice)
+    public function update(UpdateInvoiceProductRequest $request, Invoice $invoice, Product $product)
     {
-        $invoice->products()->updateExistingPivot(request('product_id'), [
-            'invoice_id' => request('invoice_id'),
-            'price' => request('price'),
-            'quantity' => request('quantity')],
-            $request->validated());
+        $invoice->products()->updateExistingPivot($product->id, $request->validated());
         return redirect()->route('invoices.show', $invoice);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product, Invoice $invoice)
     {
-        $product = Product::all();
-        $invoice->products()->detach();
+        $invoice->products()->detach($product->id);
         return redirect()->route('invoices.show', $invoice);
     }
 
-    public function confirmDelete($id)
+    public function confirmDelete(Product $product, Invoice $invoice)
     {
-        $invoice = Invoice::all();
-        $product = Product::findOrFail($id);
+        $invoice = Invoice::findOrFail($invoice->id);
+        $product = Product::findOrFail($product->id);
         return view('invoicesProducts.confirmDelete', [
-            'invoice' => $invoice,
-            'product' => $product ]);
+            'product' => $product,
+            'invoice' => $invoice ]);
     }
 }

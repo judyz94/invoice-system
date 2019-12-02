@@ -48,7 +48,7 @@
                         <td>{{ $invoice->user->name }}</td>
                         <div class="btn-group">
                             <td>
-                            <a class="btn btn-primary btn-sm" href="/invoices/{{ $invoice->id }}/invoicesProducts/create">Add Details</a>
+                            <a class="btn btn-primary btn-sm" href="/invoices/{{ $invoice->id }}/products/create">Add Details</a>
                             <a class="btn btn-secondary btn-sm" href="/invoices/{{ $invoice->id }}/edit">Edit</a>
                             <a class="btn btn-secondary btn-sm" href="/invoices/{{ $invoice->id }}/confirmDelete">Delete</a>
                             </td>

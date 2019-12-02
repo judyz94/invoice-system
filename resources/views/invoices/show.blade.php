@@ -29,14 +29,14 @@
                 <tbody>
                 @foreach($invoice->products as $product)
                     <tr>
-                        <td>{{ $product->pivot->id }}</td>
+                        <td>{{ $product->id }}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->pivot->price }}</td>
                         <td>{{ $product->pivot->quantity }}</td>
                         <div class="btn-group">
                             <td>
-                                <a class="btn btn-secondary btn-sm" href="/invoicesProducts/{{ $invoice->id }}/edit">Edit Detail</a>
-                                <a class="btn btn-secondary btn-sm" href="/invoicesProducts/{{ $invoice->id }}/confirmDelete">Delete Detail</a>
+                                <a class="btn btn-secondary btn-sm" href="/invoices/{{ $invoice->id }}/products/{{ $product->id }}/edit ">Edit Detail</a>
+                                <a class="btn btn-secondary btn-sm" href="/invoices/{{ $invoice->id }}/products/{{ $product->id }}/confirmDelete">Delete Detail</a>
                             </td>
                         </div>
                     </tr>
