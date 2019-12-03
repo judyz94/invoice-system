@@ -44,6 +44,8 @@
                     </select>
                     <label for="sale_description">Sale description:</label>
                     <input type="text" class="form-control" id="sale_description" name="sale_description" value="{{ old('sale_description', $invoice->sale_description) }}">
+                    <label for="vat">VAT:</label>
+                    <input type="text" class="form-control" id="vat" name="vat" value="{{ old('vat', $invoice->vat) }}">
                     <label for="customer">Customer:</label>
                     <select class="form-control" id="customer_id" name="customer_id">
                         @foreach($customers as $customer)

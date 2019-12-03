@@ -1,13 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Faker\ORM\Spot\Populator;
-use Illuminate\Http\Request;
-use App\Http\Requests\InvoiceProduct\StoreInvoiceProductRequest;
-use App\Http\Requests\InvoiceProduct\UpdateInvoiceProductRequest;
+use App\Http\Requests\InvoiceProduct\StoreRequest;
+use App\Http\Requests\InvoiceProduct\UpdateRequest;
 use App\Product;
 use App\Invoice;
-use Whoops\Handler\PrettyPageHandler;
 
 class InvoiceProductController extends Controller
 {
@@ -32,7 +29,7 @@ class InvoiceProductController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreInvoiceProductRequest $request, Invoice $invoice)
+    public function store(StoreRequest $request, Invoice $invoice)
     {
         $invoice->products()->attach(request('product_id'), [
             'invoice_id' => request('invoice_id'),
@@ -41,7 +38,6 @@ class InvoiceProductController extends Controller
             $request->validated());
         return redirect()->route('invoices.show', $invoice);
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -65,7 +61,7 @@ class InvoiceProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateInvoiceProductRequest $request, Invoice $invoice, Product $product)
+    public function update(UpdateRequest $request, Invoice $invoice, Product $product)
     {
         $invoice->products()->updateExistingPivot($product->id, $request->validated());
         return redirect()->route('invoices.show', $invoice);

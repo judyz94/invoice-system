@@ -40,7 +40,6 @@
                             <td>
                                 <a class="btn btn-secondary  btn-sm" href="/customers/{{ $customer->id }}/edit">Edit</a>
                                 <a class="btn btn-secondary  btn-sm" href="/customers/{{ $customer->id }}/confirmDelete">Delete</a>
-                                <a class="btn btn-primary btn-sm" href="/customers/{{ $customer->id }}/invoices/create">Associate new invoice</a>
                             </td>
                         </div>
                     </tr>

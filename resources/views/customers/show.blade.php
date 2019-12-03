@@ -58,6 +58,7 @@
                 @endforeach
                 </tbody>
             </table>
+            <a class="btn btn-primary" href="/customers/{{ $customer->id }}/invoices/create">Associate new invoice</a>
         </div>
     </div>
 @endsection

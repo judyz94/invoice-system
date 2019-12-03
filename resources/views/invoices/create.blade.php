@@ -44,6 +44,8 @@
                     </select>
                     <label for="sale_description">Sale description:</label>
                     <input type="text" class="form-control" id="sale_description" name="sale_description" placeholder="Type a sale description" value="{{ old('sale_description') }}">
+                    <label for="vat">VAT:</label>
+                    <input type="text" class="form-control" id="vat" name="vat" placeholder="Type the value of VAT. Example: 0.19" value="{{ old('vat') }}">
                     <label for="customer">Customer:</label>
                     <select class="form-control" id="customer_id" name="customer_id">
                         <option value="">Select customer ID</option>

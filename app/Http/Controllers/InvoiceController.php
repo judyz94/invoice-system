@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\Invoice\StoreRequest;
+use App\Http\Requests\Invoice\UpdateRequest;
 use App\Customer;
-use App\Http\Requests\validateInvoice;
 use App\Invoice;
 use App\Product;
 use App\Seller;
 use App\User;
-use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
@@ -26,7 +26,7 @@ class InvoiceController extends Controller
         return view('invoices.create', compact( 'sellers', 'customers', 'users'));
     }
 
-    public function store(validateInvoice $request)
+    public function store(StoreRequest $request)
     {
         $invoice = new Invoice();
         $invoice->id = $request->get('id');
@@ -36,6 +36,7 @@ class InvoiceController extends Controller
         $invoice->receipt_date = $request->get('receipt_date');
         $invoice->seller_id = $request->get('seller_id');
         $invoice->sale_description = $request->get('sale_description');
+        $invoice->vat = $request->get('vat');
         $invoice->customer_id = $request->get('customer_id');
         $invoice->status = $request->get('status');
         $invoice->user_id = $request->get('user_id');
@@ -63,7 +64,7 @@ class InvoiceController extends Controller
             'invoice' => $invoice ]);
     }
 
-    public function update(validateInvoice $request, Invoice $invoice)
+    public function update(UpdateRequest $request, Invoice $invoice)
     {
         $invoice->code = $request->get('code');
         $invoice->expedition_date = $request->get('expedition_date');
@@ -71,6 +72,7 @@ class InvoiceController extends Controller
         $invoice->receipt_date = $request->get('receipt_date');
         $invoice->seller_id = $request->get('seller_id');
         $invoice->sale_description = $request->get('sale_description');
+        $invoice->vat = $request->get('vat');
         $invoice->customer_id = $request->get('customer_id');
         $invoice->status = $request->get('status');
         $invoice->user_id = $request->get('user_id');
