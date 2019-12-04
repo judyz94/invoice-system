@@ -23,7 +23,6 @@
                     <th>Due date</th>
                     <th>Receipt date</th>
                     <th>Sale description</th>
-                    <th>Total</th>
                     <th>Total VAT</th>
                     <th>Seller</th>
                     <th>Customer</th>
@@ -40,15 +39,14 @@
                         <td>{{ $invoice->due_date }}</td>
                         <td>{{ $invoice->receipt_date }}</td>
                         <td>{{ $invoice->sale_description }}</td>
-                        <td>{{ $invoice->total }}</td>
-                        <td>{{ $invoice->total_with_vat }}</td>
+                        <td>${{ number_format($invoice->total_with_vat = $invoice->total - ($invoice->total * $invoice->vat), 2) }}</td>
                         <td>{{ $invoice->seller->document }}</td>
                         <td>{{ $invoice->customer->document }}</td>
                         <td>{{ $invoice->status }}</td>
                         <td>{{ $invoice->user->name }}</td>
                         <div class="btn-group">
                             <td>
-                            <a class="btn btn-primary btn-sm" href="/invoices/{{ $invoice->id }}/products/create">Add Detail</a>
+                            <a class="btn btn-primary btn-sm" href="/invoices/{{ $invoice->id }}/products/create">Add Details</a>
                             <a class="btn btn-secondary btn-sm" href="/invoices/{{ $invoice->id }}/edit">Edit</a>
                             <a class="btn btn-secondary btn-sm" href="/invoices/{{ $invoice->id }}/confirmDelete">Delete</a>
                             </td>

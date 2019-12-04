@@ -44,8 +44,10 @@
                     </select>
                     <label for="sale_description">Sale description:</label>
                     <input type="text" class="form-control" id="sale_description" name="sale_description" placeholder="Type a sale description" value="{{ old('sale_description') }}">
+                    <input type="hidden" class="form-control" id="total" name="total" placeholder="Type the total value" value="{{ old('total') }}">
                     <label for="vat">VAT:</label>
-                    <input type="text" class="form-control" id="vat" name="vat" placeholder="Type the value of VAT. Example: 0.19" value="{{ old('vat') }}">
+                    <input type="text" class="form-control" id="vat" name="vat"  value="{{ old('vat') }}">
+                    <input type="hidden" class="form-control" id="total_with_vat" name="total_with_vat"  value="{{ old('total_with_vat') }}">
                     <label for="customer">Customer:</label>
                     <select class="form-control" id="customer_id" name="customer_id">
                         <option value="">Select customer ID</option>

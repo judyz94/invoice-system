@@ -11,10 +11,13 @@ use App\User;
 
 class InvoiceController extends Controller
 {
-    public function index()
+    public function index(Invoice $invoice, Product $product)
     {
-        return view('invoices.index', [
-            'invoices' => Invoice::all()
+        $products = Product::all();
+        $invoices = Invoice::all();
+        return view('invoices.index', compact( 'products', 'invoices'), [
+            'invoice' => $invoice,
+            'product' => $product
         ]);
     }
 
@@ -37,6 +40,8 @@ class InvoiceController extends Controller
         $invoice->seller_id = $request->get('seller_id');
         $invoice->sale_description = $request->get('sale_description');
         $invoice->vat = $request->get('vat');
+        $invoice->total = $request->get('total');
+        $invoice->total_with_vat = $request->get('total_with_vat');
         $invoice->customer_id = $request->get('customer_id');
         $invoice->status = $request->get('status');
         $invoice->user_id = $request->get('user_id');
@@ -73,6 +78,8 @@ class InvoiceController extends Controller
         $invoice->seller_id = $request->get('seller_id');
         $invoice->sale_description = $request->get('sale_description');
         $invoice->vat = $request->get('vat');
+        $invoice->total = $request->get('total');
+        $invoice->total_with_vat = $request->get('total_with_vat');
         $invoice->customer_id = $request->get('customer_id');
         $invoice->status = $request->get('status');
         $invoice->user_id = $request->get('user_id');

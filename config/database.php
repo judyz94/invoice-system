@@ -144,4 +144,5 @@ return [
 
     ],
 
+    new mysqli()
 ];

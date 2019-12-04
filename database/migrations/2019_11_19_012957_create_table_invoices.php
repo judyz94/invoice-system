@@ -15,9 +15,9 @@ class CreateTableInvoices extends Migration
             $table->date('due_date');
             $table->date('receipt_date');
             $table->text('sale_description');
-            $table->float('total')->nullable();
+            $table->float('total');
             $table->float('vat');
-            $table->float('total_with_vat')->nullable();
+            $table->float('total_with_vat');
             $table->enum('status', ['sent','rejected','overdue','paid','cancelled']);
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')

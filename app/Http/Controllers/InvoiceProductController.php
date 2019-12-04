@@ -34,7 +34,8 @@ class InvoiceProductController extends Controller
         $invoice->products()->attach(request('product_id'), [
             'invoice_id' => request('invoice_id'),
             'price' => request('price'),
-            'quantity' => request('quantity')],
+            'quantity' => request('quantity'),
+        ],
             $request->validated());
         return redirect()->route('invoices.show', $invoice);
     }

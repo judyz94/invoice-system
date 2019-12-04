@@ -23,6 +23,7 @@
                     <th>Product name</th>
                     <th>Price</th>
                     <th>Quantity</th>
+                    <th>Total</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -31,8 +32,9 @@
                     <tr>
                         <td>{{ $product->id }}</td>
                         <td>{{ $product->name }}</td>
-                        <td>{{ $product->pivot->price }}</td>
+                        <td>${{ number_format($product->pivot->price, 2) }}</td>
                         <td>{{ $product->pivot->quantity }}</td>
+                        <td>${{ number_format($invoice->total = $product->pivot->price * $product->pivot->quantity) }}</td>
                         <div class="btn-group">
                             <td>
                                 <a class="btn btn-secondary btn-sm" href="/invoices/{{ $invoice->id }}/products/{{ $product->id }}/edit ">Edit Detail</a>
@@ -43,7 +45,6 @@
                 @endforeach
                 </tbody>
             </table>
-            <a class="btn btn-primary" href="/invoices/{{ $invoice->id }}/products/create">Add New Detail</a>
         </div>
     </div>
 @endsection
