@@ -15,6 +15,9 @@ Route::get('/customers/{customer}/invoices/create', 'InvoiceController@create');
 Route::post('/customers/{customer}/invoices', 'InvoiceController@store');
 
 Route::get('/invoices/{invoice}/products/create', 'InvoiceProductController@create');
+Route::post('/autocomplete/fetch', 'InvoiceProductController@fetch');
+
+
 Route::post('/invoices/{invoice}/products', 'InvoiceProductController@store');
 Route::get('/invoices/{invoice}/products/{product}/edit', 'InvoiceProductController@edit');
 Route::put('/invoices/{invoice}/products/{product}', 'InvoiceProductController@update');

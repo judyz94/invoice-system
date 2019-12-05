@@ -4,10 +4,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use App\Product;
 
 class Invoice extends Model
 {
+    protected $fillable = ['code', 'expedition_date', 'due_date', 'receipt_date', 'seller_id', 'sale_description', 'customer_id', 'total', 'vat', 'total_with_vat', 'status', 'user_id'];
 
     public function products(): BelongsToMany
     {
