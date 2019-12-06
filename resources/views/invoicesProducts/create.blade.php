@@ -37,18 +37,18 @@
                 </div>
                     <div class="col-sm-10">
                         <div class="input-group">
+                            <div id="productList"></div>
                             {{--}}<label for="product_id">Product #:</label><br>
                             <input type="text" class="form-control" id="product_id" name="product_id" placeholder="Type a product number" value="{{ old('product_id') }}">--}}
                             <label for="name">Product name:</label><br>
                             <input type="text" class="form-control" id="name" name="name" autocomplete="off" placeholder="Type a product name">
-                            <div id="productList"></div>
                             {{ csrf_field() }}
                             <label for="price">Price:</label><br>
                             <input type="text" class="form-control" id="price" name="price" placeholder="Type a product price" value="{{ old('price') }}">
                             <label for="quantity">Quantity:</label><br>
                             <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Type a quantity" value="{{ old('quantity') }}">
                             <div class="input-group-btn">
-                            <button type="button" class="btn btn-success">+</button><br><br>
+                            <button type="button" id="more" class="btn btn-success">+</button><br><br>
                             </div>
                         </div>
                     </div>

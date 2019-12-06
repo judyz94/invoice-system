@@ -29,9 +29,9 @@ class InvoiceProductController extends Controller
 
     public function fetch(ProductRequest $productRequest)
     {
-        if($productRequest->get('query'))
+        if($productRequest->get('query')->validated())
         {
-            $query = $productRequest->get('query');
+            $query = $productRequest->get('query')->validated();
             $data = DB::table('products')
                 ->where('name', 'LIKE', "%{$query}%")
                 ->get();
