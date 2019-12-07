@@ -28,6 +28,19 @@
             <form action="/invoices" method="POST">
                 @csrf
                 <div class="form-group">
+                    <label for="product">Product:</label>
+                    <select class="form-control" id="product_id" name="product_id">
+                        @foreach($products as $product)
+                            <option value="">Select product name</option>
+                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                        @endforeach
+                    </select>
+
+                    <label for="price">Price:</label>
+                    <input type="text" class="form-control" id="price" name="price" placeholder="Type a product price" value="{{ old('price') }}">
+                    <label for="price">Quantity:</label>
+                    <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Type a product quantity" value="{{ old('quantity') }}">
+
                     <label for="expedition_date">Expedition date:</label>
                     <input type="text" class="form-control" id="expedition_date" name="expedition_date" placeholder="YYYY/MM/DD" value="{{ old('expedition_date') }}">
                     <label for="due_date">Due date:</label>
