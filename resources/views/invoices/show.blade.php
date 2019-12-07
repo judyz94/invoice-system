@@ -15,7 +15,6 @@
     </div>
     <div class="row">
         <div class="col">
-            <h4>Invoice details</h4>
             <h4>Details</h4>
             <table class="table">
                 <thead>
