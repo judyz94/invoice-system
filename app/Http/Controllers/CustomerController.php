@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Customer;
+use App\City;
 use App\Http\Requests\Customer\StoreRequest;
 use App\Http\Requests\Customer\UpdateRequest;
 
@@ -10,12 +11,14 @@ class CustomerController extends Controller
     public function index()
     {
         return view('customers.index', [
-            'customers' => Customer::all() ]);
+            'customers' => Customer::all()
+        ]);
     }
 
     public function create()
     {
-        return view('customers.create');
+        $cities = City::all();
+        return view('customers.create', compact('cities'));
     }
 
     public function store(StoreRequest $request)
@@ -25,7 +28,7 @@ class CustomerController extends Controller
         $customer->document = $request->get('document');
         $customer->email = $request->get('email');
         $customer->phone = $request->get('phone');
-        $customer->city_id = $customer->id;
+        $customer->city_id = $request->get('city_id');
         $customer->address = $request->get('address');
         $customer->save();
         return redirect('/customers');
@@ -33,14 +36,16 @@ class CustomerController extends Controller
 
     public function show(Customer $customer)
     {
-        return view('customers.show', [
+        $cities = City::all();
+        return view('customers.show',  compact('cities'), [
             'customer' => $customer ]);
     }
 
     public function edit(Customer $customer)
     {
-        return view('customers.edit', [
-            'customer' => $customer]);
+        $cities = City::all();
+        return view('customers.edit',  compact('cities'), [
+            'customer' => $customer ]);
     }
 
     public function update(UpdateRequest $request, Customer $customer)
@@ -49,7 +54,7 @@ class CustomerController extends Controller
         $customer->document = $request->get('document');
         $customer->email = $request->get('email');
         $customer->phone = $request->get('phone');
-        $customer->city_id = $customer->id;
+        $customer->city_id = $request->get('city_id');
         $customer->address = $request->get('address');
         $customer->save();
 

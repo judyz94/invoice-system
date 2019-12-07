@@ -25,6 +25,8 @@ class CreateInvoicesProductsTable extends Migration
                 ->references('id')->on('invoicesProducts')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->float('price');
+            $table->integer('quantity');
             $table->timestampsTz();
         });
     }

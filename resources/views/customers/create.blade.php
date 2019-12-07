@@ -1,12 +1,11 @@
-@extends ('layouts.base')
+@extends ('layouts.app')
 
 @section('title')Create Customers
 @endsection
 @section('content')
     <div class="row">
         <div class="col">
-            <br>
-            <a class="btn btn-secondary" href="/customers">Back to Customers</a><br><br>
+            <br><a class="btn btn-secondary" href="/customers">Back to Customers</a><br><br>
         </div>
     </div>
     <div class="row">
@@ -37,7 +36,12 @@
                     <label for="phone">Phone:</label>
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="Type a phone" value="{{ old('phone') }}">
                     <label for="city_id">City:</label>
-                    <input type="text" class="form-control" id="city" name="city" placeholder="Type a city" value="{{ old('city') }}">
+                    <select class="form-control" id="city_id" name="city_id">
+                        <option value="">Select a city</option>
+                        @foreach($cities as $city)
+                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                        @endforeach
+                    </select>
                     <label for="address">Address:</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="Type a address" value="{{ old('address') }}">
                 </div>

@@ -1,4 +1,4 @@
-@extends ('layouts.base')
+@extends ('layouts.app')
 
 @section('title')Edit Invoices
 @endsection
@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h3>Edit Invoice {{ $invoice->id }}</h3><br>
+            <h3>Edit Invoice # {{ $invoice->id }}</h3><br>
         </div>
     </div>
     <div class="row">
@@ -29,16 +29,26 @@
                 @csrf
                 @method('put')
                 <div class="form-group">
-                    <label for="code">Code:</label>
-                    <input type="text" class="form-control" id="code" name="code" value="{{ old('code', $invoice->code) }}">
                     <label for="expedition_date">Expedition date:</label>
                     <input type="text" class="form-control" id="expedition_date" name="expedition_date" value="{{ old('expedition_date', $invoice->expedition_date) }}">
                     <label for="due_date">Due date:</label>
                     <input type="text" class="form-control" id="due_date" name="due_date" value="{{ old('due_date', $invoice->due_date) }}">
                     <label for="receipt_date">Receipt date:</label>
                     <input type="text" class="form-control" id="receipt_date" name="receipt_date" value="{{ old('receipt_date', $invoice->receipt_date) }}">
+                    <label for="seller">Seller:</label>
+                    <select class="form-control" id="seller_id" name="seller_id">
+                        @foreach($sellers as $seller)
+                            <option value="{{ $seller->id }}">{{ old('document', $seller->document) }}</option>
+                        @endforeach
+                    </select>
                     <label for="sale_description">Sale description:</label>
                     <input type="text" class="form-control" id="sale_description" name="sale_description" value="{{ old('sale_description', $invoice->sale_description) }}">
+                    <label for="customer">Customer:</label>
+                    <select class="form-control" id="customer_id" name="customer_id">
+                        @foreach($customers as $customer)
+                            <option value="{{ $customer->id }}">{{ old('document', $customer->document) }}</option>
+                        @endforeach
+                    </select>
                     <label for="status">Status:</label>
                     <select class="form-control" id="status" name="status">
                     <option value="sent" {{ $invoice->status == 'sent' ? 'selected' : '' }}>Sent</option>
