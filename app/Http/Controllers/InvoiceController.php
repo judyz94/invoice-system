@@ -22,6 +22,8 @@ class InvoiceController extends Controller
         $customers = Customer::all();
         $sellers = Seller::all();
         return view('invoices.create', compact( 'sellers', 'customers'));
+        $products = Product::all();
+        return view('invoices.create', compact( 'sellers', 'customers', 'products'));
     }
 
     public function store(validateInvoice $request)
