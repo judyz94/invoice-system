@@ -2,14 +2,17 @@
 
 namespace App;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class City extends Model
 {
-    public function customers() {
+    public function customers(): HasMany
+    {
         return $this->hasMany(Customer::class);
     }
 
-    public function sellers() {
+    public function sellers(): HasMany
+    {
         return $this->hasMany(Seller::class);
     }
 }
