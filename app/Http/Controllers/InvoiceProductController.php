@@ -28,11 +28,14 @@ class InvoiceProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Invoice $invoice)
+    public function create(Product $product)
     {
         $invoices = Invoice::all();
         $products = Product::all();
         return view('invoicesProducts.create', compact( 'products', 'invoices'), [
             'invoice' => $invoice ]);
+        return view('invoices.create', compact('products'),[
+            'product' => $product ]);
     }
 
     /**
