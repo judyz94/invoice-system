@@ -12,8 +12,9 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .js('resources/js/autocomplete.js', 'public/js')
-   .js('resources/js/dinamicform.js', 'public/js')
+   .js('resources/js/autocomplete', 'public/js')
+   .js('resources/js/dinamicform', 'public/js')
+   .js('resources/js/delete-modal', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
    .extract();
 

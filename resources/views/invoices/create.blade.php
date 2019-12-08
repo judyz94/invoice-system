@@ -6,7 +6,7 @@
             <div class="col-md-12">
             <div class="card">
                 <div class="card-header pb-0">
-                    <h5 class="card-title">New Invoice</h5>
+                    <h4 class="card-title"><strong>New Invoice</strong></h4>
                 </div>
         <div class="card-body">
             @if($errors->any())
@@ -120,7 +120,7 @@
                 </form>
         </div>
         <div class="card-footer d-flex justify-content-between">
-            <a href="/invoices" class="btn btn-danger">
+            <a href="/invoices" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Back to Invoices
             </a>
             <button type="submit" class="btn btn-success" form="invoices-form">

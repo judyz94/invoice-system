@@ -37,13 +37,13 @@ $(document).ready(function () {
 /***/ }),
 
 /***/ 1:
-/*!********************************************!*\
-  !*** multi ./resources/js/autocomplete.js ***!
-  \********************************************/
+/*!*****************************************!*\
+  !*** multi ./resources/js/autocomplete ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\invoice_system\resources\js\autocomplete.js */"./resources/js/autocomplete.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\invoice_system\resources\js\autocomplete */"./resources/js/autocomplete.js");
 
 
 /***/ })
