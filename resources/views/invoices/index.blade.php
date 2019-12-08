@@ -17,7 +17,7 @@
                     <th style="width:120px">{{ __('Due date') }}</th>
                     <th style="width:120px">{{ __('Receipt date') }}</th>
                     <th style="width:100px">{{ __('Sale description') }}</th>
-                    <th style="width:120px">{{ __('Total VAT') }}</th>
+                    <th style="width:120px">{{ __('Total with VAT') }}</th>
                     <th style="width:100px">{{ __('Seller ID') }}</th>
                     <th style="width:100px">{{ __('Customer ID') }}</th>
                     <th style="width:50px">{{ __('Status') }}</th>
