@@ -12,7 +12,11 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-mix.js('resources/js/autocomplete.js', 'public/js')
-mix.js('resources/js/dinamicform.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+   .js('resources/js/autocomplete.js', 'public/js')
+   .js('resources/js/dinamicform.js', 'public/js')
+   .sass('resources/sass/app.scss', 'public/css')
+   .extract();
 
+if (mix.inProduction()) {
+    mix.version();
+}
