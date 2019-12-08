@@ -36,6 +36,6 @@ return [
     'Select user name' => 'Seleccione el nombre de usuario',
     'Back to Invoices' => 'Volver a Facturas',
     'Submit' => 'Enviar',
-
-
+    'Cancel' => 'Cancelar',
+    'Update' => 'Actualizar',
 ];

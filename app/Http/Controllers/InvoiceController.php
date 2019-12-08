@@ -21,12 +21,14 @@ class InvoiceController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(Invoice $invoice)
     {
         $customers = Customer::all();
         $sellers = Seller::all();
         $users = User::all();
-        return view('invoices.create', compact( 'sellers', 'customers', 'users'));
+        return view('invoices.create', compact( 'sellers', 'customers', 'users'), [
+            'invoice' => $invoice,
+        ]);
     }
 
     public function store(StoreRequest $request)
