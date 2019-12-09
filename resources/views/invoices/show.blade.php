@@ -25,7 +25,7 @@
                                 <tr>
                                     <td>{{ $product->id }}</td>
                                     <td>{{ $product->name }}</td>
-                                    <td>${{ number_format($product->pivot->price, 2) }}</td>
+                                    <td>${{ number_format($product->pivot->price) }}</td>
                                     <td>{{ $product->pivot->quantity }}</td>
                                     <td>${{ number_format($invoice->total = $product->pivot->price * $product->pivot->quantity) }}</td>
                                     <td>

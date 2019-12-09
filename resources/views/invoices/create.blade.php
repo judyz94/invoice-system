@@ -18,7 +18,7 @@
                     </ul>
                 </div>
             @endif
-                <form action="{{ route('invoices.create') }}" method="POST" id="invoices-form">
+                <form method="post" action="{{ route('invoices.store') }}" id="invoices-form">
                     @csrf
                     @include('invoices.__form')
                 </form>

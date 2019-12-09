@@ -34,21 +34,19 @@ class InvoiceController extends Controller
     public function store(StoreRequest $request)
     {
         $invoice = new Invoice();
-        $invoice->id = $request->get('id');
-        $invoice->code = $request->get('code');
-        $invoice->expedition_date = $request->get('expedition_date');
+        $invoice->id = $request->input('id');
+        $invoice->code = $request->input('code');
+        $invoice->expedition_date = $request->input('expedition_date');
         $invoice->due_date = $request->get('due_date');
         $invoice->receipt_date = $request->get('receipt_date');
         $invoice->seller_id = $request->get('seller_id');
         $invoice->sale_description = $request->get('sale_description');
         $invoice->vat = $request->get('vat');
-        $invoice->total = $request->get('total');
-        $invoice->total_with_vat = $request->get('total_with_vat');
         $invoice->customer_id = $request->get('customer_id');
         $invoice->status = $request->get('status');
         $invoice->user_id = $request->get('user_id');
         $invoice->save();
-        return redirect('/invoices');
+        return redirect()->route('invoices.index');
     }
 
     public function show(Invoice $invoice, Product $product)
