@@ -59,7 +59,7 @@ class InvoiceProductController extends Controller
         //$invoice->products()->create($productRequest->validated());
 
         $invoice->products()->attach(request('product_id'), $request->validated());
-        return redirect()->route('invoices.show', $invoice, $product);
+        return redirect()->route('invoices.show', $invoice);
     }
 
     /**

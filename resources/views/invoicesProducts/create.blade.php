@@ -53,7 +53,7 @@
                             <label for="quantity">Quantity:</label><br>
                             <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Type a quantity" value="{{ old('quantity') }}">
                             <div class="input-group-btn">
-                            <button type="button" id="add" class="btn btn-success">+</button><br><br>
+                            <button type="button" class="btn btn-success">+</button><br><br>
                             </div>
                         </div>
                     </div>
