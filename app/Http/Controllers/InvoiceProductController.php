@@ -1,80 +1,70 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\StoreInvoiceProductRequest;
+
 use App\Product;
 use App\Invoice;
-use Illuminate\Support\Facades\DB;
+
 
 
 class InvoiceProductController extends Controller
 {
-    public function index()
-    {
-        return view('invoices.index', [
-            'invoices' => Invoice::all(),
-            'products' => Product::all()
-        ]);
-    }
-
     public function create(Invoice $invoice, Product $product)
     {
         $invoices = Invoice::all();
         $products = Product::all();
         return view('invoicesProducts.create', compact( 'products', 'invoices'), [
-            'invoice' => $invoice ]);
+            'invoice' => $invoice,
+            'product' => $product
+        ]);
     }
 
-    public function store(StoreInvoiceProductRequest $request, Invoice $invoice)
+    public function store(/*ProductRequest $productRequest,*/ StoreRequest $request, Invoice $invoice)
     {
-        $invoice->products()->attach(request('product_id'), [
-            'invoice_id' => request('invoice_id'),
-            'price' => request('price'),
-            'quantity' => request('quantity')],
-        $request->validated());
+        //$invoice->products()->create($productRequest->validated());
+        $invoice->products()->attach(request('product_id'), $request->validated());
         return redirect()->route('invoices.show', $invoice);
     }
 
-
-    public function show(Product $product)
+    public function fetch(ProductRequest $productRequest)
     {
-        $products = Product::all();
-        return view('invoices.show', compact('products'), [
-            'product' => $product ]);
+        if($productRequest->get('query')->validated())
+        {
+            $query = $productRequest->get('query')->validated();
+            $data = DB::table('products')
+                ->where('name', 'LIKE', "%{$query}%")
+                ->get();
+            $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+            foreach($data as $row)
+            {
+                $output .= '<li><a href="#">'.$row->name.'</a></li>';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
     }
-
 
     public function edit(Invoice $invoice, Product $product)
     {
         $invoices = Invoice::all();
         $products = Product::all();
         return view('invoicesProducts.edit', compact( 'products', 'invoices'), [
-            'product' => $product ]);
+            'invoice' => $invoice,
+            'product' => $product
+        ]);
     }
 
-    public function update($request, Invoice $invoice, Product $product)
+    public function update(UpdateRequest $request, Invoice $invoice, Product $product)
     {
-        $product->id = $request->get('id');
-        $product->invoice_id = $request->get('invoice_id');
-        $product->product_id = $request->get('product_id');
-        $product->price = $request->get('price');
-        $product->quantity = $request->get('quantity');
-        $product->save();
-        return redirect('/invoicesProducts');
+        $invoice->products()->updateExistingPivot($product->id, $request->validated());
+        return redirect()->route('invoices.show', $invoice);
     }
 
     public function destroy(Product $product, Invoice $invoice)
     {
-        $product = Product::findOrFail($invoice->id);
-        $product->delete();
+        $invoice = Invoice::findOrFail($invoice->id);
+        $invoice->products()->detach($product->id);
         return redirect()->route('invoices.show', $invoice);
     }
 
-    public function confirmDelete(Product $product, Invoice $invoice)
-    {
-        $invoices = Invoice::all();
-        $products = Product::all();
-        return view('invoicesProducts.confirmDelete', [
-            'product' => $product ]);
-    }
 }
