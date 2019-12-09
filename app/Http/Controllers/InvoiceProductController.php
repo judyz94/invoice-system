@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreInvoiceProductRequest;
 use App\Product;
 use App\Invoice;
+use Illuminate\Support\Facades\DB;
+
 
 class InvoiceProductController extends Controller
 {
@@ -26,14 +28,12 @@ class InvoiceProductController extends Controller
      * @param Invoice $invoice
      * @return \Illuminate\Http\Response
      */
-    public function create(Invoice $invoice)
+    public function create(Invoice $invoice, Product $product)
     {
         $invoices = Invoice::all();
         $products = Product::all();
         return view('invoicesProducts.create', compact( 'products', 'invoices'), [
             'invoice' => $invoice ]);
-        return view('invoices.create', compact('products'),[
-            'product' => $product ]);
     }
 
     /**
@@ -83,7 +83,7 @@ class InvoiceProductController extends Controller
      * @param Product $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Product $product)
+    public function update(UpdateRequest $request, Invoice $invoice, Product $product)
     {
         $product->id = $request->get('id');
         $product->invoice_id = $request->get('invoice_id');
@@ -100,16 +100,17 @@ class InvoiceProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Product $product, Invoice $invoice)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::findOrFail($invoice->id);
         $product->delete();
-        return redirect('/invoicesProducts');
+        return redirect()->route('invoices.show', $invoice);
     }
 
-    public function confirmDelete()
+    public function confirmDelete(Product $product, Invoice $invoice)
     {
-        $product = Product::findOrFail($id);
+        $invoices = Invoice::all();
+        $products = Product::all();
         return view('invoicesProducts.confirmDelete', [
             'product' => $product ]);
     }

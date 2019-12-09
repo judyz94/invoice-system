@@ -1,18 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\Invoice\StoreRequest;
+use App\Http\Requests\Invoice\UpdateRequest;
 use App\Customer;
-use App\Http\Requests\validateInvoice;
 use App\Invoice;
 use App\Product;
 use App\Seller;
+use App\User;
 
 class InvoiceController extends Controller
 {
-    public function index()
+    public function index(Invoice $invoice, Product $product)
     {
-        return view('invoices.index', [
-            'invoices' => Invoice::all()
+        $products = Product::all();
+        $invoices = Invoice::all();
+        return view('invoices.index', compact( 'products', 'invoices'), [
+            'invoice' => $invoice,
+            'product' => $product
         ]);
     }
 
@@ -20,12 +25,11 @@ class InvoiceController extends Controller
     {
         $customers = Customer::all();
         $sellers = Seller::all();
-        return view('invoices.create', compact( 'sellers', 'customers'));
-        $products = Product::all();
-        return view('invoices.create', compact( 'sellers', 'customers', 'products'));
+        $users = User::all();
+        return view('invoices.create', compact( 'sellers', 'customers', 'users'));
     }
 
-    public function store()
+    public function store(StoreRequest $request)
     {
         $invoice = new Invoice();
         $invoice->id = $request->get('id');
@@ -40,7 +44,7 @@ class InvoiceController extends Controller
         return redirect('/invoices');
     }
 
-    public function show(Invoice $invoice)
+    public function show(Invoice $invoice, Product $product)
     {
         $customers = Customer::all();
         $sellers = Seller::all();
@@ -57,7 +61,7 @@ class InvoiceController extends Controller
             'invoice' => $invoice ]);
     }
 
-    public function update(Invoice $invoice)
+    public function update(UpdateRequest $request, Invoice $invoice)
     {
         $invoice->expedition_date = $request->get('expedition_date');
         $invoice->due_date = $request->get('due_date');
