@@ -6,7 +6,6 @@ use App\Http\Requests\validateInvoice;
 use App\Invoice;
 use App\Product;
 use App\Seller;
-use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
@@ -26,7 +25,7 @@ class InvoiceController extends Controller
         return view('invoices.create', compact( 'sellers', 'customers', 'products'));
     }
 
-    public function store(validateInvoice $request)
+    public function store()
     {
         $invoice = new Invoice();
         $invoice->id = $request->get('id');
@@ -58,7 +57,7 @@ class InvoiceController extends Controller
             'invoice' => $invoice ]);
     }
 
-    public function update(validateInvoice $request, Invoice $invoice)
+    public function update(Invoice $invoice)
     {
         $invoice->expedition_date = $request->get('expedition_date');
         $invoice->due_date = $request->get('due_date');

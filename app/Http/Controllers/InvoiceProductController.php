@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreInvoiceProductRequest;
 use App\Product;
 use App\Invoice;
-use Illuminate\Http\Request;
 
 class InvoiceProductController extends Controller
 {
@@ -28,7 +27,6 @@ class InvoiceProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Invoice $invoice)
-    public function create(Product $product)
     {
         $invoices = Invoice::all();
         $products = Product::all();
@@ -55,12 +53,6 @@ class InvoiceProductController extends Controller
         return redirect()->route('invoices.show', $invoice);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param Product $product
-     * @return \Illuminate\Http\Response
-     */
 
     public function show(Product $product)
     {
@@ -91,7 +83,7 @@ class InvoiceProductController extends Controller
      * @param Product $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Product $product)
     {
         $product->id = $request->get('id');
         $product->invoice_id = $request->get('invoice_id');
@@ -108,14 +100,14 @@ class InvoiceProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
         $product = Product::findOrFail($id);
         $product->delete();
         return redirect('/invoicesProducts');
     }
 
-    public function confirmDelete($id)
+    public function confirmDelete()
     {
         $product = Product::findOrFail($id);
         return view('invoicesProducts.confirmDelete', [
