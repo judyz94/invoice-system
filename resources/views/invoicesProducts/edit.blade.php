@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="col-sm-10">
-                        <div class="input-group">
+                        <div class="form-group">
                             <div id="productList"></div>
                             <label for="product_id">{{ __('Product name') }}</label><br>
                             <select class="form-control" id="product_id" name="product_id">
@@ -46,10 +46,12 @@
                             </select>
                             {{--<label for="name">Product name:</label><br>
                             <input type="text" class="form-control" id="name" name="name" autocomplete="off" placeholder="Type a product name">--}}
+                            @foreach($invoice->products as $product)
                             <label for="price">{{ __('Price') }}</label><br>
                             <input type="text" class="form-control " id="price" name="price" placeholder="{{ __('Type a product price') }}" value="{{ old('price', $product->pivot->price) }}">
                             <label for="quantity">{{ __('Quantity') }}</label><br>
                             <input type="text" class="form-control" id="quantity" name="quantity" placeholder="{{ __('Type a quantity') }}" value="{{ old('quantity',  $product->pivot->quantity) }}">
+                            @endforeach
                             <div class="input-group-btn">
                                 <button type="button" class="btn btn-success">+</button><br><br>
                             </div>
