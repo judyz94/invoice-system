@@ -26,9 +26,8 @@
                         <div class="form-group">
                             <label for="invoice_id">{{ __('Invoice code') }}</label>
                             <select class="form-control" id="invoice_id" name="invoice_id">
-                                <option value="">Select a invoice code</option>
                                 @foreach($invoices as $invoice)
-                                    <option value="{{ $invoice->id }}">{{ $invoice->code }}</option>
+                                    <option value="{{ $invoice->id }}" {{ old('invoice_id', $invoice->invoice_id) == $invoice->id ? 'selected' : ''}}>{{ $invoice->code }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -39,9 +38,8 @@
                             <div id="productList"></div>
                             <label for="product_id">{{ __('Product name') }}</label><br>
                             <select class="form-control" id="product_id" name="product_id">
-                                <option value="">Select a product name</option>
                                 @foreach($products as $product)
-                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                    <option value="{{ $product->id }}" {{ old('product_id', $product->product_id) == $product->id ? 'selected' : ''}}>{{ $product->name }}</option>
                                 @endforeach
                             </select>
                             {{--<label for="name">Product name:</label><br>
@@ -52,7 +50,7 @@
                             <label for="quantity">{{ __('Quantity') }}</label><br>
                             <input type="text" class="form-control" id="quantity" name="quantity" placeholder="{{ __('Type a quantity') }}" value="{{ old('quantity',  $product->pivot->quantity) }}">
                             @endforeach
-                            <div class="input-group-btn">
+                            <div class="input-group-btn"><br>
                                 <button type="button" class="btn btn-success">+</button><br><br>
                             </div>
                         </div>
