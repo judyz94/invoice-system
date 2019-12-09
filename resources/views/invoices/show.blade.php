@@ -52,7 +52,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 @push('modals')
     @include('partials.__confirm_delete_modal')
