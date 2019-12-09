@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 
-@section('title')Create Product Details
+@section('title')Create Invoice Details
 @endsection
 @section('content')
     <div class="row">
@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <br><h1>New Details Invoice # {{ $invoice->id }}</h1>
+            <br><h3><strong>New Details for Invoice #{{ $invoice->code }}</strong></h3><br>
         </div>
     </div>
     <div class="row">
@@ -24,31 +24,41 @@
                     </ul>
                 </div>
             @endif
-            <form action="/invoicesProducts" method="POST">
+            <form id="form" action="/invoices/{{ $invoice->id }}/products/" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="invoice_id">Invoice number:</label>
+                    <label for="invoice_id">Invoice code:</label>
                     <select class="form-control" id="invoice_id" name="invoice_id">
-                        <option value="">Select a invoice number</option>
+                        <option value="">Select a invoice code</option>
                         @foreach($invoices as $invoice)
-                            <option value="{{ $invoice->id }}">{{ $invoice->id }}</option>
+                            <option value="{{ $invoice->id }}">{{ $invoice->code }}</option>
                         @endforeach
                     </select>
-                    <label for="product_id">Product name:</label>
-                    <select class="form-control" id="product_id" name="product_id">
-                        <option value="">Select a product name</option>
-                        @foreach($products as $product)
-                            <option value="{{ $product->id }}">{{ $product->name }}</option>
-                        @endforeach
-                    </select>
-                    <label for="price">Price:</label>
-                    <input type="text" class="form-control" id="price" name="price" placeholder="Type a product price" value="{{ old('price') }}">
-                    <label for="quantity">Quantity:</label>
-                    <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Type a quantity" value="{{ old('quantity') }}">
                 </div>
+                    <div class="col-sm-10">
+                        <div class="input-group">
+                            <div id="productList"></div>
+                            {{--}}<label for="product_id">Product #:</label><br>
+                            <input type="text" class="form-control" id="product_id" name="product_id" placeholder="Type a product number" value="{{ old('product_id') }}">--}}
+                            <label for="name">Product name:</label><br>
+                            <input type="text" class="form-control" id="name" name="name" autocomplete="off" placeholder="Type a product name">
+                            {{ csrf_field() }}
+                            <label for="price">Price:</label><br>
+                            <input type="text" class="form-control" id="price" name="price" placeholder="Type a product price" value="{{ old('price') }}">
+                            <label for="quantity">Quantity:</label><br>
+                            <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Type a quantity" value="{{ old('quantity') }}">
+                            <div class="input-group-btn">
+                            <button type="button" id="more" class="btn btn-success">+</button><br><br>
+                            </div>
+                        </div>
+                    </div>
                 <br>
-                <button class="btn btn-primary" type="submit">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
+
+    {{--<script src="{{ asset('js/autocomplete.js') }}"></script>
+    <script src="{{ asset('js/dinamicform.js') }}"></script>--}}
+
 @endsection

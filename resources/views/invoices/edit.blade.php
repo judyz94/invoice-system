@@ -5,13 +5,12 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <br>
-            <a class="btn btn-secondary" href="/invoices">Back to Invoices</a><br><br>
+           <a class="btn btn-secondary" href="/invoices">Back to Invoices</a><br><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h3>Edit Invoice # {{ $invoice->id }}</h3><br>
+            <br><h3><strong>Edit Invoice #{{ $invoice->code }}</strong></h3><br>
         </div>
     </div>
     <div class="row">
@@ -29,6 +28,8 @@
                 @csrf
                 @method('put')
                 <div class="form-group">
+                    <label for="code">Code:</label>
+                    <input type="text" class="form-control" id="code" name="code" value="{{ old('code', $invoice->code) }}">
                     <label for="expedition_date">Expedition date:</label>
                     <input type="text" class="form-control" id="expedition_date" name="expedition_date" value="{{ old('expedition_date', $invoice->expedition_date) }}">
                     <label for="due_date">Due date:</label>
@@ -43,6 +44,12 @@
                     </select>
                     <label for="sale_description">Sale description:</label>
                     <input type="text" class="form-control" id="sale_description" name="sale_description" value="{{ old('sale_description', $invoice->sale_description) }}">
+                    <label for="total">Total:</label>
+                    <input type="text" class="form-control" id="total" name="total" value="{{ old('total', $invoice->total) }}">
+                    <label for="vat">VAT:</label>
+                    <input type="text" class="form-control" id="vat" name="vat" value="{{ old('vat', $invoice->vat) }}">
+                    <label for="total_with_vat">Total with VAT:</label>
+                    <input type="text" class="form-control" id="total_with_vat" name="total_with_vat" value="{{ old('total_with_vat', $invoice->total_with_vat) }}">
                     <label for="customer">Customer:</label>
                     <select class="form-control" id="customer_id" name="customer_id">
                         @foreach($customers as $customer)
@@ -56,6 +63,12 @@
                     <option value="overdue" {{ $invoice->status == 'overdue' ? 'selected' : '' }}>Overdue</option>
                     <option value="paid" {{ $invoice->status == 'paid' ? 'selected' : '' }}>Paid</option>
                     <option value="cancelled" {{ $invoice->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                    </select>
+                    <label for="user">User:</label>
+                    <select class="form-control" id="user_id" name="user_id">
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}">{{ old('name', $user->name) }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <br>

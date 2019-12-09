@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h3>Edit Customer # {{ $customer->id }}</h3><br>
+            <br><h3><strong>Edit Customer ID {{ $customer->document }}</strong></h3><br>
         </div>
     </div>
     <div class="row">
@@ -30,7 +30,7 @@
                 <div class="form-group">
                     <label for="name">Full name:</label>
                     <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $customer->name) }}">
-                    <label for="document">Document:</label>
+                    <label for="document">ID:</label>
                     <input type="text" class="form-control" id="document" name="document" value="{{ old('document', $customer->document) }}">
                     <label for="email">Email:</label>
                     <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $customer->email) }}">

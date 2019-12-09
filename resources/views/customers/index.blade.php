@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <h1>Customers</h1><br>
+            <h1><strong>Customers</strong></h1><br>
         </div>
     </div>
     <div class="row">
@@ -15,31 +15,33 @@
     </div>
     <div class="row">
         <div class="col">
-            <table class="table">
+            <table class="table table-sm table-bordered">
             <thead>
             <tr>
-                <th>#</th>
                 <th>Document</th>
                 <th>Full Name</th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>City</th>
                 <th>Address</th>
+                <th>Actions</th>
             </tr>
             </thead>
                 <tbody>
                 @foreach($customers as $customer)
                     <tr>
-                        <td>{{ $customer->id }}</td>
                         <td><a href="customers/{{ $customer->id }}">{{ $customer->document }}</a></td>
                         <td>{{ $customer->name }}</td>
                         <td>{{ $customer->email }}</td>
                         <td>{{ $customer->phone }}</td>
-                        <td>{{ $customer->city_id }}</td>
+                        <td>{{ $customer->city->name }}</td>
                         <td>{{ $customer->address }}</td>
-                        <td><a class="btn btn-primary" href="/customers/{{ $customer->id }}/invoices/create">New invoice</a></td>
-                        <td><a class="btn btn-secondary" href="/customers/{{ $customer->id }}/edit">Edit</a></td>
-                        <td><a class="btn btn-secondary" href="/customers/{{ $customer->id }}/confirmDelete">Delete</a></td>
+                        <div class="btn-group">
+                            <td>
+                                <a class="btn btn-secondary  btn-sm" href="/customers/{{ $customer->id }}/edit">Edit</a>
+                                <a class="btn btn-secondary  btn-sm" href="/customers/{{ $customer->id }}/confirmDelete">Delete</a>
+                            </td>
+                        </div>
                     </tr>
                 @endforeach
                 </tbody>

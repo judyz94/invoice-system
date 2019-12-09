@@ -33,22 +33,29 @@ class InvoiceController extends Controller
     {
         $invoice = new Invoice();
         $invoice->id = $request->get('id');
+        $invoice->code = $request->get('code');
         $invoice->expedition_date = $request->get('expedition_date');
         $invoice->due_date = $request->get('due_date');
         $invoice->receipt_date = $request->get('receipt_date');
         $invoice->seller_id = $request->get('seller_id');
         $invoice->sale_description = $request->get('sale_description');
+        $invoice->vat = $request->get('vat');
+        $invoice->total = $request->get('total');
+        $invoice->total_with_vat = $request->get('total_with_vat');
         $invoice->customer_id = $request->get('customer_id');
         $invoice->status = $request->get('status');
+        $invoice->user_id = $request->get('user_id');
         $invoice->save();
         return redirect('/invoices');
     }
 
     public function show(Invoice $invoice, Product $product)
     {
+        $products = Product::all();
         $customers = Customer::all();
         $sellers = Seller::all();
-        return view('invoices.show', compact( 'sellers', 'customers'), [
+        $users = User::all();
+        return view('invoices.show', compact( 'sellers', 'customers', 'users', 'products'), [
             'invoice' => $invoice
         ]);
     }
@@ -57,19 +64,25 @@ class InvoiceController extends Controller
     {
         $customers = Customer::all();
         $sellers = Seller::all();
-        return view('invoices.edit', compact( 'sellers', 'customers'), [
+        $users = User::all();
+        return view('invoices.edit', compact( 'sellers', 'customers', 'users'), [
             'invoice' => $invoice ]);
     }
 
     public function update(UpdateRequest $request, Invoice $invoice)
     {
+        $invoice->code = $request->get('code');
         $invoice->expedition_date = $request->get('expedition_date');
         $invoice->due_date = $request->get('due_date');
         $invoice->receipt_date = $request->get('receipt_date');
         $invoice->seller_id = $request->get('seller_id');
         $invoice->sale_description = $request->get('sale_description');
+        $invoice->vat = $request->get('vat');
+        $invoice->total = $request->get('total');
+        $invoice->total_with_vat = $request->get('total_with_vat');
         $invoice->customer_id = $request->get('customer_id');
         $invoice->status = $request->get('status');
+        $invoice->user_id = $request->get('user_id');
         $invoice->save();
         return redirect('/invoices');
     }

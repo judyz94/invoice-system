@@ -1,16 +1,16 @@
 @extends ('layouts.app')
 
-@section('title')Edit Product Details
+@section('title')Edit Invoice Details
 @endsection
 @section('content')
     <div class="row">
         <div class="col">
-            <a class="btn btn-secondary" href="/invoices">Back to Invoices</a><br><br>
+            <a class="btn btn-secondary" href="/invoices/{{ $invoice->id }}">Back to Invoice Details</a><br><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <br><h1>Edit Product Details</h1>
+            <br><h3><strong>Edit Detail of Invoice #{{ $invoice->code }} </strong></h3><br>
         </div>
     </div>
     <div class="row">
@@ -24,28 +24,28 @@
                     </ul>
                 </div>
             @endif
-            <form action="/invoicesProducts/" method="POST">
+            <form action="/invoices/{{ $invoice->id }}/products/{{ $product->id }}" method="POST">
                 @csrf
                 @method('put')
                 <div class="form-group">
-                    <label for="invoice_id">Invoice number:</label>
+                    <label for="invoice_id">Invoice code:</label>
                     <select class="form-control" id="invoice_id" name="invoice_id">
-                        <option value="">Select a invoice number</option>
                         @foreach($invoices as $invoice)
-                            <option value="{{ $invoice->id }}">{{ old('id', $invoice->id) }}</option>
+                            <option value="{{ $invoice->id }}">{{ old('code', $invoice->code) }}</option>
                         @endforeach
                     </select>
                     <label for="product_id">Product name:</label>
                     <select class="form-control" id="product_id" name="product_id">
-                        <option value="">Select a product name</option>
                         @foreach($products as $product)
                             <option value="{{ $product->id }}">{{ old('name', $product->name) }}</option>
                         @endforeach
                     </select>
+                    @foreach($invoice->products as $product)
                     <label for="price">Price:</label>
-                    <input type="text" class="form-control" id="price" name="price" value="{{ old('price', $product->price) }}">
+                    <input type="text" class="form-control" id="price" name="price" value="{{ old('price', $product->pivot->price) }}">
                     <label for="quantity">Quantity:</label>
-                    <input type="text" class="form-control" id="quantity" name="quantity" value="{{ old('quantity',  $product->quantity) }}">
+                    <input type="text" class="form-control" id="quantity" name="quantity" value="{{ old('quantity',  $product->pivot->quantity) }}">
+                    @endforeach
                 </div>
                 <br>
                 <button class="btn btn-primary" type="submit">Submit</button>

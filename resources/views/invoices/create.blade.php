@@ -27,19 +27,8 @@
             <form action="/invoices" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="product">Product:</label>
-                    <select class="form-control" id="product_id" name="product_id">
-                        @foreach($products as $product)
-                            <option value="">Select product name</option>
-                            <option value="{{ $product->id }}">{{ $product->name }}</option>
-                        @endforeach
-                    </select>
-
-                    <label for="price">Price:</label>
-                    <input type="text" class="form-control" id="price" name="price" placeholder="Type a product price" value="{{ old('price') }}">
-                    <label for="price">Quantity:</label>
-                    <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Type a product quantity" value="{{ old('quantity') }}">
-
+                    <label for="code">Code:</label>
+                    <input type="text" class="form-control" id="code" name="code" placeholder="Type a code with format 'A0001'" value="{{ old('code') }}">
                     <label for="expedition_date">Expedition date:</label>
                     <input type="text" class="form-control" id="expedition_date" name="expedition_date" placeholder="YYYY/MM/DD" value="{{ old('expedition_date') }}">
                     <label for="due_date">Due date:</label>
@@ -55,6 +44,10 @@
                     </select>
                     <label for="sale_description">Sale description:</label>
                     <input type="text" class="form-control" id="sale_description" name="sale_description" placeholder="Type a sale description" value="{{ old('sale_description') }}">
+                    <input type="hidden" class="form-control" id="total" name="total" placeholder="Type the total value" value="{{ old('total') }}">
+                    <label for="vat">VAT:</label>
+                    <input type="text" class="form-control" id="vat" name="vat"  value="{{ old('vat') }}">
+                    <input type="hidden" class="form-control" id="total_with_vat" name="total_with_vat"  value="{{ old('total_with_vat') }}">
                     <label for="customer">Customer:</label>
                     <select class="form-control" id="customer_id" name="customer_id">
                         <option value="">Select customer ID</option>
@@ -70,6 +63,13 @@
                         <option value="overdue" {{ 'status'  == 'overdue' ? 'selected' : '' }}>Overdue</option>
                         <option value="paid" {{ 'status'  == 'paid' ? 'selected' : '' }}>Paid</option>
                         <option value="cancelled" {{ 'status'  == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                    </select>
+                    <label for="user_id">User:</label>
+                    <select class="form-control" id="user_id" name="user_id">
+                        <option value="">Select user name</option>
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <br>

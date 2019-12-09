@@ -1,17 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Customer;
-use App\City;
 use App\Http\Requests\Customer\StoreRequest;
 use App\Http\Requests\Customer\UpdateRequest;
+use App\Customer;
+use App\City;
 
 class CustomerController extends Controller
 {
     public function index()
     {
-        return view('customers.index', [
-            'customers' => Customer::all()
+        $cities = City::all();
+        return view('customers.index',  compact('cities'), [
+            'customers' => Customer::all(),
         ]);
     }
 

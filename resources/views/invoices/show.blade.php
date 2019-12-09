@@ -15,20 +15,16 @@
     </div>
     <div class="row">
         <div class="col">
-            <h4>Details</h4>
-            <table class="table">
+            <h4>Invoice details</h4>
+            <table class="table table-sm table-bordered">
                 <thead>
                 <tr>
-                    <th>Detail #</th>
+                    <th>Product #</th>
                     <th>Product name</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Seller</th>
-                    <th>Customer</th>
                     <th>Total</th>
-                    <th>VAT</th>
-                    <th>Total including VAT</th>
-                    <th>Status</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,15 +32,15 @@
                     <tr>
                         <td>{{ $product->id }}</td>
                         <td>{{ $product->name }}</td>
-                        <td>{{ $product->pivot->price }}</td>
+                        <td>${{ number_format($product->pivot->price, 2) }}</td>
                         <td>{{ $product->pivot->quantity }}</td>
-                        <td>{{ $invoice->seller_id }}</td>
-                        <td>{{ $invoice->customer_id }}</td>
-                        <td>{{ $invoice->total }}</td>
-                        <td>{{ $invoice->vat }}</td>
-                        <td><a class="btn btn-primary" href="/invoices/{{ $invoice->id }}/invoicesProducts/edit">Edit Details</a></td>
-                        <td>{{ $invoice->total_including_vat }}</td>
-                        <td>{{ $invoice->status }}</td>
+                        <td>${{ number_format($invoice->total = $product->pivot->price * $product->pivot->quantity) }}</td>
+                        <div class="btn-group">
+                            <td>
+                                <a class="btn btn-secondary btn-sm" href="/invoices/{{ $invoice->id }}/products/{{ $product->id }}/edit ">Edit Detail</a>
+                                <a class="btn btn-secondary btn-sm" href="/invoices/{{ $invoice->id }}/products/{{ $product->id }}/confirmDelete">Delete Detail</a>
+                            </td>
+                        </div>
                     </tr>
                 @endforeach
                 </tbody>
