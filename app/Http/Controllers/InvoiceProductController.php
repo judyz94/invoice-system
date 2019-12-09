@@ -6,7 +6,6 @@ use App\Http\Requests\InvoiceProduct\UpdateRequest;
 use App\Http\Requests\Product\ProductRequest;
 use App\Product;
 use App\Invoice;
-use Illuminate\Support\Facades\DB;
 
 class InvoiceProductController extends Controller
 {
