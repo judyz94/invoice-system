@@ -96,11 +96,4 @@ class InvoiceController extends Controller
         return redirect('/invoices');
 
     }
-
-    public function confirmDelete($id)
-    {
-        $invoice = Invoice::findOrFail($id);
-        return view('invoices.confirmDelete', [
-        'invoice' => $invoice ]);
-    }
 }

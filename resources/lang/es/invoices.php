@@ -38,4 +38,11 @@ return [
     'Submit' => 'Enviar',
     'Cancel' => 'Cancelar',
     'Update' => 'Actualizar',
+    'Detail #' => 'Detalle #',
+    'Product Name' => 'Nombre del producto',
+    'Price' => 'Precio',
+    'Quantity' => 'Cantidad',
+    'Total' => 'Total',
+    'Edit Detail' => 'Editar Detalle',
+    'Delete Detail' => 'Borrar Detalle',
 ];
