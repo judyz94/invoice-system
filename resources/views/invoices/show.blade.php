@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <br><h3>Invoice # {{ $invoice->id}}</h3><br>
+            <br><h3><strong>Invoice #{{ $invoice->code}}</strong></h3><br>
         </div>
     </div>
     <div class="row">
@@ -19,7 +19,7 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th># Product</th>
+                    <th>Detail #</th>
                     <th>Product name</th>
                     <th>Price</th>
                     <th>Quantity</th>

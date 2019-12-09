@@ -5,13 +5,12 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <br>
             <a class="btn btn-secondary" href="/invoices">Back to Invoices</a><br><br>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h1>New Invoice</h1>
+            <br><h3><strong>New Invoice</strong></h3><br>
         </div>
     </div>
     <div class="row">
@@ -49,7 +48,7 @@
                     <input type="text" class="form-control" id="receipt_date" name="receipt_date" placeholder="YYYY/MM/DD" value="{{ old('receipt_date') }}">
                     <label for="seller">Seller:</label>
                     <select class="form-control" id="seller_id" name="seller_id">
-                        <option value="">Select seller document</option>
+                        <option value="">Select seller ID</option>
                         @foreach($sellers as $seller)
                             <option value="{{ $seller->id }}">{{ $seller->document }}</option>
                         @endforeach
@@ -58,7 +57,7 @@
                     <input type="text" class="form-control" id="sale_description" name="sale_description" placeholder="Type a sale description" value="{{ old('sale_description') }}">
                     <label for="customer">Customer:</label>
                     <select class="form-control" id="customer_id" name="customer_id">
-                        <option value="">Select customer document</option>
+                        <option value="">Select customer ID</option>
                         @foreach($customers as $customer)
                             <option value="{{ $customer->id }}">{{ $customer->document }}</option>
                         @endforeach
