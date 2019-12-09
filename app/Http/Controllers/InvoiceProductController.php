@@ -54,12 +54,12 @@ class InvoiceProductController extends Controller
      * @param Invoice $invoice
      * @return \Illuminate\Http\Response
      */
-    public function store(/*ProductRequest $productRequest,*/ StoreRequest $request, Invoice $invoice)
+    public function store(/*ProductRequest $productRequest,*/ StoreRequest $request, Invoice $invoice, Product $product)
     {
         //$invoice->products()->create($productRequest->validated());
 
         $invoice->products()->attach(request('product_id'), $request->validated());
-        return redirect()->route('invoices.show', $invoice);
+        return redirect()->route('invoices.show', $invoice, $product);
     }
 
     /**
@@ -89,7 +89,7 @@ class InvoiceProductController extends Controller
     public function update(UpdateRequest $request, Invoice $invoice, Product $product)
     {
         $invoice->products()->updateExistingPivot($product->id, $request->validated());
-        return redirect()->route('invoices.show', $invoice);
+        return redirect()->route('invoices.show', $invoice, $product);
     }
 
     /**
@@ -101,7 +101,6 @@ class InvoiceProductController extends Controller
      */
     public function destroy(Product $product, Invoice $invoice)
     {
-        $invoice = Invoice::findOrFail($invoice->id);
         $invoice->products()->detach($product->id);
         return redirect()->route('invoices.show', $invoice);
 

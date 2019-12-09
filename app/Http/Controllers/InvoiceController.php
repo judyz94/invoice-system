@@ -58,7 +58,8 @@ class InvoiceController extends Controller
         $sellers = Seller::all();
         $users = User::all();
         return view('invoices.show', compact( 'sellers', 'customers', 'users', 'products'), [
-            'invoice' => $invoice
+            'invoice' => $invoice,
+            'product' => $product
         ]);
     }
 

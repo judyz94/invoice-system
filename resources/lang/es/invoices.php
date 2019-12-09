@@ -44,5 +44,5 @@ return [
     'Quantity' => 'Cantidad',
     'Total' => 'Total',
     'Edit Detail' => 'Editar Detalle',
-    'Delete Detail' => 'Borrar Detalle',
+    'Delete Detail' => 'Borrar Detalle'
 ];

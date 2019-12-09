@@ -24,7 +24,7 @@
                     </ul>
                 </div>
             @endif
-            <form id="form" action="/invoices/{{ $invoice->id }}/products/" method="POST">
+            <form id="form" action="{{ route('invoiceProduct.store', [$invoice, $product]) }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="invoice_id">Invoice code:</label>
@@ -38,17 +38,22 @@
                     <div class="col-sm-10">
                         <div class="input-group">
                             <div id="productList"></div>
-                            {{--}}<label for="product_id">Product #:</label><br>
-                            <input type="text" class="form-control" id="product_id" name="product_id" placeholder="Type a product number" value="{{ old('product_id') }}">--}}
-                            <label for="name">Product name:</label><br>
-                            <input type="text" class="form-control" id="name" name="name" autocomplete="off" placeholder="Type a product name">
+                            <label for="product_id">Product:</label><br>
+                            <select class="form-control" id="product_id" name="product_id">
+                                <option value="">Select a product name</option>
+                                @foreach($products as $product)
+                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                @endforeach
+                            </select>
                             {{ csrf_field() }}
+                            {{--<label for="name">Product name:</label><br>
+                            <input type="text" class="form-control" id="name" name="name" autocomplete="off" placeholder="Type a product name">--}}
                             <label for="price">Price:</label><br>
-                            <input type="text" class="form-control" id="price" name="price" placeholder="Type a product price" value="{{ old('price') }}">
+                            <input type="text" class="form-control " id="price" name="price" placeholder="Type a product price" value="{{ old('price') }}">
                             <label for="quantity">Quantity:</label><br>
                             <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Type a quantity" value="{{ old('quantity') }}">
                             <div class="input-group-btn">
-                            <button type="button" id="more" class="btn btn-success">+</button><br><br>
+                            <button type="button" id="add" class="btn btn-success">+</button><br><br>
                             </div>
                         </div>
                     </div>

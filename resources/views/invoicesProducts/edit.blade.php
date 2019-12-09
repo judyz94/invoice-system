@@ -24,7 +24,7 @@
                     </ul>
                 </div>
             @endif
-            <form action="/invoices/{{ $invoice->id }}/products/{{ $product->id }}" method="POST">
+            <form action="{{ route('invoiceProduct.update', [$invoice, $product]) }}" method="POST">
                 @csrf
                 @method('put')
                 <div class="form-group">
@@ -34,7 +34,7 @@
                             <option value="{{ $invoice->id }}">{{ old('code', $invoice->code) }}</option>
                         @endforeach
                     </select>
-                    <label for="product_id">Product name:</label>
+                    <label for="product_id">Product:</label>
                     <select class="form-control" id="product_id" name="product_id">
                         @foreach($products as $product)
                             <option value="{{ $product->id }}">{{ old('name', $product->name) }}</option>

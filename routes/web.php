@@ -14,13 +14,12 @@ Route::get('/customers/{id}/confirmDelete', 'CustomerController@confirmDelete');
 Route::get('/customers/{customer}/invoices/create', 'InvoiceController@create');
 Route::post('/customers/{customer}/invoices', 'InvoiceController@store');
 
-Route::get('/invoices/{invoice}/products/create', 'InvoiceProductController@create');
+Route::get('/invoices/{invoice}/products/create', 'InvoiceProductController@create')->name('invoiceProduct.create');
 Route::post('/autocomplete/fetch', 'InvoiceProductController@fetch');
 
 
-Route::post('/invoices/{invoice}/products', 'InvoiceProductController@store');
-Route::get('/invoices/{invoice}/products/{product}/edit', 'InvoiceProductController@edit');
-Route::put('/invoices/{invoice}/products/{product}', 'InvoiceProductController@update');
-Route::get('/invoices/{invoice}/products/{id}/confirmDelete', 'InvoiceProductController@confirmDelete');
-Route::delete('/invoices/{invoice}/products', 'InvoiceProductController@destroy');
+Route::post('/invoices/{invoice}/products', 'InvoiceProductController@store')->name('invoiceProduct.store');
+Route::get('/invoices/{invoice}/products/{product}/edit', 'InvoiceProductController@edit')->name('invoiceProduct.edit');
+Route::put('/invoices/{invoice}/products/{product}', 'InvoiceProductController@update')->name('invoiceProduct.update');
+Route::delete('/invoices/{invoice}/products', 'InvoiceProductController@destroy')->name('invoiceProduct.destroy');
 
