@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class InvoiceProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('invoices.index', [
@@ -22,12 +17,6 @@ class InvoiceProductController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @param Invoice $invoice
-     * @return \Illuminate\Http\Response
-     */
     public function create(Invoice $invoice, Product $product)
     {
         $invoices = Invoice::all();
@@ -36,13 +25,6 @@ class InvoiceProductController extends Controller
             'invoice' => $invoice ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param StoreInvoiceProductRequest $request
-     * @param Invoice $invoice
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreInvoiceProductRequest $request, Invoice $invoice)
     {
         $invoice->products()->attach(request('product_id'), [
@@ -61,13 +43,7 @@ class InvoiceProductController extends Controller
             'product' => $product ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Invoice $invoice
-     * @param Product $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Invoice $invoice, Product $product)
     {
         $invoices = Invoice::all();
@@ -76,14 +52,7 @@ class InvoiceProductController extends Controller
             'product' => $product ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param Product $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateRequest $request, Invoice $invoice, Product $product)
+    public function update($request, Invoice $invoice, Product $product)
     {
         $product->id = $request->get('id');
         $product->invoice_id = $request->get('invoice_id');
@@ -94,12 +63,6 @@ class InvoiceProductController extends Controller
         return redirect('/invoicesProducts');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Product $product, Invoice $invoice)
     {
         $product = Product::findOrFail($invoice->id);
