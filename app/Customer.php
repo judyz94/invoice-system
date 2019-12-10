@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Customer extends Model
 {
+    protected $fillable = ['name', 'document', 'email', 'phone', 'city_id', 'address'];
+
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class);

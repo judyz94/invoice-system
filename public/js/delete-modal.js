@@ -1,18 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["/js/delete-modal"],{
 
-/***/ "./resources/js/delete-modal.js":
-/*!**************************************!*\
-  !*** ./resources/js/delete-modal.js ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$('#confirmDeleteModal').on('show.bs.modal', function (e) {
-  $('#deleteForm').attr('action', $(e.relatedTarget).data('route'));
-});
-
-/***/ }),
-
 /***/ 3:
 /*!*****************************************!*\
   !*** multi ./resources/js/delete-modal ***!
@@ -20,7 +7,7 @@ $('#confirmDeleteModal').on('show.bs.modal', function (e) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\invoice_system\resources\js\delete-modal */"./resources/js/delete-modal.js");
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'C:\\laragon\\www\\invoice_system\\resources\\js\\delete-modal'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
 /***/ })

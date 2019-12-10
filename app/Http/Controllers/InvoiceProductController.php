@@ -28,21 +28,6 @@ class InvoiceProductController extends Controller
         ]);
     }
 
-      /**
-     * Store a newly created resource in storage.
-     *
-     * @param ProductRequest $productRequest
-     * @param StoreRequest $request
-     * @param Invoice $invoice
-     * @return \Illuminate\Http\Response
-     */
-    public function store(/*ProductRequest $productRequest,*/ StoreRequest $request, Invoice $invoice)
-    {
-        //$invoice->products()->create($productRequest->validated());
-        $invoice->products()->attach(request('product_id'), $request->validated());
-        return redirect()->route('invoices.show', $invoice);
-    }
-
     public function fetch(ProductRequest $productRequest)
     {
         if($productRequest->get('query')->validated())
@@ -61,6 +46,29 @@ class InvoiceProductController extends Controller
         }
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param ProductRequest $productRequest
+     * @param StoreRequest $request
+     * @param Invoice $invoice
+     * @return \Illuminate\Http\Response
+     */
+    public function store(/*ProductRequest $productRequest,*/ StoreRequest $request, Invoice $invoice, Product $product)
+    {
+        //$invoice->products()->create($productRequest->validated());
+
+        $invoice->products()->attach(request('product_id'), $request->validated());
+        return redirect()->route('invoices.show', $invoice);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Invoice $invoice
+     * @param Product $product
+     * @return \Illuminate\Http\Response
+     */
 
     public function edit(Invoice $invoice, Product $product)
     {
@@ -71,7 +79,6 @@ class InvoiceProductController extends Controller
             'product' => $product
         ]);
     }
-      
 
     /**
      * Update the specified resource in storage.
@@ -84,7 +91,7 @@ class InvoiceProductController extends Controller
     public function update(UpdateRequest $request, Invoice $invoice, Product $product)
     {
         $invoice->products()->updateExistingPivot($product->id, $request->validated());
-        return redirect()->route('invoices.show', $invoice);
+        return redirect()->route('invoices.show', $invoice, $product);
     }
 
 
@@ -95,10 +102,11 @@ class InvoiceProductController extends Controller
      * @param Invoice $invoice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product, Invoice $invoice)
+    public function destroy(Invoice $invoice, Product $product)
     {
-        $invoice = Invoice::findOrFail($invoice->id);
         $invoice->products()->detach($product->id);
-        return redirect()->route('invoices.show', $invoice);
+        return redirect()->route('invoices.show',  $invoice, $product);
+
     }
 }
+

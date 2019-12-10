@@ -2,5 +2,8 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/autocomplete.js": "/js/autocomplete.js",
-    "/js/dinamicform.js": "/js/dinamicform.js"
+    "/js/delete-modal.js": "/js/delete-modal.js",
+    "/js/dinamicform.js": "/js/dinamicform.js",
+    "/js/manifest.js": "/js/manifest.js",
+    "/js/vendor.js": "/js/vendor.js"
 }

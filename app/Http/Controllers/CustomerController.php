@@ -5,6 +5,7 @@ use App\Http\Requests\Customer\StoreRequest;
 use App\Http\Requests\Customer\UpdateRequest;
 use App\Customer;
 use App\City;
+use App\Product;
 
 class CustomerController extends Controller
 {
@@ -16,10 +17,12 @@ class CustomerController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(Customer $customer)
     {
         $cities = City::all();
-        return view('customers.create', compact('cities'));
+        return view('customers.create', compact('cities'), [
+            'customer' => $customer,
+        ]);
     }
 
     public function store(StoreRequest $request)
@@ -35,11 +38,13 @@ class CustomerController extends Controller
         return redirect('/customers');
     }
 
-    public function show(Customer $customer)
+    public function show(Customer $customer, Product $product)
     {
         $cities = City::all();
         return view('customers.show',  compact('cities'), [
-            'customer' => $customer ]);
+            'customer' => $customer,
+            'product' => $product
+        ]);
     }
 
     public function edit(Customer $customer)
@@ -69,11 +74,5 @@ class CustomerController extends Controller
         return redirect('/customers');
     }
 
-    public function confirmDelete($id)
-    {
-        $customer = Customer::findOrFail($id);
-        return view('customers.confirmDelete', [
-        'customer' => $customer]);
-    }
 }
 

@@ -1,53 +1,85 @@
 @extends ('layouts.app')
 
-@section('title')Create Customers
-@endsection
 @section('content')
-    <div class="row">
-        <div class="col">
-            <a class="btn btn-secondary" href="/customers">Back to Customers</a><br><br>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <br><h3><strong>New Customer</strong></h3><br>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            @if($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            {{ $error }}<br>
-                        @endforeach
-                    </ul>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h4 class="card-title"><strong>{{ __('New Customer') }}</strong></h4>
+                    </div>
+                    <div class="card-body">
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        {{ $error }}
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                            <form action="{{ route('customers.store') }}" method="POST" id="customers-form">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="name">Full name</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Type a full name" value="{{ old('name', $customer->name) }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="document">ID</label>
+                                            <input type="text" class="form-control" id="document" name="document" placeholder="Type a ID" value="{{ old('document', $customer->document) }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="text" class="form-control" id="email" name="email" placeholder="name@example.com" value="{{ old('email',  $customer->email) }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="phone">Phone</label>
+                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Type a phone" value="{{ old('phone', $customer->phone) }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="city_id">City</label>
+                                            <select class="form-control" id="city_id" name="city_id">
+                                                <option value="">Select a city</option>
+                                                @foreach($cities as $city)
+                                                    <option value="{{ $city->id }}" {{ old('city_id', $customer->city_id) == $customer->id ? 'selected' : ''}}>{{ $city->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="address">Address:</label>
+                                            <input type="text" class="form-control" id="address" name="address" placeholder="Type a address" value="{{ old('address', $customer->address) }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <a href="{{ route('customers.index') }}" class="btn btn-danger">
+                            <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
+                        </a>
+                        <button type="submit" class="btn btn-success" form="customers-form">
+                            <i class="fas fa-save"></i> {{ __('Submit') }}
+                        </button>
+                    </div>
                 </div>
-            @endif
-            <form action="/customers" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="name">Full name:</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Type a full name" value="{{ old('name') }}">
-                    <label for="document">ID:</label>
-                    <input type="text" class="form-control" id="document" name="document" placeholder="Type a ID" value="{{ old('document') }}">
-                    <label for="email">Email:</label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}">
-                    <label for="phone">Phone:</label>
-                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Type a phone" value="{{ old('phone') }}">
-                    <label for="city_id">City:</label>
-                    <select class="form-control" id="city_id" name="city_id">
-                        <option value="">Select a city</option>
-                        @foreach($cities as $city)
-                            <option value="{{ $city->id }}">{{ $city->name }}</option>
-                        @endforeach
-                    </select>
-                    <label for="address">Address:</label>
-                    <input type="text" class="form-control" id="address" name="address" placeholder="Type a address" value="{{ old('address') }}">
-                </div>
-                <br>
-                <button class="btn btn-primary" type="submit">Submit</button>
-            </form>
+            </div>
         </div>
     </div>
 @endsection

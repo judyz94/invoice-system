@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'invoice_id' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required',
             'quantity' => 'required|integer'
         ];
     }
