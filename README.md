@@ -1,3 +1,2 @@
 # invoice_system
-Sistema para control de facturas en PHP.
-Diseñado para llevar a cabo el reto propuesto como aspirante a desarrolladora junior, para la empresa de pasarela de pagos, PlacetoPay.
+Program to control invoices in PHP. Designed to execute the challenge proposed as an aspiring junior developer, for the payment gateway company, PlacetoPay.
