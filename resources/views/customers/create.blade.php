@@ -24,28 +24,28 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="name">Full name</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Type a full name" value="{{ old('name') }}">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Type a full name" value="{{ old('name', $customer->name) }}">
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="document">ID</label>
-                                            <input type="text" class="form-control" id="document" name="document" placeholder="Type a ID" value="{{ old('document') }}">
+                                            <input type="text" class="form-control" id="document" name="document" placeholder="Type a ID" value="{{ old('document', $customer->document) }}">
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="text" class="form-control" id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}">
+                                            <input type="text" class="form-control" id="email" name="email" placeholder="name@example.com" value="{{ old('email',  $customer->email) }}">
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="phone">Phone</label>
-                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Type a phone" value="{{ old('phone') }}">
+                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Type a phone" value="{{ old('phone', $customer->phone) }}">
                                         </div>
                                     </div>
 
@@ -64,7 +64,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="address">Address:</label>
-                                            <input type="text" class="form-control" id="address" name="address" placeholder="Type a address" value="{{ old('address') }}">
+                                            <input type="text" class="form-control" id="address" name="address" placeholder="Type a address" value="{{ old('address', $customer->address) }}">
                                         </div>
                                     </div>
                                 </div>
