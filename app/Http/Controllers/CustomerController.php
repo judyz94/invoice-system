@@ -16,10 +16,12 @@ class CustomerController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(Customer $customer)
     {
         $cities = City::all();
-        return view('customers.create', compact('cities'));
+        return view('customers.create', compact('cities'), [
+            'customer' => $customer,
+        ]);
     }
 
     public function store(StoreRequest $request)
@@ -69,11 +71,5 @@ class CustomerController extends Controller
         return redirect('/customers');
     }
 
-    public function confirmDelete($id)
-    {
-        $customer = Customer::findOrFail($id);
-        return view('customers.confirmDelete', [
-        'customer' => $customer]);
-    }
 }
 

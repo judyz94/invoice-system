@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <div class="col-md-12">
         <div class="row justify-content-center">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
@@ -60,6 +61,7 @@
                     </table>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 @endsection
