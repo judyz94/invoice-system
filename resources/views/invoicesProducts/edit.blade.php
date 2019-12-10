@@ -33,7 +33,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-10">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <div id="productList"></div>
                             <label for="product_id">{{ __('Product name') }}</label><br>

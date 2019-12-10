@@ -99,20 +99,11 @@ class InvoiceProductController extends Controller
      * @param Invoice $invoice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product, Invoice $invoice)
+    public function destroy(Invoice $invoice, Product $product)
     {
         $invoice->products()->detach($product->id);
-        return redirect()->route('invoices.show', $invoice);
+        return redirect()->route('invoices.show',  $invoice, $product);
 
-    }
-
-    public function confirmDelete(Product $product, Invoice $invoice)
-    {
-        $invoices = Invoice::all();
-        $products = Product::all();
-        return view('invoicesProducts.confirmDelete', compact('products', 'invoices'), [
-            'invoice' => $invoice,
-            'product' => $product]);
     }
 
 }
