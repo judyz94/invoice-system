@@ -5,8 +5,8 @@ Route::get('/', 'HomeController@index');
 Route::get('dashboard', 'DashboardController@index');
 
 Route::resource('invoices', 'InvoiceController');
-
 Route::resource('customers', 'CustomerController');
+Route::resource('sellers', 'SellerController');
 
 Route::get('/customers/{customer}/invoices/create', 'InvoiceController@create');
 Route::post('/customers/{customer}/invoices', 'InvoiceController@store');
