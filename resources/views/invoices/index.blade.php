@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}</strong></h3>
-                    <a href="{{ route('invoices.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i>  {{ __('Create a new invoice') }}</a>
+                    <a href="{{ route('invoices.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>  {{ __('Create a new invoice') }}</a>
                 </div>
                 <div class="table-responsive-xl">
                     <table class="table table-hover" style="width:100%">
