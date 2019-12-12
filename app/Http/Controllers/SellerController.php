@@ -6,6 +6,8 @@ use App\Http\Requests\Seller\UpdateRequest;
 use App\Seller;
 use App\City;
 use App\Product;
+use Exception;
+use Illuminate\Http\Response;
 
 
 class SellerController extends Controller
@@ -13,47 +15,45 @@ class SellerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        $cities = City::all();
-        return view('sellers.index',  compact('cities'), [
-            'sellers' => Seller::all(),
-        ]);
+        $sellers = Seller::with(['city'])->paginate();
+        return view('sellers.index',  compact('sellers'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
      * @param Seller $seller
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create(Seller $seller)
     {
         $cities = City::all();
-        return view('sellers.create', compact('cities'), [
-            'seller' => $seller,
-        ]);
+        $seller = new Seller();
+        return view('sellers.create', compact('cities', 'seller'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  StoreRequest  $request
+     * @return Response
      */
     public function store(StoreRequest $request)
     {
         $seller = new Seller();
-        $seller->name = $request->get('name');
-        $seller->document = $request->get('document');
-        $seller->email = $request->get('email');
-        $seller->phone = $request->get('phone');
-        $seller->city_id = $request->get('city_id');
-        $seller->address = $request->get('address');
+        $seller->name = $request->input('name');
+        $seller->document = $request->input('document');
+        $seller->email = $request->input('email');
+        $seller->phone = $request->input('phone');
+        $seller->city_id = $request->input('city_id');
+        $seller->address = $request->input('address');
+        $request->validated();
         $seller->save();
-        return redirect('/sellers');
+        return redirect()->route('sellers.index');
     }
 
     /**
@@ -61,60 +61,56 @@ class SellerController extends Controller
      *
      * @param Seller $seller
      * @param Product $product
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Seller $seller, Product $product)
     {
         $cities = City::all();
-        return view('sellers.show',  compact('cities'), [
-            'seller' => $seller,
-            'product' => $product
-        ]);
+        return view('sellers.show',  compact('cities', 'seller', 'product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param Seller $seller
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(Seller $seller)
     {
         $cities = City::all();
-        return view('sellers.edit',  compact('cities'), [
-            'seller' => $seller ]);
+        return view('sellers.edit',  compact('cities', 'seller'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param UpdateRequest $request
+     * @param Seller $seller
+     * @return Response
      */
     public function update(UpdateRequest $request, Seller $seller)
     {
-        $seller->name = $request->get('name');
-        $seller->document = $request->get('document');
-        $seller->email = $request->get('email');
-        $seller->phone = $request->get('phone');
-        $seller->city_id = $request->get('city_id');
-        $seller->address = $request->get('address');
+        $seller->name = $request->input('name');
+        $seller->document = $request->input('document');
+        $seller->email = $request->input('email');
+        $seller->phone = $request->input('phone');
+        $seller->city_id = $request->input('city_id');
+        $seller->address = $request->input('address');
+        $request->validated();
         $seller->save();
-
         return redirect()->route('sellers.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Seller $seller
+     * @return Response
+     * @throws Exception
      */
-    public function destroy($id)
+    public function destroy(Seller $seller)
     {
-        $seller = Seller::findOrFail($id);
         $seller->delete();
-        return redirect('/sellers');
+        return redirect()->route('sellers.index');
     }
 }
