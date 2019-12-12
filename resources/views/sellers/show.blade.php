@@ -35,7 +35,7 @@
                                             <th style="width:100px">{{ __('Customer ID') }}</th>
                                             <th style="width:50px">{{ __('Status') }}</th>
                                             <th style="width:100px">{{ __('Created by') }}</th>
-                                            <th style="width:100px">{{ __('Actions') }}</th>
+                                            <th style="width:100px" >{{ __('Actions') }}</th>
                                         </tr>
                                         </thead>
                                         <tbody>

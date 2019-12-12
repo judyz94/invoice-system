@@ -4,26 +4,26 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-10">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between">
-                    <h3 class="card-title mb-0"><strong>{{ __('Customers') }}</strong></h3>
-                    <a href="{{ route('customers.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>  {{ __('Create a new customer') }}</a>
-                </div>
-                <div class="table-responsive-xl">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Full Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>City</th>
-                            <th>Address</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($customers as $customer)
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <h3 class="card-title mb-0"><strong>{{ __('Customers') }}</strong></h3>
+                        <a href="{{ route('customers.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>  {{ __('Create a new customer') }}</a>
+                    </div>
+                    <div class="table-responsive-xl">
+                        <table class="table table-hover" style="width:100%">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>City</th>
+                                <th>Address</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($customers as $customer)
                             <tr>
                                 <td>{{ $customer->document }}</td>
                                 <td>{{ $customer->name }}</td>
