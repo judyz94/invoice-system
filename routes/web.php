@@ -1,15 +1,13 @@
 <?php
 
 Auth::routes();
-Route::get('/', 'HomeController@index');
-Route::get('dashboard', 'DashboardController@index');
+Route::get('/', 'HomeController@welcome');
+Route::get('home', 'HomeController@index')->name('home');
 
 Route::resource('invoices', 'InvoiceController');
 Route::resource('customers', 'CustomerController');
 Route::resource('sellers', 'SellerController');
-
-Route::get('/customers/{customer}/invoices/create', 'InvoiceController@create');
-Route::post('/customers/{customer}/invoices', 'InvoiceController@store');
+Route::resource('products', 'ProductController');
 
 Route::post('/autocomplete/fetch', 'InvoiceProductController@fetch');
 Route::get('/invoices/{invoice}/products/create', 'InvoiceProductController@create')->name('invoiceProduct.create');
