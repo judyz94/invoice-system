@@ -67,5 +67,8 @@
             </div>
         </div>
     </div>
-
 @endsection
+@push('scripts')
+    <script src="{{ asset('js/autocomplete.js') }}"></script>
+    <script src="{{ asset('js/dinamicform.js') }}"></script>
+@endpush
