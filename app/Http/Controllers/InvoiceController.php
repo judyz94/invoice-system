@@ -8,9 +8,18 @@ use App\Invoice;
 use App\Product;
 use App\Seller;
 use App\User;
+use Exception;
+use Illuminate\Http\Response;
 
 class InvoiceController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Invoice $invoice
+     * @param Product $product
+     * @return Response
+     */
     public function index(Invoice $invoice, Product $product)
     {
         $products = Product::all();
@@ -21,78 +30,113 @@ class InvoiceController extends Controller
         ]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param Invoice $invoice
+     * @return Response
+     */
     public function create(Invoice $invoice)
     {
         $customers = Customer::all();
         $sellers = Seller::all();
         $users = User::all();
-        return view('invoices.create', compact( 'sellers', 'customers', 'users'), [
-            'invoice' => $invoice,
-        ]);
+        $invoice = new Invoice();
+        return view('invoices.create', compact('sellers', 'customers', 'users', 'invoice'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  StoreRequest  $request
+     * @return Response
+     */
     public function store(StoreRequest $request)
     {
         $invoice = new Invoice();
         $invoice->id = $request->input('id');
         $invoice->code = $request->input('code');
         $invoice->expedition_date = $request->input('expedition_date');
-        $invoice->due_date = $request->get('due_date');
-        $invoice->receipt_date = $request->get('receipt_date');
-        $invoice->seller_id = $request->get('seller_id');
-        $invoice->sale_description = $request->get('sale_description');
-        $invoice->vat = $request->get('vat');
-        $invoice->customer_id = $request->get('customer_id');
-        $invoice->status = $request->get('status');
-        $invoice->user_id = $request->get('user_id');
+        $invoice->due_date = $request->input('due_date');
+        $invoice->receipt_date = $request->input('receipt_date');
+        $invoice->seller_id = $request->input('seller_id');
+        $invoice->sale_description = $request->input('sale_description');
+        $invoice->vat = $request->input('vat');
+        $invoice->customer_id = $request->input('customer_id');
+        $invoice->status = $request->input('status');
+        $invoice->user_id = $request->input('user_id');
+        $request->validated();
         $invoice->save();
         return redirect()->route('invoices.index');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param Invoice $invoice
+     * @param Product $product
+     * @return Response
+     */
     public function show(Invoice $invoice, Product $product)
     {
-        $products = Product::all();
         $customers = Customer::all();
         $sellers = Seller::all();
         $users = User::all();
-        return view('invoices.show', compact( 'sellers', 'customers', 'users', 'products'), [
+        return view('invoices.show', compact( 'sellers', 'customers', 'users'), [
             'invoice' => $invoice,
             'product' => $product
         ]);
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Invoice $invoice
+     * @return Response
+     */
     public function edit(Invoice $invoice)
     {
         $customers = Customer::all();
         $sellers = Seller::all();
         $users = User::all();
-        return view('invoices.edit', compact( 'sellers', 'customers', 'users'), [
-            'invoice' => $invoice ]);
+        return view('invoices.edit', compact( 'sellers', 'customers', 'users', 'invoice'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param UpdateRequest $request
+     * @param Invoice $invoice
+     * @return Response
+     */
     public function update(UpdateRequest $request, Invoice $invoice)
     {
-        $invoice->code = $request->get('code');
-        $invoice->expedition_date = $request->get('expedition_date');
-        $invoice->due_date = $request->get('due_date');
-        $invoice->receipt_date = $request->get('receipt_date');
-        $invoice->seller_id = $request->get('seller_id');
-        $invoice->sale_description = $request->get('sale_description');
-        $invoice->vat = $request->get('vat');
-        $invoice->total = $request->get('total');
-        $invoice->total_with_vat = $request->get('total_with_vat');
-        $invoice->customer_id = $request->get('customer_id');
-        $invoice->status = $request->get('status');
-        $invoice->user_id = $request->get('user_id');
+        $invoice->code = $request->input('code');
+        $invoice->expedition_date = $request->input('expedition_date');
+        $invoice->due_date = $request->input('due_date');
+        $invoice->receipt_date = $request->input('receipt_date');
+        $invoice->seller_id = $request->input('seller_id');
+        $invoice->sale_description = $request->input('sale_description');
+        $invoice->vat = $request->input('vat');
+        $invoice->customer_id = $request->input('customer_id');
+        $invoice->status = $request->input('status');
+        $invoice->user_id = $request->input('user_id');
+        $request->validated();
         $invoice->save();
-        return redirect('/invoices');
+        return redirect()->route('invoices.index');
     }
 
-    public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Invoice $invoice
+     * @return Response
+     * @throws Exception
+     */
+    public function destroy(Invoice $invoice)
     {
-        $invoice = Invoice::findOrFail($id);
         $invoice->delete();
-        return redirect('/invoices');
+        return redirect()->route('invoices.index');
 
     }
 }
