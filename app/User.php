@@ -12,6 +12,8 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    protected $fillable = ['name', 'email', 'password'];
+
     use Notifiable;
 
     /**
@@ -19,9 +21,6 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
 
     public function invoices()
     {

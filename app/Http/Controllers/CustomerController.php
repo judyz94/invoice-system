@@ -6,73 +6,121 @@ use App\Http\Requests\Customer\UpdateRequest;
 use App\Customer;
 use App\City;
 use App\Product;
+use Exception;
+use Illuminate\Http\Response;
 
 class CustomerController extends Controller
 {
-    public function index()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $cities = City::all();
-        return view('customers.index',  compact('cities'), [
-            'customers' => Customer::all(),
-        ]);
+        $this->middleware('auth');
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $customers = Customer::with(['city'])->paginate();
+        return view('customers.index',  compact('customers'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param Customer $customer
+     * @return Response
+     */
     public function create(Customer $customer)
     {
         $cities = City::all();
-        return view('customers.create', compact('cities'), [
-            'customer' => $customer,
-        ]);
+        $customer = new Customer();
+        return view('customers.create', compact('cities', 'customer'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  StoreRequest  $request
+     * @return Response
+     */
     public function store(StoreRequest $request)
     {
         $customer = new Customer();
-        $customer->name = $request->get('name');
-        $customer->document = $request->get('document');
-        $customer->email = $request->get('email');
-        $customer->phone = $request->get('phone');
-        $customer->city_id = $request->get('city_id');
-        $customer->address = $request->get('address');
+        $customer->name = $request->input('name');
+        $customer->document = $request->input('document');
+        $customer->email = $request->input('email');
+        $customer->phone = $request->input('phone');
+        $customer->city_id = $request->input('city_id');
+        $customer->address = $request->input('address');
+        $request->validated();
         $customer->save();
-        return redirect('/customers');
-    }
-
-    public function show(Customer $customer, Product $product)
-    {
-        $cities = City::all();
-        return view('customers.show',  compact('cities'), [
-            'customer' => $customer,
-            'product' => $product
-        ]);
-    }
-
-    public function edit(Customer $customer)
-    {
-        $cities = City::all();
-        return view('customers.edit',  compact('cities'), [
-            'customer' => $customer ]);
-    }
-
-    public function update(UpdateRequest $request, Customer $customer)
-    {
-        $customer->name = $request->get('name');
-        $customer->document = $request->get('document');
-        $customer->email = $request->get('email');
-        $customer->phone = $request->get('phone');
-        $customer->city_id = $request->get('city_id');
-        $customer->address = $request->get('address');
-        $customer->save();
-
         return redirect()->route('customers.index');
     }
 
-    public function destroy($id)
+    /**
+     * Display the specified resource.
+     *
+     * @param Customer $customer
+     * @param Product $product
+     * @return Response
+     */
+    public function show(Customer $customer, Product $product)
     {
-        $customer = Customer::findOrFail($id);
-        $customer->delete();
-        return redirect('/customers');
+        $cities = City::all();
+        return view('customers.show',  compact('cities', 'customer', 'product'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Customer $customer
+     * @return Response
+     */
+    public function edit(Customer $customer)
+    {
+        $cities = City::all();
+        return view('customers.edit',  compact('cities', 'customer'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param UpdateRequest $request
+     * @param Customer $customer
+     * @return Response
+     */
+    public function update(UpdateRequest $request, Customer $customer)
+    {
+        $customer->name = $request->input('name');
+        $customer->document = $request->input('document');
+        $customer->email = $request->input('email');
+        $customer->phone = $request->input('phone');
+        $customer->city_id = $request->input('city_id');
+        $customer->address = $request->input('address');
+        $request->validated();
+        $customer->save();
+        return redirect()->route('customers.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Customer $customer
+     * @return Response
+     * @throws Exception
+     */
+    public function destroy(Customer $customer)
+    {
+        $customer->delete();
+        return redirect()->route('customers.index');
+    }
 }
 

@@ -6,17 +6,17 @@ use App\Invoice;
 use App\Http\Requests\InvoiceProduct\StoreRequest;
 use App\Http\Requests\InvoiceProduct\UpdateRequest;
 use App\Http\Requests\Product\ProductRequest;
+use Illuminate\Http\Response;
 
 
 class InvoiceProductController extends Controller
 {
-
     /**
      * Show the form for creating a new resource.
      *
      * @param Invoice $invoice
      * @param Product $product
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create(Invoice $invoice, Product $product)
     {
@@ -49,10 +49,10 @@ class InvoiceProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param ProductRequest $productRequest
      * @param StoreRequest $request
      * @param Invoice $invoice
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return Response
      */
     public function store(/*ProductRequest $productRequest,*/ StoreRequest $request, Invoice $invoice, Product $product)
     {
@@ -67,7 +67,7 @@ class InvoiceProductController extends Controller
      *
      * @param Invoice $invoice
      * @param Product $product
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
 
     public function edit(Invoice $invoice, Product $product)
@@ -86,7 +86,7 @@ class InvoiceProductController extends Controller
      * @param UpdateRequest $request
      * @param Invoice $invoice
      * @param Product $product
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(UpdateRequest $request, Invoice $invoice, Product $product)
     {
@@ -100,7 +100,7 @@ class InvoiceProductController extends Controller
      *
      * @param Product $product
      * @param Invoice $invoice
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Invoice $invoice, Product $product)
     {

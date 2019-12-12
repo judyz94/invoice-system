@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class City extends Model
 {
+    protected $fillable = ['name'];
+
     public function customers(): HasMany
     {
         return $this->hasMany(Customer::class);
