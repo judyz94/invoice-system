@@ -10,7 +10,9 @@
 $(document).ready(function () {
   var addButton = $('.btn-success');
   var wrapper = $('.col-sm-10');
-  var fieldHTML = '<div class="input-group">' + '<label for="product_id">Product:</label><select class="form-control" id="product_id[]" name="product_id[]"><option value="">Select a product name</option><?php $products as $product <option value="{{ $product->id }}">{{ $product->name }}</option> ?></select><span class="input-group-btn"></span>' + '<label for="price">Price:</label><input type="text" name="price[]" class="form-control"  placeholder="Type a product price"><span class="input-group-btn"></span>' + '<label for="quantity">Quantity:</label><input type="text" name="quantity[]" class="form-control" placeholder="Type a quantity"><div class="input-group-btn"><button type="button" id="btn-erase" class="btn btn-success">-</button></div></div><br>';
+  var options = $("#product_id").html();
+  alert("Todo melo llave");
+  var fieldHTML = '<div class="input-group">' + '<label for="product_id">Product:</label><select class="form-control" id="product_id[]" name="product_id[]">' + options + '</select><span class="input-group-btn"></span>' + '<label for="price">Price:</label><input type="text" name="price[]" class="form-control"  placeholder="Type a product price"><span class="input-group-btn"></span>' + '<label for="quantity">Quantity:</label><input type="text" name="quantity[]" class="form-control" placeholder="Type a quantity"><div class="input-group-btn"><button type="button" id="btn-erase" class="btn btn-success">-</button></div></div><br>';
   $(addButton).click(function () {
     $(wrapper).append(fieldHTML);
   });
@@ -29,7 +31,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\invoice_system\resources\js\dinamicform */"./resources/js/dinamicform.js");
+module.exports = __webpack_require__(/*! /Users/fredyvalencia/Sites/invoice_system/resources/js/dinamicform */"./resources/js/dinamicform.js");
 
 
 /***/ })

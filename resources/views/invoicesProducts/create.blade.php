@@ -33,7 +33,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-10 product-line">
                                         <div class="input-group">
                                             <div id="productList"></div>
                                             <label for="product_id">{{ __('Product name') }}</label><br>
