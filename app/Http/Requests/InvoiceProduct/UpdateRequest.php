@@ -13,7 +13,6 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'invoice_id' => 'required',
             'price' => 'required|numeric',
             'quantity' => 'required|integer'
         ];

@@ -43,10 +43,12 @@
                                                     <option value="{{ $product->id }}">{{ $product->name }}</option>
                                                 @endforeach
                                             </select>
-                                            {{--<label for="name">Product name:</label><br>
-                                            <input type="text" class="form-control" id="name" name="name" autocomplete="off" placeholder="Type a product name">--}}
+
+                                            <label for="name">Product name:</label><br>
+                                            <input type="text" class="form-control" id="name" name="name" autocomplete="off" placeholder="Type a product name" value="{{ old('name') }}">
+
                                             <label for="price">{{ __('Price') }}</label><br>
-                                            <input type="text" class="form-control " id="price" name="price" placeholder="{{ __('Type a product price') }}" value="{{ old('price') }}">
+                                            <input type="text" class="form-control" id="price" name="price" placeholder="{{ __('Type a product price') }}" value="{{ old('price') }}">
                                             <label for="quantity">{{ __('Quantity') }}</label><br>
                                             <input type="text" class="form-control" id="quantity" name="quantity" placeholder="{{ __('Type a quantity') }}" value="{{ old('quantity') }}">
                                             <div class="input-group-btn">

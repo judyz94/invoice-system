@@ -2,7 +2,7 @@
     <div class="col-md-3">
         <div class="form-group">
             <label for="code">{{ __('Code') }}</label>
-            <input type="text" class="form-control" id="code" name="code" placeholder="{{ __('Format code - A0001') }}" value="{{ old('code', $invoice->code) }}">
+            <input type="text" class="form-control" id="code" name="code" placeholder="{{ __('A0001') }}" value="{{ old('code', $invoice->code) }}">
         </div>
     </div>
 
@@ -74,11 +74,11 @@
             <label for="status">{{ __('Status') }}</label>
             <select class="form-control" id="status" name="status">
                 <option value="">{{ __('Select status') }}</option>
-                <option value="sent" {{ $invoice->status == 'sent' ? 'selected' : ''  }}>{{ __('Sent') }}</option>
-                <option value="rejected" {{ $invoice->status == 'rejected' ? 'selected' : '' }}>{{ __('Rejected') }}</option>
-                <option value="overdue" {{ $invoice->status == 'overdue' ? 'selected' : '' }}>{{ __('Overdue') }}</option>
-                <option value="paid" {{ $invoice->status == 'paid' ? 'selected' : '' }}>{{ __('Paid') }}</option>
-                <option value="cancelled" {{ $invoice->status == 'cancelled' ? 'selected' : '' }}>{{ __('Cancelled') }}</option>
+                <option value="Sent" {{ $invoice->status == 'Sent' ? 'selected' : ''  }}>{{ __('Sent') }}</option>
+                <option value="Rejected" {{ $invoice->status == 'Rejected' ? 'selected' : '' }}>{{ __('Rejected') }}</option>
+                <option value="Overdue" {{ $invoice->status == 'Overdue' ? 'selected' : '' }}>{{ __('Overdue') }}</option>
+                <option value="Paid" {{ $invoice->status == 'Paid' ? 'selected' : '' }}>{{ __('Paid') }}</option>
+                <option value="Cancelled" {{ $invoice->status == 'Cancelled' ? 'selected' : '' }}>{{ __('Cancelled') }}</option>
             </select>
         </div>
     </div>
