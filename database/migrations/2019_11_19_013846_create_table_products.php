@@ -15,7 +15,7 @@ class CreateTableProducts extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->string('name', 150);
+            $table->string('name', 150)->unique();
             $table->timestampsTz();
         });
     }
