@@ -43,7 +43,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\invoice_system\resources\js\autocomplete */"./resources/js/autocomplete.js");
+module.exports = __webpack_require__(/*! /Users/john.ortiz/Workspace/invoice_system/resources/js/autocomplete */"./resources/js/autocomplete.js");
 
 
 /***/ })

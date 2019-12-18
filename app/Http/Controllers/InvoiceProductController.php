@@ -16,16 +16,13 @@ class InvoiceProductController extends Controller
      *
      * @param Invoice $invoice
      * @param Product $product
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create(Invoice $invoice, Product $product)
+    public function create(Invoice $invoice)
     {
-        $invoices = Invoice::all();
         $products = Product::all();
-        return view('invoicesProducts.create', compact( 'products', 'invoices'), [
-            'invoice' => $invoice,
-            'product' => $product
-        ]);
+
+        return view('invoicesProducts.create', compact( 'products', 'invoice'));
     }
 
     public function fetch(ProductRequest $productRequest)
@@ -56,6 +53,8 @@ class InvoiceProductController extends Controller
      */
     public function store(/*ProductRequest $productRequest,*/ StoreRequest $request, Invoice $invoice, Product $product)
     {
+
+        dd($request->all());
         //$invoice->products()->create($productRequest->validated());
 
         $invoice->products()->attach(request('product_id'), $request->validated());

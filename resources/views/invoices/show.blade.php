@@ -42,6 +42,34 @@
                             @endforeach
                             </tbody>
                         </table>
+                        <div class="card-body">
+                            <div class="card-title">Add a new product to this invoice</div>
+                            <form action="{{ route('invoices.products.store', $invoice) }}" method="post">
+                                @csrf
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <label for="product_id">Product</label>
+                                        <select class="custom-select" name="product_id" id="product_id" required>
+                                            <option value="">Please select a product</option>
+                                            @foreach($products as $product)
+                                                <option value="{{$product->id}}" {{ old('product_id') == $product->id ? 'selected' : ''}}>{{$product->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <label for="product_price">Price</label>
+                                        <input class="form-control" type="number" id="product_price" value="{{ old('product_price') }}" placeholder="100" name="product_price" required>
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <label for="product_quantity">QTY</label>
+                                        <input class="form-control" type="number" id="product_quantity" value="{{ old('product_quantity') }}" placeholder="1" name="product_quantity" required>
+                                    </div>
+                                </div>
+                                <button class="btn btn-success btn-block col-md-1" type="submit">Add</button>
+                            </form>
+                        </div>
                         <div class="card-footer d-flex justify-content-between">
                             <a href="{{ route('invoices.index') }}" class="btn btn-secondary">
                                 <i class="fas fa-arrow-left"></i> {{ __('Back to Invoice Details') }}
@@ -50,6 +78,7 @@
                                 <i class="fas fa-plus"></i>  {{ __('Add New Detail') }}
                             </a>
                         </div>
+
                     </div>
                 </div>
             </div>
