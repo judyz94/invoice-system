@@ -60,7 +60,7 @@ class CustomerController extends Controller
         $customer->phone = $request->input('phone');
         $customer->city_id = $request->input('city_id');
         $customer->address = $request->input('address');
-        $request->validated();
+
         $customer->save();
         return redirect()->route('customers.index');
     }
@@ -105,7 +105,7 @@ class CustomerController extends Controller
         $customer->phone = $request->input('phone');
         $customer->city_id = $request->input('city_id');
         $customer->address = $request->input('address');
-        $request->validated();
+
         $customer->save();
         return redirect()->route('customers.index');
     }

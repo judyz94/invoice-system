@@ -54,6 +54,7 @@ class ProductController extends Controller
         $product = new Product();
         $product->name = $request->input('name');
         $product->unit_price = $request->input('unit_price');
+
         $product->save();
         return redirect()->route('products.index');
     }
@@ -81,6 +82,7 @@ class ProductController extends Controller
     {
         $product->name = $request->input('name');
         $product->unit_price = $request->input('unit_price');
+
         $product->save();
         return redirect()->route('products.index');
     }

@@ -61,7 +61,7 @@ class SellerController extends Controller
         $seller->phone = $request->input('phone');
         $seller->city_id = $request->input('city_id');
         $seller->address = $request->input('address');
-        $request->validated();
+
         $seller->save();
         return redirect()->route('sellers.index');
     }
@@ -106,7 +106,7 @@ class SellerController extends Controller
         $seller->phone = $request->input('phone');
         $seller->city_id = $request->input('city_id');
         $seller->address = $request->input('address');
-        $request->validated();
+
         $seller->save();
         return redirect()->route('sellers.index');
     }

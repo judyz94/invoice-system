@@ -5,7 +5,6 @@ use App\Product;
 use App\Invoice;
 use App\Http\Requests\InvoiceProduct\StoreRequest;
 use App\Http\Requests\InvoiceProduct\UpdateRequest;
-use App\Http\Requests\Product\ProducRequest;
 use Illuminate\Http\Response;
 
 
