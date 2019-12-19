@@ -5,7 +5,7 @@ use App\Product;
 use App\Invoice;
 use App\Http\Requests\InvoiceProduct\StoreRequest;
 use App\Http\Requests\InvoiceProduct\UpdateRequest;
-use App\Http\Requests\Product\ProductRequest;
+use App\Http\Requests\Product\StoreRequest;
 use Illuminate\Http\Response;
 
 
@@ -25,7 +25,7 @@ class InvoiceProductController extends Controller
         return view('invoicesProducts.create', compact( 'products', 'invoice'));
     }
 
-    public function fetch(ProductRequest $productRequest)
+    public function fetch(StoreRequest $productRequest)
     {
         if($productRequest->get('query')->validated())
         {
@@ -51,7 +51,7 @@ class InvoiceProductController extends Controller
      * @param Product $product
      * @return Response
      */
-    public function store(/*ProductRequest $productRequest,*/ StoreRequest $request, Invoice $invoice, Product $product)
+    public function store(/*StoreRequest $productRequest,*/ StoreRequest $request, Invoice $invoice, Product $product)
     {
 
         dd($request->all());

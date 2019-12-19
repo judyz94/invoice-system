@@ -4,7 +4,7 @@ namespace App\Http\Requests\Product;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ProductRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
 
     public function authorize()
@@ -20,6 +20,7 @@ class ProductRequest extends FormRequest
                 'min:2',
                 Rule::unique('products', 'name')
         ],
+            'unit_price' => 'required'
             ];
     }
 }

@@ -15,6 +15,7 @@
                         <tr>
                             <th>{{ __('Code') }}</th>
                             <th>{{ __('Name') }}</th>
+                            <th>{{ __('Unit Price') }}</th>
                             <th class="text-right">{{ __('Actions') }}</th>
                         </tr>
                         </thead>
@@ -23,6 +24,7 @@
                             <tr>
                                 <td>{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
+                                <td>${{ number_format($product->unit_price) }}</td>
                                 <td class="text-right">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
                                         <a href="{{ route('products.edit', $product) }}" class="btn btn-link" title="{{ __('Edit Product') }}">

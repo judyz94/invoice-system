@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\City;
-use App\Http\Requests\Product\ProductRequest;
+use App\Http\Requests\Product\StoreRequest;
+use App\Http\Requests\Product\UpdateRequest;
+use App\Invoice;
 use App\Product;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class ProductController extends Controller
@@ -25,10 +26,10 @@ class ProductController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Invoice $invoice)
     {
         $products = Product::all();
-        return view('products.index',  compact( 'products'));
+        return view('products.index',  compact( 'invoice', 'products'));
     }
 
     /**
@@ -46,15 +47,15 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param ProductRequest $request
+     * @param StoreRequest $request
      * @return Response
      */
-    public function store(ProductRequest $request)
+    public function store(StoreRequest $request)
     {
         $product = new Product();
         $product->name = $request->input('name');
+        $product->unit_price = $request->input('unit_price');
         $product->save();
-        $request->validated();
         return redirect()->route('products.index');
     }
 
@@ -73,15 +74,15 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param ProductRequest $request
+     * @param StoreRequest $request
      * @param Product $product
      * @return Response
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(UpdateRequest $request, Product $product)
     {
         $product->name = $request->input('name');
+        $product->unit_price = $request->input('unit_price');
         $product->save();
-        $request->validated();
         return redirect()->route('products.index');
     }
 
