@@ -19,7 +19,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form id="form" action="{{ route('invoiceProduct.store', $invoice) }}" method="POST"
+                        <form id="form" action="{{ route('invoices.products.store', $invoice) }}" method="POST"
                               id="invoicesProducts-form">
                             @csrf
 
