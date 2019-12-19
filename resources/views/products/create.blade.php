@@ -1,9 +1,9 @@
-@extends ('layouts.app')
+@extends ('layouts.base')
 
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
             <div class="card">
                 <div class="card-header pb-0">
                     <h4 class="card-title"><strong>{{ __('New Product') }}</strong></h4>
@@ -21,7 +21,7 @@
                 <form action="{{ route('products.store') }}" method="POST" id="products-form">
                     @csrf
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="name">{{ __('Name') }}</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('Type a product name') }}" value="{{ old('name') }}">

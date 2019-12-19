@@ -1,9 +1,9 @@
-@extends ('layouts.app')
+@extends ('layouts.base')
 
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header pb-0">
                         <h4 class="card-title"><strong>{{ __('Edit Product') }} #{{ $product->id }}</strong></h4>
