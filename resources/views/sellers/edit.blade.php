@@ -55,7 +55,7 @@
                                             <label for="city_id">City</label>
                                             <select class="form-control" id="city_id" name="city_id">
                                                 @foreach($cities as $city)
-                                                    <option value="{{ $city->id }}" {{ old('city_id', $seller->city_id) == $seller->id ? 'selected' : ''}}>{{ $city->name }}</option>
+                                                    <option value="{{ $city->id }}" {{ old('city_id', $seller->city_id) == $city->id ? 'selected' : ''}}>{{ $city->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
