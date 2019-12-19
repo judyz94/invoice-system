@@ -19,10 +19,8 @@ class UpdateRequest extends FormRequest
             'receipt_date' => 'required|date|after_or_equal:expedition_date',
             'seller_id' => 'required',
             'sale_description' => 'required|min:4',
-            'vat' => 'required|numeric|between:0,99.99',
             'customer_id' => 'required',
-            'status' => 'required',
-            'user_id' => 'required'
+            'status' => 'required'
         ];
     }
 }
