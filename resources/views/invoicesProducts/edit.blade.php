@@ -18,47 +18,43 @@
                                 </ul>
                             </div>
                         @endif
-            <form action="{{ route('invoiceProduct.update', [$invoice, $product]) }}" method="POST" id="invoicesProducts-form">
+            <form id="form" action="{{ route('invoiceProduct.update', [$invoice, $product]) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="invoice_id">{{ __('Invoice code') }}</label>
-                            <input class="form-control" id="invoice_id" name="invoice_id" readonly="readonly" value="{{ $invoice->code }}">
-                        </div>
+                @if(old('products'))
+
+                @else
+                @endif
+                <div class="row col-sm-10">
+                    <div class="form-group col-md-4">
+                        <label for="">{{ __('Product name') }}</label><br>
+                        <input type="text" class="form-control" id="product_id" name="product_id" readonly="readonly" value="{{ $product->name }}">
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="product_id">{{ __('Product name') }}</label><br>
-                            <input class="form-control" id="product_id" name="product_id" readonly="readonly" value="{{ $product->name }}">
-                        </div>
+                    <div class="form-group col-md-4">
+                        <label for="">{{ __('Price') }}</label><br>
+                        @foreach($invoice->products as $product)
+                        <input type="number" class="form-control" id="price" name="price"
+                               value="{{ old('price', $product->pivot->price) }}">
+                        @endforeach
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="price">{{ __('Price') }}</label><br>
-                            @foreach($invoice->products as $product)
-                                <input type="text" class="form-control " id="price" name="price" placeholder="{{ __('Type a product price') }}" value="{{ old('price', $product->pivot->price) }}">
-                            @endforeach
-                        </div>
+                    <div class="form-group col-md-4">
+                        <label for="quantity">{{ __('Quantity') }}</label><br>
+                        @foreach($invoice->products as $product)
+                        <input type="number" class="form-control" id="quantity" name="quantity"
+                               value="{{ old('quantity', $product->pivot->quantity) }}">
+                        @endforeach
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="form-group">
-                                <label for="quantity">{{ __('Quantity') }}</label><br>
-                            @foreach($invoice->products as $product)
-                                <input type="text" class="form-control" id="quantity" name="quantity" placeholder="{{ __('Type a quantity') }}" value="{{ old('quantity',  $product->pivot->quantity) }}">
-                            @endforeach
-                        </div>
-                    </div>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
-                    <a href="{{ route('invoices.show', $invoice) }}" class="btn btn-danger">
+                    <a href="{{ route('invoices.index') }}" class="btn btn-danger">
                         <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
                     </a>
-                    <button type="submit" class="btn btn-secondary"><i class="fas fa-edit"></i> {{ __('Update') }} </button>
+                    <button type="submit" class="btn btn-secondary"><i
+                            class="fas fa-edit"></i> {{ __('Update') }}
+                    </button>
                 </div>
             </form>
                     </div>
