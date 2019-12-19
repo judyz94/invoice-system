@@ -14,10 +14,6 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => [
-                'required',
-                Rule::unique('invoices', 'code')->ignore($this->route('invoice')->id)
-            ],
             'expedition_date' => 'required|date',
             'due_date' => 'required|date|after_or_equal:expedition_date',
             'receipt_date' => 'required|date|after_or_equal:expedition_date',

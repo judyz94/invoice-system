@@ -20,7 +20,7 @@ $('#confirmDeleteModal').on('show.bs.modal', function (e) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\invoice_system\resources\js\delete-modal */"./resources/js/delete-modal.js");
+module.exports = __webpack_require__(/*! /Users/john.ortiz/Workspace/invoice_system/resources/js/delete-modal */"./resources/js/delete-modal.js");
 
 
 /***/ })
