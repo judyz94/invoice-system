@@ -9,15 +9,26 @@
                         <h4 class="card-title"><strong>{{ __('Seller ID') }}  {{ $seller->document }}</strong></h4>
                     </div>
                     <div class="card-body">
-                        @if($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                        {{ $error }}
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                        <dl class="row">
+                            <dt class="col-md-3">{{ __('ID') }}</dt>
+                            <dd class="col-md-3">{{ $seller->document }}</dd>
+
+                            <dt class="col-md-3">{{ __('Full Name') }}</dt>
+                            <dd class="col-md-3">{{ $seller->name }}</dd>
+
+                            <dt class="col-md-3">{{ __('Email') }}</dt>
+                            <dd class="col-md-3">{{ $seller->email }}</dd>
+
+                            <dt class="col-md-3">{{ __('Phone') }}</dt>
+                            <dd class="col-md-3">{{ $seller->phone }}</dd>
+
+                            <dt class="col-md-3">{{ __('City') }}</dt>
+                            <dd class="col-md-3">{{ $seller->city->name }}</dd>
+
+                            <dt class="col-md-3">{{ __('Address') }}</dt>
+                            <dd class="col-md-3">{{ $seller->address }}</dd>
+                        </dl>
+
                         <div class="row">
                             <div class="col-md-12">
                                 <h5>Associated invoices</h5>

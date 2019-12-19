@@ -6,18 +6,30 @@
             <div class="row justify-content-center">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h4 class="card-title"><strong>{{ __('Customer ID') }}  {{ $customer->document }}</strong></h4>
+                        <h3 class="card-title"><strong>{{ __('Customer ID') }}  {{ $customer->document }}</strong></h3>
                     </div>
+
                     <div class="card-body">
-                        @if($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                        {{ $error }}
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                    <dl class="row">
+                        <dt class="col-md-3">{{ __('ID') }}</dt>
+                        <dd class="col-md-3">{{ $customer->document }}</dd>
+
+                        <dt class="col-md-3">{{ __('Full Name') }}</dt>
+                        <dd class="col-md-3">{{ $customer->name }}</dd>
+
+                        <dt class="col-md-3">{{ __('Email') }}</dt>
+                        <dd class="col-md-3">{{ $customer->email }}</dd>
+
+                        <dt class="col-md-3">{{ __('Phone') }}</dt>
+                        <dd class="col-md-3">{{ $customer->phone }}</dd>
+
+                        <dt class="col-md-3">{{ __('City') }}</dt>
+                        <dd class="col-md-3">{{ $customer->city->name }}</dd>
+
+                        <dt class="col-md-3">{{ __('Address') }}</dt>
+                        <dd class="col-md-3">{{ $customer->address }}</dd>
+                    </dl>
+
                         <div class="row">
                             <div class="col-md-12">
                                 <h5>Associated invoices</h5>
@@ -46,7 +58,6 @@
                                                 <td>{{ $invoice->due_date }}</td>
                                                 <td>{{ $invoice->receipt_date }}</td>
                                                 <td>{{ $invoice->sale_description }}</td>
-                                                <td>{{ $invoice->total }}</td>
                                                 <td>{{ $invoice->total_with_vat }}</td>
                                                 <td>{{ $invoice->seller->document }}</td>
                                                 <td>{{ $invoice->customer->document }}</td>

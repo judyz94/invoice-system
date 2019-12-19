@@ -8,6 +8,41 @@
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title"><strong>{{ __('Details Invoice') }} #{{ $invoice->code }}</strong></h3>
                 </div>
+
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-md-3">{{ __('Code') }}</dt>
+                        <dd class="col-md-3">{{ $invoice->code }}</dd>
+
+                        <dt class="col-md-3">{{ __('Expedition date') }}</dt>
+                        <dd class="col-md-3">{{ $invoice->expedition_date }}</dd>
+
+                        <dt class="col-md-3">{{ __('Due date') }}</dt>
+                        <dd class="col-md-3">{{ $invoice->due_date }}</dd>
+
+                        <dt class="col-md-3">{{ __('Receipt date') }}</dt>
+                        <dd class="col-md-3">{{ $invoice->receipt_date }}</dd>
+
+                        <dt class="col-md-3">{{ __('Sale description') }}</dt>
+                        <dd class="col-md-3">{{ $invoice->sale_description }}</dd>
+
+                        <dt class="col-md-3">{{ __('Total with VAT') }}</dt>
+                        <dd class="col-md-3">{{ $invoice->total_with_vat }}</dd>
+
+                        <dt class="col-md-3">{{ __('Seller ID') }}</dt>
+                        <dd class="col-md-3">{{ $invoice->seller->document }}</dd>
+
+                        <dt class="col-md-3">{{ __('Customer ID') }}</dt>
+                        <dd class="col-md-3">{{ $invoice->customer->document }}</dd>
+
+                        <dt class="col-md-3">{{ __('Status') }}</dt>
+                        <dd class="col-md-3">{{ $invoice->status }}</dd>
+
+                        <dt class="col-md-3">{{ __('Created by') }}</dt>
+                        <dd class="col-md-3">{{ $invoice->user->name }}</dd>
+                    </dl>
+
+
                     <div class="table-responsive-lg">
                         <table class="table table-hover">
                             <thead>
