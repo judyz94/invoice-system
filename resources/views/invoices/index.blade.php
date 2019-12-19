@@ -41,9 +41,6 @@
                                 <td>{{ $invoice->user->name }}</td>
                                 <td class="text-right">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
-                                        <a href="{{ route('invoiceProduct.create', [$invoice, $product]) }}" class="btn btn-link" title="{{ __('Add Details') }}">
-                                            <i class="fas fa-plus" style="color:limegreen"></i>
-                                        </a>
                                         <a href="{{ route('invoices.show', $invoice) }}" class="btn btn-link" title="{{ __('Show Details') }}">
                                             <i class="fas fa-eye" style="color:black"></i>
                                         </a>
