@@ -128,11 +128,10 @@ class InvoiceController extends Controller
         $invoice->receipt_date = $request->input('receipt_date');
         $invoice->seller_id = $request->input('seller_id');
         $invoice->sale_description = $request->input('sale_description');
-        $invoice->vat = $request->input('vat');
         $invoice->customer_id = $request->input('customer_id');
         $invoice->status = $request->input('status');
-        $invoice->user_id = $request->input('user_id');
-        $request->validated();
+        $invoice->user_id = auth()->user()->id;
+
         $invoice->save();
         return redirect()->route('invoices.index');
     }
