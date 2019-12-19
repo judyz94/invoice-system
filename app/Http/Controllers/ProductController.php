@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\City;
-use App\Http\Requests\Product\StoreRequest;
+use App\Http\Requests\Product\ProductRequest;
 use App\Http\Requests\Product\UpdateRequest;
-use App\Invoice;
 use App\Product;
 use Exception;
 use Illuminate\Http\Response;
@@ -26,10 +25,10 @@ class ProductController extends Controller
      *
      * @return Response
      */
-    public function index(Invoice $invoice)
+    public function index()
     {
         $products = Product::all();
-        return view('products.index',  compact( 'invoice', 'products'));
+        return view('products.index',  compact( 'products'));
     }
 
     /**
@@ -47,10 +46,10 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreRequest $request
+     * @param ProductRequest $request
      * @return Response
      */
-    public function store(StoreRequest $request)
+    public function store(ProductRequest $request)
     {
         $product = new Product();
         $product->name = $request->input('name');
@@ -74,7 +73,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param StoreRequest $request
+     * @param UpdateRequest $request
      * @param Product $product
      * @return Response
      */

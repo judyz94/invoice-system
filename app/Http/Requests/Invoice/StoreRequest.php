@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Invoice;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreRequest extends FormRequest
 {
