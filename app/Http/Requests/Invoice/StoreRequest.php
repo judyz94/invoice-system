@@ -14,19 +14,13 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => [
-                'required',
-                Rule::unique('invoices', 'code')
-            ],
             'expedition_date' => 'required|date',
             'due_date' => 'required|date|after_or_equal:expedition_date',
             'receipt_date' => 'required|date|after_or_equal:expedition_date',
-            'seller_id' => 'required',
+            'seller_id' => 'required|numeric|exists:sellers,id',
             'sale_description' => 'required|min:4',
-            'vat' => 'required|numeric|between:0,99.99',
             'customer_id' => 'required',
             'status' => 'required',
-            'user_id' => 'required',
         ];
     }
 }

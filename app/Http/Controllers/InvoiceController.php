@@ -9,6 +9,7 @@ use App\Product;
 use App\Seller;
 use App\User;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class InvoiceController extends Controller
@@ -65,19 +66,22 @@ class InvoiceController extends Controller
     {
         $invoice = new Invoice();
         $invoice->id = $request->input('id');
-        $invoice->code = $request->input('code');
         $invoice->expedition_date = $request->input('expedition_date');
         $invoice->due_date = $request->input('due_date');
         $invoice->receipt_date = $request->input('receipt_date');
         $invoice->seller_id = $request->input('seller_id');
         $invoice->sale_description = $request->input('sale_description');
-        $invoice->vat = $request->input('vat');
         $invoice->customer_id = $request->input('customer_id');
         $invoice->status = $request->input('status');
-        $invoice->user_id = $request->input('user_id');
-        $request->validated();
+        $invoice->user_id = auth()->user()->id;
+
         $invoice->save();
-        return redirect()->route('invoices.index');
+
+        $invoice->update([
+            'code' => 'A' . str_pad($invoice->id, 4, 0, STR_PAD_LEFT),
+        ]);
+
+        return redirect()->route('invoices.show', $invoice);
     }
 
     /**
@@ -87,12 +91,13 @@ class InvoiceController extends Controller
      * @param Product $product
      * @return Response
      */
-    public function show(Invoice $invoice, Product $product)
+    public function show(Invoice $invoice)
     {
         $customers = Customer::all();
         $sellers = Seller::all();
         $users = User::all();
-        return view('invoices.show', compact( 'sellers', 'customers', 'users', 'invoice', 'product'));
+        $products = Product::whereNotIn('id', $invoice->products->pluck('id')->values())->get();
+        return view('invoices.show', compact( 'sellers', 'customers', 'users', 'invoice', 'products'));
     }
 
     /**
@@ -118,7 +123,6 @@ class InvoiceController extends Controller
      */
     public function update(UpdateRequest $request, Invoice $invoice)
     {
-        $invoice->code = $request->input('code');
         $invoice->expedition_date = $request->input('expedition_date');
         $invoice->due_date = $request->input('due_date');
         $invoice->receipt_date = $request->input('receipt_date');
@@ -145,5 +149,26 @@ class InvoiceController extends Controller
         $invoice->delete();
         return redirect()->route('invoices.index');
 
+    }
+
+    public function addProduct(Invoice $invoice, Request $request)
+    {
+        $price = $request->input('product_price');
+        $quantity = $request->input('product_quantity');
+        $totalPrice = $price * $quantity;
+        $vat = $totalPrice * 0.19;
+
+        $invoice->products()->attach($request->input('product_id'), [
+            'price' => $price,
+            'quantity' => $quantity,
+        ]);
+
+        $invoice->vat += $vat;
+        $invoice->total += $totalPrice;
+        $invoice->total_with_vat += $totalPrice + $vat;
+
+        $invoice->save();
+
+        return redirect()->route('invoices.show', $invoice);
     }
 }

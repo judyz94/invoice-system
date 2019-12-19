@@ -12,9 +12,7 @@ class Invoice extends Model
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class)
-            ->withPivot(
-                'price',
-                'quantity');
+            ->withPivot(['price', 'quantity']);
     }
 
     public function customer(): BelongsTo

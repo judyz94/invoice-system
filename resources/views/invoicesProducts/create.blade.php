@@ -6,7 +6,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h4 class="card-title"><strong>{{ __('New Details for Invoice') }} #{{ $invoice->code }}</strong></h4>
+                        <h4 class="card-title"><strong>{{ __('New Details for Invoice') }}
+                                #{{ $invoice->code }}</strong></h4>
                     </div>
                     <div class="card-body">
                         @if($errors->any())
@@ -18,52 +19,53 @@
                                 </ul>
                             </div>
                         @endif
-                            <form id="form" action="{{ route('invoiceProduct.store', [$invoice, $product]) }}" method="POST" id="invoicesProducts-form">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="invoice_id">{{ __('Invoice code') }}</label>
-                                            <select class="form-control" id="invoice_id" name="invoice_id">
-                                                <option value="">Select a invoice code</option>
-                                                @foreach($invoices as $invoice)
-                                                    <option value="{{ $invoice->id }}">{{ $invoice->code }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
+                        <form id="form" action="{{ route('invoiceProduct.store', $invoice) }}" method="POST"
+                              id="invoicesProducts-form">
+                            @csrf
 
-                                    <div class="col-sm-10 product-line">
-                                        <div class="input-group">
-                                            <div id="productList"></div>
-                                            <label for="product_id">{{ __('Product name') }}</label><br>
-                                            <select class="form-control" id="product_id" name="product_id">
-                                                <option value="">Select a product name</option>
-                                                @foreach($products as $product)
-                                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                                @endforeach
-                                            </select>
+                            @if(old('products'))
 
-                                            <label for="name">Product name:</label><br>
-                                            <input type="text" class="form-control" id="name" name="name" autocomplete="off" placeholder="Type a product name" value="{{ old('name') }}">
-
-                                            <label for="price">{{ __('Price') }}</label><br>
-                                            <input type="text" class="form-control" id="price" name="price" placeholder="{{ __('Type a product price') }}" value="{{ old('price') }}">
-                                            <label for="quantity">{{ __('Quantity') }}</label><br>
-                                            <input type="text" class="form-control" id="quantity" name="quantity" placeholder="{{ __('Type a quantity') }}" value="{{ old('quantity') }}">
-                                            <div class="input-group-btn">
-                                                <button type="button" id="add" class="btn btn-success">+</button><br><br>
-                                            </div>
-                                        </div>
-                                    </div>
+                            @else
+                            @endif
+                            <div class="row col-sm-10">
+                                <div class="form-group col-md-4">
+                                    <label for="">{{ __('Product name') }}</label><br>
+                                    <select class="custom-select" id="product_id" name="product[1][id]">
+                                        <option value="">Select a product name</option>
+                                        @foreach($products as $product)
+                                            <option value="{{ $product->id }}" {{ old('product_id')[0] == $product->id ? 'selected' : '' }}>{{ $product->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                <div class="card-footer d-flex justify-content-between">
-                                    <a href="{{ route('invoices.index') }}" class="btn btn-danger">
-                                        <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
-                                    </a>
-                                <button type="submit" class="btn btn-secondary"><i class="fas fa-save"></i> {{ __('Submit') }}</button>
+
+                                <div class="form-group col-md-4">
+                                    <label for="">{{ __('Price') }}</label><br>
+                                    <input type="number" class="form-control" id="price" name="product[1][price]"
+                                           placeholder="{{ __('Type a product price') }}" value="{{ old('price')[0] }}">
                                 </div>
-                            </form>
+
+                                <div class="form-group col-md-4">
+                                    <label for="quantity">{{ __('Quantity') }}</label><br>
+                                    <input type="number" class="form-control" id="quantity" name="product[1][quantity]"
+                                           placeholder="{{ __('Type a quantity') }}" value="{{ old('quantity')[0] }}">
+                                </div>
+
+
+                                <div class="input-group-btn">
+                                    <button type="button" id="add" class="btn btn-sm btn-success"><i
+                                            class="fas fa-fw fa-plus"></i></button>
+                                    <br><br>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <a href="{{ route('invoices.index') }}" class="btn btn-danger">
+                                    <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
+                                </a>
+                                <button type="submit" class="btn btn-secondary"><i
+                                        class="fas fa-save"></i> {{ __('Submit') }}
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
