@@ -72,7 +72,7 @@
                         </div>
                         <div class="card-footer d-flex justify-content-between">
                             <a href="{{ route('invoices.index') }}" class="btn btn-secondary">
-                                <i class="fas fa-arrow-left"></i> {{ __('Back to Invoice Details') }}
+                                <i class="fas fa-arrow-left"></i> {{ __('Back to Invoices') }}
                             </a>
                             <a href="{{ route('invoiceProduct.create', [$invoice, $product]) }}" class="btn btn-success">
                                 <i class="fas fa-plus"></i>  {{ __('Add New Detail') }}
