@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\Invoice\StoreRequest;
 use App\Http\Requests\Invoice\UpdateRequest;
+use App\Http\Requests\InvoiceProduct\DetailRequest;
 use App\Customer;
 use App\Invoice;
 use App\Product;
@@ -150,7 +151,7 @@ class InvoiceController extends Controller
 
     }
 
-    public function addProduct(Invoice $invoice, Request $request)
+    public function addProduct(Invoice $invoice, DetailRequest $request)
     {
         $price = $request->input('product_price');
         $quantity = $request->input('product_quantity');
