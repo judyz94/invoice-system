@@ -21,6 +21,8 @@ class InvoiceSeeder extends Seeder
             'sale_description' => '1 sofá negro de cuero y 1 pintura',
             'customer_id' => '1',
             'vat' => '0.19',
+            'total' => '646.000',
+            'total_with_vat' => '523.260',
             'status' => '1',
             'user_id' => '1'
         ]);
