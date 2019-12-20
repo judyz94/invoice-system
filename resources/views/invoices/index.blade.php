@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="container">
-        <div class="col-md-12">
-        <div class="row justify-content-center">
-            <div class="card">
+       <div class="row justify-content-center">
+           <div class="col-xl-14">
+               <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}</strong></h3>
                     <a href="{{ route('invoices.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>  {{ __('Create a new invoice') }}</a>
@@ -14,10 +14,11 @@
                         <thead>
                         <tr>
                             <th style="width:50px">{{ __('Code') }}</th>
-                            <th style="width:120px">{{ __('Expedition date') }}</th>
-                            <th style="width:120px">{{ __('Due date') }}</th>
-                            <th style="width:120px">{{ __('Receipt date') }}</th>
+                            <th style="width:200px">{{ __('Expedition date') }}</th>
+                            <th style="width:200px">{{ __('Due date') }}</th>
+                            <th style="width:200px">{{ __('Receipt date') }}</th>
                             <th style="width:100px">{{ __('Sale description') }}</th>
+                            <th style="width:120px">{{ __('Total') }}</th>
                             <th style="width:120px">{{ __('Total with VAT') }}</th>
                             <th style="width:100px">{{ __('Seller ID') }}</th>
                             <th style="width:100px">{{ __('Customer ID') }}</th>
@@ -34,7 +35,8 @@
                                 <td>{{ $invoice->due_date }}</td>
                                 <td>{{ $invoice->receipt_date }}</td>
                                 <td>{{ $invoice->sale_description }}</td>
-                                <td>${{ number_format($invoice->total_with_vat = $invoice->total - ($invoice->total * $invoice->vat), 2) }}</td>
+                                <td>${{ number_format($invoice->total, 2) }}</td>
+                                <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
                                 <td>{{ $invoice->seller->document }}</td>
                                 <td>{{ $invoice->customer->document }}</td>
                                 <td>{{ $invoice->status }}</td>

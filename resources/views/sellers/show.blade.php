@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-xl-14">
                 <div class="card">
                     <div class="card-header pb-0">
                         <h4 class="card-title"><strong>{{ __('Seller ID') }}  {{ $seller->document }}</strong></h4>
@@ -31,7 +31,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <h5>Associated invoices</h5>
+                                <br><h5><strong>Associated invoices</strong></h5>
                                 <div class="table-responsive-xl">
                                     <table class="table table-hover" style="width:100%">
                                         <thead>
@@ -41,6 +41,7 @@
                                             <th style="width:120px">{{ __('Due date') }}</th>
                                             <th style="width:120px">{{ __('Receipt date') }}</th>
                                             <th style="width:100px">{{ __('Sale description') }}</th>
+                                            <th style="width:120px">{{ __('Total') }}</th>
                                             <th style="width:120px">{{ __('Total with VAT') }}</th>
                                             <th style="width:100px">{{ __('Seller ID') }}</th>
                                             <th style="width:100px">{{ __('Customer ID') }}</th>
@@ -57,8 +58,8 @@
                                                 <td>{{ $invoice->due_date }}</td>
                                                 <td>{{ $invoice->receipt_date }}</td>
                                                 <td>{{ $invoice->sale_description }}</td>
-                                                <td>{{ $invoice->total }}</td>
-                                                <td>{{ $invoice->total_with_vat }}</td>
+                                                <td>${{ number_format($invoice->total, 2) }}</td>
+                                                <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
                                                 <td>{{ $invoice->seller->document }}</td>
                                                 <td>{{ $invoice->customer->document }}</td>
                                                 <td>{{ $invoice->status }}</td>

@@ -6,7 +6,7 @@
             <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h3 class="card-title"><strong>{{ __('Details Invoice') }} #{{ $invoice->code }}</strong></h3>
+                    <h4 class="card-title"><strong>{{ __('Details Invoice') }} #{{ $invoice->code }}</strong></h4>
                 </div>
 
                 <div class="card-body">
@@ -82,7 +82,7 @@
 
                 <div class="col-md-12">
                     <div class="card-header d-flex justify-content-between">
-                        <h4><strong>Add a new product to this invoice</strong></h4>
+                        <h5><strong>Add a new product to this invoice</strong></h5>
                     </div>
                     <form action="{{ route('invoices.products.store', $invoice) }}" method="post">
                         @csrf
