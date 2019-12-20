@@ -24,32 +24,32 @@
                             </thead>
                             <tbody>
                             @foreach($customers as $customer)
-                            <tr>
-                                <td>{{ $customer->document }}</td>
-                                <td>{{ $customer->name }}</td>
-                                <td>{{ $customer->email }}</td>
-                                <td>{{ $customer->phone }}</td>
-                                <td>{{ $customer->city->name }}</td>
-                                <td>{{ $customer->address }}</td>
-                                <td class="text-right">
-                                    <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
-                                        <a href="{{ route('customers.show', $customer) }}" class="btn btn-link" title="{{ __('Show Details') }}">
-                                            <i class="fas fa-eye" style="color:black"></i>
-                                        </a>
-                                        <a href="{{ route('customers.edit', $customer) }}" class="btn btn-link" title="{{ __('Edit Customer') }}">
-                                            <i class="fas fa-edit" style="color:black"></i>
-                                        </a>
-                                        <button type="button" class="btn btn-link text-danger" data-route="{{ route('customers.destroy', $customer) }}" data-toggle="modal" data-target="#confirmDeleteModal" title="{{ __('Delete Customer') }}">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                                <tr>
+                                    <td>{{ $customer->document }}</td>
+                                    <td>{{ $customer->name }}</td>
+                                    <td>{{ $customer->email }}</td>
+                                    <td>{{ $customer->phone }}</td>
+                                    <td>{{ $customer->city->name }}</td>
+                                    <td>{{ $customer->address }}</td>
+                                    <td class="text-right">
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
+                                            <a href="{{ route('customers.show', $customer) }}" class="btn btn-link" title="{{ __('Show Details') }}">
+                                                <i class="fas fa-eye" style="color:black"></i>
+                                            </a>
+                                            <a href="{{ route('customers.edit', $customer) }}" class="btn btn-link" title="{{ __('Edit Customer') }}">
+                                                <i class="fas fa-edit" style="color:black"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-link text-danger" data-route="{{ route('customers.destroy', $customer) }}" data-toggle="modal" data-target="#confirmDeleteModal" title="{{ __('Delete Customer') }}">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
     </div>

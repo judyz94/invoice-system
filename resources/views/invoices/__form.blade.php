@@ -48,7 +48,7 @@
         <div class="form-group">
             <label for="status">{{ __('Status') }}</label>
             <select class="form-control" id="status" name="status">
-                <option value="">{{ __('Select status') }}</option>
+                <option value="New" {{ $invoice->status == 'New' ? 'selected' : ''  }}>{{ __('New') }}</option>
                 <option value="Sent" {{ $invoice->status == 'Sent' ? 'selected' : ''  }}>{{ __('Sent') }}</option>
                 <option value="Rejected" {{ $invoice->status == 'Rejected' ? 'selected' : '' }}>{{ __('Rejected') }}</option>
                 <option value="Overdue" {{ $invoice->status == 'Overdue' ? 'selected' : '' }}>{{ __('Overdue') }}</option>

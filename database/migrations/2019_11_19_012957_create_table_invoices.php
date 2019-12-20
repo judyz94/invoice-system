@@ -23,7 +23,7 @@ class CreateTableInvoices extends Migration
             $table->double('total', 15, 2)->default(0);
             $table->float('vat')->default(0);
             $table->double('total_with_vat', 15, 2)->default(0);
-            $table->enum('status', ['Sent','Rejected','Overdue','Paid','Cancelled']);
+            $table->enum('status', ['New','Sent','Rejected','Overdue','Paid','Cancelled']);
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')->on('users')

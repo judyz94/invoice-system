@@ -14,22 +14,27 @@ class ProductSeeder extends Seeder
     {
         DB::table('products')->insert([
             'name' => 'Mueble',
+            'unit_price' => '220000'
         ]);
 
         DB::table('products')->insert([
             'name' => 'Pintura',
+            'unit_price' => '80000'
         ]);
 
         DB::table('products')->insert([
             'name' => 'Laptop',
+            'unit_price' => '2400000'
         ]);
 
         DB::table('products')->insert([
             'name' => 'Celular',
+            'unit_price' => '900000'
         ]);
 
         DB::table('products')->insert([
             'name' => 'Juego de mesa',
+            'unit_price' => '50000'
         ]);
 
     }

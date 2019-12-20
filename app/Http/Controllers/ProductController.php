@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 use App\City;
 use App\Http\Requests\Product\ProductRequest;
+use App\Http\Requests\Product\UpdateRequest;
 use App\Product;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class ProductController extends Controller
@@ -53,8 +53,9 @@ class ProductController extends Controller
     {
         $product = new Product();
         $product->name = $request->input('name');
+        $product->unit_price = $request->input('unit_price');
+
         $product->save();
-        $request->validated();
         return redirect()->route('products.index');
     }
 
@@ -73,15 +74,16 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param ProductRequest $request
+     * @param UpdateRequest $request
      * @param Product $product
      * @return Response
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(UpdateRequest $request, Product $product)
     {
         $product->name = $request->input('name');
+        $product->unit_price = $request->input('unit_price');
+
         $product->save();
-        $request->validated();
         return redirect()->route('products.index');
     }
 

@@ -1,9 +1,9 @@
-@extends ('layouts.app')
+@extends ('layouts.base')
 
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header pb-0">
                         <h4 class="card-title"><strong>{{ __('Edit Product') }} #{{ $product->id }}</strong></h4>
@@ -21,14 +21,7 @@
             <form action="{{ route('products.update', $product) }}" method="POST" id="products-form">
                 @csrf
                 @method('PUT')
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="name">{{ __('Name') }}</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('Type a product name') }}" value="{{ old('name', $product->name) }}">
-                        </div>
-                    </div>
-                </div>
+                @include('products.__form')
             </form>
             </div>
             <div class="card-footer d-flex justify-content-between">

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <h3 class="card-title mb-0"><strong>{{ __('Products') }}</strong></h3>
@@ -15,6 +15,7 @@
                         <tr>
                             <th>{{ __('Code') }}</th>
                             <th>{{ __('Name') }}</th>
+                            <th>{{ __('Unit Price') }}</th>
                             <th class="text-right">{{ __('Actions') }}</th>
                         </tr>
                         </thead>
@@ -23,6 +24,7 @@
                             <tr>
                                 <td>{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
+                                <td>${{ number_format($product->unit_price) }}</td>
                                 <td class="text-right">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
                                         <a href="{{ route('products.edit', $product) }}" class="btn btn-link" title="{{ __('Edit Product') }}">

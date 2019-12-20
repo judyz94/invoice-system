@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\Invoice\StoreRequest;
 use App\Http\Requests\Invoice\UpdateRequest;
+use App\Http\Requests\InvoiceProduct\DetailRequest;
 use App\Customer;
 use App\Invoice;
 use App\Product;
@@ -128,11 +129,10 @@ class InvoiceController extends Controller
         $invoice->receipt_date = $request->input('receipt_date');
         $invoice->seller_id = $request->input('seller_id');
         $invoice->sale_description = $request->input('sale_description');
-        $invoice->vat = $request->input('vat');
         $invoice->customer_id = $request->input('customer_id');
         $invoice->status = $request->input('status');
-        $invoice->user_id = $request->input('user_id');
-        $request->validated();
+        $invoice->user_id = auth()->user()->id;
+
         $invoice->save();
         return redirect()->route('invoices.index');
     }
@@ -151,7 +151,7 @@ class InvoiceController extends Controller
 
     }
 
-    public function addProduct(Invoice $invoice, Request $request)
+    public function addProduct(Invoice $invoice, DetailRequest $request)
     {
         $price = $request->input('product_price');
         $quantity = $request->input('product_quantity');
