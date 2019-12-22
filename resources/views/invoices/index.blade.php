@@ -20,8 +20,8 @@
                             <th style="width:100px">{{ __('Sale description') }}</th>
                             <th style="width:120px">{{ __('Total') }}</th>
                             <th style="width:120px">{{ __('Total with VAT') }}</th>
-                            <th style="width:100px">{{ __('Seller ID') }}</th>
-                            <th style="width:100px">{{ __('Customer ID') }}</th>
+                            <th style="width:100px">{{ __('Seller') }}</th>
+                            <th style="width:100px">{{ __('Customer') }}</th>
                             <th style="width:50px">{{ __('Status') }}</th>
                             <th style="width:100px">{{ __('Created by') }}</th>
                             <th style="width:100px">{{ __('Actions') }}</th>
@@ -37,8 +37,8 @@
                                 <td>{{ $invoice->sale_description }}</td>
                                 <td>${{ number_format($invoice->total, 2) }}</td>
                                 <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
-                                <td>{{ $invoice->seller->document }}</td>
-                                <td>{{ $invoice->customer->document }}</td>
+                                <td>{{ $invoice->seller->name }}</td>
+                                <td>{{ $invoice->customer->name }}</td>
                                 <td>{{ $invoice->status }}</td>
                                 <td>{{ $invoice->user->name }}</td>
                                 <td class="text-right">
