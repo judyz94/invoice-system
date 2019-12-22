@@ -18,9 +18,9 @@
                          </ul>
                      </div>
                  @endif
-            <form action="{{ route('invoices.update', $invoice) }}" method="POST" id="invoices-form">
+            <form action="{{ route('invoices.update', $invoice) }}" method="post" id="invoices-form">
                 @csrf
-                @method('PUT')
+                @method('put')
                 @include('invoices.__form')
             </form>
             </div>
@@ -33,5 +33,8 @@
                 </button>
             </div>
                 </div>
-
+            </div>
+        </div>
+    </div>
 @endsection
+

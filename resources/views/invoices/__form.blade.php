@@ -2,21 +2,27 @@
     <div class="col-md-4">
         <div class="form-group">
             <label for="expedition_date">{{ __('Expedition date') }}</label>
-            <input type="date" class="form-control" id="expedition_date" name="expedition_date" placeholder="{{ __('YYYY/MM/DD') }}" value="{{ old('expedition_date', now()->toDateString()) }}">
+            <input type="date" class="form-control" id="expedition_date" name="expedition_date"
+                   placeholder="{{ __('YYYY/MM/DD') }}"
+                   value="{{ old('expedition_date', now()->toDateString()) }}">
         </div>
     </div>
 
     <div class="col-md-4">
         <div class="form-group">
             <label for="due_date">{{ __('Due date') }}</label>
-            <input type="date" class="form-control" id="due_date" name="due_date" placeholder="{{ __('YYYY/MM/DD') }}" value="{{ old('due_date', now()->addDays(30)->toDateString()) }}">
+            <input type="date" class="form-control" id="due_date" name="due_date"
+                   placeholder="{{ __('YYYY/MM/DD') }}"
+                   value="{{ old('due_date', now()->addDays(30)->toDateString()) }}">
         </div>
     </div>
 
     <div class="col-md-4">
         <div class="form-group">
             <label for="receipt_date">{{ __('Receipt date') }}</label>
-            <input type="date" class="form-control" id="receipt_date" name="receipt_date" placeholder="{{ __('YYYY/MM/DD') }}" value="{{ old('receipt_date', $invoice->receipt_date) }}">
+            <input type="date" class="form-control" id="receipt_date" name="receipt_date"
+                   placeholder="{{ __('YYYY/MM/DD') }}"
+                   value="{{ old('receipt_date', $invoice->receipt_date) }}">
         </div>
     </div>
 
@@ -26,7 +32,9 @@
             <select class="form-control" id="seller_id" name="seller_id">
                 <option value="">{{ __('Select seller') }}</option>
                 @foreach($sellers as $seller)
-                    <option value="{{ $seller->id }}" {{ old('seller_id', $invoice->seller_id) == $seller->id ? 'selected' : ''}}>{{ $seller->name }}</option>
+                    <option value="{{ $seller->id }}"
+                        {{ old('seller_id', $invoice->seller_id) == $seller->id ? 'selected' : ''}}>{{ $seller->name }}
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -38,7 +46,9 @@
             <select class="form-control" id="customer_id" name="customer_id">
                 <option value="">{{ __('Select customer') }}</option>
                 @foreach($customers as $customer)
-                    <option value="{{ $customer->id }}" {{ old('customer_id', $invoice->customer_id) == $customer->id ? 'selected' : ''}}>{{ $customer->name }}</option>
+                    <option value="{{ $customer->id }}"
+                        {{ old('customer_id', $invoice->customer_id) == $customer->id ? 'selected' : ''}}>{{ $customer->name }}
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -61,7 +71,9 @@
     <div class="col-md-12">
         <div class="form-group">
             <label for="sale_description">{{ __('Sale description') }}</label>
-            <textarea class="form-control" id="sale_description" name="sale_description" placeholder="{{ __('Type a sale description') }}">{{ old('sale_description', $invoice->sale_description) }}</textarea>
+            <textarea class="form-control" id="sale_description" name="sale_description"
+                      placeholder="{{ __('Type a sale description') }}">{{ old('sale_description', $invoice->sale_description) }}
+            </textarea>
         </div>
     </div>
 </div>

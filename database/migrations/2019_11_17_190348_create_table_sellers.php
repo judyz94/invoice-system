@@ -15,7 +15,7 @@ class CreateTableSellers extends Migration
     {
         Schema::create('sellers', function (Blueprint $table) {
             $table->integerIncrements('id');
-             $table->string('name', 150);
+            $table->string('name', 150);
             $table->bigInteger('document')->unique();
             $table->string('email', 40)->unique();
             $table->string('phone')->nullable();

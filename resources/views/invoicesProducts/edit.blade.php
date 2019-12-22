@@ -18,9 +18,9 @@
                                 </ul>
                             </div>
                         @endif
-            <form id="form" action="{{ route('invoiceProduct.update', [$invoice, $product]) }}" method="POST">
+            <form id="form" action="{{ route('invoiceProduct.update', [$invoice, $product]) }}" method="post">
                 @csrf
-                @method('PUT')
+                @method('put')
                 @if(old('products'))
 
                 @else
@@ -28,7 +28,8 @@
                 <div class="row col-sm-10">
                     <div class="form-group col-md-4">
                         <label for="">{{ __('Product name') }}</label><br>
-                        <input type="text" class="form-control" id="product_id" name="product_id" readonly="readonly" value="{{ $product->name }}">
+                        <input type="text" class="form-control" id="product_id" name="product_id" readonly="readonly"
+                               value="{{ $product->name }}">
                     </div>
 
                     <div class="form-group col-md-4">
@@ -52,8 +53,8 @@
                     <a href="{{ route('invoices.index') }}" class="btn btn-danger">
                         <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
                     </a>
-                    <button type="submit" class="btn btn-secondary"><i
-                            class="fas fa-edit"></i> {{ __('Update') }}
+                    <button type="submit" class="btn btn-secondary">
+                        <i class="fas fa-edit"></i> {{ __('Update') }}
                     </button>
                 </div>
             </form>
@@ -63,3 +64,4 @@
         </div>
     </div>
 @endsection
+

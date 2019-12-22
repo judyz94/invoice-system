@@ -6,7 +6,8 @@
             <div class="col-xl-14">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h4 class="card-title"><strong>{{ __('Customer ID') }}  {{ $customer->document }}</strong></h4>
+                        <h4 class="card-title"><strong>{{ __('Customer ID') }}
+                                {{ $customer->document }}</strong></h4>
                     </div>
 
                     <div class="card-body">
@@ -67,16 +68,22 @@
                                                 <td>{{ $invoice->user->name }}</td>
                                                 <td class="text-right">
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
-                                                        <a href="{{ route('invoiceProduct.create', [$invoice, $product]) }}" class="btn btn-link" title="{{ __('Add Details') }}">
+                                                        <a href="{{ route('invoiceProduct.create', [$invoice, $product]) }}" class="btn btn-link"
+                                                           title="{{ __('Add Details') }}">
                                                             <i class="fas fa-plus" style="color:limegreen"></i>
                                                         </a>
-                                                        <a href="{{ route('invoices.show', $invoice) }}" class="btn btn-link" title="{{ __('Show Details') }}">
+                                                        <a href="{{ route('invoices.show', $invoice) }}" class="btn btn-link"
+                                                           title="{{ __('Show Details') }}">
                                                             <i class="fas fa-eye" style="color:black"></i>
                                                         </a>
-                                                        <a href="{{ route('invoices.edit', $invoice) }}" class="btn btn-link" title="{{ __('Edit Invoice') }}">
+                                                        <a href="{{ route('invoices.edit', $invoice) }}" class="btn btn-link"
+                                                           title="{{ __('Edit Invoice') }}">
                                                             <i class="fas fa-edit" style="color:black"></i>
                                                         </a>
-                                                        <button type="button" class="btn btn-link text-danger" data-route="{{ route('invoices.destroy', $invoice) }}" data-toggle="modal" data-target="#confirmDeleteModal" title="{{ __('Delete Invoice') }}">
+                                                        <button type="button" class="btn btn-link text-danger"
+                                                                data-route="{{ route('invoices.destroy', $invoice) }}"
+                                                                data-toggle="modal" data-target="#confirmDeleteModal"
+                                                                title="{{ __('Delete Invoice') }}">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </div>
@@ -108,3 +115,4 @@
 @push('scripts')
     <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>
 @endpush
+
