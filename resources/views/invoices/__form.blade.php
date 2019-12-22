@@ -22,11 +22,11 @@
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="seller_id">{{ __('Seller ID') }}</label>
+            <label for="seller_id">{{ __('Seller') }}</label>
             <select class="form-control" id="seller_id" name="seller_id">
-                <option value="">{{ __('Select seller ID') }}</option>
+                <option value="">{{ __('Select seller') }}</option>
                 @foreach($sellers as $seller)
-                    <option value="{{ $seller->id }}" {{ old('seller_id', $invoice->seller_id) == $seller->id ? 'selected' : ''}}>{{ $seller->document }}</option>
+                    <option value="{{ $seller->id }}" {{ old('seller_id', $invoice->seller_id) == $seller->id ? 'selected' : ''}}>{{ $seller->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -34,11 +34,11 @@
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="customer_id">{{ __('Customer ID') }}</label>
+            <label for="customer_id">{{ __('Customer') }}</label>
             <select class="form-control" id="customer_id" name="customer_id">
-                <option value="">{{ __('Select customer ID') }}</option>
+                <option value="">{{ __('Select customer') }}</option>
                 @foreach($customers as $customer)
-                    <option value="{{ $customer->id }}" {{ old('customer_id', $invoice->customer_id) == $customer->id ? 'selected' : ''}}>{{ $customer->document }}</option>
+                    <option value="{{ $customer->id }}" {{ old('customer_id', $invoice->customer_id) == $customer->id ? 'selected' : ''}}>{{ $customer->name }}</option>
                 @endforeach
             </select>
         </div>
