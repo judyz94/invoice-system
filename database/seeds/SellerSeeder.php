@@ -13,9 +13,9 @@ class SellerSeeder extends Seeder
     public function run()
     {
         DB::table('sellers')->insert([
-            'name' => 'Luis Zapata',
-            'document' => '70056331',
-            'email' => 'luisz@gmail.com',
+            'name' => 'Almacen Hogar',
+            'document' => '700563313487',
+            'email' => 'hogar@gmail.com',
             'phone' => '3090934937',
             'city_id' => '2',
             'address' => 'Carrera 20 #10-40'
