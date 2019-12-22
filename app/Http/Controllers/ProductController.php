@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\City;
+
 use App\Http\Requests\Product\ProductRequest;
 use App\Http\Requests\Product\UpdateRequest;
+use App\City;
 use App\Product;
 use Exception;
 use Illuminate\Http\Response;
@@ -100,3 +101,4 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 }
+

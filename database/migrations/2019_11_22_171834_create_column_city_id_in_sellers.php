@@ -34,3 +34,4 @@ class CreateColumnCityIdInSellers extends Migration
         });
     }
 }
+

@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Product;
 use App\Invoice;
 use App\Http\Requests\InvoiceProduct\StoreRequest;
 use App\Http\Requests\InvoiceProduct\UpdateRequest;
 use Illuminate\Http\Response;
-
 
 class InvoiceProductController extends Controller
 {
@@ -91,7 +91,6 @@ class InvoiceProductController extends Controller
         $invoice->products()->updateExistingPivot($product->id, $request->validated());
         return redirect()->route('invoices.show', $invoice, $product);
     }
-
 
     /**
      * Remove the specified resource from storage.

@@ -22,3 +22,4 @@ class SellerSeeder extends Seeder
         ]);
     }
 }
+

@@ -34,3 +34,4 @@ class CreateTableSellers extends Migration
         Schema::dropIfExists('sellers');
     }
 }
+

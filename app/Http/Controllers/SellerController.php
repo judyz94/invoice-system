@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\Seller\StoreRequest;
 use App\Http\Requests\Seller\UpdateRequest;
 use App\Seller;
@@ -8,7 +9,6 @@ use App\City;
 use App\Product;
 use Exception;
 use Illuminate\Http\Response;
-
 
 class SellerController extends Controller
 {
@@ -124,3 +124,4 @@ class SellerController extends Controller
         return redirect()->route('sellers.index');
     }
 }
+

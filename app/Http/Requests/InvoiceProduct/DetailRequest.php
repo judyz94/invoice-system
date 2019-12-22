@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests\InvoiceProduct;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class DetailRequest extends FormRequest
@@ -19,3 +20,4 @@ class DetailRequest extends FormRequest
         ];
     }
 }
+

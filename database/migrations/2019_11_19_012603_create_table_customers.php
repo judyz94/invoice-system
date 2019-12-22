@@ -34,3 +34,4 @@ class CreateTableCustomers extends Migration
         Schema::dropIfExists('customers');
     }
 }
+

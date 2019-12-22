@@ -30,3 +30,4 @@ class CreateTableCities extends Migration
         Schema::dropIfExists('cities');
     }
 }
+

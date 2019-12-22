@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests\Seller;
+
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -31,3 +32,4 @@ class StoreRequest extends FormRequest
         ];
     }
 }
+
