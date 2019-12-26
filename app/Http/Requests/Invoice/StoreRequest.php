@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests\Invoice;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
@@ -23,3 +24,4 @@ class StoreRequest extends FormRequest
         ];
     }
 }
+

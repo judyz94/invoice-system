@@ -18,9 +18,9 @@
                                 </ul>
                             </div>
                         @endif
-                            <form action="{{ route('sellers.update', $seller) }}" method="POST" id="sellers-form">
+                            <form action="{{ route('sellers.update', $seller) }}" method="post" id="sellers-form">
                                 @csrf
-                                @method('PUT')
+                                @method('put')
                                 @include('sellers.__form')
                             </form>
                     </div>

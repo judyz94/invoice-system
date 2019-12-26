@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Product;
 use App\Invoice;
 use App\Http\Requests\InvoiceProduct\StoreRequest;
 use App\Http\Requests\InvoiceProduct\UpdateRequest;
 use Illuminate\Http\Response;
-
 
 class InvoiceProductController extends Controller
 {
@@ -33,8 +33,7 @@ class InvoiceProductController extends Controller
                 ->where('name', 'LIKE', "%{$query}%")
                 ->get();
             $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
-            foreach($data as $row)
-            {
+            foreach($data as $row) {
                 $output .= '<li><a href="#">'.$row->name.'</a></li>';
             }
             $output .= '</ul>';
@@ -91,7 +90,6 @@ class InvoiceProductController extends Controller
         $invoice->products()->updateExistingPivot($product->id, $request->validated());
         return redirect()->route('invoices.show', $invoice, $product);
     }
-
 
     /**
      * Remove the specified resource from storage.

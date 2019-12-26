@@ -28,3 +28,4 @@ class InvoiceSeeder extends Seeder
         ]);
     }
 }
+

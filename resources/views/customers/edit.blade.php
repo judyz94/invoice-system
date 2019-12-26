@@ -6,7 +6,8 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h4 class="card-title"><strong>{{ __('Edit Customer ID') }}  {{ $customer->document }}</strong></h4>
+                        <h4 class="card-title"><strong>{{ __('Edit Customer ID') }}
+                                {{ $customer->document }}</strong></h4>
                     </div>
                     <div class="card-body">
                         @if($errors->any())
@@ -18,9 +19,9 @@
                                 </ul>
                             </div>
                         @endif
-                            <form action="{{ route('customers.update', $customer) }}" method="POST" id="customers-form">
+                            <form action="{{ route('customers.update', $customer) }}" method="post" id="customers-form">
                                 @csrf
-                                @method('PUT')
+                                @method('put')
                                 @include('customers.__form')
                             </form>
                     </div>

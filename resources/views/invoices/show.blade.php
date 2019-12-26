@@ -65,10 +65,15 @@
                                     <td>${{ number_format($invoice->total = $product->pivot->price * $product->pivot->quantity) }}</td>
                                     <td>
                                         <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
-                                            <a href="{{ route('invoiceProduct.edit', [$invoice, $product]) }}" class="btn btn-link" title="{{ __('Edit Detail') }}">
+                                            <a href="{{ route('invoiceProduct.edit', [$invoice, $product]) }}" class="btn btn-link"
+                                               title="{{ __('Edit Detail') }}">
                                                 <i class="fas fa-edit" style="color:black"></i>
                                             </a>
-                                            <button type="button" class="btn btn-link text-danger" data-route="{{ route('invoiceProduct.destroy', [$invoice, $product]) }}" data-toggle="modal" data-target="#confirmDeleteModal" title="{{ __('Delete Detail') }}">
+                                            <button type="button" class="btn btn-link text-danger"
+                                                    data-route="{{ route('invoiceProduct.destroy', [$invoice, $product]) }}"
+                                                    data-toggle="modal"
+                                                    data-target="#confirmDeleteModal"
+                                                    title="{{ __('Delete Detail') }}">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </div>
@@ -93,19 +98,25 @@
                                 <select class="custom-select" name="product_id" id="product_id" required>
                                     <option value="">Please select a product</option>
                                     @foreach($products as $product)
-                                        <option value="{{$product->id}}" {{ old('product_id') == $product->id ? 'selected' : ''}}>{{$product->name}}</option>
+                                        <option value="{{$product->id}}"
+                                            {{ old('product_id') == $product->id ? 'selected' : ''}}>{{$product->name}}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="product_price">Price</label>
-                                <input class="form-control" type="number" id="product_price" value="{{ old('product_price') }}" placeholder="{{ __('Type a product price') }}" name="product_price" required>
+                                <input class="form-control" type="number" id="product_price"
+                                       value="{{ old('product_price') }}"
+                                       placeholder="{{ __('Type a product price') }}" name="product_price" required>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="product_quantity">Quantity</label>
-                                <input class="form-control" type="number" id="product_quantity" value="{{ old('product_quantity') }}" placeholder="{{ __('Type a quantity') }} " name="product_quantity" required>
+                                <input class="form-control" type="number" id="product_quantity"
+                                       value="{{ old('product_quantity') }}"
+                                       placeholder="{{ __('Type a quantity') }}" name="product_quantity" required>
                             </div>
                         </div>
                         <button class="btn btn-success btn-block col-md-1" type="submit">Add</button>
@@ -133,3 +144,4 @@
 @push('scripts')
     <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>
 @endpush
+

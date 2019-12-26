@@ -7,7 +7,8 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <h3 class="card-title mb-0"><strong>{{ __('Products') }}</strong></h3>
-                        <a href="{{ route('products.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>  {{ __('Create a new product') }}</a>
+                        <a href="{{ route('products.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
+                            {{ __('Create a new product') }}</a>
                     </div>
                     <div class="table-responsive-lg">
                     <table class="table table-hover">
@@ -27,10 +28,15 @@
                                 <td>${{ number_format($product->unit_price) }}</td>
                                 <td class="text-right">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
-                                        <a href="{{ route('products.edit', $product) }}" class="btn btn-link" title="{{ __('Edit Product') }}">
+                                        <a href="{{ route('products.edit', $product) }}" class="btn btn-link"
+                                           title="{{ __('Edit Product') }}">
                                             <i class="fas fa-edit" style="color:black"></i>
                                         </a>
-                                        <button type="button" class="btn btn-link text-danger" data-route="{{ route('products.destroy', $product) }}" data-toggle="modal" data-target="#confirmDeleteModal" title="{{ __('Delete Product') }}">
+                                        <button type="button" class="btn btn-link text-danger"
+                                                data-route="{{ route('products.destroy', $product) }}"
+                                                data-toggle="modal"
+                                                data-target="#confirmDeleteModal"
+                                                title="{{ __('Delete Product') }}">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </div>
@@ -51,3 +57,4 @@
 @push('scripts')
     <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>
 @endpush
+

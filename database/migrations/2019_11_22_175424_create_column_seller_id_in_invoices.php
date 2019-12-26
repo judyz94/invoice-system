@@ -34,3 +34,4 @@ class CreateColumnSellerIdInInvoices extends Migration
         });
     }
 }
+

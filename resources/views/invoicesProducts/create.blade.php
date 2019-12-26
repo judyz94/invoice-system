@@ -19,7 +19,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form id="form" action="{{ route('invoices.products.store', $invoice) }}" method="POST"
+                        <form id="form" action="{{ route('invoices.products.store', $invoice) }}" method="post"
                               id="invoicesProducts-form">
                             @csrf
 
@@ -33,7 +33,9 @@
                                     <select class="custom-select" id="product_id" name="product[1][id]">
                                         <option value="">Select a product name</option>
                                         @foreach($products as $product)
-                                            <option value="{{ $product->id }}" {{ old('product_id')[0] == $product->id ? 'selected' : '' }}>{{ $product->name }}</option>
+                                            <option value="{{ $product->id }}"
+                                                {{ old('product_id')[0] == $product->id ? 'selected' : '' }}>{{ $product->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -76,3 +78,4 @@
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script src="{{ asset('js/dinamicform.js') }}"></script>
 @endpush
+

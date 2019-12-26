@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\Invoice\StoreRequest;
 use App\Http\Requests\Invoice\UpdateRequest;
 use App\Http\Requests\InvoiceProduct\DetailRequest;
@@ -10,7 +11,6 @@ use App\Product;
 use App\Seller;
 use App\User;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class InvoiceController extends Controller
@@ -148,7 +148,6 @@ class InvoiceController extends Controller
     {
         $invoice->delete();
         return redirect()->route('invoices.index');
-
     }
 
     public function addProduct(Invoice $invoice, DetailRequest $request)
@@ -172,3 +171,4 @@ class InvoiceController extends Controller
         return redirect()->route('invoices.show', $invoice);
     }
 }
+
