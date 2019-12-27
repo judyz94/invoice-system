@@ -18,3 +18,4 @@ Route::get('/invoices/{invoice}/products/{product}/edit', 'InvoiceProductControl
 Route::put('/invoices/{invoice}/products/{product}', 'InvoiceProductController@update')->name('invoiceProduct.update');
 Route::delete('/invoices/{invoice}/products/{product}', 'InvoiceProductController@destroy')->name('invoiceProduct.destroy');
 
+Route::post('import-invoice-excel', 'InvoiceController@import')->name('invoices.import');
