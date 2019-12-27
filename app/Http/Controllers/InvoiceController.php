@@ -10,8 +10,10 @@ use App\Invoice;
 use App\Product;
 use App\Seller;
 use App\User;
+use App\Excel;
 use Exception;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Request;
 
 class InvoiceController extends Controller
 {
@@ -169,6 +171,14 @@ class InvoiceController extends Controller
         $invoice->save();
 
         return redirect()->route('invoices.show', $invoice);
+    }
+
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new InvoicesImport, $file );
+
+        return back()->with('message', 'Invoice import completed');
     }
 }
 
