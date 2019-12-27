@@ -65,6 +65,14 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <div class="card-footer d-flex justify-content-lg-start">
+
+                        <form action="{{ route('invoices.import') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" name="file">
+                            <button class="btn btn-secondary">{{ __('Import Excel Invoices') }}</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
