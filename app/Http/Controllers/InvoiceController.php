@@ -10,10 +10,9 @@ use App\Invoice;
 use App\Product;
 use App\Seller;
 use App\User;
-use App\Excel;
 use Exception;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Request;
+use App\Imports\InvoicesImport;
 
 class InvoiceController extends Controller
 {
@@ -173,12 +172,17 @@ class InvoiceController extends Controller
         return redirect()->route('invoices.show', $invoice);
     }
 
-    public function import(Request $request)
+    public function import()
     {
-        $file = $request->file('file');
-        Excel::import(new InvoicesImport, $file );
+        (new InvoicesImport)->import('invoices.xlsx');
 
-        return back()->with('message', 'Invoice import completed');
+        return redirect()->route('invoices.index')->with('success', 'File imported succesfully!');
+
+        //(new InvoicesImport)->import(request()->file('your_file'));
+
+        //$file = $request->file('file');
+        //        Excel::import(new InvoicesImport, $file );
+        //        return back()->with('message', 'Invoice import completed');->with('message', 'Invoice import completed');
     }
 }
 
