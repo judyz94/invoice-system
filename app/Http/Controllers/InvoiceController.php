@@ -11,8 +11,12 @@ use App\Product;
 use App\Seller;
 use App\User;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+
 use App\Imports\InvoicesImport;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Reader;
 
 class InvoiceController extends Controller
 {
@@ -33,13 +37,15 @@ class InvoiceController extends Controller
      * @param Product $product
      * @return Response
      */
-    public function index(Invoice $invoice, Product $product)
+    public function index(Invoice $invoice, Product $product, Seller $seller)
     {
+        $sellers = Seller::all();
         $products = Product::all();
         $invoices = Invoice::all();
-        return view('invoices.index', compact( 'products', 'invoices'), [
+        return view('invoices.index', compact( 'products', 'invoices', 'sellers'), [
             'invoice' => $invoice,
-            'product' => $product
+            'product' => $product,
+            'seller' => $seller
         ]);
     }
 
@@ -172,17 +178,20 @@ class InvoiceController extends Controller
         return redirect()->route('invoices.show', $invoice);
     }
 
-    public function import()
+    public function import(/*Request $request*/)
     {
-        (new InvoicesImport)->import('invoices.xlsx');
+        //(new InvoicesImport)->import('invoices.xlsx');
+        /*$file = $request->file('file');
+        (new InvoicesImport)->import(request()->file('file'));
 
-        return redirect()->route('invoices.index')->with('success', 'File imported succesfully!');
+        return redirect()->route('invoices.index')->with('success', 'File imported succesfully');*/
 
-        //(new InvoicesImport)->import(request()->file('your_file'));
+        /*$file = $request->file('file');
+                Excel::import(new InvoicesImport, $file );
+                return back()->with('message', 'Invoice import completed');*/
 
-        //$file = $request->file('file');
-        //        Excel::import(new InvoicesImport, $file );
-        //        return back()->with('message', 'Invoice import completed');->with('message', 'Invoice import completed');
+
+        return Excel::import(new InvoicesImport, 'invoices.xlsx');
     }
 }
 
