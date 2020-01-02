@@ -13,10 +13,8 @@ use App\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
 use App\Imports\InvoicesImport;
 use Maatwebsite\Excel\Facades\Excel;
-use Maatwebsite\Excel\Reader;
 
 class InvoiceController extends Controller
 {

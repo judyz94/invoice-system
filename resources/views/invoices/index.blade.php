@@ -70,8 +70,9 @@
                         <br>
                         <form action="{{ route('invoices.import') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <input type="file" name="file">
-                            <button class="btn btn-secondary">{{ __('Upload') }}</button>
+                            <input type="file" name="file" class="form-control">
+                            <br>
+                            <button class="btn btn-success">{{ __('Upload') }}</button>
                         </form>
                     </div>
                 </div>
