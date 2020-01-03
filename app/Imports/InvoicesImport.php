@@ -6,10 +6,10 @@ use App\Invoice;
 use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\withValidation;
+//use Maatwebsite\Excel\Concerns\withValidation;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 
-
-class InvoicesImport implements ToModel, WithHeadingRow, withValidation
+class InvoicesImport implements ToModel, WithHeadingRow//, withValidation
 {
     /**
      * @param array $row
@@ -21,9 +21,9 @@ class InvoicesImport implements ToModel, WithHeadingRow, withValidation
     {
         return new Invoice([
             'code' => $row['code'],
-            'expedition_date' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['expedition_date']),
-            'due_date' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['due_date']),
-            'receipt_date' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['receipt_date']),
+            'expedition_date' => Date::excelToDateTimeObject($row['expedition_date']),
+            'due_date' => Date::excelToDateTimeObject($row['due_date']),
+            'receipt_date' => Date::excelToDateTimeObject($row['receipt_date']),
             'sale_description' => $row['sale_description'],
             'total' => $row['total'],
             'vat' => $row['vat'],
@@ -36,7 +36,7 @@ class InvoicesImport implements ToModel, WithHeadingRow, withValidation
         ]);
     }
 
-    public function rules(): array
+    /*public function rules(): array
     {
         return [
             'expedition_date' => 'required|date',
@@ -47,5 +47,5 @@ class InvoicesImport implements ToModel, WithHeadingRow, withValidation
             'customer_id' => 'required',
             'status' => 'required',
         ];
-    }
+    }*/
 }
