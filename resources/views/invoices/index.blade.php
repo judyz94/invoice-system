@@ -71,7 +71,7 @@
                             <h5><strong>Import Excel File</strong></h5>
                             <input type="file" name="file" class="form-control-file">
                             <br>
-                            <button class="btn btn-success">{{ __('Import') }}</button>
+                            <button class="btn btn-success"><i class="fas fa-file-excel"></i> {{ __('Import') }}</button>
                         </form>
                     </div>
                 </div>
