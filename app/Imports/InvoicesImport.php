@@ -4,7 +4,6 @@ namespace App\Imports;
 
 use App\Invoice;
 use Illuminate\Database\Eloquent\Model;
-use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 //use Maatwebsite\Excel\Concerns\withValidation;
@@ -12,8 +11,6 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class InvoicesImport implements ToModel, WithHeadingRow/*, withValidation*/
 {
-    //use Importable;
-
     /**
      * @param array $row
      *
