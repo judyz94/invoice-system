@@ -33,19 +33,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ route('home') }}"><i class="fas fa-home"></i>  Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('customers.index') }}">Customers</a>
+                    <a class="nav-link" href="{{ route('customers.index') }}"><i class="fas fa-users"></i>  Customers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('sellers.index') }}">Sellers</a>
+                    <a class="nav-link" href="{{ route('sellers.index') }}"><i class="fas fa-users-cog"></i>  Sellers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('products.index') }}">Products</a>
+                    <a class="nav-link" href="{{ route('products.index') }}"><i class="fas fa-shopping-cart"></i>  Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('invoices.index') }}">Invoices</a>
+                    <a class="nav-link" href="{{ route('invoices.index') }}"><i class="fas fa-file-alt"></i>  Invoices</a>
                 </li>
             </ul>
         </div>
