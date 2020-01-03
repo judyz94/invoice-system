@@ -3,7 +3,6 @@
         <div class="form-group">
             <label for="expedition_date">{{ __('Expedition date') }}</label>
             <input type="date" class="form-control" id="expedition_date" name="expedition_date"
-                   placeholder="{{ __('YYYY/MM/DD') }}"
                    value="{{ old('expedition_date', now()->toDateString()) }}">
         </div>
     </div>
@@ -12,7 +11,6 @@
         <div class="form-group">
             <label for="due_date">{{ __('Due date') }}</label>
             <input type="date" class="form-control" id="due_date" name="due_date"
-                   placeholder="{{ __('YYYY/MM/DD') }}"
                    value="{{ old('due_date', now()->addDays(30)->toDateString()) }}">
         </div>
     </div>
@@ -21,7 +19,6 @@
         <div class="form-group">
             <label for="receipt_date">{{ __('Receipt date') }}</label>
             <input type="date" class="form-control" id="receipt_date" name="receipt_date"
-                   placeholder="{{ __('YYYY/MM/DD') }}"
                    value="{{ old('receipt_date', $invoice->receipt_date) }}">
         </div>
     </div>
