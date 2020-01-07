@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\InvoiceStatus;
 
 class Invoice extends Model
 {
@@ -34,5 +35,9 @@ class Invoice extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function getStatusColour(): string
+    {
+        return $this->status->getColour();
+    }
 }
 
