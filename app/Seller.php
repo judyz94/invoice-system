@@ -10,6 +10,8 @@ class Seller extends Model
 {
     protected $fillable = ['name', 'document', 'email', 'phone', 'city_id', 'address'];
 
+    protected $guarded = [];
+
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class);

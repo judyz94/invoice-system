@@ -11,7 +11,12 @@ use App\Product;
 use App\Seller;
 use App\User;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+
+use App\Imports\InvoicesImport;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Reader;
 
 class InvoiceController extends Controller
 {
@@ -32,13 +37,15 @@ class InvoiceController extends Controller
      * @param Product $product
      * @return Response
      */
-    public function index(Invoice $invoice, Product $product)
+    public function index(Invoice $invoice, Product $product, Seller $seller)
     {
+        $sellers = Seller::all();
         $products = Product::all();
         $invoices = Invoice::all();
-        return view('invoices.index', compact( 'products', 'invoices'), [
+        return view('invoices.index', compact( 'products', 'invoices', 'sellers'), [
             'invoice' => $invoice,
-            'product' => $product
+            'product' => $product,
+            'seller' => $seller
         ]);
     }
 
@@ -169,6 +176,22 @@ class InvoiceController extends Controller
         $invoice->save();
 
         return redirect()->route('invoices.show', $invoice);
+    }
+
+    public function import(/*Request $request*/)
+    {
+        //(new InvoicesImport)->import('invoices.xlsx');
+        /*$file = $request->file('file');
+        (new InvoicesImport)->import(request()->file('file'));
+
+        return redirect()->route('invoices.index')->with('success', 'File imported succesfully');*/
+
+        /*$file = $request->file('file');
+                Excel::import(new InvoicesImport, $file );
+                return back()->with('message', 'Invoice import completed');*/
+
+
+        return Excel::import(new InvoicesImport, 'invoices.xlsx');
     }
 }
 
