@@ -19,4 +19,4 @@ Route::put('/invoices/{invoice}/products/{product}', 'InvoiceProductController@u
 Route::delete('/invoices/{invoice}/products/{product}', 'InvoiceProductController@destroy')->name('invoiceProduct.destroy');
 
 Route::post('/import/invoices', 'InvoiceController@import')->name('invoices.import');
-Route::get('/import', 'InvoiceController@import');
+

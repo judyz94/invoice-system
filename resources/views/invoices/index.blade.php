@@ -66,12 +66,12 @@
                         </tbody>
                     </table>
                     <div class="card-footer justify-content-lg-start">
-                        <h5><strong>Import Excel File</strong></h5>
-                        <br>
                         <form action="{{ route('invoices.import') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <input type="file" name="file">
-                            <button class="btn btn-secondary">{{ __('Upload') }}</button>
+                            <h5><strong>Import Excel File</strong></h5>
+                            <input type="file" name="file" class="form-control-file">
+                            <br>
+                            <button class="btn btn-success"><i class="fas fa-file-excel"></i> {{ __('Import') }}</button>
                         </form>
                     </div>
                 </div>

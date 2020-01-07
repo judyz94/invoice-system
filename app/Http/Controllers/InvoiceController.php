@@ -13,10 +13,8 @@ use App\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
 use App\Imports\InvoicesImport;
 use Maatwebsite\Excel\Facades\Excel;
-use Maatwebsite\Excel\Reader;
 
 class InvoiceController extends Controller
 {
@@ -178,20 +176,11 @@ class InvoiceController extends Controller
         return redirect()->route('invoices.show', $invoice);
     }
 
-    public function import(/*Request $request*/)
+    public function import(Request $request)
     {
-        //(new InvoicesImport)->import('invoices.xlsx');
-        /*$file = $request->file('file');
-        (new InvoicesImport)->import(request()->file('file'));
-
-        return redirect()->route('invoices.index')->with('success', 'File imported succesfully');*/
-
-        /*$file = $request->file('file');
+        $file = $request->file('file');
                 Excel::import(new InvoicesImport, $file );
-                return back()->with('message', 'Invoice import completed');*/
-
-
-        return Excel::import(new InvoicesImport, 'invoices.xlsx');
+                return back()->with('message', 'Invoice import succesfully');
     }
 }
 
