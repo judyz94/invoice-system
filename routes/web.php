@@ -10,6 +10,7 @@ Route::post('invoices/{invoice}/products')->uses('InvoiceController@addProduct')
 Route::resource('customers', 'CustomerController');
 Route::resource('sellers', 'SellerController');
 Route::resource('products', 'ProductController');
+Route::resource('users', 'UserController');
 
 Route::post('/autocomplete/fetch', 'InvoiceProductController@fetch');
 Route::get('/invoices/{invoice}/products/create', 'InvoiceProductController@create')->name('invoiceProduct.create');
