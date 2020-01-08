@@ -36,6 +36,9 @@
                     <a class="nav-link" href="{{ route('home') }}"><i class="fas fa-home"></i>  Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user-friends"></i>  Users</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('customers.index') }}"><i class="fas fa-users"></i>  Customers</a>
                 </li>
                 <li class="nav-item">
