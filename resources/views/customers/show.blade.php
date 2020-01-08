@@ -6,8 +6,8 @@
             <div class="col-xl-14">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h4 class="card-title"><strong>{{ __('Customer ID') }}
-                                {{ $customer->document }}</strong></h4>
+                        <h4 class="card-title"><strong>{{ __('Customer') }}
+                                {{ $customer->name }}</strong></h4>
                     </div>
 
                     <div class="card-body">
@@ -15,7 +15,7 @@
                         <dt class="col-md-3">{{ __('ID') }}</dt>
                         <dd class="col-md-3">{{ $customer->document }}</dd>
 
-                        <dt class="col-md-3">{{ __('Full Name') }}</dt>
+                        <dt class="col-md-3">{{ __('Name') }}</dt>
                         <dd class="col-md-3">{{ $customer->name }}</dd>
 
                         <dt class="col-md-3">{{ __('Email') }}</dt>

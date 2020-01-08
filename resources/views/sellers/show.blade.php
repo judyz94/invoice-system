@@ -6,14 +6,14 @@
             <div class="col-xl-14">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h4 class="card-title"><strong>{{ __('Seller ID') }}  {{ $seller->document }}</strong></h4>
+                        <h4 class="card-title"><strong>{{ __('Seller') }}  {{ $seller->name }}</strong></h4>
                     </div>
                     <div class="card-body">
                         <dl class="row">
                             <dt class="col-md-3">{{ __('ID') }}</dt>
                             <dd class="col-md-3">{{ $seller->document }}</dd>
 
-                            <dt class="col-md-3">{{ __('Full Name') }}</dt>
+                            <dt class="col-md-3">{{ __('Name') }}</dt>
                             <dd class="col-md-3">{{ $seller->name }}</dd>
 
                             <dt class="col-md-3">{{ __('Email') }}</dt>
