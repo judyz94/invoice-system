@@ -6,7 +6,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h4 class="card-title"><strong>{{ __('Edit Seller ID') }}  {{ $seller->document }}</strong></h4>
+                        <h4 class="card-title"><strong>{{ __('Edit Seller') }}  {{ $seller->name }}</strong></h4>
                     </div>
                     <div class="card-body">
                         @if($errors->any())
