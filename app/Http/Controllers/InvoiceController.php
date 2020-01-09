@@ -34,9 +34,12 @@ class InvoiceController extends Controller
      * @param Product $product
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $invoices = Invoice::paginate(10);
+        $type = $request->get('type');
+        $search = $request->get('searchfor');
+
+        $invoices = Invoice::searchfor($type, $search)->paginate(10);
         return view('invoices.index', compact( 'invoices'));
     }
 
