@@ -12,7 +12,6 @@ use App\Seller;
 use App\User;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Imports\InvoicesImport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -33,7 +32,7 @@ class InvoiceController extends Controller
      *
      * @param Invoice $invoice
      * @param Product $product
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Invoice $invoice, Product $product, Seller $seller)
     {
@@ -51,7 +50,7 @@ class InvoiceController extends Controller
      * Show the form for creating a new resource.
      *
      * @param Invoice $invoice
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create(Invoice $invoice)
     {
@@ -66,7 +65,7 @@ class InvoiceController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  StoreRequest  $request
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request)
     {
@@ -95,7 +94,7 @@ class InvoiceController extends Controller
      *
      * @param Invoice $invoice
      * @param Product $product
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Invoice $invoice)
     {
@@ -110,7 +109,7 @@ class InvoiceController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Invoice $invoice
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Invoice $invoice)
     {
@@ -125,7 +124,7 @@ class InvoiceController extends Controller
      *
      * @param UpdateRequest $request
      * @param Invoice $invoice
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, Invoice $invoice)
     {
@@ -146,7 +145,7 @@ class InvoiceController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Invoice $invoice
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws Exception
      */
     public function destroy(Invoice $invoice)

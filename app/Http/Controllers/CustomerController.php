@@ -8,7 +8,6 @@ use App\Customer;
 use App\City;
 use App\Product;
 use Exception;
-use Illuminate\Http\Response;
 
 class CustomerController extends Controller
 {
@@ -25,7 +24,7 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -37,7 +36,7 @@ class CustomerController extends Controller
      * Show the form for creating a new resource.
      *
      * @param Customer $customer
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create(Customer $customer)
     {
@@ -50,7 +49,7 @@ class CustomerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  StoreRequest  $request
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request)
     {
@@ -71,7 +70,7 @@ class CustomerController extends Controller
      *
      * @param Customer $customer
      * @param Product $product
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Customer $customer, Product $product)
     {
@@ -83,7 +82,7 @@ class CustomerController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Customer $customer
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Customer $customer)
     {
@@ -96,7 +95,7 @@ class CustomerController extends Controller
      *
      * @param UpdateRequest $request
      * @param Customer $customer
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, Customer $customer)
     {
@@ -115,7 +114,7 @@ class CustomerController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Customer $customer
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws Exception
      */
     public function destroy(Customer $customer)

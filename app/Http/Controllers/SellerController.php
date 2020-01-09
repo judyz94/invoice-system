@@ -8,7 +8,6 @@ use App\Seller;
 use App\City;
 use App\Product;
 use Exception;
-use Illuminate\Http\Response;
 
 class SellerController extends Controller
 {
@@ -25,7 +24,7 @@ class SellerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -37,7 +36,7 @@ class SellerController extends Controller
      * Show the form for creating a new resource.
      *
      * @param Seller $seller
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create(Seller $seller)
     {
@@ -50,7 +49,7 @@ class SellerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  StoreRequest  $request
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request)
     {
@@ -71,7 +70,7 @@ class SellerController extends Controller
      *
      * @param Seller $seller
      * @param Product $product
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Seller $seller, Product $product)
     {
@@ -83,7 +82,7 @@ class SellerController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Seller $seller
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Seller $seller)
     {
@@ -96,7 +95,7 @@ class SellerController extends Controller
      *
      * @param UpdateRequest $request
      * @param Seller $seller
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, Seller $seller)
     {
@@ -115,7 +114,7 @@ class SellerController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Seller $seller
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws Exception
      */
     public function destroy(Seller $seller)
