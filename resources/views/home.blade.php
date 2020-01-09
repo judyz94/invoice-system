@@ -18,6 +18,16 @@
 
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-user-friends"></i> <strong>Users</strong></h5>
+                                <p class="card-text">In this section, you can see the list of all the users with access
+                                    to program, the personal information of each one, create new ones and delete the
+                                    old ones.</p>
+                                <a href="{{ route('users.index') }}" class="btn btn-primary">Go</a>
+                            </div>
+                        </div>
+
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
                                 <h5 class="card-title"><i class="fas fa-users"></i> <strong>Customers</strong></h5>
                                 <p class="card-text">In this section, you can see the list of all the customers, the
                                     detailed information of each one, create new ones, edit and delete the old ones.

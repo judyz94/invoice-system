@@ -176,6 +176,27 @@ class InvoiceController extends Controller
         return redirect()->route('invoices.show', $invoice);
     }
 
+    public function updateProduct(Invoice $invoice, UpdateRequest $request)
+    {
+        $price = $request->input('product_price');
+        $quantity = $request->input('product_quantity');
+        $totalPrice = $price * $quantity;
+        $vat = $totalPrice * 0.19;
+
+        $invoice->products()->updateExistingPivot($request->input('product_id'), [
+            'price' => $price,
+            'quantity' => $quantity,
+        ]);
+
+        $invoice->vat += $vat;
+        $invoice->total += $totalPrice;
+        $invoice->total_with_vat += $totalPrice + $vat;
+
+        $invoice->save();
+
+        return redirect()->route('invoices.show', $invoice);
+    }
+
     public function import(Request $request)
     {
         $file = $request->file('file');
