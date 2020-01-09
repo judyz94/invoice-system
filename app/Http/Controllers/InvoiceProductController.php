@@ -71,7 +71,7 @@ class InvoiceProductController extends Controller
     {
         $invoices = Invoice::all();
         $products = Product::all();
-         return view('invoicesProducts.edit', compact( 'products', 'invoices'), [
+        return view('invoicesProducts.edit', compact( 'products', 'invoices'), [
             'invoice' => $invoice,
             'product' => $product
         ]);
