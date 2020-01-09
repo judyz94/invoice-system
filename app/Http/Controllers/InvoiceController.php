@@ -34,16 +34,10 @@ class InvoiceController extends Controller
      * @param Product $product
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Invoice $invoice, Product $product, Seller $seller)
+    public function index()
     {
-        $sellers = Seller::all();
-        $products = Product::all();
-        $invoices = Invoice::all();
-        return view('invoices.index', compact( 'products', 'invoices', 'sellers'), [
-            'invoice' => $invoice,
-            'product' => $product,
-            'seller' => $seller
-        ]);
+        $invoices = Invoice::paginate(10);
+        return view('invoices.index', compact( 'invoices'));
     }
 
     /**

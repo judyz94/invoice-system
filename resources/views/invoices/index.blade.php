@@ -7,10 +7,16 @@
                <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}</strong></h3>
-                    <a href="{{ route('invoices.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
-                        {{ __('Create a new invoice') }}
-                    </a>
                 </div>
+                   <nav class="navbar navbar-light bg-light">
+                       <a href="{{ route('invoices.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
+                               {{ __('Create a new invoice') }}
+                       </a>
+                       <form class="form-inline">
+                           <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                       </form>
+                   </nav>
                 <div class="table-responsive-xl">
                     <table class="table table-hover" style="width:100%">
                         <thead>
@@ -72,6 +78,9 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <ul class="pagination justify-content-center">
+                    {{ $invoices->links() }}
+                    </ul>
                     <div class="card-footer justify-content-lg-start">
                         <form action="{{ route('invoices.import') }}" method="post" enctype="multipart/form-data">
                             @csrf

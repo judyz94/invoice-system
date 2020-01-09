@@ -55,6 +55,9 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <ul class="pagination justify-content-center">
+                        {{ $sellers->links() }}
+                    </ul>
                 </div>
             </div>
         </div>

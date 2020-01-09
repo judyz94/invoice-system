@@ -45,6 +45,9 @@
                         @endforeach
                         </tbody>
                     </table>
+                        <ul class="pagination justify-content-center">
+                            {{ $products->links() }}
+                        </ul>
                 </div>
             </div>
         </div>
