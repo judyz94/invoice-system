@@ -7,6 +7,7 @@ use App\Http\Requests\Product\UpdateRequest;
 use App\City;
 use App\Product;
 use Exception;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -23,12 +24,16 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::paginate(4);
-        return view('products.index',  compact( 'products'));
+        $type = $request->get('type');
+        $search = $request->get('searchfor');
+
+        $products = Product::searchfor($type, $search)->paginate(4);
+        return view('products.index', compact( 'products'));
     }
 
     /**

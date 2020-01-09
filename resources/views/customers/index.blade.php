@@ -7,10 +7,26 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <h3 class="card-title mb-0"><strong>{{ __('Customers') }}</strong></h3>
+                    </div>
+
+                    <nav class="navbar navbar-light bg-light">
                         <a href="{{ route('customers.create') }}" class="btn btn-success">
                             <i class="fas fa-plus"></i> {{ __('Create a new customer') }}
                         </a>
-                    </div>
+
+                        <form class="form-inline">
+                            <select name="type" class="form-control mr-sm-2" id="select">
+                                <option value="">Search for</option>
+                                <option value="document">ID</option>
+                                <option value="name">Name</option>
+                                <option value="email">Email</option>
+                            </select>
+
+                            <input name="searchfor" class="form-control mr-sm-2" type="search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </nav>
+
                     <div class="table-responsive-xl">
                         <table class="table table-hover" style="width:100%">
                             <thead>

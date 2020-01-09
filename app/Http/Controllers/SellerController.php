@@ -8,6 +8,7 @@ use App\Seller;
 use App\City;
 use App\Product;
 use Exception;
+use Illuminate\Http\Request;
 
 class SellerController extends Controller
 {
@@ -24,12 +25,16 @@ class SellerController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $sellers = Seller::paginate(10);
-        return view('sellers.index',  compact('sellers'));
+        $type = $request->get('type');
+        $search = $request->get('searchfor');
+
+        $sellers = Seller::searchfor($type, $search)->paginate(10);
+        return view('sellers.index', compact( 'sellers'));
     }
 
     /**

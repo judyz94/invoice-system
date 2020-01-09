@@ -8,6 +8,7 @@ use App\Customer;
 use App\City;
 use App\Product;
 use Exception;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
@@ -24,12 +25,16 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customers = Customer::paginate(10);
-        return view('customers.index',  compact('customers'));
+        $type = $request->get('type');
+        $search = $request->get('searchfor');
+
+        $customers = Customer::searchfor($type, $search)->paginate(10);
+        return view('customers.index', compact( 'customers'));
     }
 
     /**

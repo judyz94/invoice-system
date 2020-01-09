@@ -30,8 +30,7 @@ class InvoiceController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param Invoice $invoice
-     * @param Product $product
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)

@@ -21,5 +21,12 @@ class Customer extends Model
     {
         return $this->belongsTo(City::class);
     }
+
+    public function scopeSearchFor($query, $type, $search)
+    {
+        if (($type) && ($search)) {
+            return $query->where($type, 'like', "%$search%");
+        }
+    }
 }
 

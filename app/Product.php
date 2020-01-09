@@ -16,5 +16,12 @@ class Product extends Model
                 'price',
                 'quantity');
     }
+
+    public function scopeSearchFor($query, $type, $search)
+    {
+        if (($type) && ($search)) {
+            return $query->where($type, 'like', "%$search%");
+        }
+    }
 }
 
