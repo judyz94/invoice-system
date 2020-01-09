@@ -12,8 +12,20 @@
                        <a href="{{ route('invoices.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
                                {{ __('Create a new invoice') }}
                        </a>
+
                        <form class="form-inline">
-                           <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                           <select name="type" class="form-control mr-sm-2" id="select">
+                               <option value="">Search for</option>
+                               <option value="code">Code</option>
+                               <option value="expedition_date">Expedition date</option>
+                               <option value="due_date">Due date</option>
+                               <option value="receipt_date">Receipt date</option>
+                               <option value="sale_description">Sale description</option>
+                               <option value="vat">VAT</option>
+                               <option value="status">Status</option>
+                           </select>
+
+                           <input name="searchfor" class="form-control mr-sm-2" type="search" aria-label="Search">
                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                        </form>
                    </nav>
