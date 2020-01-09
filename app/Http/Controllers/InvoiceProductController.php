@@ -24,23 +24,6 @@ class InvoiceProductController extends Controller
         return view('invoicesProducts.create', compact( 'products', 'invoice'));
     }
 
-    public function fetch(StoreRequest $productRequest)
-    {
-        if($productRequest->get('query')->validated())
-        {
-            $query = $productRequest->get('query')->validated();
-            $data = DB::table('products')
-                ->where('name', 'LIKE', "%{$query}%")
-                ->get();
-            $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
-            foreach($data as $row) {
-                $output .= '<li><a href="#">'.$row->name.'</a></li>';
-            }
-            $output .= '</ul>';
-            echo $output;
-        }
-    }
-
     /**
      * Store a newly created resource in storage.
      *
