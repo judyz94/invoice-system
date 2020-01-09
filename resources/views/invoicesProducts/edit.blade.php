@@ -33,18 +33,18 @@
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="">{{ __('Price') }}</label><br>
+                                    <label for="product_price">{{ __('Price') }}</label><br>
                                     @foreach($invoice->products as $product)
-                                        <input type="number" class="form-control" id="price" name="price"
-                                               value="{{ old('price', $product->pivot->price) }}">
+                                        <input type="number" class="form-control" id="product_price" name="product_price"
+                                               value="{{ old('product_price', $product->pivot->price) }}">
                                     @endforeach
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="quantity">{{ __('Quantity') }}</label><br>
+                                    <label for="product_quantity">{{ __('Quantity') }}</label><br>
                                     @foreach($invoice->products as $product)
-                                        <input type="number" class="form-control" id="quantity" name="quantity"
-                                               value="{{ old('quantity', $product->pivot->quantity) }}">
+                                        <input type="number" class="form-control" id="product_quantity" name="product_quantity"
+                                               value="{{ old('product_quantity', $product->pivot->quantity) }}">
                                     @endforeach
                                 </div>
 
