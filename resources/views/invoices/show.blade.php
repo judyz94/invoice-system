@@ -119,7 +119,7 @@
                                                placeholder="{{ __('Type a quantity') }}" name="product_quantity" required>
                                     </div>
                                 </div>
-                                <button class="btn btn-success btn-block col-md-1" type="submit">Add</button>
+                                <button class="btn btn-success btn-block col-md-1" type="submit"><i class="fas fa-plus"></i> Add</button>
                             </div>
                         </form>
                     </div>
