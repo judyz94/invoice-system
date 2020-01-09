@@ -37,8 +37,8 @@
                                             <th style="width:120px">{{ __('Total with VAT') }}</th>
                                             <th style="width:100px">{{ __('Seller ID') }}</th>
                                             <th style="width:100px">{{ __('Customer ID') }}</th>
-                                            <th style="width:50px">{{ __('Status') }}</th>
                                             <th style="width:100px">{{ __('Created by') }}</th>
+                                            <th style="width:50px">{{ __('Status') }}</th>
                                             <th style="width:100px" >{{ __('Actions') }}</th>
                                         </tr>
                                         </thead>
@@ -54,14 +54,17 @@
                                                 <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
                                                 <td>{{ $invoice->seller->document }}</td>
                                                 <td>{{ $invoice->customer->document }}</td>
-                                                <td>{{ $invoice->status }}</td>
                                                 <td>{{ $invoice->user->name }}</td>
+                                                <td><h5>
+                                                   @if($invoice->status == 'New')<span class="badge badge-secondary">New</span>@endif
+                                                   @if($invoice->status == 'Sent')<span class="badge badge-primary">Sent</span>@endif
+                                                   @if($invoice->status == 'Rejected')<span class="badge badge-warning">Rejected</span>@endif
+                                                   @if($invoice->status == 'Overdue')<span class="badge badge-danger">Overdue</span>@endif
+                                                   @if($invoice->status == 'Paid')<span class="badge badge-success">Paid</span>@endif
+                                                   @if($invoice->status == 'Cancelled')<span class="badge badge-light">Cancelled</span>@endif
+                                                </h5></td>
                                                 <td class="text-right">
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
-                                                        <a href="{{ route('invoiceProduct.create', [$invoice, $product]) }}"
-                                                           class="btn btn-link" title="{{ __('Add Details') }}">
-                                                            <i class="fas fa-plus" style="color:limegreen"></i>
-                                                        </a>
                                                         <a href="{{ route('invoices.show', $invoice) }}" class="btn btn-link"
                                                            title="{{ __('Show Details') }}">
                                                             <i class="fas fa-eye" style="color:black"></i>
