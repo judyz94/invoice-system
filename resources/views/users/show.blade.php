@@ -13,11 +13,12 @@
                             <dt class="col-md-3">{{ __('Name') }}</dt>
                             <dd class="col-md-3">{{ $user->name }}</dd>
 
+                            <dt class="col-md-3">{{ __('Role') }}</dt>
+                            <dd class="col-md-3">{{ $user->role }}</dd>
+
                             <dt class="col-md-3">{{ __('Email') }}</dt>
                             <dd class="col-md-3">{{ $user->email }}</dd>
 
-                            <dt class="col-md-3">{{ __('Role') }}</dt>
-                            <dd class="col-md-3">{{ $user->role }}</dd>
                         </dl>
 
                         <div class="row">
