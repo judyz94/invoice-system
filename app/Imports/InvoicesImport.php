@@ -5,11 +5,11 @@ namespace App\Imports;
 use App\Invoice;
 use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithValidation;
+//use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 
-class InvoicesImport implements ToModel, WithValidation, WithHeadingRow
+class InvoicesImport implements ToModel, /*WithValidation,*/ WithHeadingRow
 {
     /**
      * @param array $row
@@ -32,11 +32,10 @@ class InvoicesImport implements ToModel, WithValidation, WithHeadingRow
             'customer_id' => $row['customer_id'],
             'status' => $row['status'],
             'user_id' => $row['user_id'],
-            //'is_active' => ($row['active'] == 'YES') ? 1 : 0,
         ]);
     }
 
-    public function rules(): array
+    /*public function rules(): array
     {
         return [
             'expedition_date' => 'required|date',
@@ -47,5 +46,5 @@ class InvoicesImport implements ToModel, WithValidation, WithHeadingRow
             'customer_id' => 'required',
             'status' => 'required',
         ];
-    }
+    }*/
 }
