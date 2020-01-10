@@ -52,6 +52,7 @@
                                             <th style="width:100px">{{ __('Actions') }}</th>
                                         </tr>
                                         </thead>
+
                                         <tbody>
                                         @foreach($customer->invoices as $invoice)
                                             <tr>
@@ -75,6 +76,7 @@
                                                 </h5></td>
                                                 <td class="text-right">
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
+
                                                         <a href="{{ route('invoices.show', $invoice) }}" class="btn btn-link"
                                                            title="{{ __('Show Details') }}">
                                                             <i class="fas fa-eye" style="color:black"></i>
@@ -83,6 +85,7 @@
                                                            title="{{ __('Edit Invoice') }}">
                                                             <i class="fas fa-edit" style="color:black"></i>
                                                         </a>
+
                                                         <button type="button" class="btn btn-link text-danger"
                                                                 data-route="{{ route('invoices.destroy', $invoice) }}"
                                                                 data-toggle="modal" data-target="#confirmDeleteModal"
@@ -95,6 +98,7 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+
                                     <div class="card-footer d-flex justify-content-between">
                                         <a href="{{ route('customers.index') }}" class="btn btn-secondary">
                                             <i class="fas fa-arrow-left"></i> {{ __('Back to Customers') }}
@@ -103,6 +107,7 @@
                                             <i class="fas fa-plus"></i>  {{ __('Associate New Invoice') }}
                                         </a>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -112,6 +117,7 @@
         </div>
     </div>
 @endsection
+
 @push('modals')
     @include('partials.__confirm_delete_modal')
 @endpush

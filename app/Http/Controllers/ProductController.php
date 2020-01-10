@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Product\ProductRequest;
-use App\Http\Requests\Product\UpdateRequest;
 use App\City;
 use App\Product;
+use Illuminate\Http\Request;
+use App\Http\Requests\Product\ProductRequest;
+use App\Http\Requests\Product\UpdateRequest;
 use Exception;
-use Illuminate\Http\Response;
 
 class ProductController extends Controller
 {
@@ -24,23 +24,29 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
-        return view('products.index',  compact( 'products'));
+        $type = $request->get('type');
+        $search = $request->get('searchfor');
+
+        $products = Product::searchfor($type, $search)->paginate(4);
+
+        return view('products.index', compact( 'products'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
      * @param Product $product
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create(Product $product)
     {
         $product = new Product();
+
         return view('products.create', compact('product'));
     }
 
@@ -48,7 +54,7 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param ProductRequest $request
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(ProductRequest $request)
     {
@@ -57,6 +63,7 @@ class ProductController extends Controller
         $product->unit_price = $request->input('unit_price');
 
         $product->save();
+
         return redirect()->route('products.index');
     }
 
@@ -64,11 +71,12 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Product $product
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Product $product)
     {
         $cities = City::all();
+
         return view('products.edit',  compact('cities','product'));
     }
 
@@ -77,7 +85,7 @@ class ProductController extends Controller
      *
      * @param UpdateRequest $request
      * @param Product $product
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, Product $product)
     {
@@ -85,6 +93,7 @@ class ProductController extends Controller
         $product->unit_price = $request->input('unit_price');
 
         $product->save();
+
         return redirect()->route('products.index');
     }
 
@@ -92,12 +101,13 @@ class ProductController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Product $product
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws Exception
      */
     public function destroy(Product $product)
     {
         $product->delete();
+
         return redirect()->route('products.index');
     }
 }

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Seller\StoreRequest;
-use App\Http\Requests\Seller\UpdateRequest;
 use App\Seller;
 use App\City;
 use App\Product;
+use Illuminate\Http\Request;
+use App\Http\Requests\Seller\StoreRequest;
+use App\Http\Requests\Seller\UpdateRequest;
 use Exception;
-use Illuminate\Http\Response;
 
 class SellerController extends Controller
 {
@@ -25,24 +25,30 @@ class SellerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $sellers = Seller::with(['city'])->paginate();
-        return view('sellers.index',  compact('sellers'));
+        $type = $request->get('type');
+        $search = $request->get('searchfor');
+
+        $sellers = Seller::searchfor($type, $search)->paginate(10);
+
+        return view('sellers.index', compact( 'sellers'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
      * @param Seller $seller
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create(Seller $seller)
     {
         $cities = City::all();
         $seller = new Seller();
+
         return view('sellers.create', compact('cities', 'seller'));
     }
 
@@ -50,7 +56,7 @@ class SellerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  StoreRequest  $request
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request)
     {
@@ -63,6 +69,7 @@ class SellerController extends Controller
         $seller->address = $request->input('address');
 
         $seller->save();
+
         return redirect()->route('sellers.index');
     }
 
@@ -71,11 +78,12 @@ class SellerController extends Controller
      *
      * @param Seller $seller
      * @param Product $product
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Seller $seller, Product $product)
     {
         $cities = City::all();
+
         return view('sellers.show',  compact('cities', 'seller', 'product'));
     }
 
@@ -83,11 +91,12 @@ class SellerController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Seller $seller
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Seller $seller)
     {
         $cities = City::all();
+
         return view('sellers.edit',  compact('cities', 'seller'));
     }
 
@@ -96,7 +105,7 @@ class SellerController extends Controller
      *
      * @param UpdateRequest $request
      * @param Seller $seller
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, Seller $seller)
     {
@@ -108,6 +117,7 @@ class SellerController extends Controller
         $seller->address = $request->input('address');
 
         $seller->save();
+
         return redirect()->route('sellers.index');
     }
 
@@ -115,12 +125,13 @@ class SellerController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Seller $seller
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws Exception
      */
     public function destroy(Seller $seller)
     {
         $seller->delete();
+
         return redirect()->route('sellers.index');
     }
 }

@@ -8,6 +8,7 @@
                     <div class="card-header pb-0">
                         <h4 class="card-title"><strong>{{ __('Edit Detail of Invoice') }} #{{ $invoice->code }}</strong></h4>
                     </div>
+
                     <div class="card-body">
                         @if($errors->any())
                             <div class="alert alert-danger">
@@ -18,13 +19,11 @@
                                 </ul>
                             </div>
                         @endif
+
                         <form id="form" action="{{ route('invoiceProduct.update', [$invoice, $product]) }}" method="post">
                             @csrf
                             @method('put')
-                            @if(old('products'))
 
-                            @else
-                            @endif
                             <div class="row col-sm-10">
                                 <div class="form-group col-md-4">
                                     <label for="">{{ __('Product name') }}</label><br>
@@ -47,8 +46,8 @@
                                                value="{{ old('product_quantity', $product->pivot->quantity) }}">
                                     @endforeach
                                 </div>
-
                             </div>
+
                             <div class="card-footer d-flex justify-content-between">
                                 <a href="{{ route('invoices.index') }}" class="btn btn-danger">
                                     <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
@@ -57,6 +56,7 @@
                                     <i class="fas fa-edit"></i> {{ __('Update') }}
                                 </button>
                             </div>
+
                         </form>
                     </div>
                 </div>

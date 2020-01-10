@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Customer\StoreRequest;
-use App\Http\Requests\Customer\UpdateRequest;
 use App\Customer;
 use App\City;
 use App\Product;
+use Illuminate\Http\Request;
+use App\Http\Requests\Customer\StoreRequest;
+use App\Http\Requests\Customer\UpdateRequest;
 use Exception;
-use Illuminate\Http\Response;
 
 class CustomerController extends Controller
 {
@@ -25,24 +25,30 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customers = Customer::with(['city'])->paginate();
-        return view('customers.index',  compact('customers'));
+        $type = $request->get('type');
+        $search = $request->get('searchfor');
+
+        $customers = Customer::searchfor($type, $search)->paginate(10);
+
+        return view('customers.index', compact( 'customers'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
      * @param Customer $customer
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create(Customer $customer)
     {
         $cities = City::all();
         $customer = new Customer();
+
         return view('customers.create', compact('cities', 'customer'));
     }
 
@@ -50,7 +56,7 @@ class CustomerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  StoreRequest  $request
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request)
     {
@@ -63,6 +69,7 @@ class CustomerController extends Controller
         $customer->address = $request->input('address');
 
         $customer->save();
+
         return redirect()->route('customers.index');
     }
 
@@ -71,11 +78,12 @@ class CustomerController extends Controller
      *
      * @param Customer $customer
      * @param Product $product
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Customer $customer, Product $product)
     {
         $cities = City::all();
+
         return view('customers.show',  compact('cities', 'customer', 'product'));
     }
 
@@ -83,11 +91,12 @@ class CustomerController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Customer $customer
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Customer $customer)
     {
         $cities = City::all();
+
         return view('customers.edit',  compact('cities', 'customer'));
     }
 
@@ -96,7 +105,7 @@ class CustomerController extends Controller
      *
      * @param UpdateRequest $request
      * @param Customer $customer
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, Customer $customer)
     {
@@ -108,6 +117,7 @@ class CustomerController extends Controller
         $customer->address = $request->input('address');
 
         $customer->save();
+
         return redirect()->route('customers.index');
     }
 
@@ -115,12 +125,13 @@ class CustomerController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Customer $customer
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws Exception
      */
     public function destroy(Customer $customer)
     {
         $customer->delete();
+
         return redirect()->route('customers.index');
     }
 }

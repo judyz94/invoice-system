@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
             <div class="card">
                 <div class="card-header pb-0">
                     <h4 class="card-title"><strong>{{ __('Register') }}</strong></h4>
@@ -84,6 +85,7 @@
                                 </button>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>

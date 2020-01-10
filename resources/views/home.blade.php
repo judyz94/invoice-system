@@ -8,14 +8,15 @@
                 <div class="card-header text-center">
                     <h1 class="card-title"><strong>{{ __('Welcome to Invoice System for PlaceToPay!') }}</strong></h1>
                 </div>
+
                 <div class="card-body text-center m-lg-5">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-                    <div class="card-columns">
 
+                    <div class="card-columns">
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="fas fa-user-friends"></i> <strong>Users</strong></h5>

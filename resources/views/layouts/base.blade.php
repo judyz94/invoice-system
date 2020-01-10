@@ -23,14 +23,17 @@
 </head>
 <body>
 @stack('modals')
+
 <div id="app">
     <main class="py-4">
         @yield('content')
     </main>
 </div>
+
 <script src="{{ asset(mix('js/manifest.js')) }}"></script>
 <script src="{{ asset(mix('js/vendor.js')) }}"></script>
 <script src="{{ asset(mix('js/app.js')) }}"></script>
 @stack('scripts')
+
 </body>
 </html>

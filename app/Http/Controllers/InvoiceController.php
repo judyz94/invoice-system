@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Invoice\StoreRequest;
-use App\Http\Requests\Invoice\UpdateRequest;
-use App\Http\Requests\InvoiceProduct\DetailRequest;
 use App\Customer;
 use App\Invoice;
 use App\Product;
 use App\Seller;
 use App\User;
-use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Http\Requests\Invoice\StoreRequest;
+use App\Http\Requests\Invoice\UpdateRequest;
+use App\Http\Requests\InvoiceProduct\DetailRequest;
 use App\Imports\InvoicesImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Exception;
 
 class InvoiceController extends Controller
 {
@@ -31,34 +30,33 @@ class InvoiceController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param Invoice $invoice
-     * @param Product $product
-     * @return Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Invoice $invoice, Product $product, Seller $seller)
+    public function index(Request $request)
     {
-        $sellers = Seller::all();
-        $products = Product::all();
-        $invoices = Invoice::all();
-        return view('invoices.index', compact( 'products', 'invoices', 'sellers'), [
-            'invoice' => $invoice,
-            'product' => $product,
-            'seller' => $seller
-        ]);
+        $type = $request->get('type');
+        $search = $request->get('searchfor');
+
+        $invoices = Invoice::searchfor($type, $search)->paginate(10);
+
+        return view('invoices.index', compact( 'invoices'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
      * @param Invoice $invoice
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create(Invoice $invoice)
     {
         $customers = Customer::all();
         $sellers = Seller::all();
         $users = User::all();
+
         $invoice = new Invoice();
+
         return view('invoices.create', compact('sellers', 'customers', 'users', 'invoice'));
     }
 
@@ -66,11 +64,12 @@ class InvoiceController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  StoreRequest  $request
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreRequest $request)
     {
         $invoice = new Invoice();
+
         $invoice->id = $request->input('id');
         $invoice->expedition_date = $request->input('expedition_date');
         $invoice->due_date = $request->input('due_date');
@@ -95,14 +94,16 @@ class InvoiceController extends Controller
      *
      * @param Invoice $invoice
      * @param Product $product
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Invoice $invoice)
     {
         $customers = Customer::all();
         $sellers = Seller::all();
         $users = User::all();
+
         $products = Product::whereNotIn('id', $invoice->products->pluck('id')->values())->get();
+
         return view('invoices.show', compact( 'sellers', 'customers', 'users', 'invoice', 'products'));
     }
 
@@ -110,13 +111,14 @@ class InvoiceController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Invoice $invoice
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Invoice $invoice)
     {
         $customers = Customer::all();
         $sellers = Seller::all();
         $users = User::all();
+
         return view('invoices.edit', compact( 'sellers', 'customers', 'users', 'invoice'));
     }
 
@@ -125,7 +127,7 @@ class InvoiceController extends Controller
      *
      * @param UpdateRequest $request
      * @param Invoice $invoice
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, Invoice $invoice)
     {
@@ -139,6 +141,7 @@ class InvoiceController extends Controller
         $invoice->user_id = auth()->user()->id;
 
         $invoice->save();
+
         return redirect()->route('invoices.index');
     }
 
@@ -146,12 +149,13 @@ class InvoiceController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Invoice $invoice
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws Exception
      */
     public function destroy(Invoice $invoice)
     {
         $invoice->delete();
+
         return redirect()->route('invoices.index');
     }
 
@@ -200,8 +204,10 @@ class InvoiceController extends Controller
     public function import(Request $request)
     {
         $file = $request->file('file');
-                Excel::import(new InvoicesImport, $file );
-                return back()->with('message', 'Invoice import succesfully');
+
+        Excel::import(new InvoicesImport, $file );
+
+        return back()->with('message', 'Invoice import succesfully');
     }
 }
 

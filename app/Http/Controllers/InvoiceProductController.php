@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Invoice;
-use App\Http\Requests\InvoiceProduct\StoreRequest;
+use App\Http\Requests\InvoiceProduct\DetailRequest;
 use App\Http\Requests\InvoiceProduct\UpdateRequest;
-use Illuminate\Http\Response;
 
 class InvoiceProductController extends Controller
 {
@@ -27,37 +26,33 @@ class InvoiceProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreRequest $request
+     * @param DetailRequest $request
      * @param Invoice $invoice
      * @param Product $product
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(/*StoreRequest $productRequest,*/ StoreRequest $request, Invoice $invoice, Product $product)
+    public function store(/*StoreRequest $productRequest,*/ DetailRequest $request, Invoice $invoice, Product $product)
     {
 
         dd($request->all());
         //$invoice->products()->create($productRequest->validated());
 
         $invoice->products()->attach(request('product_id'), $request->validated());
+
         return redirect()->route('invoices.show', $invoice);
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param Invoice $invoice
-     * @param Product $product
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function edit(Invoice $invoice, Product $product)
+    public function edit()
     {
         $invoices = Invoice::all();
         $products = Product::all();
-        return view('invoicesProducts.edit', compact( 'products', 'invoices'), [
-            'invoice' => $invoice,
-            'product' => $product
-        ]);
+
+        return view('invoicesProducts.edit', compact( 'products', 'invoices'));
     }
 
     /**
@@ -66,11 +61,12 @@ class InvoiceProductController extends Controller
      * @param UpdateRequest $request
      * @param Invoice $invoice
      * @param Product $product
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateRequest $request, Invoice $invoice, Product $product)
     {
         $invoice->products()->updateExistingPivot($product->id, $request->validated());
+
         return redirect()->route('invoices.show', $invoice, $product);
     }
 
@@ -79,11 +75,12 @@ class InvoiceProductController extends Controller
      *
      * @param Product $product
      * @param Invoice $invoice
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Invoice $invoice, Product $product)
     {
         $invoice->products()->detach($product->id);
+
         return redirect()->route('invoices.show',  $invoice, $product);
 
     }

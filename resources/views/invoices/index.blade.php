@@ -7,10 +7,30 @@
                <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}</strong></h3>
-                    <a href="{{ route('invoices.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
-                        {{ __('Create a new invoice') }}
-                    </a>
                 </div>
+
+                   <nav class="navbar navbar-light bg-light">
+                       <a href="{{ route('invoices.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
+                               {{ __('Create a new invoice') }}
+                       </a>
+
+                       <form class="form-inline">
+                           <select name="type" class="form-control mr-sm-2" id="select">
+                               <option value="">Search for</option>
+                               <option value="code">Code</option>
+                               <option value="expedition_date">Expedition date</option>
+                               <option value="due_date">Due date</option>
+                               <option value="receipt_date">Receipt date</option>
+                               <option value="sale_description">Sale description</option>
+                               <option value="vat">VAT</option>
+                               <option value="status">Status</option>
+                           </select>
+
+                           <input name="searchfor" class="form-control mr-sm-2" type="search" aria-label="Search">
+                           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                       </form>
+                   </nav>
+
                 <div class="table-responsive-xl">
                     <table class="table table-hover" style="width:100%">
                         <thead>
@@ -29,6 +49,7 @@
                             <th style="width:100px">{{ __('Actions') }}</th>
                         </tr>
                         </thead>
+
                         <tbody>
                         @foreach($invoices as $invoice)
                             <tr>
@@ -60,18 +81,25 @@
                                            title="{{ __('Edit Invoice') }}">
                                             <i class="fas fa-edit" style="color:black"></i>
                                         </a>
+
                                         <button type="button" class="btn btn-link text-danger"
                                                 data-route="{{ route('invoices.destroy', $invoice) }}"
                                                 data-toggle="modal" data-target="#confirmDeleteModal"
                                                 title="{{ __('Delete Invoice') }}">
                                             <i class="fas fa-trash"></i>
                                         </button>
+
                                     </div>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
+
+                    <ul class="pagination justify-content-center">
+                    {{ $invoices->links() }}
+                    </ul>
+
                     <div class="card-footer justify-content-lg-start">
                         <form action="{{ route('invoices.import') }}" method="post" enctype="multipart/form-data">
                             @csrf
@@ -81,12 +109,14 @@
                             <button class="btn btn-success"><i class="fas fa-file-excel"></i> {{ __('Import') }}</button>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
         </div>
     </div>
 @endsection
+
 @push('modals')
     @include('partials.__confirm_delete_modal')
 @endpush
