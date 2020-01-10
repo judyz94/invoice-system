@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Product\ProductRequest;
-use App\Http\Requests\Product\UpdateRequest;
 use App\City;
 use App\Product;
-use Exception;
 use Illuminate\Http\Request;
+use App\Http\Requests\Product\ProductRequest;
+use App\Http\Requests\Product\UpdateRequest;
+use Exception;
 
 class ProductController extends Controller
 {
@@ -33,6 +33,7 @@ class ProductController extends Controller
         $search = $request->get('searchfor');
 
         $products = Product::searchfor($type, $search)->paginate(4);
+
         return view('products.index', compact( 'products'));
     }
 
@@ -45,6 +46,7 @@ class ProductController extends Controller
     public function create(Product $product)
     {
         $product = new Product();
+
         return view('products.create', compact('product'));
     }
 
@@ -61,6 +63,7 @@ class ProductController extends Controller
         $product->unit_price = $request->input('unit_price');
 
         $product->save();
+
         return redirect()->route('products.index');
     }
 
@@ -73,6 +76,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $cities = City::all();
+
         return view('products.edit',  compact('cities','product'));
     }
 
@@ -89,6 +93,7 @@ class ProductController extends Controller
         $product->unit_price = $request->input('unit_price');
 
         $product->save();
+
         return redirect()->route('products.index');
     }
 
@@ -102,6 +107,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+
         return redirect()->route('products.index');
     }
 }

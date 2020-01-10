@@ -38,25 +38,21 @@ class InvoiceProductController extends Controller
         //$invoice->products()->create($productRequest->validated());
 
         $invoice->products()->attach(request('product_id'), $request->validated());
+
         return redirect()->route('invoices.show', $invoice);
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param Invoice $invoice
-     * @param Product $product
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
-    public function edit(Invoice $invoice, Product $product)
+    public function edit()
     {
         $invoices = Invoice::all();
         $products = Product::all();
-        return view('invoicesProducts.edit', compact( 'products', 'invoices'), [
-            'invoice' => $invoice,
-            'product' => $product
-        ]);
+
+        return view('invoicesProducts.edit', compact( 'products', 'invoices'));
     }
 
     /**
@@ -70,6 +66,7 @@ class InvoiceProductController extends Controller
     public function update(UpdateRequest $request, Invoice $invoice, Product $product)
     {
         $invoice->products()->updateExistingPivot($product->id, $request->validated());
+
         return redirect()->route('invoices.show', $invoice, $product);
     }
 
@@ -83,6 +80,7 @@ class InvoiceProductController extends Controller
     public function destroy(Invoice $invoice, Product $product)
     {
         $invoice->products()->detach($product->id);
+
         return redirect()->route('invoices.show',  $invoice, $product);
 
     }

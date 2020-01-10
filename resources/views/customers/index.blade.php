@@ -40,6 +40,7 @@
                                 <th>Actions</th>
                             </tr>
                             </thead>
+
                             <tbody>
                             @foreach($customers as $customer)
                                 <tr>
@@ -51,6 +52,7 @@
                                     <td>{{ $customer->address }}</td>
                                     <td class="text-right">
                                         <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
+
                                             <a href="{{ route('customers.show', $customer) }}"
                                                class="btn btn-link" title="{{ __('Show Details') }}">
                                                 <i class="fas fa-eye" style="color:black"></i>
@@ -59,6 +61,7 @@
                                                class="btn btn-link" title="{{ __('Edit Customer') }}">
                                                 <i class="fas fa-edit" style="color:black"></i>
                                             </a>
+
                                             <button type="button" class="btn btn-link text-danger"
                                                     data-route="{{ route('customers.destroy', $customer) }}"
                                                     data-toggle="modal" data-target="#confirmDeleteModal"
@@ -71,15 +74,18 @@
                             @endforeach
                             </tbody>
                         </table>
+
                         <ul class="pagination justify-content-center">
                             {{ $customers->links() }}
                         </ul>
+
                     </div>
                 </div>
         </div>
     </div>
     </div>
 @endsection
+
 @push('modals')
     @include('partials.__confirm_delete_modal')
 @endpush

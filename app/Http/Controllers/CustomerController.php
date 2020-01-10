@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Customer\StoreRequest;
-use App\Http\Requests\Customer\UpdateRequest;
 use App\Customer;
 use App\City;
 use App\Product;
-use Exception;
 use Illuminate\Http\Request;
+use App\Http\Requests\Customer\StoreRequest;
+use App\Http\Requests\Customer\UpdateRequest;
+use Exception;
 
 class CustomerController extends Controller
 {
@@ -34,6 +34,7 @@ class CustomerController extends Controller
         $search = $request->get('searchfor');
 
         $customers = Customer::searchfor($type, $search)->paginate(10);
+
         return view('customers.index', compact( 'customers'));
     }
 
@@ -47,6 +48,7 @@ class CustomerController extends Controller
     {
         $cities = City::all();
         $customer = new Customer();
+
         return view('customers.create', compact('cities', 'customer'));
     }
 
@@ -67,6 +69,7 @@ class CustomerController extends Controller
         $customer->address = $request->input('address');
 
         $customer->save();
+
         return redirect()->route('customers.index');
     }
 
@@ -80,6 +83,7 @@ class CustomerController extends Controller
     public function show(Customer $customer, Product $product)
     {
         $cities = City::all();
+
         return view('customers.show',  compact('cities', 'customer', 'product'));
     }
 
@@ -92,6 +96,7 @@ class CustomerController extends Controller
     public function edit(Customer $customer)
     {
         $cities = City::all();
+
         return view('customers.edit',  compact('cities', 'customer'));
     }
 
@@ -112,6 +117,7 @@ class CustomerController extends Controller
         $customer->address = $request->input('address');
 
         $customer->save();
+
         return redirect()->route('customers.index');
     }
 
@@ -125,6 +131,7 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         $customer->delete();
+
         return redirect()->route('customers.index');
     }
 }

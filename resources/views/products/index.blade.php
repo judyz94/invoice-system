@@ -35,6 +35,7 @@
                             <th class="text-right">{{ __('Actions') }}</th>
                         </tr>
                         </thead>
+
                         <tbody>
                         @foreach($products as $product)
                             <tr>
@@ -60,15 +61,18 @@
                         @endforeach
                         </tbody>
                     </table>
+
                         <ul class="pagination justify-content-center">
                             {{ $products->links() }}
                         </ul>
+
                 </div>
             </div>
         </div>
         </div>
     </div>
 @endsection
+
 @push('modals')
     @include('partials.__confirm_delete_modal')
 @endpush

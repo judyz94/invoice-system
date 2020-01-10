@@ -8,6 +8,7 @@
                 <div class="card-header pb-0">
                     <h4 class="card-title"><strong>{{ __('New Product') }}</strong></h4>
                 </div>
+
         <div class="card-body">
             @if($errors->any())
                 <div class="alert alert-danger">
@@ -23,6 +24,7 @@
                     @include('products.__form')
                 </form>
         </div>
+
         <div class="card-footer d-flex justify-content-between">
             <a href="{{ route('products.index') }}" class="btn btn-danger">
                 <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
@@ -31,9 +33,9 @@
                 <i class="fas fa-save"></i> {{ __('Submit') }}
             </button>
         </div>
-    </div>
+            </div>
+            </div>
         </div>
-    </div>
     </div>
 @endsection
 

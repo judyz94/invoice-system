@@ -9,6 +9,7 @@
                         <h4 class="card-title"><strong>{{ __('New Details for Invoice') }}
                                 #{{ $invoice->code }}</strong></h4>
                     </div>
+
                     <div class="card-body">
                         @if($errors->any())
                             <div class="alert alert-danger">
@@ -19,15 +20,12 @@
                                 </ul>
                             </div>
                         @endif
+
                         <form id="form" action="{{ route('invoices.products.store', $invoice) }}" method="post"
                               id="invoicesProducts-form">
                             @csrf
-
-                            @if(old('products'))
-
-                            @else
-                            @endif
                             <div class="row col-sm-10">
+
                                 <div class="form-group col-md-4">
                                     <label for="">{{ __('Product name') }}</label><br>
                                     <select class="custom-select" id="product_id" name="product[1][id]">
@@ -59,6 +57,7 @@
                                     <br><br>
                                 </div>
                             </div>
+
                             <div class="card-footer d-flex justify-content-between">
                                 <a href="{{ route('invoices.index') }}" class="btn btn-danger">
                                     <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
@@ -67,6 +66,7 @@
                                         class="fas fa-save"></i> {{ __('Submit') }}
                                 </button>
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -74,6 +74,7 @@
         </div>
     </div>
 @endsection
+
 @push('scripts')
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script src="{{ asset('js/dinamicform.js') }}"></script>

@@ -27,6 +27,7 @@
                 </nav>
 
                 <div class="table-responsive-xl">
+
                     <table class="table table-hover">
                         <thead>
                         <tr>
@@ -39,6 +40,7 @@
                             <th>Actions</th>
                         </tr>
                         </thead>
+
                         <tbody>
                         @foreach($sellers as $seller)
                             <tr>
@@ -54,10 +56,12 @@
                                            title="{{ __('Show Details') }}">
                                             <i class="fas fa-eye" style="color:black"></i>
                                         </a>
+
                                         <a href="{{ route('sellers.edit', $seller) }}" class="btn btn-link"
                                            title="{{ __('Edit Seller') }}">
                                             <i class="fas fa-edit" style="color:black"></i>
                                         </a>
+
                                         <button type="button" class="btn btn-link text-danger"
                                                 data-route="{{ route('sellers.destroy', $seller) }}"
                                                 data-toggle="modal"
@@ -65,21 +69,25 @@
                                                 title="{{ __('Delete seller') }}">
                                             <i class="fas fa-trash"></i>
                                         </button>
+
                                     </div>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
+
                     <ul class="pagination justify-content-center">
                         {{ $sellers->links() }}
                     </ul>
+
                 </div>
             </div>
         </div>
     </div>
     </div>
 @endsection
+
 @push('modals')
     @include('partials.__confirm_delete_modal')
 @endpush

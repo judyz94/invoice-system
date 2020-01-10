@@ -55,6 +55,7 @@
                                     <th>{{ __('Actions') }}</th>
                                 </tr>
                                 </thead>
+
                                 <tbody>
                                 @foreach($invoice->products as $product)
                                     <tr>
@@ -93,6 +94,7 @@
                             @csrf
                             <div class="card-body">
                                 <div class="row">
+
                                     <div class="form-group col-md-4">
                                         <label for="product_id">Product</label>
                                         <select class="custom-select" name="product_id" id="product_id" required>
@@ -118,12 +120,14 @@
                                                value="{{ old('product_quantity') }}"
                                                placeholder="{{ __('Type a quantity') }}" name="product_quantity" required>
                                     </div>
+
                                 </div>
                                 <button class="btn btn-success btn-block col-md-1" type="submit"><i class="fas fa-plus"></i> Add</button>
                             </div>
                         </form>
                     </div>
                     <br>
+
                     <div class="card-footer d-flex justify-content-between">
                         <a href="{{ route('invoices.index') }}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i> {{ __('Back to Invoices') }}
@@ -132,12 +136,13 @@
                             <i class="fas fa-plus"></i>  {{ __('Add New Detail') }}
                         </a>--}}
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
-    </div>
 @endsection
+
 @push('modals')
     @include('partials.__confirm_delete_modal')
 @endpush

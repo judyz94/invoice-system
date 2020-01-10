@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Seller\StoreRequest;
-use App\Http\Requests\Seller\UpdateRequest;
 use App\Seller;
 use App\City;
 use App\Product;
-use Exception;
 use Illuminate\Http\Request;
+use App\Http\Requests\Seller\StoreRequest;
+use App\Http\Requests\Seller\UpdateRequest;
+use Exception;
 
 class SellerController extends Controller
 {
@@ -34,6 +34,7 @@ class SellerController extends Controller
         $search = $request->get('searchfor');
 
         $sellers = Seller::searchfor($type, $search)->paginate(10);
+
         return view('sellers.index', compact( 'sellers'));
     }
 
@@ -47,6 +48,7 @@ class SellerController extends Controller
     {
         $cities = City::all();
         $seller = new Seller();
+
         return view('sellers.create', compact('cities', 'seller'));
     }
 
@@ -67,6 +69,7 @@ class SellerController extends Controller
         $seller->address = $request->input('address');
 
         $seller->save();
+
         return redirect()->route('sellers.index');
     }
 
@@ -80,6 +83,7 @@ class SellerController extends Controller
     public function show(Seller $seller, Product $product)
     {
         $cities = City::all();
+
         return view('sellers.show',  compact('cities', 'seller', 'product'));
     }
 
@@ -92,6 +96,7 @@ class SellerController extends Controller
     public function edit(Seller $seller)
     {
         $cities = City::all();
+
         return view('sellers.edit',  compact('cities', 'seller'));
     }
 
@@ -112,6 +117,7 @@ class SellerController extends Controller
         $seller->address = $request->input('address');
 
         $seller->save();
+
         return redirect()->route('sellers.index');
     }
 
@@ -125,6 +131,7 @@ class SellerController extends Controller
     public function destroy(Seller $seller)
     {
         $seller->delete();
+
         return redirect()->route('sellers.index');
     }
 }

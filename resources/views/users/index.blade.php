@@ -11,6 +11,7 @@
                         {{ __('Register new user') }}
                     </a>
                 </div>
+
                 <div class="table-responsive-xl">
                     <table class="table table-hover">
                         <thead>
@@ -21,6 +22,7 @@
                             <th class="text-right">{{ __('Actions') }}</th>
                         </tr>
                         </thead>
+
                         <tbody>
                         @foreach($users as $user)
                             <tr>
@@ -52,6 +54,7 @@
     </div>
     </div>
 @endsection
+
 @push('modals')
     @include('partials.__confirm_delete_modal')
 @endpush

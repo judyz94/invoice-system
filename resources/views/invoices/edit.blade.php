@@ -8,6 +8,7 @@
                     <div class="card-header pb-0">
                         <h4 class="card-title"><strong>{{ __('Edit Invoice') }} #{{ $invoice->code }}</strong></h4>
                     </div>
+
             <div class="card-body">
                  @if($errors->any())
                      <div class="alert alert-danger">
@@ -18,12 +19,14 @@
                          </ul>
                      </div>
                  @endif
+
             <form action="{{ route('invoices.update', $invoice) }}" method="post" id="invoices-form">
                 @csrf
                 @method('put')
                 @include('invoices.__form')
             </form>
             </div>
+
             <div class="card-footer d-flex justify-content-between">
                 <a href="{{ route('invoices.index') }}" class="btn btn-danger">
                     <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
@@ -32,6 +35,7 @@
                     <i class="fas fa-edit"></i> {{ __('Update') }}
                 </button>
             </div>
+
                 </div>
             </div>
         </div>

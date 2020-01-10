@@ -8,6 +8,7 @@
                     <div class="card-header pb-0">
                         <h4 class="card-title"><strong>{{ __('Seller') }}  {{ $seller->name }}</strong></h4>
                     </div>
+
                     <div class="card-body">
                         <dl class="row">
                             <dt class="col-md-3">{{ __('ID') }}</dt>
@@ -50,6 +51,7 @@
                                             <th style="width:100px" >{{ __('Actions') }}</th>
                                         </tr>
                                         </thead>
+
                                         <tbody>
                                         @foreach($seller->invoices as $invoice)
                                             <tr>
@@ -81,6 +83,7 @@
                                                            title="{{ __('Edit Invoice') }}">
                                                             <i class="fas fa-edit" style="color:black"></i>
                                                         </a>
+
                                                         <button type="button" class="btn btn-link text-danger"
                                                                 data-route="{{ route('invoices.destroy', $invoice) }}"
                                                                 data-toggle="modal"
@@ -94,6 +97,7 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+
                                     <div class="card-footer d-flex justify-content-between">
                                         <a href="{{ route('sellers.index') }}" class="btn btn-secondary">
                                             <i class="fas fa-arrow-left"></i> {{ __('Back to Sellers') }}
@@ -102,6 +106,7 @@
                                             <i class="fas fa-plus"></i>  {{ __('Associate New Invoice') }}
                                         </a>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
