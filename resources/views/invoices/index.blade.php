@@ -31,14 +31,14 @@
                        </form>
                    </nav>
 
-                <div class="table-responsive">
+                <div class="table-responsive-xl">
                     <table class="table">
                         <thead>
                         <tr>
                             <th>{{ __('Code') }}</th>
-                            <th style="width:600px">{{ __('Expedition date') }}</th>
-                            <th style="width:1000px">{{ __('Due date') }}</th>
-                            <th style="width:900px">{{ __('Receipt date') }}</th>
+                            <th>{{ __('Expedition date') }}</th>
+                            <th>{{ __('Due date') }}</th>
+                            <th>{{ __('Receipt date') }}</th>
                             <th>{{ __('Sale description') }}</th>
                             <th>{{ __('Total') }}</th>
                             <th>{{ __('Total with VAT') }}</th>
@@ -54,9 +54,9 @@
                         @foreach($invoices as $invoice)
                             <tr>
                                 <td>{{ $invoice->code }}</td>
-                                <td>{{ $invoice->expedition_date }}</td>
-                                <td>{{ $invoice->due_date }}</td>
-                                <td>{{ $invoice->receipt_date }}</td>
+                                <td style="width:6000px">{{ $invoice->expedition_date }}</td>
+                                <td style="width:20000px">{{ $invoice->due_date }}</td>
+                                <td style="width:30000px">{{ $invoice->receipt_date }}</td>
                                 <td>{{ $invoice->sale_description }}</td>
                                 <td>${{ number_format($invoice->total, 2) }}</td>
                                 <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
