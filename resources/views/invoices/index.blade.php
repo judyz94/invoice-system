@@ -31,22 +31,22 @@
                        </form>
                    </nav>
 
-                <div class="table-responsive-xl">
-                    <table class="table table-hover" style="width:100%">
+                <div class="table-responsive">
+                    <table class="table">
                         <thead>
                         <tr>
-                            <th style="width:50px">{{ __('Code') }}</th>
-                            <th style="width:200px">{{ __('Expedition date') }}</th>
-                            <th style="width:200px">{{ __('Due date') }}</th>
-                            <th style="width:200px">{{ __('Receipt date') }}</th>
-                            <th style="width:100px">{{ __('Sale description') }}</th>
-                            <th style="width:120px">{{ __('Total') }}</th>
-                            <th style="width:120px">{{ __('Total with VAT') }}</th>
-                            <th style="width:100px">{{ __('Seller') }}</th>
-                            <th style="width:100px">{{ __('Customer') }}</th>
-                            <th style="width:100px">{{ __('Created by') }}</th>
-                            <th style="width:50px">{{ __('Status') }}</th>
-                            <th style="width:100px">{{ __('Actions') }}</th>
+                            <th>{{ __('Code') }}</th>
+                            <th style="width:600px">{{ __('Expedition date') }}</th>
+                            <th style="width:1000px">{{ __('Due date') }}</th>
+                            <th style="width:900px">{{ __('Receipt date') }}</th>
+                            <th>{{ __('Sale description') }}</th>
+                            <th>{{ __('Total') }}</th>
+                            <th>{{ __('Total with VAT') }}</th>
+                            <th>{{ __('Seller') }}</th>
+                            <th>{{ __('Customer') }}</th>
+                            <th>{{ __('Created by') }}</th>
+                            <th>{{ __('Status') }}</th>
+                            <th>{{ __('Actions') }}</th>
                         </tr>
                         </thead>
 
