@@ -66,7 +66,6 @@
                                 <td><h5>
                                     @if($invoice->status == 'New')<span class="badge badge-secondary">New</span>@endif
                                     @if($invoice->status == 'Sent')<span class="badge badge-primary">Sent</span>@endif
-                                    @if($invoice->status == 'Rejected')<span class="badge badge-warning">Rejected</span>@endif
                                     @if($invoice->status == 'Overdue')<span class="badge badge-danger">Overdue</span>@endif
                                     @if($invoice->status == 'Paid')<span class="badge badge-success">Paid</span>@endif
                                     @if($invoice->status == 'Cancelled')<span class="badge badge-light">Cancelled</span>@endif
