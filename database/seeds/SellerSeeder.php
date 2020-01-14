@@ -20,6 +20,15 @@ class SellerSeeder extends Seeder
             'city_id' => '2',
             'address' => 'Carrera 20 #10-40'
         ]);
+
+        DB::table('sellers')->insert([
+            'name' => 'Tienda veterinaria Gómez',
+            'document' => '129233137',
+            'email' => 'vetegomez@gmail.com',
+            'phone' => '30348344142',
+            'city_id' => '2',
+            'address' => 'Calle 23 #43-10'
+        ]);
     }
 }
 
