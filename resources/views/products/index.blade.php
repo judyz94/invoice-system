@@ -21,7 +21,10 @@
                             </select>
 
                             <input name="searchfor" class="form-control mr-sm-2" type="search" aria-label="Search">
+
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" onClick="window.history.back();">
+                                <i class="fas fa-redo-alt"></i> Refresh</button>
                         </form>
                     </nav>
 

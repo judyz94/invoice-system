@@ -38,8 +38,12 @@ class InvoiceController extends Controller
         $type = $request->get('type');
         $search = $request->get('searchfor');
 
+        //$customers = Customer::select(['id', 'name'])->get();
+
         $invoices = Invoice::with(['customer', 'seller'])
-            ->searchfor($type, $search)->paginate(10);
+            ->searchfor($type, $search)
+            //->customer($request->input('customer'))
+            ->paginate(10);
 
         return view('invoices.index', compact( 'invoices'));
     }

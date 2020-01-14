@@ -40,5 +40,14 @@ class Invoice extends Model
             return $query->where($type, 'like', "%$search%");
         }
     }
+
+    /*public function scopeCustomer($query, ?string $id)
+    {
+        if ($id) {
+            return $query->where('customer_id', $id);
+        }
+
+        return $query;
+    }*/
 }
 

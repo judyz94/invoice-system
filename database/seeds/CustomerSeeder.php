@@ -20,6 +20,15 @@ class CustomerSeeder extends Seeder
             'city_id' => '1',
             'address' => 'Calle 56 #40-30'
         ]);
+
+        DB::table('customers')->insert([
+            'name' => 'Carlos Holguín',
+            'document' => '213833432',
+            'email' => 'carlos2@gmail.com',
+            'phone' => '39472344321',
+            'city_id' => '3',
+            'address' => 'Carrera 25 #20-20'
+        ]);
     }
 }
 

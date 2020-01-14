@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
        <div class="row justify-content-center">
-           <div class="col-xl">
+           <div class="col-xl-12">
                <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}</strong></h3>
@@ -26,14 +26,25 @@
                                <option value="status">Status</option>
                            </select>
 
-                           <input name="searchfor" class="form-control mr-sm-2" type="search" placeholder="Search...">
+                         <input name="searchfor" class="form-control mr-sm-2" type="search" placeholder="Search...">
 
-                           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                         {{--<select class="custom-select" id="customer" name="customer">
+                             <option value="">{{ __('Search customer') }}</option>
+                             @foreach($customers as $customer)
+                                 <option value="{{ $customer->id }}"
+                                     {{ old('customer_id', $invoice->customer_id) == $customer->id ? 'selected' : ''}}>{{ $customer->name }}
+                                 </option>
+                             @endforeach
+                         </select>--}}
+
+                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Search</button>
+                         <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" onClick="window.history.back();">
+                             <i class="fas fa-redo-alt"></i> Refresh</button>
                        </form>
                    </nav>
 
                 <div class="table-responsive-xl">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>{{ __('Code') }}</th>
