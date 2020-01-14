@@ -24,3 +24,4 @@ class SellerComposer
         return $view->with('sellers', $sellers);
     }
 }
+

@@ -23,4 +23,5 @@ class CityComposer
 
         return $view->with('cities', $cities);
     }
+}
 
