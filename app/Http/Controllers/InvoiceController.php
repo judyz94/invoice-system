@@ -205,7 +205,7 @@ class InvoiceController extends Controller
     {
         $file = $request->file('file');
 
-        Excel::import(new InvoicesImport, $file );
+        Excel::import(new InvoicesImport, $file);
 
         return back()->with('message', 'Invoice import succesfully');
     }

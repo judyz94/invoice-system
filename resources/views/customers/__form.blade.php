@@ -34,7 +34,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <label for="city_id">City</label>
-            <select class="form-control" id="city_id" name="city_id">
+            <select class="custom-select" id="city_id" name="city_id">
                 <option value="">Select a city</option>
                 @foreach($cities as $city)
                     <option value="{{ $city->id }}"

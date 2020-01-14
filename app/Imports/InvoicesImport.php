@@ -5,11 +5,10 @@ namespace App\Imports;
 use App\Invoice;
 use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Concerns\ToModel;
-//use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use PhpOffice\PhpSpreadsheet\Shared\Date;
 
-class InvoicesImport implements ToModel, /*WithValidation,*/ WithHeadingRow
+class InvoicesImport implements ToModel, WithHeadingRow, WithValidation
 {
     /**
      * @param array $row
@@ -19,11 +18,12 @@ class InvoicesImport implements ToModel, /*WithValidation,*/ WithHeadingRow
      */
     public function model(array $row)
     {
+
         return new Invoice([
             'code' => $row['code'],
-            'expedition_date' => Date::excelToDateTimeObject($row['expedition_date']),
-            'due_date' => Date::excelToDateTimeObject($row['due_date']),
-            'receipt_date' => Date::excelToDateTimeObject($row['receipt_date']),
+            'expedition_date' => $row['expedition_date'],
+            'due_date' => $row['due_date'],
+            'receipt_date' => $row['receipt_date'],
             'sale_description' => $row['sale_description'],
             'total' => $row['total'],
             'vat' => $row['vat'],
@@ -35,17 +35,21 @@ class InvoicesImport implements ToModel, /*WithValidation,*/ WithHeadingRow
         ]);
     }
 
-    /*public function rules(): array
+    public function rules(): array
     {
         return [
-            'expedition_date' => 'required|date',
-            'due_date' => 'required|date|after_or_equal:expedition_date',
-            'receipt_date' => 'required|date|after_or_equal:expedition_date',
-            'seller_id' => 'required|numeric|exists:sellers,id',
+            'expedition_date' => 'required',
+            'due_date' => 'required',
+            'receipt_date' => 'required',
             'sale_description' => 'required|min:4',
+            'total' => 'required',
+            'vat' => 'required',
+            'total_with_vat' => 'required',
+            'seller_id' => 'required',
             'customer_id' => 'required',
             'status' => 'required',
+            'user_id' => 'required',
         ];
-    }*/
+    }
 }
 
