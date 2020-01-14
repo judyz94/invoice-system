@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
        <div class="row justify-content-center">
-           <div class="col-xl-14">
+           <div class="col-xl">
                <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}</strong></h3>
@@ -14,9 +14,9 @@
                                {{ __('Create a new invoice') }}
                        </a>
 
-                       <form class="form-inline">
-                           <select name="type" class="form-control mr-sm-2" id="select">
-                               <option value="">Search for</option>
+                     <form class="form-inline">
+                           <select name="type" class="custom-select" id="select">
+                               <option value="">Filter by</option>
                                <option value="code">Code</option>
                                <option value="expedition_date">Expedition date</option>
                                <option value="due_date">Due date</option>
@@ -26,7 +26,8 @@
                                <option value="status">Status</option>
                            </select>
 
-                           <input name="searchfor" class="form-control mr-sm-2" type="search" aria-label="Search">
+                           <input name="searchfor" class="form-control mr-sm-2" type="search" placeholder="Search...">
+
                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                        </form>
                    </nav>
@@ -54,9 +55,9 @@
                         @foreach($invoices as $invoice)
                             <tr>
                                 <td>{{ $invoice->code }}</td>
-                                <td style="width:6000px">{{ $invoice->expedition_date }}</td>
-                                <td style="width:20000px">{{ $invoice->due_date }}</td>
-                                <td style="width:30000px">{{ $invoice->receipt_date }}</td>
+                                <td>{{ $invoice->expedition_date }}</td>
+                                <td>{{ $invoice->due_date }}</td>
+                                <td>{{ $invoice->receipt_date }}</td>
                                 <td>{{ $invoice->sale_description }}</td>
                                 <td>${{ number_format($invoice->total, 2) }}</td>
                                 <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
