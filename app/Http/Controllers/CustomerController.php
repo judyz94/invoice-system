@@ -33,7 +33,8 @@ class CustomerController extends Controller
         $type = $request->get('type');
         $search = $request->get('searchfor');
 
-        $customers = Customer::searchfor($type, $search)->paginate(10);
+        $customers = Customer::with(['city'])
+            ->searchfor($type, $search)->paginate(10);
 
         return view('customers.index', compact( 'customers'));
     }

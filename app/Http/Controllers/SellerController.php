@@ -33,7 +33,8 @@ class SellerController extends Controller
         $type = $request->get('type');
         $search = $request->get('searchfor');
 
-        $sellers = Seller::searchfor($type, $search)->paginate(10);
+        $sellers = Seller::with(['city'])
+            ->searchfor($type, $search)->paginate(10);
 
         return view('sellers.index', compact( 'sellers'));
     }
