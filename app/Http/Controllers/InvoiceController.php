@@ -208,15 +208,6 @@ class InvoiceController extends Controller
         Excel::import(new InvoicesImport, $file);
 
         return back()->with('message', 'Invoice import succesfully');
-
-        /*try {
-            $file = $request->file('file');
-            Excel::import(new InvoicesImport, $file->getRealPath());
-        } catch (\Throwable $e) {
-            dd($e);
-        }
-        dd("Pass");
-        return back()->with('message', 'Invoice import succesfully');*/
     }
 }
 
