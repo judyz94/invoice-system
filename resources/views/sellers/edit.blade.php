@@ -12,7 +12,7 @@
                     <div class="card-body">
                         @if($errors->any())
                             <div class="alert alert-danger">
-                                <p>Correct the following errors:</p>
+                                <p>{{ __('Correct the following errors:') }}</p>
                                 <ul>
                                     @foreach($errors->all() as $error)
                                         <li>{{ $error }}</li>
@@ -33,7 +33,7 @@
                             <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
                         </a>
                         <button type="submit" class="btn btn-success" form="sellers-form">
-                            <i class="fas fa-save"></i> {{ __('Submit') }}
+                            <i class="fas fa-save"></i> {{ __('Update') }}
                         </button>
                     </div>
 
