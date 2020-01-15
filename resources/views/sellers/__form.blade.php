@@ -3,7 +3,7 @@
         <div class="form-group">
             <label for="name">Full name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Type a full name"
-                   value="{{ old('name', $seller->name) }}">
+                   value="{{ old('name', $seller->name) }}" required>
         </div>
     </div>
 
@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="document">ID</label>
             <input type="text" class="form-control" id="document" name="document" placeholder="Type a ID"
-                   value="{{ old('document', $seller->document) }}">
+                   value="{{ old('document', $seller->document) }}" required>
         </div>
     </div>
 
@@ -19,7 +19,7 @@
         <div class="form-group">
             <label for="email">Email</label>
             <input type="text" class="form-control" id="email" name="email" placeholder="name@example.com"
-                   value="{{ old('email',  $seller->email) }}">
+                   value="{{ old('email',  $seller->email) }}" required>
         </div>
     </div>
 
@@ -34,7 +34,7 @@
     <div class="col-md-3">
         <div class="form-group">
             <label for="city_id">City</label>
-            <select class="custom-select" id="city_id" name="city_id">
+            <select class="custom-select" id="city_id" name="city_id" required>
                 <option value="">Select a city</option>
                 @foreach($cities as $city)
                     <option value="{{ $city->id }}"
