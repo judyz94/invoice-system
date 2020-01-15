@@ -13,34 +13,35 @@
                     <a href="{{ route('sellers.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
                         {{ __('Create a new seller') }}</a>
 
+                    <!-- Search form -->
                     <form class="form-inline">
                         <select name="type" class="form-control mr-sm-2" id="select">
-                            <option value="">Search for</option>
-                            <option value="document">ID</option>
-                            <option value="name">Name</option>
-                            <option value="email">Email</option>
+                            <option value="">{{ __('Filter by') }}</option>
+                            <option value="document">{{ __('ID') }}</option>
+                            <option value="name">{{ __('Name') }}</option>
+                            <option value="email">{{ __('Email') }}</option>
                         </select>
 
-                        <input name="searchfor" class="form-control mr-sm-2" type="search" aria-label="Search">
+                        <input name="searchfor" class="form-control mr-sm-2" type="search" placeholder="{{ __('Search...') }}">
 
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> {{ __('Search') }}</button>
                         <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" onClick="window.history.back();">
-                            <i class="fas fa-redo-alt"></i> Refresh</button>
+                            <i class="fas fa-redo-alt"></i> {{ __('Refresh') }}</button>
                     </form>
                 </nav>
 
+                <!-- Sellers list -->
                 <div class="table-responsive-xl">
-
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>City</th>
-                            <th>Address</th>
-                            <th>Actions</th>
+                            <th>{{ __('ID') }}</th>
+                            <th>{{ __('Name') }}</th>
+                            <th>{{ __('Email') }}</th>
+                            <th>{{ __('Phone') }}</th>
+                            <th>{{ __('City') }}</th>
+                            <th>{{ __('Address') }}</th>
+                            <th>{{ __('Actions') }}</th>
                         </tr>
                         </thead>
 
@@ -80,14 +81,15 @@
                         </tbody>
                     </table>
 
+                    <!-- Pagination -->
                     <ul class="pagination justify-content-center">
                         {{ $sellers->links() }}
                     </ul>
 
                 </div>
             </div>
+            </div>
         </div>
-    </div>
     </div>
 @endsection
 

@@ -13,21 +13,23 @@
                         <a href="{{ route('products.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
                             {{ __('Create a new product') }}</a>
 
+                        <!-- Search form -->
                         <form class="form-inline">
                             <select name="type" class="form-control mr-sm-2" id="select">
-                                <option value="">Search for</option>
-                                <option value="name">Name</option>
-                                <option value="unit_price">Unit price</option>
+                                <option value="">{{ __('Filter by') }}</option>
+                                <option value="name">{{ __('Name') }}</option>
+                                <option value="unit_price">{{ __('Unit Price') }}</option>
                             </select>
 
-                            <input name="searchfor" class="form-control mr-sm-2" type="search" aria-label="Search">
+                            <input name="searchfor" class="form-control mr-sm-2" type="search" placeholder="{{ __('Search...') }}">
 
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> {{ __('Search') }}</button>
                             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" onClick="window.history.back();">
-                                <i class="fas fa-redo-alt"></i> Refresh</button>
+                                <i class="fas fa-redo-alt"></i> {{ __('Refresh') }}</button>
                         </form>
                     </nav>
 
+                    <!-- Products list -->
                     <div class="table-responsive-lg">
                     <table class="table table-hover">
                         <thead>
@@ -65,11 +67,12 @@
                         </tbody>
                     </table>
 
+                        <!-- Pagination -->
                         <ul class="pagination justify-content-center">
                             {{ $products->links() }}
                         </ul>
 
-                </div>
+                    </div>
             </div>
         </div>
         </div>

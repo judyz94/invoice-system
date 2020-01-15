@@ -14,19 +14,20 @@
                                {{ __('Create a new invoice') }}
                        </a>
 
-                     <form class="form-inline">
+                       <!-- Search form -->
+                       <form class="form-inline">
                            <select name="type" class="custom-select" id="select">
-                               <option value="">Filter by</option>
-                               <option value="code">Code</option>
-                               <option value="expedition_date">Expedition date</option>
-                               <option value="due_date">Due date</option>
-                               <option value="receipt_date">Receipt date</option>
-                               <option value="sale_description">Sale description</option>
-                               <option value="vat">VAT</option>
-                               <option value="status">Status</option>
+                               <option value="">{{ __('Filter by') }}</option>
+                               <option value="code">{{ __('Code') }}</option>
+                               <option value="expedition_date">{{ __('Expedition date') }}</option>
+                               <option value="due_date">{{ __('Due date') }}</option>
+                               <option value="receipt_date">{{ __('Receipt date') }}</option>
+                               <option value="sale_description">{{ __('Sale description') }}</option>
+                               <option value="vat">{{ __('VAT') }}</option>
+                               <option value="status">{{ __('Status') }}</option>
                            </select>
 
-                         <input name="searchfor" class="form-control mr-sm-2" type="search" placeholder="Search...">
+                         <input name="searchfor" class="form-control mr-sm-2" type="search" placeholder="{{ __('Search...') }}">
 
                          {{--<select class="custom-select" id="customer" name="customer">
                              <option value="">{{ __('Search customer') }}</option>
@@ -37,13 +38,14 @@
                              @endforeach
                          </select>--}}
 
-                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Search</button>
+                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> {{ __('Search') }}</button>
                          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" onClick="window.history.back();">
-                             <i class="fas fa-redo-alt"></i> Refresh</button>
+                             <i class="fas fa-redo-alt"></i> {{ __('Refresh') }}</button>
                        </form>
                    </nav>
 
-                <div class="table-responsive-xl">
+                   <!-- Invoices list -->
+                   <div class="table-responsive-xl">
                     <table class="table table-hover">
                         <thead>
                         <tr>
@@ -76,11 +78,11 @@
                                 <td>{{ $invoice->customer->name }}</td>
                                 <td>{{ $invoice->user->name }}</td>
                                 <td><h5>
-                                    @if($invoice->status == 'New')<span class="badge badge-secondary">New</span>@endif
-                                    @if($invoice->status == 'Sent')<span class="badge badge-primary">Sent</span>@endif
-                                    @if($invoice->status == 'Overdue')<span class="badge badge-danger">Overdue</span>@endif
-                                    @if($invoice->status == 'Paid')<span class="badge badge-success">Paid</span>@endif
-                                    @if($invoice->status == 'Cancelled')<span class="badge badge-light">Cancelled</span>@endif
+                                    @if($invoice->status == 'New')<span class="badge badge-secondary">{{ __('New') }}</span>@endif
+                                    @if($invoice->status == 'Sent')<span class="badge badge-primary">{{ __('Sent') }}</span>@endif
+                                    @if($invoice->status == 'Overdue')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
+                                    @if($invoice->status == 'Paid')<span class="badge badge-success">{{ __('Paid') }}</span>@endif
+                                    @if($invoice->status == 'Cancelled')<span class="badge badge-light">{{ __('Cancelled') }}</span>@endif
                                  </h5></td>
                                 <td class="text-right">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
@@ -107,10 +109,12 @@
                         </tbody>
                     </table>
 
+                    <!-- Pagination -->
                     <ul class="pagination justify-content-center">
                     {{ $invoices->links() }}
                     </ul>
 
+                    <!-- Import form -->
                     <div class="card-footer justify-content-lg-start">
                         <form action="{{ route('invoices.import') }}" method="post" enctype="multipart/form-data">
                             @csrf
