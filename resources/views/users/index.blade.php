@@ -8,7 +8,7 @@
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title mb-0"><strong>{{ __('Users') }}</strong></h3>
                     <a href="{{ route('register') }}" type="submit" class="btn btn-success"><i class="fas fa-plus"></i>
-                        {{ __('Register new user') }}
+                        {{ __('Register New User') }}
                     </a>
                 </div>
 
@@ -16,9 +16,9 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>Email</th>
+                            <th>{{ __('Name') }}</th>
+                            <th>{{ __('Role') }}</th>
+                            <th>{{ __('Email') }}</th>
                             <th class="text-right">{{ __('Actions') }}</th>
                         </tr>
                         </thead>

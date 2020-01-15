@@ -25,7 +25,7 @@
 @stack('modals')
 <div id="app">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5B584E;">
-        <a class="navbar-brand" href="{{ url('/') }}"><h5>Invoice System</h5></a>
+        <a class="navbar-brand" href="{{ url('/') }}"><h5>{{ __('Invoice System') }}</h5></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,22 +33,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}"><h5> Home</h5><span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ route('home') }}"> {{ __('Home') }}<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('users.index') }}"><h5> Users</h5></a>
+                    <a class="nav-link" href="{{ route('users.index') }}"> {{ __('Users') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('customers.index') }}"><h5> Customers</h5></a>
+                    <a class="nav-link" href="{{ route('customers.index') }}"> {{ __('Customers') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('sellers.index') }}"><h5> Sellers</h5></a>
+                    <a class="nav-link" href="{{ route('sellers.index') }}"> {{ __('Sellers') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('products.index') }}"><h5> Products</h5></a>
+                    <a class="nav-link" href="{{ route('products.index') }}"> {{ __('Products') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('invoices.index') }}"><h5> Invoices</h5></a>
+                    <a class="nav-link" href="{{ route('invoices.index') }}"> {{ __('Invoices') }}</a>
                 </li>
             </ul>
         </div>

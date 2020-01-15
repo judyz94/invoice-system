@@ -4,7 +4,7 @@
             <label for="name">{{ __('Name') }}</label>
             <input type="text" class="form-control" id="name" name="name"
                    placeholder="{{ __('Type a product name') }}"
-                   value="{{ old('name', $product->name) }}">
+                   value="{{ old('name', $product->name) }}" required>
         </div>
     </div>
 
@@ -13,7 +13,7 @@
             <label for="unit_price">{{ __('Unit Price') }}</label>
             <input type="text" class="form-control" id="unit_price" name="unit_price"
                    placeholder="{{ __('Type a unit price') }}"
-                   value="{{ old('unit_price', $product->unit_price) }}">
+                   value="{{ old('unit_price', $product->unit_price) }}" required>
         </div>
     </div>
 </div>

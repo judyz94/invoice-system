@@ -33,5 +33,14 @@ class UpdateRequest extends FormRequest
             'unit_price' => 'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Please enter the product name.',
+            'name.min:2'  => 'The name must be at least 2 characters.',
+            'unit_price.required' => 'Please enter the unit price the product.',
+        ];
+    }
 }
 

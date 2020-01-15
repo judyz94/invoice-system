@@ -31,5 +31,20 @@ class UpdateRequest extends FormRequest
             'address' => 'nullable'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Please enter the full name.',
+            'name.min:5'  => 'The name must be at least 5 characters.',
+            'document.required' => 'Please enter the identification number.',
+            'document.numeric'  => 'Enter a valid identification number.',
+            'document.unique'  => 'The identification number already exists.',
+            'email.required' => 'Please enter the identification number.',
+            'email.email'  => 'Enter a valid email with the format "example@mail.com".',
+            'email.unique'  => 'The email already exists.',
+            'city_id.required' => 'Please select the city name of residence.',
+        ];
+    }
 }
 
