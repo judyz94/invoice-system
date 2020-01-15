@@ -23,7 +23,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <br><h5><strong>Associated invoices</strong></h5>
+                                <br><h5><strong>{{ __('Associated invoices') }}</strong></h5>
                                 <div class="table-responsive-xl">
                                     <table class="table table-hover" style="width:100%">
                                         <thead>
@@ -57,12 +57,12 @@
                                                 <td>{{ $invoice->customer->document }}</td>
                                                 <td>{{ $invoice->user->name }}</td>
                                                 <td><h5>
-                                                   @if($invoice->status == 'New')<span class="badge badge-secondary">New</span>@endif
-                                                   @if($invoice->status == 'Sent')<span class="badge badge-primary">Sent</span>@endif
-                                                   @if($invoice->status == 'Overdue')<span class="badge badge-danger">Overdue</span>@endif
-                                                   @if($invoice->status == 'Paid')<span class="badge badge-success">Paid</span>@endif
-                                                   @if($invoice->status == 'Cancelled')<span class="badge badge-light">Cancelled</span>@endif
-                                                </h5></td>
+                                                        @if($invoice->status == 'New')<span class="badge badge-secondary">{{ __('New') }}</span>@endif
+                                                        @if($invoice->status == 'Sent')<span class="badge badge-primary">{{ __('Sent') }}</span>@endif
+                                                        @if($invoice->status == 'Overdue')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
+                                                        @if($invoice->status == 'Paid')<span class="badge badge-success">{{ __('Paid') }}</span>@endif
+                                                        @if($invoice->status == 'Cancelled')<span class="badge badge-light">{{ __('Cancelled') }}</span>@endif
+                                                    </h5></td>
                                                 <td class="text-right">
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
                                                         <a href="{{ route('invoices.show', $invoice) }}" class="btn btn-link"

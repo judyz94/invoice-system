@@ -12,7 +12,7 @@
             <div class="card-body">
                 @if($errors->any())
                     <div class="alert alert-danger">
-                        <p>Correct the following errors:</p>
+                        <p>{{ __('Correct the following errors:') }}</p>
                         <ul>
                             @foreach($errors->all() as $error)
                                 <li>{{ $error }}</li>

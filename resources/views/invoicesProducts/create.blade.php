@@ -13,9 +13,10 @@
                     <div class="card-body">
                         @if($errors->any())
                             <div class="alert alert-danger">
+                                <p>{{ __('Correct the following errors:') }}</p>
                                 <ul>
                                     @foreach($errors->all() as $error)
-                                        {{ $error }}
+                                        <li>{{ $error }}</li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -29,7 +30,7 @@
                                 <div class="form-group col-md-4">
                                     <label for="">{{ __('Product name') }}</label><br>
                                     <select class="custom-select" id="product_id" name="product[1][id]">
-                                        <option value="">Select a product name</option>
+                                        <option value="">{{ __('Select a product name') }}</option>
                                         @foreach($products as $product)
                                             <option value="{{ $product->id }}"
                                                 {{ old('product_id')[0] == $product->id ? 'selected' : '' }}>{{ $product->name }}
