@@ -1,0 +1,33 @@
+<?php
+
+return [
+    'Users' => 'Usuarios',
+    'Register New User' => 'Registrar Nuevo Usuario',
+    'Name' => 'Nombre',
+    'Role' => 'Rol',
+    'Email' => 'Correo electrónico',
+    'Actions' => 'Acciones',
+    'Show Details' => 'Mostrar Detalles',
+    'Delete User' => 'Borrar Usuario',
+    'User' => 'Usuario',
+    'Associated invoices' => 'Facturas asociadas',
+    'Code' => 'Código',
+    'Expedition date' => 'Fecha de expedición',
+    'Due date' => 'Fecha de vencimiento',
+    'Receipt date' => 'Fecha de recepción',
+    'Sale description' => 'Descripción de la venta',
+    'Total with VAT' => 'Total con IVA',
+    'Seller' => 'Vendedor',
+    'Status' => 'Estado',
+    'Created by' => 'Creada por',
+    'New' => 'Nueva',
+    'Sent' => 'Enviada',
+    'Overdue' => 'Vencida',
+    'Paid' => 'Pagada',
+    'Cancelled' => 'Anulada',
+    'Edit Invoice' => 'Editar Factura',
+    'Delete Invoice' => 'Borrar Factura',
+    'Back to Users' => 'Volver a Usuarios',
+    'Associate New Invoice' => 'Asociar nueva factura',
+];
+

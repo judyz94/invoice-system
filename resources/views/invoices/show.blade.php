@@ -9,6 +9,7 @@
                         <h4 class="card-title"><strong>{{ __('Details Invoice') }} #{{ $invoice->code }}</strong></h4>
                     </div>
 
+                    <!-- Invoice detail information -->
                     <div class="card-body">
                         <dl class="row">
                             <dt class="col-md-3">{{ __('Code') }}</dt>
@@ -42,7 +43,7 @@
                             <dd class="col-md-3">{{ $invoice->user->name }}</dd>
                         </dl>
 
-
+                        <!-- Details of the invoice -->
                         <div class="table-responsive-lg">
                             <table class="table table-hover">
                                 <thead>
@@ -86,16 +87,17 @@
                         </div>
                     </div>
 
+                    <!-- Form added invoice details -->
                     <div class="col-md-12">
                         <div class="card-header d-flex justify-content-between">
-                            <h5><strong>Add a new product to this invoice</strong></h5>
+                            <h5><strong>{{ __('Add a new product to this invoice') }}</strong></h5>
                         </div>
                         <form action="{{ route('invoices.products.store', $invoice) }}" method="post">
                             @csrf
                             <div class="card-body">
                                 @if($errors->any())
                                     <div class="alert alert-danger">
-                                        <p>Correct the following errors:</p>
+                                        <p>{{ __('Correct the following errors:') }}</p>
                                         <ul>
                                             @foreach($errors->all() as $error)
                                                 <li>{{ $error }}</li>
@@ -106,9 +108,9 @@
 
                                 <div class="row">
                                     <div class="form-group col-md-4">
-                                        <label for="product_id">Product</label>
+                                        <label for="product_id">{{ __('Product Name') }}</label>
                                         <select class="custom-select" name="product_id" id="product_id" required>
-                                            <option value="">Please select a product</option>
+                                            <option value="">{{ __('Select a product name') }}</option>
                                             @foreach($products as $product)
                                                 <option value="{{$product->id}}"
                                                     {{ old('product_id') == $product->id ? 'selected' : ''}}>{{$product->name}}
@@ -118,21 +120,21 @@
                                     </div>
 
                                     <div class="form-group col-md-4">
-                                        <label for="product_price">Price</label>
+                                        <label for="product_price">{{ __('Price') }}</label>
                                         <input class="form-control" type="number" id="product_price"
                                                value="{{ old('product_price') }}"
                                                placeholder="{{ __('Type a product price') }}" name="product_price" required>
                                     </div>
 
                                     <div class="form-group col-md-4">
-                                        <label for="product_quantity">Quantity</label>
+                                        <label for="product_quantity">{{ __('Price') }}</label>
                                         <input class="form-control" type="number" id="product_quantity"
                                                value="{{ old('product_quantity') }}"
                                                placeholder="{{ __('Type a quantity') }}" name="product_quantity" required>
                                     </div>
 
                                 </div>
-                                <button class="btn btn-success btn-block col-md-1" type="submit"><i class="fas fa-plus"></i> Add</button>
+                                <button class="btn btn-success btn-block col-md-1" type="submit"><i class="fas fa-plus"></i> {{ __('Add') }}</button>
                             </div>
                         </form>
                     </div>

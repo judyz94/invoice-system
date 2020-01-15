@@ -4,6 +4,7 @@ return [
     'New Details for Invoice' => 'Nuevos Detalles para Factura',
     'Invoice code' => 'Código de factura',
     'Product name' => 'Nombre de producto',
+    'Correct the following errors:' => 'Corrige los siguientes errores:',
     'Price' => 'Precio',
     'Quantity' => 'Cantidad',
     'Edit Detail' => 'Editar Detalle',
@@ -15,3 +16,4 @@ return [
     'Cancel' => 'Cancelar',
     'Update' => 'Actualizar'
 ];
+
