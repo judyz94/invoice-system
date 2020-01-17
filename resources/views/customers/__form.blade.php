@@ -1,41 +1,41 @@
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
-            <label for="name">Full name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Type a full name"
-                   value="{{ old('name', $customer->name) }}">
+            <label for="name">{{ __('Full Name') }}</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('Type a full name') }}"
+                   value="{{ old('name', $customer->name) }}" required>
         </div>
     </div>
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="document">ID</label>
-            <input type="text" class="form-control" id="document" name="document" placeholder="Type a ID"
-                   value="{{ old('document', $customer->document) }}">
+            <label for="document">{{ __('ID') }}</label>
+            <input type="text" class="form-control" id="document" name="document" placeholder="{{ __('Type a ID') }}"
+                   value="{{ old('document', $customer->document) }}" required>
         </div>
     </div>
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" class="form-control" id="email" name="email" placeholder="name@example.com"
-                   value="{{ old('email',  $customer->email) }}">
+            <label for="email">{{ __('Email') }}</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="{{ __('name@example.com') }}"
+                   value="{{ old('email',  $customer->email) }}" required>
         </div>
     </div>
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="text" class="form-control" id="phone" name="phone" placeholder="Type a phone"
+            <label for="phone">{{ __('Phone') }}</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="{{ __('Type a phone') }}"
                    value="{{ old('phone', $customer->phone) }}">
         </div>
     </div>
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="city_id">City</label>
-            <select class="custom-select" id="city_id" name="city_id">
-                <option value="">Select a city</option>
+            <label for="city_id">{{ __('City') }}</label>
+            <select class="custom-select" id="city_id" name="city_id" required>
+                <option value="">{{ __('Select a city') }}</option>
                 @foreach($cities as $city)
                     <option value="{{ $city->id }}"
                         {{ old('city_id', $customer->city_id) == $city->id ? 'selected' : ''}}>{{ $city->name }}
@@ -47,8 +47,8 @@
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="address">Address:</label>
-            <input type="text" class="form-control" id="address" name="address" placeholder="Type a address"
+            <label for="address">{{ __('Address') }}</label>
+            <input type="text" class="form-control" id="address" name="address" placeholder="{{ __('Type a address') }}"
                    value="{{ old('address', $customer->address) }}">
         </div>
     </div>
