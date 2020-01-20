@@ -29,14 +29,18 @@
 
                          <input name="searchfor" class="form-control mr-sm-2" type="search" placeholder="{{ __('Search...') }}">
 
-                         {{--<select class="custom-select" id="customer" name="customer">
-                             <option value="">{{ __('Search customer') }}</option>
-                             @foreach($customers as $customer)
-                                 <option value="{{ $customer->id }}"
-                                     {{ old('customer_id', $invoice->customer_id) == $customer->id ? 'selected' : ''}}>{{ $customer->name }}
-                                 </option>
-                             @endforeach
-                         </select>--}}
+                           <div id="app">
+                               <v-select :options="options" placeholder="{{ __('Search custom...') }}"></v-select>
+                           </div>
+
+                           {{--<select class="custom-select" id="customer" name="customer">
+                               <option value="">{{ __('Search customer') }}</option>
+                               @foreach($customers as $customer)
+                                   <option value="{{ $customer->id }}"
+                                       {{ old('customer_id', $invoice->customer_id) == $customer->id ? 'selected' : ''}}>{{ $customer->name }}
+                                   </option>
+                               @endforeach
+                           </select>--}}
 
                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> {{ __('Search') }}</button>
                          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" onClick="window.history.back();">
@@ -137,5 +141,6 @@
 @endpush
 @push('scripts')
     <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>
+    <script src="{{ asset(mix('js/searchcustomer.js')) }}"></script>
 @endpush
 
