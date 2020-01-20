@@ -16,7 +16,9 @@
         "maatwebsite/excel": "^3.1",
         "myclabs/php-enum": "^1.7",
         "nesbot/carbon": "^2.28",
-        "phpoffice/phpspreadsheet": "^1.10"
+        "phpoffice/phpspreadsheet": "^1.10",
+        "phpunit/php-code-coverage": "^7.0",
+        "phpunit/phpunit": "^8.5"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
@@ -24,8 +26,7 @@
         "fzaninotto/faker": "^1.4",
         "laravel/ui": "^1.1",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^8.0"
+        "nunomaduro/collision": "^3.0"
     },
     "config": {
         "optimize-autoloader": true,
