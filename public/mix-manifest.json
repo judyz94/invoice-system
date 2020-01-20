@@ -1,9 +1,10 @@
 {
-    "/js/manifest.js": "/js/manifest.js?id=7db827d654313dce4250",
-    "/js/app.js": "/js/app.js?id=330bb4001c27c9b2a5d6",
-    "/css/app.css": "/css/app.css?id=772bc96a856f534707ff",
-    "/js/autocomplete.js": "/js/autocomplete.js?id=ffc40898cbd762cac2cb",
-    "/js/delete-modal.js": "/js/delete-modal.js?id=923a9a8fd6f1470c1653",
-    "/js/dinamicform.js": "/js/dinamicform.js?id=bcc5d7425660964c15b5",
-    "/js/vendor.js": "/js/vendor.js?id=9106ab986e1ce8c03301"
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/js/autocomplete.js": "/js/autocomplete.js",
+    "/js/delete-modal.js": "/js/delete-modal.js",
+    "/js/dinamicform.js": "/js/dinamicform.js",
+    "/js/manifest.js": "/js/manifest.js",
+    "/js/searchcustomer.js": "/js/searchcustomer.js",
+    "/js/vendor.js": "/js/vendor.js"
 }
