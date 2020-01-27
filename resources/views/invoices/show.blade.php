@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card shadow-sm">
                     <div class="card-header d-flex justify-content-between">
                         <h4 class="card-title"><strong>{{ __('Details Invoice') }} #{{ $invoice->code }}</strong></h4>
                     </div>
@@ -144,9 +144,6 @@
                         <a href="{{ route('invoices.index') }}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i> {{ __('Back to Invoices') }}
                         </a>
-                        {{--<a href="{{ route('invoiceProduct.create', [$invoice, $product]) }}" class="btn btn-success">
-                            <i class="fas fa-plus"></i>  {{ __('Add New Detail') }}
-                        </a>--}}
                     </div>
 
                 </div>
