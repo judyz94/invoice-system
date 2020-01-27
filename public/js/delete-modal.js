@@ -13,7 +13,7 @@ $('#confirmDeleteModal').on('show.bs.modal', function (e) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 1:
 /*!*****************************************!*\
   !*** multi ./resources/js/delete-modal ***!
   \*****************************************/
@@ -25,4 +25,4 @@ module.exports = __webpack_require__(/*! C:\laragon\www\invoice_system\resources
 
 /***/ })
 
-},[[3,"/js/manifest"]]]);
+},[[1,"/js/manifest"]]]);

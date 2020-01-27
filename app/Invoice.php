@@ -41,13 +41,5 @@ class Invoice extends Model
         }
     }
 
-    /*public function scopeCustomer($query, ?string $id)
-    {
-        if ($id) {
-            return $query->where('customer_id', $id);
-        }
-
-        return $query;
-    }*/
 }
 
