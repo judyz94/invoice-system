@@ -4,7 +4,7 @@
     <div class="container">
        <div class="row justify-content-center">
            <div class="col-xl-12">
-               <div class="card">
+               <div class="card shadow-sm">
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}</strong></h3>
                 </div>
@@ -14,38 +14,12 @@
                                {{ __('Create a new invoice') }}
                        </a>
 
+
                        <!-- Search form -->
-                       <form class="form-inline">
-                           <select name="type" class="custom-select" id="select">
-                               <option value="">{{ __('Filter by') }}</option>
-                               <option value="code">{{ __('Code') }}</option>
-                               <option value="expedition_date">{{ __('Expedition date') }}</option>
-                               <option value="due_date">{{ __('Due date') }}</option>
-                               <option value="receipt_date">{{ __('Receipt date') }}</option>
-                               <option value="sale_description">{{ __('Sale description') }}</option>
-                               <option value="vat">{{ __('VAT') }}</option>
-                               <option value="status">{{ __('Status') }}</option>
-                           </select>
+                       <search-form action="{{ route('invoices.index') }}" method="get">
 
-                         <input name="searchfor" class="form-control mr-sm-2" type="search" placeholder="{{ __('Search...') }}">
+                       </search-form>
 
-                           <div id="app">
-                               <v-select :options="options" placeholder="{{ __('Search custom...') }}"></v-select>
-                           </div>
-
-                           {{--<select class="custom-select" id="customer" name="customer">
-                               <option value="">{{ __('Search customer') }}</option>
-                               @foreach($customers as $customer)
-                                   <option value="{{ $customer->id }}"
-                                       {{ old('customer_id', $invoice->customer_id) == $customer->id ? 'selected' : ''}}>{{ $customer->name }}
-                                   </option>
-                               @endforeach
-                           </select>--}}
-
-                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> {{ __('Search') }}</button>
-                         <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" onClick="window.history.back();">
-                             <i class="fas fa-redo-alt"></i> {{ __('Refresh') }}</button>
-                       </form>
                    </nav>
 
                    <!-- Invoices list -->
@@ -141,6 +115,5 @@
 @endpush
 @push('scripts')
     <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>
-    <script src="{{ asset(mix('js/searchcustomer.js')) }}"></script>
 @endpush
 
