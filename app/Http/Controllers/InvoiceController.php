@@ -14,6 +14,8 @@ use App\Http\Requests\InvoiceProduct\DetailRequest;
 use App\Imports\InvoicesImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Exception;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class InvoiceController extends Controller
 {
@@ -35,8 +37,8 @@ class InvoiceController extends Controller
      */
     public function index(Request $request)
     {
-        $type = $request->get('type');
-        $search = $request->get('searchfor');
+        $type = $request->input('type');
+        $search = $request->input('searchfor');
 
         $invoices = Invoice::with(['customer', 'seller'])
             ->searchfor($type, $search)
