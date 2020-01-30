@@ -23,8 +23,10 @@
 
                             <form action="{{ route('customers.store') }}" method="post" id="customers-form">
                                 @csrf
-                                @include('customers.__form')
+                                {{--@include('customers.__form')--}}
+                                <customer-form action="{{ route('customers.store') }}" method="get"></customer-form>
                             </form>
+
                     </div>
 
                     <div class="card-footer d-flex justify-content-between">
@@ -42,3 +44,9 @@
     </div>
 @endsection
 
+<script>
+    import CustomerForm from "../../js/components/CustomerForm";
+    export default {
+        components: {CustomerForm}
+    }
+</script>
