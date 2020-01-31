@@ -85,7 +85,10 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+
+                        <div class="card-footer d-flex justify-content-end">
+                        <button class="btn btn-success" type="submit"> {{ __('Order summary') }}</button>
+
 
                     <!-- Form added invoice details -->
                     <div class="col-md-12">
