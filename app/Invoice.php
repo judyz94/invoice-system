@@ -34,6 +34,11 @@ class Invoice extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function paymentAttempts(): BelongsToMany
+    {
+        return $this->belongsToMany(PaymentAttempt::class);
+    }
+
     public function scopeSearchFor($query, $type, $search)
     {
         if (($type) && ($search)) {
