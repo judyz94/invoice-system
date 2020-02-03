@@ -35,7 +35,7 @@
 <body>
 @stack('modals')
 <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5B584E;">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3B3331;">
         <a class="navbar-brand" href="{{ url('/') }}"><h5>{{ __('Invoice System') }}</h5></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -45,9 +45,6 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}"> {{ __('Home') }}<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('users.index') }}"> {{ __('Users') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('customers.index') }}"> {{ __('Customers') }}</a>
@@ -106,12 +103,11 @@
                 </ul>
             </div>
     </nav>
-
+</div>
     <main class="py-4">
         @yield('content')
     </main>
 
-</div>
 <script src="{{ asset(mix('js/manifest.js')) }}"></script>
 <script src="{{ asset(mix('js/vendor.js')) }}"></script>
 <script src="{{ asset(mix('js/app.js')) }}"></script>
