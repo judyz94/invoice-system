@@ -254,7 +254,7 @@ var render = function() {
           _c("label", [_vm._v("ID")]),
           _vm._v(" "),
           _c("ValidationProvider", {
-            attrs: { rules: "required|numeric" },
+            attrs: { rules: "required" },
             scopedSlots: _vm._u([
               {
                 key: "default",
@@ -272,7 +272,7 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        type: "text",
+                        type: "number",
                         id: "document",
                         name: "document",
                         placeholder: "Type a ID"
@@ -766,9 +766,6 @@ Object(vee_validate__WEBPACK_IMPORTED_MODULE_3__["extend"])('min', {
   },
   params: ['length'],
   message: 'The name must be at least 5 characters.'
-});
-Object(vee_validate__WEBPACK_IMPORTED_MODULE_3__["extend"])('numeric', {
-  message: 'Enter a valid number.'
 }); // Register globally
 
 

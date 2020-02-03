@@ -95,19 +95,7 @@
                         <form action="{{ route('invoices.products.store', $invoice) }}" method="post">
                             @csrf
                             <div class="card-body">
-                                @if($errors->any())
-                                    <div class="alert alert-danger">
-                                        <p>{{ __('Correct the following errors:') }}</p>
-                                        <ul>
-                                            @foreach($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-
                              @include('invoicesProducts.__form')
-
                                 <button class="btn btn-success btn-block col-md-1" type="submit"><i class="fas fa-plus"></i> {{ __('Add') }}</button>
                             </div>
                         </form>

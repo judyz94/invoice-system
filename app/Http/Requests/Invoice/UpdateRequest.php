@@ -16,7 +16,7 @@ class UpdateRequest extends FormRequest
         return [
             'expedition_date' => 'required|date',
             'due_date' => 'required|date|after_or_equal:expedition_date',
-            'receipt_date' => 'required|date|after_or_equal:expedition_date',
+            'receipt_date' => 'nullable|date|after_or_equal:expedition_date',
             'seller_id' => 'required',
             'sale_description' => 'required|min:4',
             'customer_id' => 'required',
@@ -34,7 +34,6 @@ class UpdateRequest extends FormRequest
             'due_date.date'  => 'Enter a valid date.',
             'due_date.after_or_equal:expedition_date'  => 'The due date must be after or equal to the expedition date.',
 
-            'receipt_date.required' => 'Please enter the receipt date.',
             'receipt_date.date'  => 'Enter a valid date.',
             'receipt_date.after_or_equal:expedition_date'  => 'The receipt date must be after or equal to the expedition date.',
 

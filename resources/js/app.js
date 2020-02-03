@@ -51,10 +51,6 @@ extend('min', {
     message: 'The name must be at least 5 characters.'
 });
 
-extend('numeric', {
-    message: 'Enter a valid number.'
-});
-
 // Register globally
 import { ValidationProvider } from 'vee-validate';
 Vue.component('ValidationProvider', ValidationProvider);
