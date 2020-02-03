@@ -228,7 +228,14 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _c("span", [_vm._v(_vm._s(errors[0]))])
+                    _c(
+                      "span",
+                      {
+                        staticClass: "invalid-feedback",
+                        attrs: { role: "alert" }
+                      },
+                      [_c("strong", [_vm._v(_vm._s(errors[0]))])]
+                    )
                   ]
                 }
               }
