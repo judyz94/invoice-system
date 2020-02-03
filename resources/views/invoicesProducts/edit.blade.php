@@ -10,17 +10,6 @@
                     </div>
 
                     <div class="card-body">
-                        @if($errors->any())
-                            <div class="alert alert-danger">
-                                <p>{{ __('Correct the following errors:') }}</p>
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
                         {{--<form id="form" action="{{ route('invoiceProduct.update', $invoice) }}" method="post">--}}
                             <form id="form" action="{{ route('invoiceProduct.update', [$invoice, $product]) }}" method="post">
                             @csrf

@@ -10,21 +10,10 @@
                     </div>
 
                     <div class="card-body">
-                        @if($errors->any())
-                            <div class="alert alert-danger">
-                                <p>{{ __('Correct the following errors:') }}</p>
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
-                            <form action="{{ route('sellers.store') }}" method="post" id="sellers-form">
-                                @csrf
-                                @include('sellers.__form')
-                            </form>
+                        <form action="{{ route('sellers.store') }}" method="post" id="sellers-form">
+                            @csrf
+                            @include('sellers.__form')
+                        </form>
                     </div>
 
                     <div class="card-footer d-flex justify-content-between">
