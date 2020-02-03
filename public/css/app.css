@@ -17375,8 +17375,3 @@ readers do not read off random characters that represent icons */
   opacity: 1;
 }
 
-.required:after {
-  color: red;
-  content: " *";
-}
-
