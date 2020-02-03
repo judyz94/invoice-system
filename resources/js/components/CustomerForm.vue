@@ -13,8 +13,8 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label>ID</label>
-                <ValidationProvider rules="required|numeric" v-slot="{ errors }">
-                    <input type="text" v-model="value" class="form-control" id="document" name="document" placeholder="Type a ID">
+                <ValidationProvider rules="required" v-slot="{ errors }">
+                    <input type="number" v-model="value" class="form-control" id="document" name="document" placeholder="Type a ID">
                     <span>{{ errors[0] }}</span>
                 </ValidationProvider>
             </div>
