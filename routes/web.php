@@ -16,8 +16,8 @@ Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
 Route::post('invoices/{invoice}/products')->uses('InvoiceController@addProduct')->name('invoices.products.store');
 Route::get('/invoices/{invoice}/products{product}/edit', 'InvoiceProductController@edit')->name('invoiceProduct.edit');
 
-Route::put('invoices/{invoice}/products', 'InvoiceProductController@update')->name('invoiceProduct.update');
-//Route::post('invoices/{invoice}/products/{product}')->uses('InvoiceController@updateProduct')->name('invoiceProduct.update');
+//Route::put('invoices/{invoice}/products', 'InvoiceProductController@update')->name('invoiceProduct.update');
+Route::post('invoices/{invoice}/products/{product}')->uses('InvoiceProductController@update')->name('invoiceProduct.update');
 
 Route::delete('/invoices/{invoice}/products/{product}', 'InvoiceProductController@destroy')->name('invoiceProduct.destroy');
 
