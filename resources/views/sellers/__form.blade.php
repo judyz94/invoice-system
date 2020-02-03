@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-3">
         <div class="form-group">
-            <label for="name">{{ __('Full Name') }}</label>
+            <label for="name" class="required">{{ __('Full Name') }}</label>
             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="{{ __('Type a full name') }}"
                    value="{{ old('name', $seller->name) }}" required>
             @error('name')
@@ -14,7 +14,7 @@
 
     <div class="col-md-3">
         <div class="form-group">
-            <label for="document">{{ __('ID') }}</label>
+            <label for="document" class="required">{{ __('ID') }}</label>
             <input type="number" class="form-control @error('document') is-invalid @enderror" id="document" name="document" placeholder="{{ __('Type a ID') }}"
                    value="{{ old('document', $seller->document) }}" required>
             @error('document')
@@ -27,7 +27,7 @@
 
     <div class="col-md-3">
         <div class="form-group">
-            <label for="email">{{ __('Email') }}</label>
+            <label for="email" class="required">{{ __('Email') }}</label>
             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="{{ __('name@example.com') }}"
                    value="{{ old('email',  $seller->email) }}" required>
             @error('email')
@@ -48,7 +48,7 @@
 
     <div class="col-md-3">
         <div class="form-group">
-            <label for="city_id">{{ __('City') }}</label>
+            <label for="city_id" class="required">{{ __('City') }}</label>
             <select class="custom-select @error('city_id') is-invalid @enderror" id="city_id" name="city_id" required>
                 <option value="">{{ __('Select a city') }}</option>
                 @foreach($cities as $city)

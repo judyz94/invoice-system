@@ -16,7 +16,7 @@
 @import '~vue-select/src/scss/vue-select';
 
 
-.form-group .required:after {
-    content:"*";
+.required:after {
+    content:" *";
     color:red;
 }

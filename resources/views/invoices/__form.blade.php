@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-4">
-        <div class="form-group required">
-            <label for="expedition_date">{{ __('Expedition date') }}</label>
+        <div class="form-group">
+            <label for="expedition_date" class="required">{{ __('Expedition date') }}</label>
             <input type="date" class="form-control @error('expedition_date') is-invalid @enderror" id="expedition_date" name="expedition_date"
                    value="{{ old('expedition_date', now()->toDateString()) }}">
             @error('expedition_date')
@@ -14,7 +14,7 @@
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="due_date">{{ __('Due date') }}</label>
+            <label for="due_date" class="required">{{ __('Due date') }}</label>
             <input type="date" class="form-control @error('due_date') is-invalid @enderror" id="due_date" name="due_date"
                    value="{{ old('due_date', now()->addDays(30)->toDateString()) }}" required>
             @error('due_date')
@@ -40,7 +40,7 @@
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="seller_id">{{ __('Seller') }}</label>
+            <label for="seller_id" class="required">{{ __('Seller') }}</label>
             <select class="custom-select @error('seller_id') is-invalid @enderror" id="seller_id" name="seller_id" required>
                 <option value="">{{ __('Select seller') }}</option>
                 @foreach($sellers as $seller)
@@ -59,7 +59,7 @@
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="customer_id">{{ __('Customer') }}</label>
+            <label for="customer_id" class="required">{{ __('Customer') }}</label>
             <select class="custom-select @error('customer_id') is-invalid @enderror" id="customer_id" name="customer_id" required>
                 <option value="">{{ __('Select customer') }}</option>
                 @foreach($customers as $customer)
@@ -78,7 +78,7 @@
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="status">{{ __('Status') }}</label>
+            <label for="status" class="required">{{ __('Status') }}</label>
             <select class="custom-select @error('status') is-invalid @enderror" id="status" name="status" required>
                 <option value="New" {{ $invoice->status == 'New' ? 'selected' : ''  }}>{{ __('New') }}</option>
                 <option value="Sent" {{ $invoice->status == 'Sent' ? 'selected' : ''  }}>{{ __('Sent') }}</option>
@@ -96,7 +96,7 @@
 
     <div class="col-md-12">
         <div class="form-group">
-            <label for="sale_description">{{ __('Sale description') }}</label>
+            <label for="sale_description" class="required">{{ __('Sale description') }}</label>
             <textarea class="form-control @error('sale_description') is-invalid @enderror" id="sale_description" name="sale_description"
                       placeholder="{{ __('Type a sale description') }}" required>{{ old('sale_description', $invoice->sale_description) }}
             </textarea>
