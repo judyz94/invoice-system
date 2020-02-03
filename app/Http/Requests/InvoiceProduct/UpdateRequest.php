@@ -14,18 +14,18 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_price' => 'required|numeric',
-            'product_quantity' => 'required|integer'
+            'price' => 'required|numeric',
+            'quantity' => 'required|integer'
         ];
     }
 
     public function messages()
     {
         return [
-            'product_price.required'  => 'Please enter the product price.',
-            'product_price.numeric'  => 'Enter a valid price.',
-            'product_quantity.required' => 'Please enter the unit price the product.',
-            'product_quantity.integer' => 'Please enter the unit price the product.',
+            'price.required'  => 'Please enter the product price.',
+            'price.numeric'  => 'Enter a valid price.',
+            'quantity.required' => 'Please enter the unit price the product.',
+            'quantity.integer' => 'Please enter the unit price the product.',
         ];
     }
 }
