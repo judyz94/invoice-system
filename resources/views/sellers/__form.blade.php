@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-3">
-        <div class="form-group">
+        <div class="form-group required">
             <label for="name">{{ __('Full Name') }}</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('Type a full name') }}"
                    value="{{ old('name', $seller->name) }}" required>
@@ -8,7 +8,7 @@
     </div>
 
     <div class="col-md-3">
-        <div class="form-group">
+        <div class="form-group required">
             <label for="document">{{ __('ID') }}</label>
             <input type="text" class="form-control" id="document" name="document" placeholder="{{ __('Type a ID') }}"
                    value="{{ old('document', $seller->document) }}" required>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="col-md-3">
-        <div class="form-group">
+        <div class="form-group required">
             <label for="email">{{ __('Email') }}</label>
             <input type="text" class="form-control" id="email" name="email" placeholder="{{ __('name@example.com') }}"
                    value="{{ old('email',  $seller->email) }}" required>
@@ -32,7 +32,7 @@
     </div>
 
     <div class="col-md-3">
-        <div class="form-group">
+        <div class="form-group required">
             <label for="city_id">{{ __('City') }}</label>
             <select class="custom-select" id="city_id" name="city_id" required>
                 <option value="">{{ __('Select a city') }}</option>
