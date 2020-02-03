@@ -18,7 +18,7 @@
     <div class="col-md-3">
         <div class="form-group">
             <label for="email">{{ __('Email') }}</label>
-            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="{{ __('name@example.com') }}"
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="{{ __('name@example.com') }}"
                    value="{{ old('email',  $seller->email) }}" required>
         </div>
     </div>
