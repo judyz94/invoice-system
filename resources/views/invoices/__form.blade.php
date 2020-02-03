@@ -1,9 +1,14 @@
 <div class="row">
     <div class="col-md-4">
         <div class="form-group required">
-            <label for="expedition_date" class="required">{{ __('Expedition date *') }}</label>
+            <label for="expedition_date">{{ __('Expedition date') }}</label>
             <input type="date" class="form-control @error('expedition_date') is-invalid @enderror" id="expedition_date" name="expedition_date"
                    value="{{ old('expedition_date', now()->toDateString()) }}">
+            @error('expedition_date')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
 
@@ -12,6 +17,11 @@
             <label for="due_date">{{ __('Due date') }}</label>
             <input type="date" class="form-control @error('due_date') is-invalid @enderror" id="due_date" name="due_date"
                    value="{{ old('due_date', now()->addDays(30)->toDateString()) }}" required>
+            @error('due_date')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
 
@@ -19,7 +29,12 @@
         <div class="form-group">
             <label for="receipt_date">{{ __('Receipt date') }}</label>
             <input type="date" class="form-control @error('receipt_date') is-invalid @enderror" id="receipt_date" name="receipt_date"
-                   value="{{ old('receipt_date', $invoice->receipt_date) }}" required>
+                   value="{{ old('receipt_date', $invoice->receipt_date) }}">
+            @error('receipt_date')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
 
@@ -34,6 +49,11 @@
                     </option>
                 @endforeach
             </select>
+            @error('seller_id')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
 
@@ -48,6 +68,11 @@
                     </option>
                 @endforeach
             </select>
+            @error('customer_id')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
 
@@ -61,6 +86,11 @@
                 <option value="Paid" {{ $invoice->status == 'Paid' ? 'selected' : '' }}>{{ __('Paid') }}</option>
                 <option value="Cancelled" {{ $invoice->status == 'Cancelled' ? 'selected' : '' }}>{{ __('Cancelled') }}</option>
             </select>
+            @error('status')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
 
@@ -70,6 +100,11 @@
             <textarea class="form-control @error('sale_description') is-invalid @enderror" id="sale_description" name="sale_description"
                       placeholder="{{ __('Type a sale description') }}" required>{{ old('sale_description', $invoice->sale_description) }}
             </textarea>
+            @error('sale_description')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
 </div>
