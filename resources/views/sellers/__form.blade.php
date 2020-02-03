@@ -2,7 +2,7 @@
     <div class="col-md-3">
         <div class="form-group">
             <label for="name">{{ __('Full Name') }}</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('Type a full name') }}"
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="{{ __('Type a full name') }}"
                    value="{{ old('name', $seller->name) }}" required>
         </div>
     </div>
@@ -10,7 +10,7 @@
     <div class="col-md-3">
         <div class="form-group">
             <label for="document">{{ __('ID') }}</label>
-            <input type="text" class="form-control" id="document" name="document" placeholder="{{ __('Type a ID') }}"
+            <input type="text" class="form-control @error('document') is-invalid @enderror" id="document" name="document" placeholder="{{ __('Type a ID') }}"
                    value="{{ old('document', $seller->document) }}" required>
         </div>
     </div>
@@ -18,7 +18,7 @@
     <div class="col-md-3">
         <div class="form-group">
             <label for="email">{{ __('Email') }}</label>
-            <input type="text" class="form-control" id="email" name="email" placeholder="{{ __('name@example.com') }}"
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="{{ __('name@example.com') }}"
                    value="{{ old('email',  $seller->email) }}" required>
         </div>
     </div>
@@ -34,7 +34,7 @@
     <div class="col-md-3">
         <div class="form-group">
             <label for="city_id">{{ __('City') }}</label>
-            <select class="custom-select" id="city_id" name="city_id" required>
+            <select class="custom-select @error('city_id') is-invalid @enderror" id="city_id" name="city_id">
                 <option value="">{{ __('Select a city') }}</option>
                 @foreach($cities as $city)
                     <option value="{{ $city->id }}"
