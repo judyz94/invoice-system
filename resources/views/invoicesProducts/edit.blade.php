@@ -21,7 +21,8 @@
                             </div>
                         @endif
 
-                        <form id="form" action="{{ route('invoiceProduct.update', $invoice) }}" method="post">
+                        {{--<form id="form" action="{{ route('invoiceProduct.update', $invoice) }}" method="post">--}}
+                            <form id="form" action="{{ route('invoiceProduct.update', [$invoice, $product]) }}" method="post">
                             @csrf
                             @method('put')
 
