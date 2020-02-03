@@ -5,7 +5,7 @@
                 <label>Full Name</label>
                 <ValidationProvider name="name" rules="required|min:5" v-slot="{ errors }">
                     <input v-model="value" type="text" class="form-control" id="name" name="name" placeholder="Type a full name">
-                    <span>{{ errors[0] }}</span>
+                    <span class="invalid-feedback" role="alert"><strong>{{ errors[0] }}</strong></span>
                 </ValidationProvider>
             </div>
         </div>
