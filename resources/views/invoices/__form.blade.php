@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-md-4">
-        <div class="form-group">
-            <label for="expedition_date">{{ __('Expedition date') }}</label>
+        <div class="form-group required">
+            <label for="expedition_date" class="required">{{ __('Expedition date *') }}</label>
             <input type="date" class="form-control @error('expedition_date') is-invalid @enderror" id="expedition_date" name="expedition_date"
-                   value="{{ old('expedition_date', now()->toDateString()) }}" required>
+                   value="{{ old('expedition_date', now()->toDateString()) }}">
         </div>
     </div>
 
