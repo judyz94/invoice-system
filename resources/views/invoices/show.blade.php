@@ -30,8 +30,14 @@
                             <dt class="col-md-3">{{ __('Total with VAT') }}</dt>
                             <dd class="col-md-3">{{ $invoice->total_with_vat }}</dd>
 
+                            <dt class="col-md-3">{{ __('Seller') }}</dt>
+                            <dd class="col-md-3">{{ $invoice->seller->name }}</dd>
+
                             <dt class="col-md-3">{{ __('Seller ID') }}</dt>
                             <dd class="col-md-3">{{ $invoice->seller->document }}</dd>
+
+                            <dt class="col-md-3">{{ __('Customer') }}</dt>
+                            <dd class="col-md-3">{{ $invoice->customer->name }}</dd>
 
                             <dt class="col-md-3">{{ __('Customer ID') }}</dt>
                             <dd class="col-md-3">{{ $invoice->customer->document }}</dd>
@@ -87,6 +93,16 @@
                         </div>
                     </div>
 
+                    <!-- Button of Order Summary to pay invoice -->
+                    <div class="card-footer d-flex justify-content-end">
+                        <button class="btn btn-success" type="submit"
+                            data-route="{{ route('orderSummary') }}"
+                            data-toggle="modal"
+                            data-target="#orderSummary">{{ __('Order summary') }}
+                        </button>
+                    </div>
+
+
                     <!-- Form added invoice details -->
                     <div class="col-md-12">
                         <div class="card-header d-flex justify-content-between">
@@ -116,6 +132,7 @@
 
 @push('modals')
     @include('partials.__confirm_delete_modal')
+    @include('partials.__order_summary')
 @endpush
 @push('scripts')
     <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>
