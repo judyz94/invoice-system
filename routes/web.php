@@ -23,3 +23,4 @@ Route::delete('/invoices/{invoice}/products/{product}', 'InvoiceProductControlle
 
 Route::post('/import/invoices', 'InvoiceController@import')->name('invoices.import');
 
+Route::get('/orderSummary/invoices', 'InvoiceController@orderSummary')->name('orderSummary');
