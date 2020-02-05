@@ -14,11 +14,13 @@ class CreateTablePaymentAttempt extends Migration
     public function up()
     {
         Schema::create('payment_attempts', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('request_id');
-            $table->string('process_url');
-            $table->string('status');
-            $table->unsignedInteger('invoice_id');
+            $table->integerIncrements('id');
+            $table->string('requestId')->nullable();
+            $table->string('processUrl')->nullable();
+            $table->string('status')->nullable();
+            $table->float('amount', 14,2)->nullable();
+
+            $table->unsignedInteger('invoice_id')->nullable();
             $table->foreign('invoice_id')
                 ->references('id')->on('invoices')
                 ->onDelete('cascade')
