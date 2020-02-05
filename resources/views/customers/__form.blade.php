@@ -1,25 +1,40 @@
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
-            <label for="name">{{ __('Full Name') }}</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('Type a full name') }}"
+            <label for="name" class="required">{{ __('Full Name') }}</label>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="{{ __('Type a full name') }}"
                    value="{{ old('name', $customer->name) }}" required>
+            @error('name')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="document">{{ __('ID') }}</label>
-            <input type="text" class="form-control" id="document" name="document" placeholder="{{ __('Type a ID') }}"
+            <label for="document" class="required">{{ __('ID') }}</label>
+            <input type="number" class="form-control @error('document') is-invalid @enderror" id="document" name="document" placeholder="{{ __('Type a ID') }}"
                    value="{{ old('document', $customer->document) }}" required>
+            @error('document')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="email">{{ __('Email') }}</label>
-            <input type="text" class="form-control" id="email" name="email" placeholder="{{ __('name@example.com') }}"
+            <label for="email" class="required">{{ __('Email') }}</label>
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="{{ __('name@example.com') }}"
                    value="{{ old('email',  $customer->email) }}" required>
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
 
@@ -33,8 +48,8 @@
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="city_id">{{ __('City') }}</label>
-            <select class="custom-select" id="city_id" name="city_id" required>
+            <label for="city_id" class="required">{{ __('City') }}</label>
+            <select class="custom-select @error('city_id') is-invalid @enderror" id="city_id" name="city_id" required>
                 <option value="">{{ __('Select a city') }}</option>
                 @foreach($cities as $city)
                     <option value="{{ $city->id }}"
@@ -42,6 +57,11 @@
                     </option>
                 @endforeach
             </select>
+            @error('city_id')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
     </div>
 
