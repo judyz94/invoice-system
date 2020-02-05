@@ -14,8 +14,6 @@ use App\Http\Requests\InvoiceProduct\DetailRequest;
 use App\Imports\InvoicesImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Exception;
-use Spatie\QueryBuilder\AllowedFilter;
-use Spatie\QueryBuilder\QueryBuilder;
 
 class InvoiceController extends Controller
 {
@@ -191,6 +189,15 @@ class InvoiceController extends Controller
         Excel::import(new InvoicesImport, $file);
 
         return back()->with('message', 'Invoice import succesfully');
+    }
+
+    public function orderSummary()
+    {
+        $invoice = Invoice::all();
+        $customers = Customer::all();
+        $products = Product::all();
+
+        return view('partials.__order_summary', compact(  'customers', 'invoice', 'products'));
     }
 }
 
