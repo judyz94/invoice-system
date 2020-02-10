@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Invoice;
+use App\PaymentAttempt;
 use App\Product;
 use App\Seller;
 use App\User;
@@ -193,11 +194,12 @@ class InvoiceController extends Controller
 
     public function orderSummary()
     {
+        $paymentAttempt = PaymentAttempt::all();
         $invoice = Invoice::all();
         $customers = Customer::all();
         $products = Product::all();
 
-        return view('partials.__order_summary', compact(  'customers', 'invoice', 'products'));
+        return view('partials.__order_summary', compact(  'customers', 'invoice', 'products', 'paymentAttempt'));
     }
 }
 
