@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card shadow-sm">
                     <div class="card-header d-flex justify-content-between">
                         <h4 class="card-title"><strong>{{ __('Details Invoice') }} #{{ $invoice->code }}</strong></h4>
                     </div>
@@ -30,8 +30,14 @@
                             <dt class="col-md-3">{{ __('Total with VAT') }}</dt>
                             <dd class="col-md-3">{{ $invoice->total_with_vat }}</dd>
 
+                            <dt class="col-md-3">{{ __('Seller') }}</dt>
+                            <dd class="col-md-3">{{ $invoice->seller->name }}</dd>
+
                             <dt class="col-md-3">{{ __('Seller ID') }}</dt>
                             <dd class="col-md-3">{{ $invoice->seller->document }}</dd>
+
+                            <dt class="col-md-3">{{ __('Customer') }}</dt>
+                            <dd class="col-md-3">{{ $invoice->customer->name }}</dd>
 
                             <dt class="col-md-3">{{ __('Customer ID') }}</dt>
                             <dd class="col-md-3">{{ $invoice->customer->document }}</dd>
@@ -87,6 +93,16 @@
                         </div>
                     </div>
 
+                    <!-- Button of Order Summary to pay invoice -->
+                    <div class="card-footer d-flex justify-content-end">
+                        <button class="btn btn-success" type="submit"
+                            data-route="{{ route('orderSummary') }}"
+                            data-toggle="modal"
+                            data-target="#orderSummary">{{ __('Order summary') }}
+                        </button>
+                    </div>
+
+
                     <!-- Form added invoice details -->
                     <div class="col-md-12">
                         <div class="card-header d-flex justify-content-between">
@@ -95,45 +111,7 @@
                         <form action="{{ route('invoices.products.store', $invoice) }}" method="post">
                             @csrf
                             <div class="card-body">
-                                @if($errors->any())
-                                    <div class="alert alert-danger">
-                                        <p>{{ __('Correct the following errors:') }}</p>
-                                        <ul>
-                                            @foreach($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-
-                                <div class="row">
-                                    <div class="form-group col-md-4">
-                                        <label for="product_id">{{ __('Product Name') }}</label>
-                                        <select class="custom-select" name="product_id" id="product_id" required>
-                                            <option value="">{{ __('Select a product name') }}</option>
-                                            @foreach($products as $product)
-                                                <option value="{{$product->id}}"
-                                                    {{ old('product_id') == $product->id ? 'selected' : ''}}>{{$product->name}}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group col-md-4">
-                                        <label for="product_price">{{ __('Price') }}</label>
-                                        <input class="form-control" type="number" id="product_price"
-                                               value="{{ old('product_price') }}"
-                                               placeholder="{{ __('Type a product price') }}" name="product_price" required>
-                                    </div>
-
-                                    <div class="form-group col-md-4">
-                                        <label for="product_quantity">{{ __('Price') }}</label>
-                                        <input class="form-control" type="number" id="product_quantity"
-                                               value="{{ old('product_quantity') }}"
-                                               placeholder="{{ __('Type a quantity') }}" name="product_quantity" required>
-                                    </div>
-
-                                </div>
+                             @include('invoicesProducts.__form')
                                 <button class="btn btn-success btn-block col-md-1" type="submit"><i class="fas fa-plus"></i> {{ __('Add') }}</button>
                             </div>
                         </form>
@@ -144,9 +122,6 @@
                         <a href="{{ route('invoices.index') }}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i> {{ __('Back to Invoices') }}
                         </a>
-                        {{--<a href="{{ route('invoiceProduct.create', [$invoice, $product]) }}" class="btn btn-success">
-                            <i class="fas fa-plus"></i>  {{ __('Add New Detail') }}
-                        </a>--}}
                     </div>
 
                 </div>
@@ -157,6 +132,7 @@
 
 @push('modals')
     @include('partials.__confirm_delete_modal')
+    @include('partials.__order_summary')
 @endpush
 @push('scripts')
     <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>

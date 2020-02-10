@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Invoice extends Model
 {
@@ -34,6 +35,11 @@ class Invoice extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function paymentAttempts(): HasMany
+    {
+        return $this->hasMany(PaymentAttempt::class);
+    }
+
     public function scopeSearchFor($query, $type, $search)
     {
         if (($type) && ($search)) {
@@ -41,13 +47,5 @@ class Invoice extends Model
         }
     }
 
-    /*public function scopeCustomer($query, ?string $id)
-    {
-        if ($id) {
-            return $query->where('customer_id', $id);
-        }
-
-        return $query;
-    }*/
 }
 

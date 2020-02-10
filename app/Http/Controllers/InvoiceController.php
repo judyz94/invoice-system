@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Invoice;
+use App\PaymentAttempt;
 use App\Product;
 use App\Seller;
 use App\User;
@@ -35,14 +36,11 @@ class InvoiceController extends Controller
      */
     public function index(Request $request)
     {
-        $type = $request->get('type');
-        $search = $request->get('searchfor');
-
-        //$customers = Customer::select(['id', 'name'])->get();
+        $type = $request->input('type');
+        $search = $request->input('searchfor');
 
         $invoices = Invoice::with(['customer', 'seller'])
             ->searchfor($type, $search)
-            //->customer($request->input('customer'))
             ->paginate(10);
 
         return view('invoices.index', compact( 'invoices'));
@@ -166,33 +164,12 @@ class InvoiceController extends Controller
 
     public function addProduct(Invoice $invoice, DetailRequest $request)
     {
-        $price = $request->input('product_price');
-        $quantity = $request->input('product_quantity');
+        $price = $request->input('price');
+        $quantity = $request->input('quantity');
         $totalPrice = $price * $quantity;
         $vat = $totalPrice * 0.19;
 
         $invoice->products()->attach($request->input('product_id'), [
-            'price' => $price,
-            'quantity' => $quantity,
-        ]);
-
-        $invoice->vat += $vat;
-        $invoice->total += $totalPrice;
-        $invoice->total_with_vat += $totalPrice + $vat;
-
-        $invoice->save();
-
-        return redirect()->route('invoices.show', $invoice);
-    }
-
-    public function updateProduct(Invoice $invoice, UpdateRequest $request)
-    {
-        $price = $request->input('product_price');
-        $quantity = $request->input('product_quantity');
-        $totalPrice = $price * $quantity;
-        $vat = $totalPrice * 0.19;
-
-        $invoice->products()->updateExistingPivot($request->input('product_id'), [
             'price' => $price,
             'quantity' => $quantity,
         ]);
@@ -213,6 +190,16 @@ class InvoiceController extends Controller
         Excel::import(new InvoicesImport, $file);
 
         return back()->with('message', 'Invoice import succesfully');
+    }
+
+    public function orderSummary()
+    {
+        $paymentAttempt = PaymentAttempt::all();
+        $invoice = Invoice::all();
+        $customers = Customer::all();
+        $products = Product::all();
+
+        return view('partials.__order_summary', compact(  'customers', 'invoice', 'products', 'paymentAttempt'));
     }
 }
 

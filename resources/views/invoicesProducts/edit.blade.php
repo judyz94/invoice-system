@@ -10,47 +10,33 @@
                     </div>
 
                     <div class="card-body">
-                        @if($errors->any())
-                            <div class="alert alert-danger">
-                                <p>{{ __('Correct the following errors:') }}</p>
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
-                        <form id="form" action="{{ route('invoiceProduct.update', [$invoice, $product]) }}" method="post">
+                        {{--<form id="form" action="{{ route('invoiceProduct.update', $invoice) }}" method="post">--}}
+                            <form id="form" action="{{ route('invoiceProduct.update', compact('invoice', 'product')) }}" method="post">
                             @csrf
                             @method('put')
 
                             <div class="row col-sm-10">
                                 <div class="form-group col-md-4">
-                                    <label for="">{{ __('Product name') }}</label><br>
+                                    <label for="">{{ __('Product name') }}</label>
                                     <input type="text" class="form-control" id="product_id" name="product_id" readonly="readonly"
                                            value="{{ $product->name }}">
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="product_price">{{ __('Price') }}</label><br>
-                                    @foreach($invoice->products as $product)
-                                        <input type="number" class="form-control" id="product_price" name="product_price"
-                                               value="{{ old('product_price', $product->pivot->price) }}">
-                                    @endforeach
+                                    <label for="price">{{ __('Price') }}</label>
+                                    <input type="number" class="form-control" id="price" name="price"
+                                               value="{{ old('price', $product->pivot->price) }}">
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="product_quantity">{{ __('Quantity') }}</label><br>
-                                    @foreach($invoice->products as $product)
-                                        <input type="number" class="form-control" id="product_quantity" name="product_quantity"
-                                               value="{{ old('product_quantity', $product->pivot->quantity) }}">
-                                    @endforeach
+                                    <label for="quantity">{{ __('Quantity') }}</label>
+                                        <input type="number" class="form-control" id="quantity" name="quantity"
+                                               value="{{ old('quantity', $product->pivot->quantity) }}">
                                 </div>
                             </div>
 
                             <div class="card-footer d-flex justify-content-between">
-                                <a href="{{ route('invoices.index') }}" class="btn btn-danger">
+                                <a href="{{ route('invoices.show', $invoice) }}" class="btn btn-danger">
                                     <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
                                 </a>
                                 <button type="submit" class="btn btn-secondary">
