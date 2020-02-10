@@ -11,31 +11,27 @@
 
                     <div class="card-body">
                         {{--<form id="form" action="{{ route('invoiceProduct.update', $invoice) }}" method="post">--}}
-                            <form id="form" action="{{ route('invoiceProduct.update', [$invoice, $product]) }}" method="post">
+                            <form id="form" action="{{ route('invoiceProduct.update', compact('invoice', 'product')) }}" method="post">
                             @csrf
                             @method('put')
 
                             <div class="row col-sm-10">
                                 <div class="form-group col-md-4">
-                                    <label for="">{{ __('Product name') }}</label><br>
+                                    <label for="">{{ __('Product name') }}</label>
                                     <input type="text" class="form-control" id="product_id" name="product_id" readonly="readonly"
                                            value="{{ $product->name }}">
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="price">{{ __('Price') }}</label><br>
-                                    @foreach($invoice->products as $product)
-                                        <input type="number" class="form-control" id="price" name="price"
+                                    <label for="price">{{ __('Price') }}</label>
+                                    <input type="number" class="form-control" id="price" name="price"
                                                value="{{ old('price', $product->pivot->price) }}">
-                                    @endforeach
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="quantity">{{ __('Quantity') }}</label><br>
-                                    @foreach($invoice->products as $product)
+                                    <label for="quantity">{{ __('Quantity') }}</label>
                                         <input type="number" class="form-control" id="quantity" name="quantity"
                                                value="{{ old('quantity', $product->pivot->quantity) }}">
-                                    @endforeach
                                 </div>
                             </div>
 
