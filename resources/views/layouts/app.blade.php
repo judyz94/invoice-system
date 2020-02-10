@@ -11,10 +11,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- or point to a specific vue-select release -->
-    <script src="https://unpkg.com/vue-select@3.0.0"></script>
-    <link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -94,10 +90,11 @@
                 </ul>
             </div>
     </nav>
-</div>
+
     <main class="py-4">
         @yield('content')
     </main>
+</div>
 
 <script src="{{ asset(mix('js/manifest.js')) }}"></script>
 <script src="{{ asset(mix('js/vendor.js')) }}"></script>
