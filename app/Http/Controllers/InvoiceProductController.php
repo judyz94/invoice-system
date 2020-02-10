@@ -12,16 +12,15 @@ class InvoiceProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      * @param Invoice $invoice
-     * @param Product $product
+     * @param $product
      * @return \Illuminate\Http\Response
      */
 
-    public function edit(Invoice $invoice, Product $product)
+    public function edit(Invoice $invoice, $product)
     {
-        return response()->view('invoicesProducts.edit', [
-            'invoice' => $invoice,
-            'product' => $product,
-        ]);
+        $product = $invoice->products()->findOrFail($product);
+
+        return response()->view('invoicesProducts.edit', compact('invoice', 'product'));
     }
 
     /**
@@ -32,11 +31,13 @@ class InvoiceProductController extends Controller
      * @param Product $product
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Invoice $invoice, Product $product, UpdateRequest $request)
+    public function update(Invoice $invoice, $product, UpdateRequest $request)
     {
+        $product = $invoice->products()->findOrFail($product);
+
         $invoice->products()->updateExistingPivot($product->id, $request->validated());
 
-        return redirect()->route('invoiceProduct.update', $invoice);
+        return redirect()->route('invoices.show', $invoice);
     }
 
     /**
