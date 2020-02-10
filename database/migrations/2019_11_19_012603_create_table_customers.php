@@ -16,6 +16,9 @@ class CreateTableCustomers extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->string('name', 150);
+            $table->string('last_name', 150);
+            $table->enum('status', ['New','Sent','Overdue','Paid','Cancelled']);
+            $table->enum('document_type', ['CC', 'TI', 'CE', 'RC', 'NIT', 'RUT']);
             $table->bigInteger('document')->unique();
             $table->string('email', 40)->unique();
             $table->string('phone')->nullable();
