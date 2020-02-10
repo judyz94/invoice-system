@@ -1,6 +1,8 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="orderSummary">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <form action="{{ route('invoices.payments.attemp', $invoice) }}" method="post">
+            @csrf
+            <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title"><strong>{{ __('Order Summary') }}</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -15,7 +17,7 @@
                     </dd>
 
                     <dt class="col-auto">{{ __('Customer ID') }}</dt>
-                    <dd class="col-xl-12">
+                    <dd class="col-auto">
                         {{ $invoice->customer->document }}
                     </dd>
                 </dl>
@@ -54,5 +56,6 @@
                 <button type="submit" class="btn btn-success">{{ __('Pay') }}</button>
             </div>
         </div>
+        </form>
     </div>
 </div>
