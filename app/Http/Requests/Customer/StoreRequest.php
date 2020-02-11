@@ -16,6 +16,8 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required|min:5',
+            'last_name' => 'required|min:5',
+            'document_type' => 'required',
             'document' => [
                 'required',
                 'numeric',
@@ -35,8 +37,11 @@ class StoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Please enter the full name.',
+            'name.required' => 'Please enter the name.',
             'name.min:5'  => 'The name must be at least 5 characters.',
+            'last_name.required' => 'Please enter the last name.',
+            'last_name.min:5'  => 'The last name must be at least 5 characters.',
+            'document_type.required' => 'Please enter the identification number.',
             'document.required' => 'Please enter the identification number.',
             'document.numeric'  => 'Enter a valid identification number.',
             'document.unique'  => 'The identification number already exists.',
