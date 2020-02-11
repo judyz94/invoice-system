@@ -33,3 +33,4 @@ class PlacetoPayProvider extends ServiceProvider
         //
     }
 }
+
