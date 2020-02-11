@@ -13,7 +13,9 @@ class CustomerSeeder extends Seeder
     public function run()
     {
         DB::table('customers')->insert([
-            'name' => 'Maria Velez',
+            'name' => 'Maria',
+            'last_name' => 'Velez Hernandez',
+            'document_type' => 'CC',
             'document' => '1017221571',
             'email' => 'maria@gmail.com',
             'phone' => '30298401928',
@@ -22,8 +24,10 @@ class CustomerSeeder extends Seeder
         ]);
 
         DB::table('customers')->insert([
-            'name' => 'Carlos Holguín',
-            'document' => '213833432',
+            'name' => 'Carlos',
+            'last_name' => 'Holguín',
+            'document_type' => 'NIT',
+            'document' => '190013833432',
             'email' => 'carlos2@gmail.com',
             'phone' => '39472344321',
             'city_id' => '3',

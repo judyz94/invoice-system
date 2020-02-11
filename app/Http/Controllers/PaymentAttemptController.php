@@ -19,6 +19,8 @@ class PaymentAttemptController extends Controller
         $request = [
             'buyer' => [
                 'name' => $invoice->customer->name,
+                'surname' => $invoice->customer->last_name,
+                'documentType' => $invoice->customer->document_type,
                 'document' => $invoice->customer->document,
                 'email' => $invoice->customer->email,
                 'mobile' => $invoice->customer->phone,

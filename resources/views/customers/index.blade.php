@@ -20,6 +20,7 @@
                                 <option value="">{{ __('Filter by') }}</option>
                                 <option value="document">{{ __('ID') }}</option>
                                 <option value="name">{{ __('Name') }}</option>
+                                <option value="last_name">{{ __('Last Name') }}</option>
                                 <option value="email">{{ __('Email') }}</option>
                             </select>
 
@@ -37,7 +38,8 @@
                             <thead>
                             <tr>
                                 <th>{{ __('ID') }}</th>
-                                <th>{{ __('Name') }}</th>
+                                <th>{{ __('Type') }}</th>
+                                <th>{{ __('Full Name') }}</th>
                                 <th>{{ __('Email') }}</th>
                                 <th>{{ __('Phone') }}</th>
                                 <th>{{ __('City') }}</th>
@@ -50,7 +52,8 @@
                             @foreach($customers as $customer)
                                 <tr>
                                     <td>{{ $customer->document }}</td>
-                                    <td>{{ $customer->name }}</td>
+                                    <td>{{ $customer->document_type }}</td>
+                                    <td>{{ $customer->name }} {{ $customer->last_name }}</td>
                                     <td>{{ $customer->email }}</td>
                                     <td>{{ $customer->phone }}</td>
                                     <td>{{ $customer->city->name }}</td>

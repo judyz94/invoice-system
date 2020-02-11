@@ -14,6 +14,7 @@
                     <dt class="col-auto">{{ __('Customer') }}</dt>
                     <dd class="col-auto">
                         {{ $invoice->customer->name }}
+                        {{ $invoice->customer->last_name }}
                     </dd>
 
                     <dt class="col-auto">{{ __('Customer ID') }}</dt>

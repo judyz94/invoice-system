@@ -1,10 +1,42 @@
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
-            <label for="name" class="required">{{ __('Full Name') }}</label>
+            <label for="name" class="required">{{ __('Name') }}</label>
             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="{{ __('Type a full name') }}"
                    value="{{ old('name', $customer->name) }}" required>
             @error('name')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="last_name" class="required">{{ __('Last Name') }}</label>
+            <input type="text" class="form-control @error('last_name') is-invalid @enderror" id="last_name" name="last_name" placeholder="{{ __('Type a last name') }}"
+                   value="{{ old('last_name', $customer->last_name) }}" required>
+            @error('last_name')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="document_type" class="required">{{ __('ID Type') }}</label>
+            <select class="custom-select @error('document_type') is-invalid @enderror" id="document_type" name="document_type" required>
+                <option value="CC" {{ $customer->document_type == 'CC' ? 'selected' : ''  }}>{{ __('CC') }}</option>
+                <option value="TI" {{ $customer->document_type == 'TI' ? 'selected' : ''  }}>{{ __('TI') }}</option>
+                <option value="CE" {{ $customer->document_type == 'CE' ? 'selected' : '' }}>{{ __('CE') }}</option>
+                <option value="RC" {{ $customer->document_type == 'RC' ? 'selected' : '' }}>{{ __('RC') }}</option>
+                <option value="NIT" {{ $customer->document_type == 'NIT' ? 'selected' : '' }}>{{ __('NIT') }}</option>
+                <option value="RUT" {{ $customer->document_type == 'RUT' ? 'selected' : '' }}>{{ __('RUT') }}</option>
+            </select>
+            @error('document_type')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
