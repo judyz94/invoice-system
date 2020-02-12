@@ -53,7 +53,7 @@
                                 <tr>
                                     <td>{{ $customer->document }}</td>
                                     <td>{{ $customer->document_type }}</td>
-                                    <td>{{ $customer->name }} {{ $customer->last_name }}</td>
+                                    <td>{{ $customer->full_name }}</td>
                                     <td>{{ $customer->email }}</td>
                                     <td>{{ $customer->phone }}</td>
                                     <td>{{ $customer->city->name }}</td>

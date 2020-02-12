@@ -15,6 +15,7 @@ class CustomerSeeder extends Seeder
         DB::table('customers')->insert([
             'name' => 'Maria',
             'last_name' => 'Velez Hernandez',
+            'full_name' => 'Maria Velez Hernandez',
             'document_type' => 'CC',
             'document' => '1017221571',
             'email' => 'maria@gmail.com',
@@ -26,6 +27,7 @@ class CustomerSeeder extends Seeder
         DB::table('customers')->insert([
             'name' => 'Carlos',
             'last_name' => 'Holguín',
+            'full_name' => 'Carlos Holguín',
             'document_type' => 'NIT',
             'document' => '190013833432',
             'email' => 'carlos2@gmail.com',
