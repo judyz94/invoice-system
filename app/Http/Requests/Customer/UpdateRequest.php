@@ -15,8 +15,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:5',
-            'last_name' => 'required|min:5',
+            'name' => 'required|min:2',
+            'last_name' => 'required|min:2',
             'document_type' => 'required',
             'document' => [
                 'required',
@@ -38,9 +38,9 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name.required' => 'Please enter the name.',
-            'name.min:5'  => 'The name must be at least 5 characters.',
+            'name.min:2'  => 'The name must be at least 2 characters.',
             'last_name.required' => 'Please enter the last name.',
-            'last_name.min:5'  => 'The last name must be at least 5 characters.',
+            'last_name.min:2'  => 'The last name must be at least 2 characters.',
             'document_type.required' => 'Please enter the identification number.',
             'document.required' => 'Please enter the identification number.',
             'document.numeric'  => 'Enter a valid identification number.',
