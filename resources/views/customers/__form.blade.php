@@ -47,7 +47,7 @@
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="document" class="required">{{ __('ID') }}</label>
+            <label for="document" class="required">{{ __('ID Number') }}</label>
             <input type="number" class="form-control @error('document') is-invalid @enderror" id="document" name="document" placeholder="{{ __('Type a ID') }}"
                    value="{{ old('document', $customer->document) }}" required>
             @error('document')

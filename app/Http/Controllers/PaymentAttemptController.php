@@ -8,7 +8,6 @@ use Dnetix\Redirection\Exceptions\PlacetoPayException;
 use Dnetix\Redirection\PlacetoPay;
 use Illuminate\Http\Request;
 
-
 class PaymentAttemptController extends Controller
 {
     public function store(Invoice $invoice, Request $request, PlacetoPay $placetopay)
@@ -74,3 +73,4 @@ class PaymentAttemptController extends Controller
     }*/
 
 }
+

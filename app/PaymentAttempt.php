@@ -14,3 +14,4 @@ class PaymentAttempt extends Model
         return $this->belongsTo(Invoice::class);
     }
 }
+
