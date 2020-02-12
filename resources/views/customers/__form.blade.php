@@ -29,6 +29,7 @@
         <div class="form-group">
             <label for="document_type" class="required">{{ __('ID Type') }}</label>
             <select class="custom-select @error('document_type') is-invalid @enderror" id="document_type" name="document_type" required>
+                <option value="">{{ __('Select a ID type') }}</option>
                 <option value="CC" {{ $customer->document_type == 'CC' ? 'selected' : ''  }}>{{ __('CC') }}</option>
                 <option value="TI" {{ $customer->document_type == 'TI' ? 'selected' : ''  }}>{{ __('TI') }}</option>
                 <option value="CE" {{ $customer->document_type == 'CE' ? 'selected' : '' }}>{{ __('CE') }}</option>
