@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Customer extends Model
 {
-    protected $fillable = ['name', 'last_name', 'document_type', 'document', 'email', 'phone', 'city_id', 'address'];
+    protected $fillable = ['name', 'last_name', 'full_name', 'document_type', 'document', 'email', 'phone', 'city_id', 'address'];
 
     protected $guarded = [];
 
