@@ -52,8 +52,8 @@
                                 <td>{{ $invoice->sale_description }}</td>
                                 <td>${{ number_format($invoice->total, 2) }}</td>
                                 <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
-                                <td>{{ $invoice->seller->name }}</td>
-                                <td>{{ $invoice->customer->name }}</td>
+                                <td>{{ $invoice->seller->full_name }}</td>
+                                <td>{{ $invoice->customer->full_name }}</td>
                                 <td>{{ $invoice->user->name }}</td>
                                 <td><h5>
                                     @if($invoice->status == 'New')<span class="badge badge-secondary">{{ __('New') }}</span>@endif

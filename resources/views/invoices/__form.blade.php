@@ -45,7 +45,7 @@
                 <option value="">{{ __('Select seller') }}</option>
                 @foreach($sellers as $seller)
                     <option value="{{ $seller->id }}"
-                        {{ old('seller_id', $invoice->seller_id) == $seller->id ? 'selected' : ''}}>{{ $seller->name }}
+                        {{ old('seller_id', $invoice->seller_id) == $seller->id ? 'selected' : ''}}>{{ $seller->full_name }}
                     </option>
                 @endforeach
             </select>

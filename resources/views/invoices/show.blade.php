@@ -31,13 +31,13 @@
                             <dd class="col-md-3">{{ $invoice->total_with_vat }}</dd>
 
                             <dt class="col-md-3">{{ __('Seller') }}</dt>
-                            <dd class="col-md-3">{{ $invoice->seller->name }}</dd>
+                            <dd class="col-md-3">{{ $invoice->seller->full_name }}</dd>
 
                             <dt class="col-md-3">{{ __('Seller ID') }}</dt>
                             <dd class="col-md-3">{{ $invoice->seller->document }}</dd>
 
                             <dt class="col-md-3">{{ __('Customer') }}</dt>
-                            <dd class="col-md-3">{{ $invoice->customer->name }}</dd>
+                            <dd class="col-md-3">{{ $invoice->customer->full_name }}</dd>
 
                             <dt class="col-md-3">{{ __('Customer ID') }}</dt>
                             <dd class="col-md-3">{{ $invoice->customer->document }}</dd>
