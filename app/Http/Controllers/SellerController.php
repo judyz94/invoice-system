@@ -63,6 +63,9 @@ class SellerController extends Controller
     {
         $seller = new Seller();
         $seller->name = $request->input('name');
+        $seller->last_name = $request->input('last_name');
+        $seller->full_name = $seller->name . ' ' . $seller->last_name;
+        $seller->document_type = $request->input('document_type');
         $seller->document = $request->input('document');
         $seller->email = $request->input('email');
         $seller->phone = $request->input('phone');
@@ -111,6 +114,9 @@ class SellerController extends Controller
     public function update(UpdateRequest $request, Seller $seller)
     {
         $seller->name = $request->input('name');
+        $seller->last_name = $request->input('last_name');
+        $seller->full_name = $seller->name . ' ' . $seller->last_name;
+        $seller->document_type = $request->input('document_type');
         $seller->document = $request->input('document');
         $seller->email = $request->input('email');
         $seller->phone = $request->input('phone');

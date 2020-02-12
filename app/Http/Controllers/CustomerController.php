@@ -64,9 +64,7 @@ class CustomerController extends Controller
         $customer = new Customer();
         $customer->name = $request->input('name');
         $customer->last_name = $request->input('last_name');
-
-        $customer->full_name = $customer->name . $customer->last_name;
-
+        $customer->full_name = $customer->name . ' ' . $customer->last_name;
         $customer->document_type = $request->input('document_type');
         $customer->document = $request->input('document');
         $customer->email = $request->input('email');
@@ -117,6 +115,7 @@ class CustomerController extends Controller
     {
         $customer->name = $request->input('name');
         $customer->last_name = $request->input('last_name');
+        $customer->full_name = $customer->name . ' ' . $customer->last_name;
         $customer->document_type = $request->input('document_type');
         $customer->document = $request->input('document');
         $customer->email = $request->input('email');
