@@ -16,16 +16,18 @@ class CreateTablePayments extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->unsignedInteger('invoice_id')->nullable();
+            $table->double('amount', 15, 2);
+            $table->string('status')->nullable();
+            $table->timestamp('payment_date')->nullable();
+            $table->string('requestId')->nullable();
+            $table->string('processUrl')->nullable();
+            $table->timestamps();
+
             $table->foreign('invoice_id')
-                ->references('id')->on('invoices')
+                ->references('id')
+                ->on('invoices')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
-            $table->string('requestID')->nullable();
-            $table->string('processUrl')->nullable();
-            $table->string('status')->nullable();
-            $table->double('amount', 15,2)->nullable();
-            $table->timestamps();
         });
     }
 
