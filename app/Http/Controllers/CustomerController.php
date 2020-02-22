@@ -30,13 +30,13 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        $type = $request->get('type');
-        $search = $request->get('searchfor');
+        $type = $request->input('type');
+        $search = $request->input('search');
 
         $customers = Customer::with(['city'])
             ->searchfor($type, $search)->paginate(10);
 
-        return view('customers.index', compact( 'customers'));
+        return view('customers.index', compact( 'customers','type', 'search'));
     }
 
     /**

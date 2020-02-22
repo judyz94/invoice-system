@@ -30,13 +30,13 @@ class SellerController extends Controller
      */
     public function index(Request $request)
     {
-        $type = $request->get('type');
-        $search = $request->get('searchfor');
+        $type = $request->input('type');
+        $search = $request->input('search');
 
         $sellers = Seller::with(['city'])
             ->searchfor($type, $search)->paginate(10);
 
-        return view('sellers.index', compact( 'sellers'));
+        return view('sellers.index', compact( 'sellers', 'type', 'search'));
     }
 
     /**

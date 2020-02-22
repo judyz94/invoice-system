@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Invoice;
-use App\PaymentAttempt;
+use App\Payment;
 use App\Product;
 use App\Seller;
 use App\User;
@@ -36,14 +36,14 @@ class InvoiceController extends Controller
      */
     public function index(Request $request)
     {
-        $type = $request->input('type');
-        $search = $request->input('searchfor');
+        $filter = $request->input('filter');
+        $search = $request->input('search');
 
         $invoices = Invoice::with(['customer', 'seller'])
-            ->searchfor($type, $search)
-            ->paginate(10);
+            ->searchfor($filter, $search)
+            ->paginate(6);
 
-        return view('invoices.index', compact( 'invoices'));
+        return view('invoices.index', compact( 'invoices', 'filter', 'search'));
     }
 
     /**
@@ -96,10 +96,10 @@ class InvoiceController extends Controller
      * Display the specified resource.
      *
      * @param Invoice $invoice
-     * @param Product $product
+     * @param Payment $payment
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Invoice $invoice)
+    public function show(Invoice $invoice, Payment $payment)
     {
         $customers = Customer::all();
         $sellers = Seller::all();
@@ -107,7 +107,7 @@ class InvoiceController extends Controller
 
         $products = Product::whereNotIn('id', $invoice->products->pluck('id')->values())->get();
 
-        return view('invoices.show', compact( 'sellers', 'customers', 'users', 'invoice', 'products'));
+        return view('invoices.show', compact( 'sellers', 'customers', 'users', 'invoice', 'products', 'payment'));
     }
 
     /**
@@ -194,12 +194,12 @@ class InvoiceController extends Controller
 
     public function orderSummary()
     {
-        $paymentAttempt = PaymentAttempt::all();
+        $payment = Payment::all();
         $invoice = Invoice::all();
         $customers = Customer::all();
         $products = Product::all();
 
-        return view('partials.__order_summary', compact(  'customers', 'invoice', 'products', 'paymentAttempt'));
+        return view('partials.__order_summary', compact(  'customers', 'invoice', 'products', 'payment'));
     }
 }
 
