@@ -35,15 +35,15 @@ class Invoice extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function paymentAttempts(): HasMany
+    public function payments(): HasMany
     {
-        return $this->hasMany(PaymentAttempt::class);
+        return $this->hasMany(Payment::class);
     }
 
-    public function scopeSearchFor($query, $type, $search)
+    public function scopeSearchFor($query, $filter, $search)
     {
-        if (($type) && ($search)) {
-            return $query->where($type, 'like', "%$search%");
+        if (($filter) && ($search)) {
+            return $query->where($filter, 'like', "%$search%");
         }
     }
 
