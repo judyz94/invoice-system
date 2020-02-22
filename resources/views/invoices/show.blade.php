@@ -58,7 +58,7 @@
                                     <th>{{ __('Product Name') }}</th>
                                     <th>{{ __('Unit Price') }}</th>
                                     <th>{{ __('Quantity') }}</th>
-                                    <th>{{ __('Total Price') }}</th>
+                                    <th>{{ __('Total Products') }}</th>
                                     <th>{{ __('Actions') }}</th>
                                 </tr>
                                 </thead>
@@ -70,7 +70,7 @@
                                         <td>{{ $product->name }}</td>
                                         <td>${{ number_format($product->pivot->price) }}</td>
                                         <td>{{ $product->pivot->quantity }}</td>
-                                        <td>${{ number_format($invoice->total = $product->pivot->price * $product->pivot->quantity) }}</td>
+                                        <td>${{ number_format($acum = $product->pivot->price * $product->pivot->quantity) }}</td>
                                         <td>
                                             <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
                                                 <a href="{{ route('invoiceProduct.edit', [$invoice, $product]) }}" class="btn btn-link"
@@ -98,8 +98,11 @@
                         <button class="btn btn-success" type="submit"
                             data-route="{{ route('orderSummary') }}"
                             data-toggle="modal"
-                            data-target="#orderSummary">{{ __('Order summary') }}
+                            data-target="#orderSummary"><i class="fas fa-shopping-cart"></i> {{ __('Order summary') }}
                         </button>
+
+                        <a href="{{ route('payments.show', $invoice->id) }}" class="btn btn-secondary">
+                            <i class="fas fa-file-invoice-dollar"></i> {{ __('Payment attempts') }}</a>
                     </div>
 
 
