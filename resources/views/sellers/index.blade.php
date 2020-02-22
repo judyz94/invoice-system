@@ -14,16 +14,16 @@
                         {{ __('Create a new seller') }}</a>
 
                     <!-- Search form -->
-                    <form class="form-inline">
-                        <select name="type" class="form-control mr-sm-2" id="select">
-                            <option value="">{{ __('Filter by') }}</option>
-                            <option value="document">{{ __('ID') }}</option>
-                            <option value="name">{{ __('Name') }}</option>
-                            <option value="last_name">{{ __('Last Name') }}</option>
-                            <option value="email">{{ __('Email') }}</option>
+                    <form class="form-inline" method="GET">
+                        <select name="type" class="form-control mr-sm-2" id="type">
+                            <option value="">{{ __('All') }}</option>
+                            <option value="document" {{ request()->input('type') == 'document' ? 'selected' : '' }}>{{ __('ID') }}</option>
+                            <option value="name" {{ request()->input('type') == 'name' ? 'selected' : '' }}>{{ __('Name') }}</option>
+                            <option value="last_name" {{ request()->input('type') == 'last_name' ? 'selected' : '' }}>{{ __('Last Name') }}</option>
+                            <option value="email" {{ request()->input('type') == 'email' ? 'selected' : '' }}>{{ __('Email') }}</option>
                         </select>
 
-                        <input name="searchfor" class="form-control mr-sm-2" type="search" placeholder="{{ __('Search...') }}">
+                        <input name="search" id="search" value="{{ request()->input('search') }}" class="form-control mr-sm-2" type="search" placeholder="{{ __('Search...') }}">
 
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> {{ __('Search') }}</button>
                         <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" onClick="window.history.back();">

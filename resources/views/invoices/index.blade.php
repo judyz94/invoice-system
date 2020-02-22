@@ -16,7 +16,7 @@
 
 
                        <!-- Search form -->
-                       <search-form action="{{ route('invoices.index') }}" method="get">
+                       <search-form action="{{ route('invoices.index') }}" method="GET">
 
                        </search-form>
 
@@ -89,7 +89,7 @@
 
                     <!-- Pagination -->
                     <ul class="pagination justify-content-center">
-                    {{ $invoices->links() }}
+                        {{ $invoices->appends(['filter' => $filter, 'search' => $search])->links() }}
                     </ul>
 
                     <!-- Import form -->
