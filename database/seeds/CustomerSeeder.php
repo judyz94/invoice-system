@@ -13,12 +13,12 @@ class CustomerSeeder extends Seeder
     public function run()
     {
         DB::table('customers')->insert([
-            'name' => 'Maria',
-            'last_name' => 'Velez Hernandez',
-            'full_name' => 'Maria Velez Hernandez',
+            'name' => 'Judy',
+            'last_name' => 'Zapata Henao',
+            'full_name' => 'Judy Zapata Henao',
             'document_type' => 'CC',
             'document' => '1017221571',
-            'email' => 'maria@gmail.com',
+            'email' => 'judyzh94@gmail.com',
             'phone' => '30298401928',
             'city_id' => '1',
             'address' => 'Calle 56 #40-30'
