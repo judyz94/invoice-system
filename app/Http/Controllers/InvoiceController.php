@@ -166,8 +166,8 @@ class InvoiceController extends Controller
     {
         $price = $request->input('price');
         $quantity = $request->input('quantity');
-        $totalPrice = $price * $quantity;
-        $vat = $totalPrice * 0.19;
+        $total = $price * $quantity;
+        $vat = $total * 0.19;
 
         $invoice->products()->attach($request->input('product_id'), [
             'price' => $price,
@@ -175,8 +175,8 @@ class InvoiceController extends Controller
         ]);
 
         $invoice->vat += $vat;
-        $invoice->total += $totalPrice;
-        $invoice->total_with_vat += $totalPrice + $vat;
+        $invoice->total += $total;
+        $invoice->total_with_vat += $total + $vat;
 
         $invoice->save();
 
