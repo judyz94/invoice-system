@@ -56,8 +56,7 @@
                                 <td>{{ $invoice->customer->full_name }}</td>
                                 <td>{{ $invoice->user->name }}</td>
                                 <td><h5>
-                                    @if($invoice->status == 'New')<span class="badge badge-secondary">{{ __('New') }}</span>@endif
-                                    @if($invoice->status == 'Sent')<span class="badge badge-primary">{{ __('Sent') }}</span>@endif
+                                    @if($invoice->status == 'New')<span class="badge badge-primary">{{ __('New') }}</span>@endif
                                     @if($invoice->status == 'Overdue')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
                                     @if($invoice->status == 'Paid')<span class="badge badge-success">{{ __('Paid') }}</span>@endif
                                     @if($invoice->status == 'Cancelled')<span class="badge badge-light">{{ __('Cancelled') }}</span>@endif
