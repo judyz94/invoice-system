@@ -101,7 +101,7 @@
                             data-target="#orderSummary"><i class="fas fa-shopping-cart"></i> {{ __('Order summary') }}
                         </button>
 
-                        <a href="{{ route('payments.show', $invoice->id) }}" class="btn btn-secondary">
+                        <a href="{{ route('payments.show', $invoice) }}" class="btn btn-secondary">
                             <i class="fas fa-file-invoice-dollar"></i> {{ __('Payment attempts') }}</a>
                     </div>
 
