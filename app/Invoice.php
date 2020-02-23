@@ -46,6 +46,5 @@ class Invoice extends Model
             return $query->where($filter, 'like', "%$search%");
         }
     }
-
 }
 

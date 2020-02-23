@@ -41,3 +41,4 @@ class CreateTablePayments extends Migration
         Schema::dropIfExists('payments');
     }
 }
+
