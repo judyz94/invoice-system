@@ -29,7 +29,7 @@
                                 <td>{{ $payment->created_at }}</td>
                                 <td>{{ $payment->status}}</td>
                                 <td>{{ $payment->requestId }}</td>
-                                <td>{{ $payment->amount }}</td>
+                                <td>${{number_format($payment->amount, 2 )}}</td>
                             </tr>
                         @endforeach
                         </tbody>
