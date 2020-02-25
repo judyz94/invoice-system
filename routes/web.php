@@ -19,4 +19,5 @@ Route::post('/import/invoices', 'InvoiceController@import')->name('invoices.impo
 Route::get('/orderSummary/invoices', 'InvoiceController@orderSummary')->name('orderSummary');
 Route::post('/payment/{invoice}', 'paymentController@store')->name('payments.store');
 Route::get('/payment/show/{invoice}/', 'paymentController@show')->name('payments.show');
+Route::put('/invoices/{invoice}/payments/{payment}/', 'paymentController@update')->name('payments.update');
 
