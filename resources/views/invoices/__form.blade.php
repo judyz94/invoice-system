@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    {{--<div class="col-md-4">
         <div class="form-group">
             <label for="receipt_date">{{ __('Receipt date') }}</label>
             <input type="date" class="form-control @error('receipt_date') is-invalid @enderror" id="receipt_date" name="receipt_date"
@@ -36,7 +36,7 @@
             </span>
             @enderror
         </div>
-    </div>
+    </div>--}}
 
     <div class="col-md-4">
         <div class="form-group">
@@ -81,8 +81,6 @@
             <label for="status" class="required">{{ __('Status') }}</label>
             <select class="custom-select @error('status') is-invalid @enderror" id="status" name="status" required>
                 <option value="New" {{ $invoice->status == 'New' ? 'selected' : ''  }}>{{ __('New') }}</option>
-                <option value="Overdue" {{ $invoice->status == 'Overdue' ? 'selected' : '' }}>{{ __('Overdue') }}</option>
-                <option value="Cancelled" {{ $invoice->status == 'Cancelled' ? 'selected' : '' }}>{{ __('Cancelled') }}</option>
             </select>
             @error('status')
             <span class="invalid-feedback" role="alert">
