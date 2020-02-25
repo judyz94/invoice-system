@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Dnetix\Redirection\PlacetoPay;
+use Illuminate\View\View;
 
 class PaymentController extends Controller
 {
@@ -27,8 +28,8 @@ class PaymentController extends Controller
             'invoice_id' => $invoice->id,
             'amount' => $invoice->total_with_vat
         ]);
-        if ($invoice->status == "Paid") {
-            return redirect()->route('invoices.show', $invoice)->withErrors("La factura ya está pagada");
+        if ($invoice->status == 'Paid') {
+            return redirect()->route('invoices.show', $invoice)->withErrors("The invoice has been paid.");
         }
         $requestPayment = [
             'buyer' => [
@@ -40,6 +41,7 @@ class PaymentController extends Controller
                 'mobile' => $invoice->customer->phone,
                 'address' => [
                     'street' => $invoice->customer->address,
+                    'city' => $invoice->customer->city->name,
                 ]
             ],
             'payment' => [
@@ -50,32 +52,32 @@ class PaymentController extends Controller
                     'total' => $invoice->total_with_vat,
                 ],
             ],
-            'expiration' => date('c', strtotime('+2 days')),
+            'expiration' => $invoice->due_date,
             'ipAddress' => $request->ip(),
             'userAgent' => $request->header('User-Agent'),
-            'returnUrl' => 'https://dnetix.co/p2p/client', //route('payments.update', $payment->id),
+            'returnUrl' => 'https://dnetix.co/p2p/client', //route('payments.update', $payment),
         ];
 
         $response = $placetopay->request($requestPayment);
+
         if ($response->isSuccessful()) {
-            $payment = Payment::where('id', $payment->id)->first();
-            $payment->status = $response->status()->status();
-            $payment->requestId = $response->requestId();
-            $payment->processUrl = $response->processUrl();
-            $payment->update();
-            // Redirect the client to the processUrl or display it on the JS extension
+            $payment->update([
+                'invoice_id' => $invoice->id,
+                'status' => $response->status()->status(),
+                'message' => $response->status()->message(),
+                'requestId' => $response->requestId(),
+                'processUrl' => $response->processUrl()
+            ]);
             return redirect($response->processUrl());
         } else {
-            // There was some error so check the message and log it
             $response->status()->message();
         }
     }
-
     /**
      * Display the specified resource.
      *
      * @param Invoice $invoice
-     * @return Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function show(Invoice $invoice)
     {
@@ -85,36 +87,35 @@ class PaymentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param PlacetoPay $placetopay
      * @param Payment $payment
+     * @param PlacetoPay $placetopay
+     * @param Invoice $invoice
      * @return RedirectResponse
      */
-    public function update(Payment $payment, PlacetoPay $placetopay)
+    public function update(Payment $payment, PlacetoPay $placetopay, Invoice $invoice)
     {
         $response = $placetopay->query($payment->requestId);
-        $payment = Payment::where('id', $payment->id)->first();
-        $payment->status = $response->status()->status();
-        $payment->update();
-        $invoice = Invoice::where('id', $payment->invoice_id)->first();
-        if ($response->isSuccessful()) {
 
-            $invoice->status = $response->status()->status();
-            if ($response->status()->isApproved()) {
-                $date = date("Y-m-d H:i:s", strtotime($response->status()->date()));
-                if ($invoice->receipt_date == null) {
-                    $invoice->receipt_date = $date;
+        if ($response->isSuccessful()) {
+            if ($payment->status == 'APPROVED') {
+                $invoice->update([
+                    'status' == 'Paid'
+                ]);
+                if (empty($invoice->receipt_date)) {
+                    $date = date("Y-m-d H:i:s", strtotime($response->status()->date()));
+                    $invoice->update([
+                        'receipt_date' == $date
+                    ]);
                 }
-                $invoice->payment_date = $date;
-                $payment->payment_date = $date;
-                $payment->update();
+                return redirect()->route('payments.show', $invoice);
             }
-            $invoice->update();
-        } else {
-            $invoice->status = $response->status()->status();
-            $invoice->receipt_date = null;
-            $invoice->update();
+            elseif ($payment->status == 'REJECTED') {
+                $invoice->update([
+                    'status' == 'Unpaid'
+                ]);
+            }
         }
-        return redirect()->route('payments.show', $invoice);
+        return redirect()->route('invoices.index');
     }
 }
 
