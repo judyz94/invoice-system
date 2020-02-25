@@ -18,6 +18,7 @@
                             <th>{{ __('Invoice code') }}</th>
                             <th>{{ __('Payment attempt date') }}</th>
                             <th>{{ __('Status') }}</th>
+                            <th>{{ __('Message') }}</th>
                             <th>{{ __('Transaction #') }}</th>
                             <th>{{ __('Amount') }}</th>
                         </tr>
@@ -25,9 +26,10 @@
                         <tbody>
                         @foreach($invoice->payments as $payment)
                             <tr>
-                                <td>{{ $invoice->code }}</td>
+                                <td>{{ $payment->invoice->code }}</td>
                                 <td>{{ $payment->created_at }}</td>
                                 <td>{{ $payment->status}}</td>
+                                <td>{{ $payment->message}}</td>
                                 <td>{{ $payment->requestId }}</td>
                                 <td>${{number_format($payment->amount, 2 )}}</td>
                             </tr>
