@@ -6,7 +6,7 @@
             <div class="col-xl-14">
                 <div class="card shadow-sm">
                     <div class="card-header pb-0">
-                        <h4 class="card-title"><strong>{{ __('Seller') }}  {{ $seller->name }}</strong></h4>
+                        <h4 class="card-title"><strong>{{ __('Seller') }}  {{ $seller->full_name }}</strong></h4>
                     </div>
 
                     <!-- Seller detail information -->
@@ -15,8 +15,11 @@
                             <dt class="col-md-3">{{ __('ID') }}</dt>
                             <dd class="col-md-3">{{ $seller->document }}</dd>
 
+                            <dt class="col-md-3">{{ __('Type') }}</dt>
+                            <dd class="col-md-3">{{ $seller->document_type }}</dd>
+
                             <dt class="col-md-3">{{ __('Name') }}</dt>
-                            <dd class="col-md-3">{{ $seller->name }}</dd>
+                            <dd class="col-md-3">{{ $seller->full_name }}</dd>
 
                             <dt class="col-md-3">{{ __('Email') }}</dt>
                             <dd class="col-md-3">{{ $seller->email }}</dd>
@@ -63,8 +66,8 @@
                                             <td>{{ $invoice->sale_description }}</td>
                                             <td>${{ number_format($invoice->total, 2) }}</td>
                                             <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
-                                            <td>{{ $invoice->seller->name }}</td>
-                                            <td>{{ $invoice->customer->name }}</td>
+                                            <td>{{ $invoice->seller->full_name }}</td>
+                                            <td>{{ $invoice->customer->full_name }}</td>
                                             <td>{{ $invoice->user->name }}</td>
                                             <td><h5>
                                                     @if($invoice->status == 'New')<span class="badge badge-secondary">{{ __('New') }}</span>@endif

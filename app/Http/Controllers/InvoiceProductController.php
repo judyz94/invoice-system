@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Invoice;
-use App\Http\Requests\InvoiceProduct\DetailRequest;
 use App\Http\Requests\InvoiceProduct\UpdateRequest;
 
 class InvoiceProductController extends Controller

@@ -1,4 +1,4 @@
-@extends ('layouts.base')
+@extends ('layouts.app')
 
 @section('content')
     <div class="container">
@@ -10,7 +10,6 @@
                     </div>
 
                     <div class="card-body">
-                        {{--<form id="form" action="{{ route('invoiceProduct.update', $invoice) }}" method="post">--}}
                             <form id="form" action="{{ route('invoiceProduct.update', compact('invoice', 'product')) }}" method="post">
                             @csrf
                             @method('put')

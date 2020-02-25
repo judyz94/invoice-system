@@ -1,19 +1,19 @@
 <template>
-    <form v-bind="$attrs" class="form-inline">
-        <div class="form-group">
-            <select class="custom-select" name="type" id="filter" v-model="filter" @select="clearSelectedValue">
-                <option value="code">Code</option>
-                <option value="expedition_date">Expedition date</option>
-                <option value="due_date">Due date</option>
-                <option value="sale_description">Sale description</option>
-                <option value="status">Status</option>
+    <form v-bind="$attrs" class="form-inline" method="GET">
+        <div class="form-group" id="searchForm">
+            <select class="custom-select" name="filter" id="filter" v-model="filter" @select="clearSelectedValue">
+                <option value="code" selected >Code</option>
+                <option value="expedition_date" selected>Expedition date</option>
+                <option value="due_date" selected>Due date</option>
+                <option value="sale_description" selected >Sale description</option>
+                <option value="status" selected>Status</option>
             </select>
 
-            <input class="form-control" type="text" name="searchfor" v-model="value" v-if="filter === 'code'" required>
-            <input class="form-control" type="date" name="searchfor" v-model="value" v-if="filter === 'expedition_date'" required>
-            <input class="form-control" type="date" name="searchfor" v-model="value" v-if="filter === 'due_date'" required>
-            <input class="form-control" type="text" name="searchfor" v-model="value" v-if="filter === 'sale_description'" required>
-            <select class="custom-select" name="searchfor" v-model="value" v-if="filter === 'status'">
+            <input class="form-control" type="text" name="search" v-model="value" v-if="filter === 'code'" required>
+            <input class="form-control" type="date" name="search" v-model="value" v-if="filter === 'expedition_date'" required>
+            <input class="form-control" type="date" name="search" v-model="value" v-if="filter === 'due_date'" required>
+            <input class="form-control" type="text" name="search" v-model="value" v-if="filter === 'sale_description'" required>
+            <select class="custom-select" name="search" v-model="value" v-if="filter === 'status'">
                 <option value="New">New</option>
                 <option value="Sent">Sent</option>
                 <option value="Overdue">Overdue</option>

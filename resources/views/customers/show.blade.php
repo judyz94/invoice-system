@@ -1,4 +1,4 @@
-@extends ('layouts.base')
+@extends ('layouts.app')
 
 @section('content')
     <div class="container">
@@ -7,7 +7,7 @@
                 <div class="card shadow-sm">
                     <div class="card-header pb-0">
                         <h4 class="card-title"><strong>{{ __('Customer') }}
-                                {{ $customer->name }}</strong></h4>
+                                {{ $customer->full_name }}</strong></h4>
                     </div>
 
                     <!-- Customer detail information -->
@@ -16,8 +16,11 @@
                         <dt class="col-md-3">{{ __('ID') }}</dt>
                         <dd class="col-md-3">{{ $customer->document }}</dd>
 
-                        <dt class="col-md-3">{{ __('Name') }}</dt>
-                        <dd class="col-md-3">{{ $customer->name }}</dd>
+                        <dt class="col-md-3">{{ __('Type') }}</dt>
+                        <dd class="col-md-3">{{ $customer->document_type }}</dd>
+
+                        <dt class="col-md-3">{{ __('Full Name') }}</dt>
+                        <dd class="col-md-3">{{ $customer->full_name }}</dd>
 
                         <dt class="col-md-3">{{ __('Email') }}</dt>
                         <dd class="col-md-3">{{ $customer->email }}</dd>
@@ -64,8 +67,8 @@
                                                 <td>{{ $invoice->sale_description }}</td>
                                                 <td>${{ number_format($invoice->total, 2) }}</td>
                                                 <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
-                                                <td>{{ $invoice->seller->name }}</td>
-                                                <td>{{ $invoice->customer->name }}</td>
+                                                <td>{{ $invoice->seller->full_name }}</td>
+                                                <td>{{ $invoice->customer->full_name }}</td>
                                                 <td>{{ $invoice->user->name }}</td>
                                                 <td><h5>
                                                         @if($invoice->status == 'New')<span class="badge badge-secondary">{{ __('New') }}</span>@endif

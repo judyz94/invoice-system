@@ -29,12 +29,12 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $type = $request->get('type');
-        $search = $request->get('searchfor');
+        $type = $request->input('type');
+        $search = $request->input('search');
 
         $products = Product::searchfor($type, $search)->paginate(4);
 
-        return view('products.index', compact( 'products'));
+        return view('products.index', compact( 'products', 'type', 'search'));
     }
 
     /**

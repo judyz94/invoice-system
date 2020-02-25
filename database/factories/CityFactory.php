@@ -10,3 +10,4 @@ $factory->define(City::class, function (Faker $faker) {
         'name' => $faker->unique()->city,
     ];
 });
+
