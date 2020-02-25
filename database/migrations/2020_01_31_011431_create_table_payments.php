@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTablePaymentAttempt extends Migration
+class CreateTablePayments extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,21 @@ class CreateTablePaymentAttempt extends Migration
      */
     public function up()
     {
-        Schema::create('payment_attempts', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->integerIncrements('id');
+            $table->unsignedInteger('invoice_id')->nullable();
+            $table->double('amount', 15, 2)->nullable();
+            $table->string('status')->nullable();
+            $table->string('message')->nullable();
             $table->string('requestId')->nullable();
             $table->string('processUrl')->nullable();
-            $table->string('status')->nullable();
-            $table->float('amount', 14,2)->nullable();
+            $table->timestamps();
 
-            $table->unsignedInteger('invoice_id')->nullable();
             $table->foreign('invoice_id')
-                ->references('id')->on('invoices')
+                ->references('id')
+                ->on('invoices')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
-            $table->timestamps();
         });
     }
 
@@ -37,6 +38,7 @@ class CreateTablePaymentAttempt extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment_attempts');
+        Schema::dropIfExists('payments');
     }
 }
+

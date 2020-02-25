@@ -34,3 +34,4 @@ class CreateColumnCustomerIdInInvoices extends Migration
         });
     }
 }
+
