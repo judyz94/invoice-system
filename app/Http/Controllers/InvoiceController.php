@@ -199,7 +199,7 @@ class InvoiceController extends Controller
         $customers = Customer::all();
         $products = Product::all();
 
-        return view('partials.__order_summary', compact(  'customers', 'invoice', 'products', 'paymentAttempt'));
+        return view('partials.__order_summary', compact(  'customers', 'invoice', 'products', 'payment'));
     }
 }
 
