@@ -43,7 +43,7 @@
                             <dd class="col-md-3">{{ $invoice->customer->document }}</dd>
 
                             <dt class="col-md-3">{{ __('Status') }}</dt>
-                            <dd class="col-md-3">{{ $invoice->status }}</dd>
+                            <dd class="col-md-3">{{ $invoice->state_id }}</dd>
 
                             <dt class="col-md-3">{{ __('Created by') }}</dt>
                             <dd class="col-md-3">{{ $invoice->user->name }}</dd>

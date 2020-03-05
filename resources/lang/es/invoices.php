@@ -12,7 +12,7 @@ return [
     'Total with VAT' => 'Total con IVA',
     'Seller' => 'Vendedor',
     'Customer' => 'Cliente',
-    'Status' => 'Estado',
+    'State' => 'Estado',
     'Created by' => 'Creada por',
     'Actions' => 'Acciones',
     'Add Details' => 'Agregar Detalles',

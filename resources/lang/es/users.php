@@ -18,7 +18,7 @@ return [
     'Sale description' => 'Descripción de la venta',
     'Total with VAT' => 'Total con IVA',
     'Seller' => 'Vendedor',
-    'Status' => 'Estado',
+    'State' => 'Estado',
     'Created by' => 'Creada por',
     'New' => 'Nueva',
     'Sent' => 'Enviada',

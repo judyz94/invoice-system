@@ -16,9 +16,7 @@
 
 
                        <!-- Search form -->
-                       <search-form action="{{ route('invoices.index') }}" method="GET">
-
-                       </search-form>
+                       <search-form action="{{ route('invoices.index') }}" method="GET"></search-form>
 
                    </nav>
 
@@ -56,12 +54,12 @@
                                 <td>{{ $invoice->customer->full_name }}</td>
                                 <td>{{ $invoice->user->name }}</td>
                                 <td><h5>
-                                    @if($invoice->status == 'New')<span class="badge badge-primary">{{ __('New') }}</span>@endif
+                                    @if($invoice->state_id == '1')<span class="badge badge-primary">{{ __('New') }}</span>@endif
                                         @if($invoice->due_date <= $now)
-                                            @if($invoice->status == 'Overdue')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
+                                            @if($invoice->state_id == '2')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
                                         @endif
-                                    @if($invoice->status == 'Paid')<span class="badge badge-success">{{ __('Paid') }}</span>@endif
-                                    @if($invoice->status == 'Unpaid')<span class="badge badge-light">{{ __('Unpaid') }}</span>@endif
+                                    @if($invoice->state_id == '3')<span class="badge badge-success">{{ __('Paid') }}</span>@endif
+                                    @if($invoice->state_id == '4')<span class="badge badge-light">{{ __('Unpaid') }}</span>@endif
                                  </h5></td>
                                 <td class="text-right">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
