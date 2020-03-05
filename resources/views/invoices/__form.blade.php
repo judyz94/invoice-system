@@ -76,19 +76,23 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    {{--}}<div class="col-md-4">
         <div class="form-group">
-            <label for="status" class="required">{{ __('Status') }}</label>
-            <select class="custom-select @error('status') is-invalid @enderror" id="status" name="status" required>
-                <option value="New" {{ $invoice->status == 'New' ? 'selected' : ''  }}>{{ __('New') }}</option>
+            <label for="state_id" class="required">{{ __('Status') }}</label>
+            <select class="custom-select @error('state_id') is-invalid @enderror" id="state_id" name="state_id" required>
+                @foreach($states as $state)
+                    <option value="{{ $state->id }}"
+                        {{ old('state_id', $invoice->state_id) == $state->id ? 'selected' : ''}}>{{ $state->name }}
+                    </option>
+                @endforeach
             </select>
-            @error('status')
+            @error('state_id')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
         </div>
-    </div>
+    </div>--}}
 
     <div class="col-md-12">
         <div class="form-group">

@@ -7,6 +7,7 @@ use App\Invoice;
 use App\Payment;
 use App\Product;
 use App\Seller;
+use App\State;
 use App\User;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -36,6 +37,7 @@ class InvoiceController extends Controller
      *
      * @param Request $request
      * @return Factory|View
+     * @throws Exception
      */
     public function index(Request $request)
     {
@@ -60,13 +62,14 @@ class InvoiceController extends Controller
      */
     public function create(Invoice $invoice)
     {
+        $states = State::all();
         $customers = Customer::all();
         $sellers = Seller::all();
         $users = User::all();
 
         $invoice = new Invoice();
 
-        return view('invoices.create', compact('sellers', 'customers', 'users', 'invoice'));
+        return view('invoices.create', compact('states', 'sellers', 'customers', 'users', 'invoice'));
     }
 
     /**
@@ -86,7 +89,7 @@ class InvoiceController extends Controller
         $invoice->seller_id = $request->input('seller_id');
         $invoice->sale_description = $request->input('sale_description');
         $invoice->customer_id = $request->input('customer_id');
-        $invoice->status = $request->input('status');
+        $invoice->state_id = $request->input('state_id');
         $invoice->user_id = auth()->user()->id;
 
         $invoice->save();
@@ -107,13 +110,14 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice, Payment $payment)
     {
+        $states = State::all();
         $customers = Customer::all();
         $sellers = Seller::all();
         $users = User::all();
 
         $products = Product::whereNotIn('id', $invoice->products->pluck('id')->values())->get();
 
-        return view('invoices.show', compact( 'sellers', 'customers', 'users', 'invoice', 'products', 'payment'));
+        return view('invoices.show', compact( 'states', 'sellers', 'customers', 'users', 'invoice', 'products', 'payment'));
     }
 
     /**
@@ -124,11 +128,12 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoice)
     {
+        $states = State::all();
         $customers = Customer::all();
         $sellers = Seller::all();
         $users = User::all();
 
-        return view('invoices.edit', compact( 'sellers', 'customers', 'users', 'invoice'));
+        return view('invoices.edit', compact( 'states', 'sellers', 'customers', 'users', 'invoice'));
     }
 
     /**
@@ -146,7 +151,7 @@ class InvoiceController extends Controller
         $invoice->seller_id = $request->input('seller_id');
         $invoice->sale_description = $request->input('sale_description');
         $invoice->customer_id = $request->input('customer_id');
-        $invoice->status = $request->input('status');
+        $invoice->state_id = $request->input('state_id');
         $invoice->user_id = auth()->user()->id;
 
         $invoice->save();
@@ -204,7 +209,7 @@ class InvoiceController extends Controller
         $invoice = Invoice::all();
         $customers = Customer::all();
         $products = Product::all();
-      
+
         return view('partials.__order_summary', compact(  'customers', 'invoice', 'products', 'payment'));
     }
 }
