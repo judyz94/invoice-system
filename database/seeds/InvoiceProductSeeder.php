@@ -27,7 +27,7 @@ class InvoiceProductSeeder extends Seeder
         ]);
 
         DB::table('invoice_product')->insert([
-            'invoice_id' => '2',
+            'invoice_id' => '1',
             'product_id' => '6',
             'price' => '75000',
             'quantity' => '2'
