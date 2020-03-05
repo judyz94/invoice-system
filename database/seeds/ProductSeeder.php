@@ -41,8 +41,6 @@ class ProductSeeder extends Seeder
             'name' => 'Paca de cuido',
             'unit_price' => '75000'
         ]);
-
-
     }
 }
 

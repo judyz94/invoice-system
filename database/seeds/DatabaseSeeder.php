@@ -14,19 +14,21 @@ class DatabaseSeeder extends Seeder
     {
         $this->truncateTables([
             'cities',
-            'products',
-            'sellers',
             'customers',
+            'sellers',
             'users',
+            'products',
+            'states',
             'invoices',
             'invoice_product'
         ]);
 
         $this->call(CitySeeder::class);
-        $this->call(ProductSeeder::class);
         $this->call(CustomerSeeder::class);
         $this->call(SellerSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(ProductSeeder::class);
+        $this->call(StateSeeder::class);
         $this->call(InvoiceSeeder::class);
         $this->call(InvoiceProductSeeder::class);
     }

@@ -52,7 +52,7 @@
                                         <th>{{ __('Seller') }}</th>
                                         <th>{{ __('Customer') }}</th>
                                         <th>{{ __('Created by') }}</th>
-                                        <th>{{ __('Status') }}</th>
+                                        <th>{{ __('State') }}</th>
                                         <th>{{ __('Actions') }}</th>
                                     </tr>
                                     </thead>
