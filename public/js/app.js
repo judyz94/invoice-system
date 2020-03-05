@@ -470,11 +470,7 @@ var render = function() {
   return _c(
     "form",
     _vm._b(
-      {
-        staticClass: "form-inline",
-        attrs: { method: "GET" },
-        on: { select: _vm.clearSelectedValue }
-      },
+      { staticClass: "form-inline", attrs: { method: "GET" } },
       "form",
       _vm.$attrs,
       false
@@ -495,6 +491,7 @@ var render = function() {
             staticClass: "custom-select",
             attrs: { name: "filter", id: "filter" },
             on: {
+              select: _vm.clearSelectedValue,
               change: function($event) {
                 var $$selectedVal = Array.prototype.filter
                   .call($event.target.options, function(o) {
