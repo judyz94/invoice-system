@@ -41,7 +41,7 @@
                         </thead>
 
                         <tbody>
-                        @foreach($invoices as $invoice)
+                        @forelse($invoices as $invoice)
                             <tr>
                                 <td>{{ $invoice->code }}</td>
                                 <td>{{ $invoice->expedition_date }}</td>
@@ -82,7 +82,13 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                            @empty
+                                <tr>
+                                    <p class="alert alert-secondary text-center">
+                                        {{ __('No invoices were found') }}
+                                    </p>
+                                </tr>
+                        @endforelse
                         </tbody>
                     </table>
 

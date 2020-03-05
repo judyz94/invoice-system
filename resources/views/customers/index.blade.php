@@ -50,7 +50,7 @@
                             </thead>
 
                             <tbody>
-                            @foreach($customers as $customer)
+                            @forelse($customers as $customer)
                                 <tr>
                                     <td>{{ $customer->document }}</td>
                                     <td>{{ $customer->document_type }}</td>
@@ -80,7 +80,13 @@
                                         </div>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <p class="alert alert-secondary text-center">
+                                        {{ __('No customers were found') }}
+                                    </p>
+                                </tr>
+                            @endforelse
                             </tbody>
                         </table>
 

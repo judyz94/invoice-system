@@ -9,7 +9,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Dnetix\Redirection\PlacetoPay;
-use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 
 class PaymentController extends Controller
@@ -29,6 +28,7 @@ class PaymentController extends Controller
             'invoice_id' => $invoice->id,
             'amount' => $invoice->total_with_vat
         ]);
+
         if ($invoice->state_id == '3') {
             return redirect()->route('invoices.show', $invoice)->withErrors("The invoice has been paid.");
         }
@@ -74,7 +74,7 @@ class PaymentController extends Controller
             $response->status()->message();
         }
     }
-
+  
     /**
      * Display the specified resource.
      *
@@ -97,7 +97,7 @@ class PaymentController extends Controller
     public function update(Payment $payment, PlacetoPay $placetopay, Invoice $invoice)
     {
         $response = $placetopay->query($payment->requestId);
-
+      
         $payment->update([
             'status' => $response->status()->status()
         ]);

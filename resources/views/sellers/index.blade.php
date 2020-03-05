@@ -48,7 +48,7 @@
                         </thead>
 
                         <tbody>
-                        @foreach($sellers as $seller)
+                        @forelse($sellers as $seller)
                             <tr>
                                 <td>{{ $seller->document }}</td>
                                 <td>{{ $seller->document_type }}</td>
@@ -80,7 +80,13 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <p class="alert alert-secondary text-center">
+                                    {{ __('No sellers were found') }}
+                                </p>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
 

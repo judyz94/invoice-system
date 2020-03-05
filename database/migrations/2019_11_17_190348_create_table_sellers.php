@@ -22,7 +22,7 @@ class CreateTableSellers extends Migration
             $table->bigInteger('document')->unique();
             $table->string('email', 40)->unique();
             $table->string('phone')->nullable();
-            $table->string('address', 40)->nullable();
+            $table->string('address', 100)->nullable();
             $table->timestampsTz();
         });
     }
