@@ -10,20 +10,22 @@
                     </div>
 
                     <nav class="navbar navbar-light bg-light">
-                        <a href="{{ route('customers.create') }}" class="btn btn-success">
+                        <a href="{{ route('customers.create') }}"
+                           class="btn btn-success">
                             <i class="fas fa-plus"></i> {{ __('Create a new customer') }}
                         </a>
 
                         <!-- Search form -->
-                        <form class="form-inline">
-                            <select name="type" class="form-control mr-sm-2" id="select">
-                                <option value="">{{ __('Filter by') }}</option>
-                                <option value="document">{{ __('ID') }}</option>
-                                <option value="name">{{ __('Name') }}</option>
-                                <option value="email">{{ __('Email') }}</option>
+                        <form class="form-inline" method="GET">
+                            <select name="type" class="form-control mr-sm-2" id="type">
+                                <option value="">{{ __('All') }}</option>
+                                <option value="document" {{ request()->input('type') == 'document' ? 'selected' : '' }}>{{ __('ID') }}</option>
+                                <option value="name" {{ request()->input('type') == 'name' ? 'selected' : '' }}>{{ __('Name') }}</option>
+                                <option value="last_name" {{ request()->input('type') == 'last_name' ? 'selected' : '' }}>{{ __('Last Name') }}</option>
+                                <option value="email" {{ request()->input('type') == 'email' ? 'selected' : '' }}>{{ __('Email') }}</option>
                             </select>
 
-                            <input name="searchfor" class="form-control mr-sm-2" type="search" placeholder="{{ __('Search...') }}">
+                            <input name="search" id="search" value="{{ request()->input('search') }}" class="form-control mr-sm-2" type="search" placeholder="{{ __('Search...') }}">
 
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> {{ __('Search') }}</button>
                             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" onClick="window.history.back();">
@@ -37,7 +39,8 @@
                             <thead>
                             <tr>
                                 <th>{{ __('ID') }}</th>
-                                <th>{{ __('Name') }}</th>
+                                <th>{{ __('Type') }}</th>
+                                <th>{{ __('Full Name') }}</th>
                                 <th>{{ __('Email') }}</th>
                                 <th>{{ __('Phone') }}</th>
                                 <th>{{ __('City') }}</th>
@@ -50,7 +53,8 @@
                             @forelse($customers as $customer)
                                 <tr>
                                     <td>{{ $customer->document }}</td>
-                                    <td>{{ $customer->name }}</td>
+                                    <td>{{ $customer->document_type }}</td>
+                                    <td>{{ $customer->full_name }}</td>
                                     <td>{{ $customer->email }}</td>
                                     <td>{{ $customer->phone }}</td>
                                     <td>{{ $customer->city->name }}</td>
@@ -88,7 +92,7 @@
 
                         <!-- Pagination -->
                         <ul class="pagination justify-content-center">
-                            {{ $customers->links() }}
+                            {{ $customers->appends(['type' => $type, 'search' => $search])->links() }}
                         </ul>
 
                     </div>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateColumnCustomerIdInInvoices extends Migration
+class AddColumnStateIdToInvoicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class CreateColumnCustomerIdInInvoices extends Migration
     public function up()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            $table->unsignedInteger('customer_id')->after('seller_id');
-            $table->foreign('customer_id')
-                ->references('id')->on('customers')
+            $table->unsignedInteger('state_id')->nullable()->after('total_with_vat');
+            $table->foreign('state_id')
+                ->references('id')->on('states')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -30,7 +30,7 @@ class CreateColumnCustomerIdInInvoices extends Migration
     public function down()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            $table->dropForeign('invoices_customer_id_foreign');
+            $table->dropForeign('invoices_state_id_foreign');
         });
     }
 }

@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    {{--<div class="col-md-4">
         <div class="form-group">
             <label for="receipt_date">{{ __('Receipt date') }}</label>
             <input type="date" class="form-control @error('receipt_date') is-invalid @enderror" id="receipt_date" name="receipt_date"
@@ -36,7 +36,7 @@
             </span>
             @enderror
         </div>
-    </div>
+    </div>--}}
 
     <div class="col-md-4">
         <div class="form-group">
@@ -45,7 +45,7 @@
                 <option value="">{{ __('Select seller') }}</option>
                 @foreach($sellers as $seller)
                     <option value="{{ $seller->id }}"
-                        {{ old('seller_id', $invoice->seller_id) == $seller->id ? 'selected' : ''}}>{{ $seller->name }}
+                        {{ old('seller_id', $invoice->seller_id) == $seller->id ? 'selected' : ''}}>{{ $seller->full_name }}
                     </option>
                 @endforeach
             </select>
@@ -64,7 +64,7 @@
                 <option value="">{{ __('Select customer') }}</option>
                 @foreach($customers as $customer)
                     <option value="{{ $customer->id }}"
-                        {{ old('customer_id', $invoice->customer_id) == $customer->id ? 'selected' : ''}}>{{ $customer->name }}
+                        {{ old('customer_id', $invoice->customer_id) == $customer->id ? 'selected' : ''}}>{{ $customer->full_name }}
                     </option>
                 @endforeach
             </select>
@@ -76,23 +76,23 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    {{--}}<div class="col-md-4">
         <div class="form-group">
-            <label for="status" class="required">{{ __('Status') }}</label>
-            <select class="custom-select @error('status') is-invalid @enderror" id="status" name="status" required>
-                <option value="New" {{ $invoice->status == 'New' ? 'selected' : ''  }}>{{ __('New') }}</option>
-                <option value="Sent" {{ $invoice->status == 'Sent' ? 'selected' : ''  }}>{{ __('Sent') }}</option>
-                <option value="Overdue" {{ $invoice->status == 'Overdue' ? 'selected' : '' }}>{{ __('Overdue') }}</option>
-                <option value="Paid" {{ $invoice->status == 'Paid' ? 'selected' : '' }}>{{ __('Paid') }}</option>
-                <option value="Cancelled" {{ $invoice->status == 'Cancelled' ? 'selected' : '' }}>{{ __('Cancelled') }}</option>
+            <label for="state_id" class="required">{{ __('Status') }}</label>
+            <select class="custom-select @error('state_id') is-invalid @enderror" id="state_id" name="state_id" required>
+                @foreach($states as $state)
+                    <option value="{{ $state->id }}"
+                        {{ old('state_id', $invoice->state_id) == $state->id ? 'selected' : ''}}>{{ $state->name }}
+                    </option>
+                @endforeach
             </select>
-            @error('status')
+            @error('state_id')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
         </div>
-    </div>
+    </div>--}}
 
     <div class="col-md-12">
         <div class="form-group">

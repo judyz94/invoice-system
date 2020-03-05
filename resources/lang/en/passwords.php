@@ -20,3 +20,4 @@ return [
     'throttled' => 'Please wait before retrying.',
 
 ];
+

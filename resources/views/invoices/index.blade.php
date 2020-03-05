@@ -16,9 +16,7 @@
 
 
                        <!-- Search form -->
-                       <search-form action="{{ route('invoices.index') }}" method="get">
-
-                       </search-form>
+                       <search-form action="{{ route('invoices.index') }}" method="GET"></search-form>
 
                    </nav>
 
@@ -52,15 +50,16 @@
                                 <td>{{ $invoice->sale_description }}</td>
                                 <td>${{ number_format($invoice->total, 2) }}</td>
                                 <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
-                                <td>{{ $invoice->seller->name }}</td>
-                                <td>{{ $invoice->customer->name }}</td>
+                                <td>{{ $invoice->seller->full_name }}</td>
+                                <td>{{ $invoice->customer->full_name }}</td>
                                 <td>{{ $invoice->user->name }}</td>
                                 <td><h5>
-                                    @if($invoice->status == 'New')<span class="badge badge-secondary">{{ __('New') }}</span>@endif
-                                    @if($invoice->status == 'Sent')<span class="badge badge-primary">{{ __('Sent') }}</span>@endif
-                                    @if($invoice->status == 'Overdue')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
-                                    @if($invoice->status == 'Paid')<span class="badge badge-success">{{ __('Paid') }}</span>@endif
-                                    @if($invoice->status == 'Cancelled')<span class="badge badge-light">{{ __('Cancelled') }}</span>@endif
+                                    @if($invoice->state_id == '1')<span class="badge badge-primary">{{ __('New') }}</span>@endif
+                                        @if($invoice->due_date <= $now)
+                                            @if($invoice->state_id == '2')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
+                                        @endif
+                                    @if($invoice->state_id == '3')<span class="badge badge-success">{{ __('Paid') }}</span>@endif
+                                    @if($invoice->state_id == '4')<span class="badge badge-light">{{ __('Unpaid') }}</span>@endif
                                  </h5></td>
                                 <td class="text-right">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
@@ -95,7 +94,7 @@
 
                     <!-- Pagination -->
                     <ul class="pagination justify-content-center">
-                    {{ $invoices->links() }}
+                        {{ $invoices->appends(['filter' => $filter, 'search' => $search])->links() }}
                     </ul>
 
                     <!-- Import form -->

@@ -28,7 +28,8 @@ class PaymentController extends Controller
             'invoice_id' => $invoice->id,
             'amount' => $invoice->total_with_vat
         ]);
-        if ($invoice->status == 'Paid') {
+
+        if ($invoice->state_id == '3') {
             return redirect()->route('invoices.show', $invoice)->withErrors("The invoice has been paid.");
         }
         $requestPayment = [
@@ -73,6 +74,7 @@ class PaymentController extends Controller
             $response->status()->message();
         }
     }
+  
     /**
      * Display the specified resource.
      *
@@ -95,26 +97,30 @@ class PaymentController extends Controller
     public function update(Payment $payment, PlacetoPay $placetopay, Invoice $invoice)
     {
         $response = $placetopay->query($payment->requestId);
+      
+        $payment->update([
+            'status' => $response->status()->status()
+        ]);
 
         if ($response->isSuccessful()) {
-            if ($payment->status == 'APPROVED') {
-                $invoice->update([
-                    'status' == 'Paid'
-                ]);
-                if (empty($invoice->receipt_date)) {
-                    $date = date("Y-m-d H:i:s", strtotime($response->status()->date()));
+                if ($payment->status == 'APPROVED') {
                     $invoice->update([
-                        'receipt_date' == $date
+                        'state_id' == '3'
+                    ]);
+                    if (empty($invoice->receipt_date)) {
+                        $date = date("Y-m-d H:i:s", strtotime($response->status()->date()));
+                        $invoice->update([
+                            'receipt_date' == $date
+                        ]);
+                    }
+                }
+                elseif ($payment->status == 'REJECTED') {
+                    $invoice->update([
+                        'state_id' == '4'
                     ]);
                 }
             }
-            elseif ($payment->status == 'REJECTED') {
-                $invoice->update([
-                    'status' == 'Unpaid'
-                ]);
-            }
+            return redirect()->route('payments.update', $payment, $invoice);
         }
-        return redirect()->route('payments.show', $invoice);
-    }
 }
 

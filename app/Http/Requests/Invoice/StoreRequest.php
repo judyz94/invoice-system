@@ -20,7 +20,7 @@ class StoreRequest extends FormRequest
             'seller_id' => 'required|numeric|exists:sellers,id',
             'sale_description' => 'required|min:4',
             'customer_id' => 'required',
-            'status' => 'required',
+            'state_id' => 'required',
         ];
     }
 
@@ -45,7 +45,7 @@ class StoreRequest extends FormRequest
 
             'customer_id.required' =>  'Please select a customer name.',
 
-            'status.required' =>  'Please select the invoice status.',
+            'state_id.required' =>  'Please enter the invoice status.',
         ];
     }
 }
