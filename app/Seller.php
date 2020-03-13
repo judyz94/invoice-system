@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Seller extends Model
 {
-    protected $fillable = ['name', 'document', 'email', 'phone', 'city_id', 'address'];
+    protected $fillable = ['name', 'last_name', 'full_name', 'document_type', 'document', 'email', 'phone', 'city_id', 'address'];
 
     protected $guarded = [];
 

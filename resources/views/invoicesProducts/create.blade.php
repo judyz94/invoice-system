@@ -1,4 +1,4 @@
-@extends ('layouts.base')
+@extends ('layouts.app')
 
 @section('content')
     <div class="container">
@@ -42,8 +42,8 @@
 
 
                                 <div class="input-group-btn">
-                                    <button type="button" id="add" class="btn btn-sm btn-success"><i
-                                            class="fas fa-fw fa-plus"></i></button>
+                                    <button type="button" id="add" class="btn btn-sm btn-success">
+                                        <i class="fas fa-fw fa-plus"></i></button>
                                     <br><br>
                                 </div>
                             </div>
@@ -52,8 +52,8 @@
                                 <a href="{{ route('invoices.index') }}" class="btn btn-danger">
                                     <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
                                 </a>
-                                <button type="submit" class="btn btn-secondary"><i
-                                        class="fas fa-save"></i> {{ __('Submit') }}
+                                <button type="submit" class="btn btn-secondary">
+                                    <i class="fas fa-save"></i> {{ __('Submit') }}
                                 </button>
                             </div>
 

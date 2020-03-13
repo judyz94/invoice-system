@@ -14,14 +14,14 @@
                             {{ __('Create a new product') }}</a>
 
                         <!-- Search form -->
-                        <form class="form-inline">
+                        <form class="form-inline" method="GET">
                             <select name="type" class="form-control mr-sm-2" id="select">
-                                <option value="">{{ __('Filter by') }}</option>
-                                <option value="name">{{ __('Name') }}</option>
-                                <option value="unit_price">{{ __('Unit Price') }}</option>
+                                <option value="">{{ __('All') }}</option>
+                                <option value="name" {{ request()->input('type') == 'name' ? 'selected' : '' }}>{{ __('Name') }}</option>
+                                <option value="unit_price" {{ request()->input('type') == 'unit_price' ? 'selected' : '' }}>{{ __('Unit Price') }}</option>
                             </select>
 
-                            <input name="searchfor" class="form-control mr-sm-2" type="search" placeholder="{{ __('Search...') }}">
+                            <input name="search" id="search" value="{{ request()->input('search') }}" class="form-control mr-sm-2" type="search" placeholder="{{ __('Search...') }}">
 
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> {{ __('Search') }}</button>
                             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" onClick="window.history.back();">
@@ -42,7 +42,7 @@
                         </thead>
 
                         <tbody>
-                        @foreach($products as $product)
+                        @forelse($products as $product)
                             <tr>
                                 <td>{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
@@ -63,7 +63,13 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <p class="alert alert-secondary text-center">
+                                    {{ __('No products were found') }}
+                                </p>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
 

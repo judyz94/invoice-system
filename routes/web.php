@@ -9,17 +9,15 @@ Route::resource('customers', 'CustomerController');
 Route::resource('sellers', 'SellerController');
 Route::resource('products', 'ProductController');
 
-Route::get('users', 'UserController@index')->name('users.index');
-Route::get('/users/{user}', 'UserController@show')->name('users.show');
-Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
-
 Route::post('invoices/{invoice}/products')->uses('InvoiceController@addProduct')->name('invoices.products.store');
-Route::get('/invoices/{invoice}/products{product}/edit', 'InvoiceProductController@edit')->name('invoiceProduct.edit');
-
-//Route::put('invoices/{invoice}/products', 'InvoiceProductController@update')->name('invoiceProduct.update');
-Route::post('invoices/{invoice}/products/{product}')->uses('InvoiceProductController@update')->name('invoiceProduct.update');
-
+Route::get('/invoices/{invoice}/products/{product}/edit', 'InvoiceProductController@edit')->name('invoiceProduct.edit');
+Route::put('/invoices/{invoice}/products/{product}')->uses('InvoiceProductController@update')->name('invoiceProduct.update');
 Route::delete('/invoices/{invoice}/products/{product}', 'InvoiceProductController@destroy')->name('invoiceProduct.destroy');
 
 Route::post('/import/invoices', 'InvoiceController@import')->name('invoices.import');
+
+Route::get('/orderSummary/invoices', 'InvoiceController@orderSummary')->name('orderSummary');
+Route::post('/payment/{invoice}', 'paymentController@store')->name('payments.store');
+Route::get('/payment/show/{invoice}/', 'paymentController@show')->name('payments.show');
+Route::put('/invoices/{invoice}/payments/{payment}/', 'paymentController@update')->name('payments.update');
 

@@ -469,9 +469,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "form",
-    _vm._b({ staticClass: "form-inline" }, "form", _vm.$attrs, false),
+    _vm._b(
+      { staticClass: "form-inline", attrs: { method: "GET" } },
+      "form",
+      _vm.$attrs,
+      false
+    ),
     [
-      _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "form-group", attrs: { id: "searchForm" } }, [
         _c(
           "select",
           {
@@ -484,7 +489,7 @@ var render = function() {
               }
             ],
             staticClass: "custom-select",
-            attrs: { name: "type", id: "filter" },
+            attrs: { name: "filter", id: "filter" },
             on: {
               select: _vm.clearSelectedValue,
               change: function($event) {
@@ -503,21 +508,29 @@ var render = function() {
             }
           },
           [
-            _c("option", { attrs: { value: "code" } }, [_vm._v("Code")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "expedition_date" } }, [
-              _vm._v("Expedition date")
+            _c("option", { attrs: { value: "code", selected: "" } }, [
+              _vm._v("Code")
             ]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "due_date" } }, [
+            _c(
+              "option",
+              { attrs: { value: "expedition_date", selected: "" } },
+              [_vm._v("Expedition date")]
+            ),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "due_date", selected: "" } }, [
               _vm._v("Due date")
             ]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "sale_description" } }, [
-              _vm._v("Sale description")
-            ]),
+            _c(
+              "option",
+              { attrs: { value: "sale_description", selected: "" } },
+              [_vm._v("Sale description")]
+            ),
             _vm._v(" "),
-            _c("option", { attrs: { value: "status" } }, [_vm._v("Status")])
+            _c("option", { attrs: { value: "status", selected: "" } }, [
+              _vm._v("Status")
+            ])
           ]
         ),
         _vm._v(" "),
@@ -532,7 +545,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text", name: "searchfor", required: "" },
+              attrs: { type: "text", name: "search", required: "" },
               domProps: { value: _vm.value },
               on: {
                 input: function($event) {
@@ -556,7 +569,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "date", name: "searchfor", required: "" },
+              attrs: { type: "date", name: "search", required: "" },
               domProps: { value: _vm.value },
               on: {
                 input: function($event) {
@@ -580,7 +593,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "date", name: "searchfor", required: "" },
+              attrs: { type: "date", name: "search", required: "" },
               domProps: { value: _vm.value },
               on: {
                 input: function($event) {
@@ -604,7 +617,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text", name: "searchfor", required: "" },
+              attrs: { type: "text", name: "search", required: "" },
               domProps: { value: _vm.value },
               on: {
                 input: function($event) {
@@ -630,7 +643,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "custom-select",
-                attrs: { name: "searchfor" },
+                attrs: { name: "search" },
                 on: {
                   change: function($event) {
                     var $$selectedVal = Array.prototype.filter

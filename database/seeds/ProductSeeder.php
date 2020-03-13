@@ -37,6 +37,10 @@ class ProductSeeder extends Seeder
             'unit_price' => '50000'
         ]);
 
+        DB::table('products')->insert([
+            'name' => 'Paca de cuido',
+            'unit_price' => '75000'
+        ]);
     }
 }
 

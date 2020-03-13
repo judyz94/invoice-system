@@ -10,15 +10,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <!-- include VueJS first -->
-    <script src="https://unpkg.com/vue@latest"></script>
-
-    <!-- use the latest vue-select release -->
-    <script src="https://unpkg.com/vue-select@latest"></script>
-    <link rel="stylesheet" href="https://unpkg.com/vue-select@latest/dist/vue-select.css">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

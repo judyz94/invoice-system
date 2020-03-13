@@ -5,11 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Invoice extends Model
 {
     protected $fillable = ['code', 'expedition_date', 'due_date', 'receipt_date', 'seller_id', 'sale_description',
-        'customer_id', 'total', 'vat', 'total_with_vat', 'status', 'user_id'];
+        'customer_id', 'total', 'vat', 'total_with_vat', 'state_id', 'user_id'];
 
     protected $guarded = [];
 
@@ -34,12 +35,21 @@ class Invoice extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function scopeSearchFor($query, $type, $search)
+    public function payments(): HasMany
     {
-        if (($type) && ($search)) {
-            return $query->where($type, 'like', "%$search%");
+        return $this->hasMany(Payment::class);
+    }
+
+    public function scopeSearchFor($query, $filter, $search)
+    {
+        if (($filter) && ($search)) {
+            return $query->where($filter, 'like', "%$search%");
         }
     }
 
+    public function state(): BelongsTo
+    {
+        return $this->belongsTo(State::class);
+    }
 }
 

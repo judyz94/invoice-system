@@ -18,7 +18,7 @@ class CustomerComposer
     public function compose(View $view)
     {
         $customers = Cache::remember('customers',  60, function () {
-            return $this->customers->orderBy('name', 'asc')->select('id', 'name')->get();
+            return $this->customers->orderBy('full_name', 'asc')->select('id', 'full_name')->get();
         });
 
         return $view->with('customers', $customers);

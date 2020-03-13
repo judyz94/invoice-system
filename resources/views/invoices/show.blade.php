@@ -1,4 +1,4 @@
-@extends ('layouts.base')
+@extends ('layouts.app')
 
 @section('content')
     <div class="container">
@@ -30,14 +30,20 @@
                             <dt class="col-md-3">{{ __('Total with VAT') }}</dt>
                             <dd class="col-md-3">{{ $invoice->total_with_vat }}</dd>
 
+                            <dt class="col-md-3">{{ __('Seller') }}</dt>
+                            <dd class="col-md-3">{{ $invoice->seller->full_name }}</dd>
+
                             <dt class="col-md-3">{{ __('Seller ID') }}</dt>
                             <dd class="col-md-3">{{ $invoice->seller->document }}</dd>
+
+                            <dt class="col-md-3">{{ __('Customer') }}</dt>
+                            <dd class="col-md-3">{{ $invoice->customer->full_name }}</dd>
 
                             <dt class="col-md-3">{{ __('Customer ID') }}</dt>
                             <dd class="col-md-3">{{ $invoice->customer->document }}</dd>
 
                             <dt class="col-md-3">{{ __('Status') }}</dt>
-                            <dd class="col-md-3">{{ $invoice->status }}</dd>
+                            <dd class="col-md-3">{{ $invoice->state_id }}</dd>
 
                             <dt class="col-md-3">{{ __('Created by') }}</dt>
                             <dd class="col-md-3">{{ $invoice->user->name }}</dd>
@@ -52,7 +58,7 @@
                                     <th>{{ __('Product Name') }}</th>
                                     <th>{{ __('Unit Price') }}</th>
                                     <th>{{ __('Quantity') }}</th>
-                                    <th>{{ __('Total Price') }}</th>
+                                    <th>{{ __('Total Products') }}</th>
                                     <th>{{ __('Actions') }}</th>
                                 </tr>
                                 </thead>
@@ -64,7 +70,7 @@
                                         <td>{{ $product->name }}</td>
                                         <td>${{ number_format($product->pivot->price) }}</td>
                                         <td>{{ $product->pivot->quantity }}</td>
-                                        <td>${{ number_format($invoice->total = $product->pivot->price * $product->pivot->quantity) }}</td>
+                                        <td>${{ number_format($acum = $product->pivot->price * $product->pivot->quantity) }}</td>
                                         <td>
                                             <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
                                                 <a href="{{ route('invoiceProduct.edit', [$invoice, $product]) }}" class="btn btn-link"
@@ -86,6 +92,19 @@
                             </table>
                         </div>
                     </div>
+
+                    <!-- Button of Order Summary to pay invoice -->
+                    <div class="card-footer d-flex justify-content-end">
+                        <button class="btn btn-success" type="submit"
+                            data-route="{{ route('orderSummary') }}"
+                            data-toggle="modal"
+                            data-target="#orderSummary"><i class="fas fa-shopping-cart"></i> {{ __('Order summary') }}
+                        </button>
+
+                        <a href="{{ route('payments.show', $invoice) }}" class="btn btn-secondary">
+                            <i class="fas fa-file-invoice-dollar"></i> {{ __('Payment attempts') }}</a>
+                    </div>
+
 
                     <!-- Form added invoice details -->
                     <div class="col-md-12">
@@ -116,6 +135,7 @@
 
 @push('modals')
     @include('partials.__confirm_delete_modal')
+    @include('partials.__order_summary')
 @endpush
 @push('scripts')
     <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>
