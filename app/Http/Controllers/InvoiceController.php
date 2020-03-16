@@ -115,6 +115,7 @@ class InvoiceController extends Controller
         $sellers = Seller::all();
         $users = User::all();
 
+
         $products = Product::whereNotIn('id', $invoice->products->pluck('id')->values())->get();
 
         return view('invoices.show', compact( 'states', 'sellers', 'customers', 'users', 'invoice', 'products', 'payment'));
@@ -168,6 +169,9 @@ class InvoiceController extends Controller
      */
     public function destroy(Invoice $invoice)
     {
+        if (!$invoice) {
+            throw new \Exception('Invoice not found');
+        }
         $invoice->delete();
 
         return redirect()->route('invoices.index');
