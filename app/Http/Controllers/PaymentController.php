@@ -56,9 +56,8 @@ class PaymentController extends Controller
             'expiration' => $invoice->due_date,
             'ipAddress' => $request->ip(),
             'userAgent' => $request->header('User-Agent'),
-            'returnUrl' => 'https://dnetix.co/p2p/client', //route('payments.update', $payment),
+            'returnUrl' => route('payments.show', [$invoice->id]),
         ];
-
         $response = $placetopay->request($requestPayment);
 
         if ($response->isSuccessful()) {
