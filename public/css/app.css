@@ -17380,3 +17380,13 @@ readers do not read off random characters that represent icons */
   color: red;
 }
 
+.thead-dark {
+  background-color: #211F1F;
+  border: 1px solid #918D8D;
+  color: #6B4F4F;
+}
+
+.warning {
+  color: red;
+}
+
