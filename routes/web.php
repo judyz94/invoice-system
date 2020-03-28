@@ -17,7 +17,7 @@ Route::delete('/invoices/{invoice}/products/{product}', 'InvoiceProductControlle
 Route::post('/import/invoices', 'InvoiceController@import')->name('invoices.import');
 
 Route::get('/orderSummary/invoices', 'InvoiceController@orderSummary')->name('orderSummary');
-Route::post('/payment/{invoice}', 'paymentController@store')->name('payments.store');
-Route::get('/payment/show/{invoice}/', 'paymentController@show')->name('payments.show');
-Route::put('/invoices/{invoice}/payments/{payment}/', 'paymentController@update')->name('payments.update');
+Route::get('/overdueInvoice/invoices', 'InvoiceController@overdueInvoice')->name('overdueInvoice');
 
+Route::post('/invoices/{invoice}', 'PaymentController@store')->name('payments.store');
+Route::get('/invoices/{invoice}/payments/{payment}', 'PaymentController@show')->name('payments.show');
