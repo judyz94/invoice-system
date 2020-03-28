@@ -18,7 +18,6 @@ class CreateTablePayments extends Migration
             $table->unsignedInteger('invoice_id')->nullable();
             $table->double('amount', 15, 2)->nullable();
             $table->string('status')->nullable();
-            $table->string('message')->nullable();
             $table->string('requestId')->nullable();
             $table->string('processUrl')->nullable();
             $table->timestamps();
