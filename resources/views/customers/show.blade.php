@@ -52,7 +52,7 @@
                                         <th>{{ __('Seller') }}</th>
                                         <th>{{ __('Customer') }}</th>
                                         <th>{{ __('Created by') }}</th>
-                                        <th>{{ __('State') }}</th>
+                                        <th>{{ __('Status') }}</th>
                                         <th>{{ __('Actions') }}</th>
                                     </tr>
                                     </thead>
@@ -71,11 +71,10 @@
                                                 <td>{{ $invoice->customer->full_name }}</td>
                                                 <td>{{ $invoice->user->name }}</td>
                                                 <td><h5>
-                                                        @if($invoice->status == 'New')<span class="badge badge-secondary">{{ __('New') }}</span>@endif
-                                                        @if($invoice->status == 'Sent')<span class="badge badge-primary">{{ __('Sent') }}</span>@endif
-                                                        @if($invoice->status == 'Overdue')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
-                                                        @if($invoice->status == 'Paid')<span class="badge badge-success">{{ __('Paid') }}</span>@endif
-                                                        @if($invoice->status == 'Cancelled')<span class="badge badge-light">{{ __('Cancelled') }}</span>@endif
+                                                        @if($invoice->state_id == '1')<span class="badge badge-primary">{{ __('New') }}</span>@endif
+                                                        @if($invoice->state_id == '2')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
+                                                        @if($invoice->state_id == '3')<span class="badge badge-success">{{ __('Paid') }}</span>@endif
+                                                        @if($invoice->state_id == '4')<span class="badge badge-light">{{ __('Unpaid') }}</span>@endif
                                                     </h5></td>
                                                 <td class="text-right">
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
