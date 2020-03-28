@@ -14,7 +14,7 @@ class AddColumnStateIdToInvoicesTable extends Migration
     public function up()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            $table->unsignedInteger('state_id')->nullable()->after('total_with_vat');
+            $table->unsignedInteger('state_id')->after('total_with_vat');
             $table->foreign('state_id')
                 ->references('id')->on('states')
                 ->onDelete('cascade')

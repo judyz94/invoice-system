@@ -22,7 +22,7 @@ class InvoiceSeeder extends Seeder
             'vat' => '0.19',
             'total' => '646000',
             'total_with_vat' => '768740',
-            //'state_id' => '1',
+            'state_id' => '1',
             'user_id' => '1'
         ]);
     }
