@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    {{--}}<div class="col-md-4">
+    <div class="col-md-4">
         <div class="form-group">
             <label for="state_id" class="required">{{ __('Status') }}</label>
             <select class="custom-select @error('state_id') is-invalid @enderror" id="state_id" name="state_id" required>
@@ -92,7 +92,7 @@
             </span>
             @enderror
         </div>
-    </div>--}}
+    </div>
 
     <div class="col-md-12">
         <div class="form-group">
