@@ -13,29 +13,28 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
-                        <thead>
+                        <thead class="thead-dark">
                         <tr>
+                            <th>{{ __('Transaction #') }}</th>
                             <th>{{ __('Invoice code') }}</th>
                             <th>{{ __('Payment attempt date') }}</th>
                             <th>{{ __('Status') }}</th>
-                            <th>{{ __('Message') }}</th>
-                            <th>{{ __('Transaction #') }}</th>
                             <th>{{ __('Amount') }}</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($invoice->payments as $payment)
                             <tr>
+                                <td>{{ $payment->requestId }}</td>
                                 <td>{{ $payment->invoice->code }}</td>
                                 <td>{{ $payment->created_at }}</td>
                                 <td>{{ $payment->status}}</td>
-                                <td>{{ $payment->message}}</td>
-                                <td>{{ $payment->requestId }}</td>
                                 <td>${{number_format($payment->amount, 2 )}}</td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
+
                     <div class="card-footer d-flex justify-content-between">
                         <a href="{{ route('invoices.show', $invoice) }}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i> {{ __('Back to Invoice Details') }}

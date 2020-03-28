@@ -15,7 +15,7 @@
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="last_name">{{ __('Last Name') }}</label>
+            <label for="last_name" class="required">{{ __('Last Name') }}</label>
             <input type="text" class="form-control @error('last_name') is-invalid @enderror" id="last_name" name="last_name" placeholder="{{ __('Type a last name') }}"
                    value="{{ old('last_name', $seller->last_name) }}" required>
             @error('last_name')
