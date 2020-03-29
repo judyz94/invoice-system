@@ -3,7 +3,6 @@
 @section('content')
     <div class="container">
        <div class="row justify-content-center">
-           <div class="col-xl-12">
                <div class="card shadow-sm">
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}</strong></h3>
@@ -58,7 +57,7 @@
                                             @if($invoice->state_id == '2')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
                                         @endif
                                     @if($invoice->state_id == '3')<span class="badge badge-success">{{ __('Paid') }}</span>@endif
-                                    @if($invoice->state_id == '4')<span class="badge badge-light">{{ __('Unpaid') }}</span>@endif
+                                    @if($invoice->state_id == '4')<span class="badge badge-warning">{{ __('Rejected') }}</span>@endif
                                  </h5></td>
                                 <td class="text-right">
 
@@ -114,7 +113,6 @@
 
                 </div>
             </div>
-        </div>
         </div>
     </div>
 @endsection
