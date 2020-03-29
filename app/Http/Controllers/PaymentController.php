@@ -66,7 +66,6 @@ class PaymentController extends Controller
                 'requestId' => $response->requestId(),
                 'processUrl' => $response->processUrl(),
                 'date' => $response->status()->date(),
-                //'paymentMethodName' => $response->setPayment($payment),
             ]);
             return redirect()->away($response->processUrl());
         } else {
@@ -84,27 +83,29 @@ class PaymentController extends Controller
      */
     public function show(Invoice $invoice, Payment $payment, PlacetoPay $placetopay)
     {
-        $response = $placetopay->query($payment->requestId); ///
+        $response = $placetopay->query($payment->requestId);
 
         $payment->update([
-            'status' => $response->status()->status() ///
+            'status' => $response->status()->status(),
         ]);
 
-        if ($response->status()->status() == 'APPROVED') {
+        if ($payment->status == 'APPROVED') {
             $invoice->update([
-                'state_id' == '3'
+                'state_id' => '3'
             ]);
             if (empty($invoice->receipt_date)) {
-                $date =  Carbon::now(); strtotime($response->status()->date()); ///
                 $invoice->update([
-                    'receipt_date' == $date
-                ]);
-            } elseif ($response->status()->status() == 'REJECTED') { ////
-                $invoice->update([
-                    'state_id' == '4'
+                    'receipt_date' => Carbon::now()
                 ]);
             }
         }
+
+        if ($payment->status == 'REJECTED') {
+            $invoice->update([
+                'state_id' => '4'
+            ]);
+        }
+
         return view('payments.show', compact('invoice', 'payment', 'response'));
         }
 }
