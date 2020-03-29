@@ -34,10 +34,17 @@ class InvoiceProductSeeder extends Seeder
         ]);
 
         DB::table('invoice_product')->insert([
-            'invoice_id' => '2',
+            'invoice_id' => '3',
             'product_id' => '6',
             'price' => '75000',
             'quantity' => '5'
+        ]);
+
+        DB::table('invoice_product')->insert([
+            'invoice_id' => '4',
+            'product_id' => '3',
+            'price' => '2400000',
+            'quantity' => '1'
         ]);
     }
 }
