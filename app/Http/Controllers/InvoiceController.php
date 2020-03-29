@@ -49,13 +49,11 @@ class InvoiceController extends Controller
             ->searchfor($filter, $search)
             ->paginate(6);
 
-        /*$now = new \DateTime();
-        $now = $now->format('Y-m-d H:i:s');*/
-        $now = Carbon::now(); ///
-        if($invoice->due_date <= $now) {
+        $now = Carbon::now();
+        /*if($invoice->due_date <= $now) {
             $invoice->update([
                 'state_id' == '2']);
-            }
+            }*/
 
         return view('invoices.index', compact( 'invoices', 'filter', 'search', 'invoice', 'now'));
     }
@@ -91,7 +89,7 @@ class InvoiceController extends Controller
         $invoice->id = $request->input('id');
         $invoice->expedition_date = $request->input('expedition_date');
         $invoice->due_date = $request->input('due_date');
-        //$invoice->receipt_date = $request->input('receipt_date'); ///
+        //$invoice->receipt_date = $request->input('receipt_date');
         $invoice->seller_id = $request->input('seller_id');
         $invoice->sale_description = $request->input('sale_description');
         $invoice->customer_id = $request->input('customer_id');
@@ -115,7 +113,7 @@ class InvoiceController extends Controller
      * @param Payment $payment
      * @return Factory|View
      */
-    public function show(Invoice $invoice, Product $product)
+    public function show(Invoice $invoice, Product $product, Payment $payment)
     {
         $states = State::all();
         $customers = Customer::all();
@@ -165,17 +163,6 @@ class InvoiceController extends Controller
         $invoice->sale_description = $request->input('sale_description');
         $invoice->customer_id = $request->input('customer_id');
         $invoice->state_id = $request->input('state_id');
-
-        /*$now = Carbon::now();
-        if($invoice->due_date <= $now) {
-            $invoice->update([
-                'state_id' == '2']);
-        }
-        if ($payment->status == 'APPROVED') {
-            $invoice->update([
-                'state_id' == '3'
-            ]);
-        }*/
 
         $invoice->user_id = auth()->user()->id;
 
