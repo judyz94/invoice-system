@@ -19,6 +19,7 @@
                             <th>{{ __('Invoice code') }}</th>
                             <th>{{ __('Payment attempt date') }}</th>
                             <th>{{ __('Status') }}</th>
+                            <th>{{ __('Message') }}</th>
                             <th>{{ __('Amount') }}</th>
                         </tr>
                         </thead>
@@ -27,14 +28,16 @@
                             <tr>
                                 <td>{{ $payment->requestId }}</td>
                                 <td>{{ $payment->invoice->code }}</td>
-                                <td>{{ $payment->created_at }}</td>
+                                <td>{{ $payment->date }}</td>
                                 <td>{{ $payment->status}}</td>
+                                <td>{{ $payment->message}}</td>
                                 <td>${{number_format($payment->amount, 2 )}}</td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
 
+                    <!-- Button to return -->
                     <div class="card-footer d-flex justify-content-between">
                         <a href="{{ route('invoices.show', $invoice) }}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i> {{ __('Back to Invoice Details') }}
