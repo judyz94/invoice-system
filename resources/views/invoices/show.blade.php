@@ -43,7 +43,7 @@
                             <dd class="col-md-3">{{ $invoice->customer->document }}</dd>
 
                             <dt class="col-md-3">{{ __('Status') }}</dt>
-                            <dd class="col-md-3">{{ $invoice->state_id }}</dd>
+                            <dd class="col-md-3">{{ $invoice->state->name }}</dd>
 
                             <dt class="col-md-3">{{ __('Created by') }}</dt>
                             <dd class="col-md-3">{{ $invoice->user->name }}</dd>
@@ -52,7 +52,7 @@
                         <!-- Details of the invoice -->
                         <div class="table-responsive-lg">
                             <table class="table table-hover">
-                                <thead>
+                                <thead class="thead-dark">
                                 <tr>
                                     <th>{{ __('Product #') }}</th>
                                     <th>{{ __('Product Name') }}</th>
@@ -93,21 +93,38 @@
                         </div>
                     </div>
 
-                    <!-- Button of Order Summary to pay invoice -->
+                    <!-- Button of Order Summary to pay invoice and exceptions when paid or do not have products-->
                     <div class="card-footer d-flex justify-content-end">
-                        <button class="btn btn-success" type="submit"
-                            data-route="{{ route('orderSummary') }}"
-                            data-toggle="modal"
-                            data-target="#orderSummary"><i class="fas fa-shopping-cart"></i> {{ __('Order summary') }}
-                        </button>
+                        @if($invoice->state_id == '1' and empty($detail))
+                            <button type="submit" class="btn btn-success"
+                                    data-route="{{ route('invoiceProduct') }}"
+                                    data-toggle="modal"
+                                    data-target="#invoiceProduct"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
+                            </button>
+                        @elseif($invoice->state_id == '1')
+                            <button class="btn btn-success" type="submit"
+                                    data-route="{{ route('orderSummary') }}"
+                                    data-toggle="modal"
+                                    data-target="#orderSummary"><i class="fas fa-shopping-cart"></i> {{ __('Order summary') }}
+                            </button>
+                        @endif
 
-                        <a href="{{ route('payments.show', $invoice) }}" class="btn btn-secondary">
-                            <i class="fas fa-file-invoice-dollar"></i> {{ __('Payment attempts') }}</a>
+                        @if($invoice->state_id == '2')
+                            <button type="submit" class="btn btn-success"
+                                    data-route="{{ route('overdueInvoice') }}"
+                                    data-toggle="modal"
+                                    data-target="#overdueInvoice"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
+                            </button>
+                        @endif
+
+
+                            {{--<!-- Button to show payment attempts -->
+                            <a href="{{ route('payments.show', [$invoice, $payment]) }}" class="btn btn-secondary">
+                                <i class="fas fa-file-invoice-dollar"></i> {{ __('Payment attempts') }}
+                            </a>--}}
                     </div>
 
-
                     <!-- Form added invoice details -->
-                    <div class="col-md-12">
                         <div class="card-header d-flex justify-content-between">
                             <h5><strong>{{ __('Add a new product to this invoice') }}</strong></h5>
                         </div>
@@ -118,9 +135,10 @@
                                 <button class="btn btn-success btn-block col-md-1" type="submit"><i class="fas fa-plus"></i> {{ __('Add') }}</button>
                             </div>
                         </form>
-                    </div>
+
                     <br>
 
+                    <!-- Button to return -->
                     <div class="card-footer d-flex justify-content-between">
                         <a href="{{ route('invoices.index') }}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i> {{ __('Back to Invoices') }}
@@ -136,7 +154,10 @@
 @push('modals')
     @include('partials.__confirm_delete_modal')
     @include('partials.__order_summary')
+    @include('partials.__overdue_invoice')
+    @include('partials.__invoice_product')
 @endpush
+
 @push('scripts')
     <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>
 @endpush

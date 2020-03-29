@@ -25,19 +25,6 @@
         </div>
     </div>
 
-    {{--<div class="col-md-4">
-        <div class="form-group">
-            <label for="receipt_date">{{ __('Receipt date') }}</label>
-            <input type="date" class="form-control @error('receipt_date') is-invalid @enderror" id="receipt_date" name="receipt_date"
-                   value="{{ old('receipt_date', $invoice->receipt_date) }}">
-            @error('receipt_date')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-        </div>
-    </div>--}}
-
     <div class="col-md-4">
         <div class="form-group">
             <label for="seller_id" class="required">{{ __('Seller') }}</label>
@@ -76,7 +63,7 @@
         </div>
     </div>
 
-    {{--}}<div class="col-md-4">
+    <div class="col-md-4">
         <div class="form-group">
             <label for="state_id" class="required">{{ __('Status') }}</label>
             <select class="custom-select @error('state_id') is-invalid @enderror" id="state_id" name="state_id" required>
@@ -92,7 +79,23 @@
             </span>
             @enderror
         </div>
-    </div>--}}
+    </div>
+
+    {{--@if('state_id' == 'Paid')
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="receipt_date">{{ __('Receipt date') }}</label>
+                <input type="date" class="form-control @error('receipt_date') is-invalid @enderror" id="receipt_date" name="receipt_date"
+                       value="{{ old('receipt_date', $invoice->receipt_date) }}" required>
+                @error('receipt_date')
+                <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+                @enderror
+            </div>
+        </div>
+    @endif--}}
+
 
     <div class="col-md-12">
         <div class="form-group">

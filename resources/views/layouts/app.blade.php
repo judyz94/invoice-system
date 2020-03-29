@@ -23,7 +23,7 @@
 @stack('modals')
 <div id="app">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3B3331;">
-        <a class="navbar-brand" href="{{ url('/') }}"><h5>{{ __('Invoice System') }}</h5></a>
+        <nav class="navbar-brand"><h5>{{ __('Invoice System') }}</h5></nav>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -34,6 +34,9 @@
                     <a class="nav-link" href="{{ route('home') }}"> {{ __('Home') }}<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('invoices.index') }}"> {{ __('Invoices') }}</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('customers.index') }}"> {{ __('Customers') }}</a>
                 </li>
                 <li class="nav-item">
@@ -41,9 +44,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('products.index') }}"> {{ __('Products') }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('invoices.index') }}"> {{ __('Invoices') }}</a>
                 </li>
             </ul>
         </div>

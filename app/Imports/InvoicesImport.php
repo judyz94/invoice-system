@@ -28,9 +28,9 @@ class InvoicesImport implements ToModel, WithHeadingRow, WithValidation
             'total' => $row['total'],
             'vat' => $row['vat'],
             'total_with_vat' => $row['total_with_vat'],
+            'state_id' => $row['state_id'],
             'seller_id' => $row['seller_id'],
             'customer_id' => $row['customer_id'],
-            'status' => $row['status'],
             'user_id' => $row['user_id'],
         ]);
     }
@@ -40,14 +40,13 @@ class InvoicesImport implements ToModel, WithHeadingRow, WithValidation
         return [
             'expedition_date' => 'required',
             'due_date' => 'required',
-            'receipt_date' => 'required',
             'sale_description' => 'required|min:4',
             'total' => 'required',
             'vat' => 'required',
             'total_with_vat' => 'required',
+            'state_id' => 'required',
             'seller_id' => 'required',
             'customer_id' => 'required',
-            'status' => 'required',
             'user_id' => 'required',
         ];
     }

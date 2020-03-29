@@ -25,7 +25,7 @@ class StateSeeder extends Seeder
         ]);
 
         DB::table('states')->insert([
-            'name' => 'Unpaid',
+            'name' => 'Rejected',
         ]);
     }
 }

@@ -47,7 +47,6 @@
                         <dd class="col-md-5">
                             <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
                         </dd>
-
                     </dl>
 
                 </div>

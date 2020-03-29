@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Invoice;
 use App\Payment;
+use Carbon\Carbon;
 use Dnetix\Redirection\Exceptions\PlacetoPayException;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -29,9 +30,6 @@ class PaymentController extends Controller
             'amount' => $invoice->total_with_vat
         ]);
 
-        if ($invoice->state_id == '3') {
-            return redirect()->route('invoices.show', $invoice)->withErrors("The invoice has been paid.");
-        }
         $requestPayment = [
             'buyer' => [
                 'name' => $invoice->customer->name,
@@ -56,9 +54,8 @@ class PaymentController extends Controller
             'expiration' => $invoice->due_date,
             'ipAddress' => $request->ip(),
             'userAgent' => $request->header('User-Agent'),
-            'returnUrl' => 'https://dnetix.co/p2p/client', //route('payments.update', $payment),
+            'returnUrl' => route('payments.show', [$invoice, $payment]),
         ];
-
         $response = $placetopay->request($requestPayment);
 
         if ($response->isSuccessful()) {
@@ -67,23 +64,13 @@ class PaymentController extends Controller
                 'status' => $response->status()->status(),
                 'message' => $response->status()->message(),
                 'requestId' => $response->requestId(),
-                'processUrl' => $response->processUrl()
+                'processUrl' => $response->processUrl(),
+                'date' => $response->status()->date(),
             ]);
-            return redirect($response->processUrl());
+            return redirect()->away($response->processUrl());
         } else {
             $response->status()->message();
         }
-    }
-  
-    /**
-     * Display the specified resource.
-     *
-     * @param Invoice $invoice
-     * @return Factory|View
-     */
-    public function show(Invoice $invoice)
-    {
-        return view("payments.show", compact('invoice'));
     }
 
     /**
@@ -92,35 +79,34 @@ class PaymentController extends Controller
      * @param Payment $payment
      * @param PlacetoPay $placetopay
      * @param Invoice $invoice
-     * @return RedirectResponse
+     * @return Factory|View
      */
-    public function update(Payment $payment, PlacetoPay $placetopay, Invoice $invoice)
+    public function show(Invoice $invoice, Payment $payment, PlacetoPay $placetopay)
     {
         $response = $placetopay->query($payment->requestId);
-      
+
         $payment->update([
-            'status' => $response->status()->status()
+            'status' => $response->status()->status(),
         ]);
 
-        if ($response->isSuccessful()) {
-                if ($payment->status == 'APPROVED') {
-                    $invoice->update([
-                        'state_id' == '3'
-                    ]);
-                    if (empty($invoice->receipt_date)) {
-                        $date = date("Y-m-d H:i:s", strtotime($response->status()->date()));
-                        $invoice->update([
-                            'receipt_date' == $date
-                        ]);
-                    }
-                }
-                elseif ($payment->status == 'REJECTED') {
-                    $invoice->update([
-                        'state_id' == '4'
-                    ]);
-                }
+        if ($payment->status == 'APPROVED') {
+            $invoice->update([
+                'state_id' => '3'
+            ]);
+            if (empty($invoice->receipt_date)) {
+                $invoice->update([
+                    'receipt_date' => Carbon::now()
+                ]);
             }
-            return redirect()->route('payments.update', $payment, $invoice);
+        }
+
+        if ($payment->status == 'REJECTED') {
+            $invoice->update([
+                'state_id' => '4'
+            ]);
+        }
+
+        return view('payments.show', compact('invoice', 'payment', 'response'));
         }
 }
 

@@ -9,6 +9,7 @@ use App\Product;
 use App\Seller;
 use App\State;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -36,10 +37,10 @@ class InvoiceController extends Controller
      * Display a listing of the resource.
      *
      * @param Request $request
+     * @param Invoice $invoice
      * @return Factory|View
-     * @throws Exception
      */
-    public function index(Request $request)
+    public function index(Request $request, Invoice $invoice)
     {
         $filter = $request->input('filter');
         $search = $request->input('search');
@@ -48,10 +49,13 @@ class InvoiceController extends Controller
             ->searchfor($filter, $search)
             ->paginate(6);
 
-        $now = new \DateTime();
-        $now = $now->format('Y-m-d H:i:s');
+        $now = Carbon::now();
+        /*if($invoice->due_date <= $now) {
+            $invoice->update([
+                'state_id' == '2']);
+            }*/
 
-        return view('invoices.index', compact( 'invoices', 'filter', 'search', 'now'));
+        return view('invoices.index', compact( 'invoices', 'filter', 'search', 'invoice', 'now'));
     }
 
     /**
@@ -105,19 +109,24 @@ class InvoiceController extends Controller
      * Display the specified resource.
      *
      * @param Invoice $invoice
+     * @param Product $product
      * @param Payment $payment
      * @return Factory|View
      */
-    public function show(Invoice $invoice, Payment $payment)
+    public function show(Invoice $invoice, Product $product, Payment $payment)
     {
         $states = State::all();
         $customers = Customer::all();
         $sellers = Seller::all();
         $users = User::all();
+        $payment = Payment::all(); ///
+
+        $detail = $invoice->products()->exists($product);
 
         $products = Product::whereNotIn('id', $invoice->products->pluck('id')->values())->get();
 
-        return view('invoices.show', compact( 'states', 'sellers', 'customers', 'users', 'invoice', 'products', 'payment'));
+
+        return view('invoices.show', compact( 'states', 'sellers', 'customers', 'users', 'invoice', 'products', 'detail', 'payment'));
     }
 
     /**
@@ -141,9 +150,11 @@ class InvoiceController extends Controller
      *
      * @param UpdateRequest $request
      * @param Invoice $invoice
+     * @param Payment $payment
      * @return RedirectResponse
+     * @throws Exception
      */
-    public function update(UpdateRequest $request, Invoice $invoice)
+    public function update(UpdateRequest $request, Invoice $invoice, Payment $payment)
     {
         $invoice->expedition_date = $request->input('expedition_date');
         $invoice->due_date = $request->input('due_date');
@@ -152,6 +163,7 @@ class InvoiceController extends Controller
         $invoice->sale_description = $request->input('sale_description');
         $invoice->customer_id = $request->input('customer_id');
         $invoice->state_id = $request->input('state_id');
+
         $invoice->user_id = auth()->user()->id;
 
         $invoice->save();
@@ -200,17 +212,30 @@ class InvoiceController extends Controller
 
         Excel::import(new InvoicesImport, $file);
 
-        return back()->with('message', 'Invoice import succesfully');
+        return view('invoices.index', compact( 'file'));
     }
 
     public function orderSummary()
     {
-        $payment = Payment::all();
         $invoice = Invoice::all();
         $customers = Customer::all();
         $products = Product::all();
 
-        return view('partials.__order_summary', compact(  'customers', 'invoice', 'products', 'payment'));
+        return view('partials.__order_summary', compact(  'customers', 'invoice', 'products'));
+    }
+
+    public function overdueInvoice()
+    {
+        $invoice = Invoice::all();
+
+        return view('partials.__overdue_invoice', compact(  'invoice'));
+    }
+
+    public function invoiceProduct()
+    {
+        $invoice = Invoice::all();
+
+        return view('partials.__invoice_product', compact(  'invoice'));
     }
 }
 

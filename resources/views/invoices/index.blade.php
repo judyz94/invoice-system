@@ -3,21 +3,19 @@
 @section('content')
     <div class="container">
        <div class="row justify-content-center">
-           <div class="col-xl-12">
                <div class="card shadow-sm">
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}</strong></h3>
                 </div>
 
+                   <!-- Create new invoice -->
                    <nav class="navbar navbar-light bg-light">
                        <a href="{{ route('invoices.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
                                {{ __('Create a new invoice') }}
                        </a>
 
-
                        <!-- Search form -->
                        <search-form action="{{ route('invoices.index') }}" method="GET"></search-form>
-
                    </nav>
 
                    <!-- Invoices list -->
@@ -55,18 +53,21 @@
                                 <td>{{ $invoice->user->name }}</td>
                                 <td><h5>
                                     @if($invoice->state_id == '1')<span class="badge badge-primary">{{ __('New') }}</span>@endif
-                                        @if($invoice->due_date <= $now)
+                                        @if($invoice->due_date <= $now or $invoice->state_id == '2')
                                             @if($invoice->state_id == '2')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
                                         @endif
                                     @if($invoice->state_id == '3')<span class="badge badge-success">{{ __('Paid') }}</span>@endif
-                                    @if($invoice->state_id == '4')<span class="badge badge-light">{{ __('Unpaid') }}</span>@endif
+                                    @if($invoice->state_id == '4')<span class="badge badge-warning">{{ __('Rejected') }}</span>@endif
                                  </h5></td>
                                 <td class="text-right">
+
+                                    <!-- CRUD buttons -->
                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
                                         <a href="{{ route('invoices.show', $invoice) }}" class="btn btn-link"
                                            title="{{ __('Show Details') }}">
                                             <i class="fas fa-eye" style="color:black"></i>
                                         </a>
+
                                         <a href="{{ route('invoices.edit', $invoice) }}" class="btn btn-link"
                                            title="{{ __('Edit Invoice') }}">
                                             <i class="fas fa-edit" style="color:black"></i>
@@ -78,10 +79,11 @@
                                                 title="{{ __('Delete Invoice') }}">
                                             <i class="fas fa-trash"></i>
                                         </button>
-
                                     </div>
                                 </td>
                             </tr>
+
+                            <!-- Alert when there are no invoices -->
                             @empty
                                 <tr>
                                     <p class="alert alert-secondary text-center">
@@ -89,6 +91,7 @@
                                     </p>
                                 </tr>
                         @endforelse
+
                         </tbody>
                     </table>
 
@@ -110,7 +113,6 @@
 
                 </div>
             </div>
-        </div>
         </div>
     </div>
 @endsection

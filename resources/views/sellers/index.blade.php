@@ -9,6 +9,7 @@
                     <h3 class="card-title mb-0"><strong>{{ __('Sellers') }}</strong></h3>
                 </div>
 
+                <!-- Create new seller -->
                 <nav class="navbar navbar-light bg-light">
                     <a href="{{ route('sellers.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
                         {{ __('Create a new seller') }}</a>
@@ -58,6 +59,8 @@
                                 <td>{{ $seller->city->name }}</td>
                                 <td>{{ $seller->address }}</td>
                                 <td class="text-right">
+
+                                    <!-- CRUD buttons -->
                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
                                         <a href="{{ route('sellers.show', $seller) }}" class="btn btn-link"
                                            title="{{ __('Show Details') }}">
@@ -80,6 +83,8 @@
                                     </div>
                                 </td>
                             </tr>
+
+                        <!-- Alert when there are no invoices -->
                         @empty
                             <tr>
                                 <p class="alert alert-secondary text-center">
@@ -87,6 +92,7 @@
                                 </p>
                             </tr>
                         @endforelse
+
                         </tbody>
                     </table>
 
