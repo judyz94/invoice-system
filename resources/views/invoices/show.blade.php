@@ -116,6 +116,12 @@
                                     data-target="#overdueInvoice"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
                             </button>
                         @endif
+
+                            {{--}}
+                            <!-- Button to show payment attempts -->
+                            <a href="{{ route('payments.show', [$invoice, $payment]) }}" class="btn btn-secondary">
+                                <i class="fas fa-file-invoice-dollar"></i> {{ __('Payment attempts') }}
+                            </a>--}}
                     </div>
 
                     <!-- Form added invoice details -->
@@ -132,6 +138,7 @@
 
                     <br>
 
+                    <!-- Button to return -->
                     <div class="card-footer d-flex justify-content-between">
                         <a href="{{ route('invoices.index') }}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i> {{ __('Back to Invoices') }}
