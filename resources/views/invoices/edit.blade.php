@@ -13,7 +13,7 @@
                 <form action="{{ route('invoices.update', $invoice) }}" method="post" id="invoices-form">
                     @csrf
                     @method('put')
-                    @include('invoices.__form')
+                    @include('invoices.__form_edit')
                 </form>
             </div>
 
