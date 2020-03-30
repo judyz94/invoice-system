@@ -53,9 +53,7 @@
                                 <td>{{ $invoice->user->name }}</td>
                                 <td><h5>
                                     @if($invoice->state_id == '1')<span class="badge badge-primary">{{ __('New') }}</span>@endif
-                                        @if($invoice->due_date <= $now or $invoice->state_id == '2')
-                                            @if($invoice->state_id == '2')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
-                                        @endif
+                                    @if($invoice->state_id == '2')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
                                     @if($invoice->state_id == '3')<span class="badge badge-success">{{ __('Paid') }}</span>@endif
                                     @if($invoice->state_id == '4')<span class="badge badge-warning">{{ __('Rejected') }}</span>@endif
                                  </h5></td>
