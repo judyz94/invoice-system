@@ -102,7 +102,7 @@
                                     data-toggle="modal"
                                     data-target="#invoiceProduct"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
                             </button>
-                        @elseif($invoice->state_id == '2')
+                        @elseif($invoice->state_id == '2' or $invoice->due_date < $now)
                             <button type="submit" class="btn btn-success"
                                     data-route="{{ route('overdueInvoice') }}"
                                     data-toggle="modal"
@@ -110,6 +110,7 @@
                             </button>
                         @elseif($invoice->state_id != '2')
                                 @if($invoice->state_id != '3')
+                                    @if($invoice->due_date > $now)
                                 <button class="btn btn-success" type="submit"
                                         data-route="{{ route('orderSummary') }}"
                                         data-toggle="modal"
@@ -118,6 +119,10 @@
                                 @endif
                             @endif
                         @endif
+                        @endif
+
+                       
+
 
                             {{--<!-- Button to show payment attempts -->
                             <a href="{{ route('payments.show', [$invoice, $payment]) }}" class="btn btn-secondary">
