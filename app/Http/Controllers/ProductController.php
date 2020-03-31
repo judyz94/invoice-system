@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Product\ProductRequest;
 use App\Http\Requests\Product\UpdateRequest;
 use Exception;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
@@ -64,6 +65,8 @@ class ProductController extends Controller
 
         $product->save();
 
+        Cache::forget('products');
+
         return redirect()->route('products.index');
     }
 
@@ -94,6 +97,8 @@ class ProductController extends Controller
 
         $product->save();
 
+        Cache::forget('products');
+
         return redirect()->route('products.index');
     }
 
@@ -107,6 +112,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+
+        Cache::forget('products');
 
         return redirect()->route('products.index');
     }
