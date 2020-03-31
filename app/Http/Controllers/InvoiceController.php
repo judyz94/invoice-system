@@ -48,9 +48,9 @@ class InvoiceController extends Controller
 
         $invoices = Invoice::with(['customer', 'seller'])
             ->searchfor($filter, $search)
-            ->paginate(6);
+            ->paginate(8);
 
-        return view('invoices.index', compact( 'invoices', 'filter', 'search', 'invoice'));
+        return view('invoices.index', compact( 'invoices', 'filter', 'search', 'invoice', 'invoices'));
     }
 
     /**
