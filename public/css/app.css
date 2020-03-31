@@ -17380,7 +17380,7 @@ readers do not read off random characters that represent icons */
   color: red;
 }
 
-.thead-dark {
+.thead {
   background-color: #211F1F;
   border: 1px solid #918D8D;
   color: white;
@@ -17388,5 +17388,15 @@ readers do not read off random characters that represent icons */
 
 .warning {
   color: red;
+}
+
+.page {
+  color: black;
+  background-color: #F9FFFD;
+}
+
+.font {
+  font-family: a;
+  font-size: 16pt;
 }
 
