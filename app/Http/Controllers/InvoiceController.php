@@ -17,6 +17,7 @@ use App\Http\Requests\Invoice\StoreRequest;
 use App\Http\Requests\Invoice\UpdateRequest;
 use App\Http\Requests\InvoiceProduct\DetailRequest;
 use App\Imports\InvoicesImport;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use Exception;
@@ -121,6 +122,7 @@ class InvoiceController extends Controller
 
         $products = Product::whereNotIn('id', $invoice->products->pluck('id')->values())->get();
 
+        Cache::forget('invoice_products');
 
         return view('invoices.show', compact( 'states', 'sellers', 'customers', 'users', 'invoice', 'products', 'detail', 'payment', 'now'));
     }
