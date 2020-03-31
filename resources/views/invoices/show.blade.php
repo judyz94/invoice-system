@@ -103,59 +103,36 @@
 
                     <!-- Button of Order Summary to pay invoice and exceptions when paid or do not have products-->
                     <div class="card-footer d-flex justify-content-end">
-<<<<<<< Updated upstream
-                        @if($invoice->state_id == '1' and empty($detail))
-                            <button type="submit" class="btn btn-success"
-=======
                         @if($invoice->state_id == '1' or '4')
                             @if(empty($detail))
-                            <button type="submit" class="btn buttonSave"
->>>>>>> Stashed changes
-                                    data-route="{{ route('invoiceProduct') }}"
-                                    data-toggle="modal"
-                                    data-target="#invoiceProduct"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
-                            </button>
-<<<<<<< Updated upstream
-                        @elseif($invoice->state_id == '1')
-                            <button class="btn btn-success" type="submit"
-                                    data-route="{{ route('orderSummary') }}"
-                                    data-toggle="modal"
-                                    data-target="#orderSummary"><i class="fas fa-shopping-cart"></i> {{ __('Order summary') }}
-                            </button>
-                        @endif
-
-                        @if($invoice->state_id == '2')
-                            <button type="submit" class="btn btn-success"
-=======
-                        @elseif($invoice->state_id == '2' or $invoice->due_date < $now)
-                            <button type="submit" class="btn buttonSave"
->>>>>>> Stashed changes
-                                    data-route="{{ route('overdueInvoice') }}"
-                                    data-toggle="modal"
-                                    data-target="#overdueInvoice"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
-                            </button>
-<<<<<<< Updated upstream
-                        @endif
-
-=======
-                        @elseif($invoice->state_id != '2')
+                                <button type="submit" class="btn buttonSave"
+                                        data-route="{{ route('invoiceProduct') }}"
+                                        data-toggle="modal"
+                                        data-target="#invoiceProduct"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
+                                </button>
+                            @elseif($invoice->state_id == '2' or $invoice->due_date < $now)
+                                <button type="submit" class="btn buttonSave"
+                                        data-route="{{ route('overdueInvoice') }}"
+                                        data-toggle="modal"
+                                        data-target="#overdueInvoice"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
+                                </button>
+                            @elseif($invoice->state_id != '2')
                                 @if($invoice->state_id != '3')
                                     @if($invoice->due_date > $now)
-                                <button class="btn buttonSave" type="submit"
-                                        data-route="{{ route('orderSummary') }}"
-                                        data-toggle="modal"
-                                        data-target="#orderSummary"><i class="fas fa-shopping-cart"></i> {{ __('Order summary') }}
-                                </button>
+                                        <button class="btn buttonSave" type="submit"
+                                                data-route="{{ route('orderSummary') }}"
+                                                data-toggle="modal"
+                                                data-target="#orderSummary"><i class="fas fa-shopping-cart"></i> {{ __('Order summary') }}
+                                        </button>
+                                    @endif
                                 @endif
                             @endif
                         @endif
-                        @endif
->>>>>>> Stashed changes
 
-                            {{--<!-- Button to show payment attempts -->
-                            <a href="{{ route('payments.show', [$invoice, $payment]) }}" class="btn btn-secondary">
-                                <i class="fas fa-file-invoice-dollar"></i> {{ __('Payment attempts') }}
-                            </a>--}}
+                        {{--<!-- Button to show payment attempts -->
+                        <a href="{{ route('payments.show', [$invoice, $payment]) }}" class="btn btn-secondary">
+                            <i class="fas fa-file-invoice-dollar"></i> {{ __('Payment attempts') }}
+                        </a>--}}
                     </div>
 
                     <!-- Form added invoice details -->
