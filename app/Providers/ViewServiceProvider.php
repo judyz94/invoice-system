@@ -28,9 +28,11 @@ class ViewServiceProvider extends ServiceProvider
             ['customers.__form', 'sellers.__form'], 'App\Http\View\Composers\CityComposer'
         );
 
+
         View::composers([
-            'App\Http\View\Composers\SellerComposer' => ['invoices.__form'],
-            'App\Http\View\Composers\CustomerComposer' => ['invoices.__form'],
+            'App\Http\View\Composers\SellerComposer' => ['invoices.__form', 'invoices.__form_edit'],
+            'App\Http\View\Composers\CustomerComposer' => ['invoices.__form', 'invoices.__form_edit'],
+            'App\Http\View\Composers\StateComposer' => ['invoices.__form', 'invoices.__form_edit'],
             'App\Http\View\Composers\ProductComposer' => ['invoices.show'],
         ]);
     }
