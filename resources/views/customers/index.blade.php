@@ -12,7 +12,7 @@
                     <!-- Create new customer -->
                     <nav class="navbar navbar-light bg-light">
                         <a href="{{ route('customers.create') }}"
-                           class="btn btn-success">
+                           class="btn button">
                             <i class="fas fa-plus"></i> {{ __('Create a new customer') }}
                         </a>
 

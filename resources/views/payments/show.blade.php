@@ -39,7 +39,7 @@
 
                     <!-- Button to return -->
                     <div class="card-footer d-flex justify-content-between">
-                        <a href="{{ route('invoices.show', $invoice) }}" class="btn btn-secondary">
+                        <a href="{{ route('invoices.show', $invoice) }}" class="btn buttonBack">
                             <i class="fas fa-arrow-left"></i> {{ __('Back to Invoice Details') }}
                         </a></div>
                 </div>

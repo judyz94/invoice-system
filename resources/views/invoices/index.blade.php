@@ -10,7 +10,7 @@
 
                    <!-- Create new invoice -->
                    <nav class="navbar navbar-light bg-light">
-                       <a href="{{ route('invoices.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
+                       <a href="{{ route('invoices.create') }}" class="btn button"><i class="fas fa-plus"></i>
                                {{ __('Create a new invoice') }}
                        </a>
 
@@ -52,12 +52,10 @@
                                 <td>{{ $invoice->customer->full_name }}</td>
                                 <td>{{ $invoice->user->name }}</td>
                                 <td><h5>
-                                    @if($invoice->state_id == '1')<span class="badge badge-primary">{{ __('New') }}</span>@endif
-                                        @if($invoice->due_date <= $now or $invoice->state_id == '2')
-                                            @if($invoice->state_id == '2')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
-                                        @endif
-                                    @if($invoice->state_id == '3')<span class="badge badge-success">{{ __('Paid') }}</span>@endif
-                                    @if($invoice->state_id == '4')<span class="badge badge-warning">{{ __('Rejected') }}</span>@endif
+                                    @if($invoice->state_id == '1')<span class="badge blue">{{ __('New') }}</span>@endif
+                                    @if($invoice->state_id == '2')<span class="badge red">{{ __('Overdue') }}</span>@endif
+                                    @if($invoice->state_id == '3')<span class="badge green">{{ __('Paid') }}</span>@endif
+                                    @if($invoice->state_id == '4')<span class="badge orange">{{ __('Rejected') }}</span>@endif
                                  </h5></td>
                                 <td class="text-right">
 
@@ -107,7 +105,7 @@
                             <h5><strong>Import Excel File</strong></h5>
                             <input type="file" name="file" class="form-control-file">
                             <br>
-                            <button class="btn btn-success"><i class="fas fa-file-excel"></i> {{ __('Import') }}</button>
+                            <button class="btn buttonSave"><i class="fas fa-file-excel"></i> {{ __('Import') }}</button>
                         </form>
                     </div>
 

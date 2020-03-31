@@ -1,0 +1,30 @@
+.required:after {
+    content:" *";
+    color:red;
+}
+
+.thead{
+    background-color: #211F1F;
+    border: 1px solid #918D8D;
+    color: white;
+}
+
+.warning{
+    color:red;
+}
+
+.page {
+    color: black;
+    background-color: #F9FFFD
+}
+
+.font {
+    font-family: Leelawadee, sans-serif;
+    font-size: 16px;
+    color: white;
+}
+
+.box {
+    border-radius: 14px 14px 14px 14px;
+    box-shadow: 10px 10px 11px 4px rgba(0,0,0,0.51);
+}

@@ -2,11 +2,19 @@
 
 @section('content')
     <div class="container">
+
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card shadow-sm">
-                    <div class="card-header d-flex justify-content-between">
-                        <h4 class="card-title"><strong>{{ __('Details Invoice') }} #{{ $invoice->code }}</strong></h4>
+                    <div class="card-header d-flex ">
+                        <h4 class="card-title justify-content-center"><strong>{{ __('Details Invoice') }} #{{ $invoice->code }}</strong></h4>
+                    </div>
+
+                    <!-- Button to return -->
+                    <div class="card-header d-flex justify-content-start">
+                        <a href="{{ route('invoices.index') }}" class="btn buttonBack">
+                            <i class="fas fa-arrow-left"></i> {{ __('Back to Invoices') }}
+                        </a>
                     </div>
 
                     <!-- Invoice detail information -->
@@ -95,28 +103,31 @@
 
                     <!-- Button of Order Summary to pay invoice and exceptions when paid or do not have products-->
                     <div class="card-footer d-flex justify-content-end">
-                        @if($invoice->state_id == '1' and empty($detail))
-                            <button type="submit" class="btn btn-success"
-                                    data-route="{{ route('invoiceProduct') }}"
-                                    data-toggle="modal"
-                                    data-target="#invoiceProduct"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
-                            </button>
-                        @elseif($invoice->state_id == '1')
-                            <button class="btn btn-success" type="submit"
-                                    data-route="{{ route('orderSummary') }}"
-                                    data-toggle="modal"
-                                    data-target="#orderSummary"><i class="fas fa-shopping-cart"></i> {{ __('Order summary') }}
-                            </button>
+                        @if($invoice->state_id == '1' or '4')
+                            @if(empty($detail))
+                                <button type="submit" class="btn btn-success"
+                                        data-route="{{ route('invoiceProduct') }}"
+                                        data-toggle="modal"
+                                        data-target="#invoiceProduct"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
+                                </button>
+                            @elseif($invoice->state_id == '2' or $invoice->due_date < $now)
+                                <button type="submit" class="btn btn-success"
+                                        data-route="{{ route('overdueInvoice') }}"
+                                        data-toggle="modal"
+                                        data-target="#overdueInvoice"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
+                                </button>
+                            @elseif($invoice->state_id != '2')
+                                @if($invoice->state_id != '3')
+                                    @if($invoice->due_date > $now)
+                                        <button class="btn btn-success" type="submit"
+                                                data-route="{{ route('orderSummary') }}"
+                                                data-toggle="modal"
+                                                data-target="#orderSummary"><i class="fas fa-shopping-cart"></i> {{ __('Order summary') }}
+                                        </button>
+                                    @endif
+                                @endif
+                            @endif
                         @endif
-
-                        @if($invoice->state_id == '2')
-                            <button type="submit" class="btn btn-success"
-                                    data-route="{{ route('overdueInvoice') }}"
-                                    data-toggle="modal"
-                                    data-target="#overdueInvoice"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
-                            </button>
-                        @endif
-
 
                             {{--<!-- Button to show payment attempts -->
                             <a href="{{ route('payments.show', [$invoice, $payment]) }}" class="btn btn-secondary">
@@ -132,19 +143,10 @@
                             @csrf
                             <div class="card-body">
                              @include('invoicesProducts.__form')
-                                <button class="btn btn-success btn-block col-md-1" type="submit"><i class="fas fa-plus"></i> {{ __('Add') }}</button>
+                                <button class="btn buttonSave btn-block col-md-1" type="submit"><i class="fas fa-plus"></i> {{ __('Add') }}</button>
                             </div>
                         </form>
-
                     <br>
-
-                    <!-- Button to return -->
-                    <div class="card-footer d-flex justify-content-between">
-                        <a href="{{ route('invoices.index') }}" class="btn btn-secondary">
-                            <i class="fas fa-arrow-left"></i> {{ __('Back to Invoices') }}
-                        </a>
-                    </div>
-
                 </div>
             </div>
         </div>

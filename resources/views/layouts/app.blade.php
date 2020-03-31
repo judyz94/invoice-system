@@ -22,27 +22,24 @@
 <body>
 @stack('modals')
 <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3B3331;">
-        <nav class="navbar-brand"><h5>{{ __('Invoice System') }}</h5></nav>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #353131;">
+        <nav class="navbar-brand font"> <a class="nav-link" href="{{ route('home') }}"><h5>{{ __('Invoice System') }}</h5></a></nav>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}"> {{ __('Home') }}<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
+                <li class="nav-item font">
                     <a class="nav-link" href="{{ route('invoices.index') }}"> {{ __('Invoices') }}</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item font">
                     <a class="nav-link" href="{{ route('customers.index') }}"> {{ __('Customers') }}</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item font">
                     <a class="nav-link" href="{{ route('sellers.index') }}"> {{ __('Sellers') }}</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item font">
                     <a class="nav-link" href="{{ route('products.index') }}"> {{ __('Products') }}</a>
                 </li>
             </ul>
@@ -69,13 +66,13 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown font">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }} <span class="caret font"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                <a class="dropdown-item font" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}

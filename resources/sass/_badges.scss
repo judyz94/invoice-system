@@ -1,0 +1,83 @@
+.green {
+    box-shadow: -2px 9px 24px -7px #9acc85;
+    background-color:#74ad5a;
+    border-radius:11px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: Viga, sans-serif;
+    font-size:13px;
+    padding:3px 9px;
+    text-decoration:none;
+    text-shadow:0 0 0 #92b879;
+}
+.green:hover {
+    background-color:#68a54b;
+}
+.green:active {
+    position:relative;
+    top:1px;
+}
+
+.red {
+    box-shadow: -2px 9px 24px -7px #8a2a21;
+    background-color:#F03030;
+    border-radius:11px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: Viga, sans-serif;
+    font-size:13px;
+    padding:3px 9px;
+    text-decoration:none;
+    text-shadow:0 0 0 #810e05;
+}
+.red:hover {
+    background-color:#f24437;
+}
+.red:active {
+    position:relative;
+    top:1px;
+}
+
+.orange {
+    box-shadow: -2px 9px 24px -7px #f0eca0;
+    background-color:#F5A941;
+    border-radius:11px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: Viga, sans-serif;
+    font-size:13px;
+    padding:3px 9px;
+    text-decoration:none;
+    text-shadow:0 0 0 #f6993f;
+}
+.orange:hover {
+    background-color: #F59041;
+}
+.orange:active {
+    position:relative;
+    top:1px;
+}
+
+.blue {
+    box-shadow: -2px 9px 24px -7px #42A6B9;
+    background-color:#419AB6;
+    border-radius:11px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: Viga, sans-serif;
+    font-size:13px;
+    padding:3px 9px;
+    text-decoration:none;
+    text-shadow:0 0 0 #378DA8;
+}
+.blue:hover {
+    background-color:#3499B9;
+}
+.blue:active {
+    position:relative;
+    top:1px;
+}

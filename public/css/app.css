@@ -34,7 +34,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: Viga, sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -66,7 +66,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: Viga, sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -6459,7 +6459,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: Viga, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6584,7 +6584,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: Viga, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -17375,12 +17375,200 @@ readers do not read off random characters that represent icons */
   opacity: 1;
 }
 
+.button {
+  box-shadow: -2px 6px 18px -7px #276873;
+  background: #56C4AF -webkit-gradient(linear, left top, left bottom, color-stop(5%, #599bb3), to(#408c99));
+  background: #56C4AF linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+  border-radius: 11px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Viga, sans-serif;
+  font-size: 15px;
+  padding: 7px 11px;
+  text-decoration: none;
+  text-shadow: 0 0 0 #3d768a;
+}
+
+.button:hover {
+  background: #408c99;
+}
+
+.button:active {
+  position: relative;
+  top: 1px;
+}
+
+.buttonSave {
+  box-shadow: -2px 6px 18px -7px #6BB535;
+  background: #92F34B -webkit-gradient(linear, left top, left bottom, color-stop(5%, #83C453), to(#66A03B));
+  background: #92F34B linear-gradient(to bottom, #83C453 5%, #66A03B 100%);
+  border-radius: 11px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Viga, sans-serif;
+  font-size: 15px;
+  padding: 6px 10px;
+  text-decoration: none;
+  text-shadow: 0 0 0 #66A03B;
+}
+
+.buttonSave:hover {
+  background: #6BB535;
+}
+
+.buttonSave:active {
+  position: relative;
+  top: 1px;
+}
+
+.buttonCancel {
+  box-shadow: -2px 6px 18px -7px #8a2a21;
+  background: #F03030 -webkit-gradient(linear, left top, left bottom, color-stop(5%, #f24437), to(#810e05));
+  background: #F03030 linear-gradient(to bottom, #f24437 5%, #810e05 100%);
+  border-radius: 11px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Viga, sans-serif;
+  font-size: 15px;
+  padding: 6px 10px;
+  text-decoration: none;
+  text-shadow: 0 0 0 #810e05;
+}
+
+.buttonCancel:hover {
+  background: #f24437;
+}
+
+.buttonCancel:active {
+  position: relative;
+  top: 1px;
+}
+
+.buttonBack {
+  box-shadow: -2px 6px 18px -7px #5F625E;
+  background: #787C76 -webkit-gradient(linear, left top, left bottom, color-stop(5%, #4F554F), to(#696D69));
+  background: #787C76 linear-gradient(to bottom, #4F554F 5%, #696D69 100%);
+  border-radius: 11px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Viga, sans-serif;
+  font-size: 15px;
+  padding: 6px 10px;
+  text-decoration: none;
+  text-shadow: 0 0 0 #5F625E;
+}
+
+.buttonBack:hover {
+  background: #7A7B7A;
+}
+
+.buttonBack:active {
+  position: relative;
+  top: 1px;
+}
+
+.green {
+  box-shadow: -2px 9px 24px -7px #9acc85;
+  background-color: #74ad5a;
+  border-radius: 11px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Viga, sans-serif;
+  font-size: 13px;
+  padding: 3px 9px;
+  text-decoration: none;
+  text-shadow: 0 0 0 #92b879;
+}
+
+.green:hover {
+  background-color: #68a54b;
+}
+
+.green:active {
+  position: relative;
+  top: 1px;
+}
+
+.red {
+  box-shadow: -2px 9px 24px -7px #8a2a21;
+  background-color: #F03030;
+  border-radius: 11px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Viga, sans-serif;
+  font-size: 13px;
+  padding: 3px 9px;
+  text-decoration: none;
+  text-shadow: 0 0 0 #810e05;
+}
+
+.red:hover {
+  background-color: #f24437;
+}
+
+.red:active {
+  position: relative;
+  top: 1px;
+}
+
+.orange {
+  box-shadow: -2px 9px 24px -7px #f0eca0;
+  background-color: #F5A941;
+  border-radius: 11px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Viga, sans-serif;
+  font-size: 13px;
+  padding: 3px 9px;
+  text-decoration: none;
+  text-shadow: 0 0 0 #f6993f;
+}
+
+.orange:hover {
+  background-color: #F59041;
+}
+
+.orange:active {
+  position: relative;
+  top: 1px;
+}
+
+.blue {
+  box-shadow: -2px 9px 24px -7px #42A6B9;
+  background-color: #419AB6;
+  border-radius: 11px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Viga, sans-serif;
+  font-size: 13px;
+  padding: 3px 9px;
+  text-decoration: none;
+  text-shadow: 0 0 0 #378DA8;
+}
+
+.blue:hover {
+  background-color: #3499B9;
+}
+
+.blue:active {
+  position: relative;
+  top: 1px;
+}
+
 .required:after {
   content: " *";
   color: red;
 }
 
-.thead-dark {
+.thead {
   background-color: #211F1F;
   border: 1px solid #918D8D;
   color: white;
@@ -17388,5 +17576,21 @@ readers do not read off random characters that represent icons */
 
 .warning {
   color: red;
+}
+
+.page {
+  color: black;
+  background-color: #F9FFFD;
+}
+
+.font {
+  font-family: Leelawadee, sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+.box {
+  border-radius: 14px 14px 14px 14px;
+  box-shadow: 10px 10px 11px 4px rgba(0, 0, 0, 0.51);
 }
 

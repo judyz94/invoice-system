@@ -49,10 +49,10 @@
                             </div>
 
                             <div class="card-footer d-flex justify-content-between">
-                                <a href="{{ route('invoices.index') }}" class="btn btn-danger">
+                                <a href="{{ route('invoices.index') }}" class="btn buttonCancel">
                                     <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
                                 </a>
-                                <button type="submit" class="btn btn-secondary">
+                                <button type="submit" class="btn buttonSave">
                                     <i class="fas fa-save"></i> {{ __('Submit') }}
                                 </button>
                             </div>

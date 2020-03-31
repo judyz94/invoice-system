@@ -19,10 +19,10 @@
                     </div>
 
                     <div class="card-footer d-flex justify-content-between">
-                        <a href="{{ route('customers.index') }}" class="btn btn-danger">
+                        <a href="{{ route('customers.index') }}" class="btn buttonCancel">
                             <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
                         </a>
-                        <button type="submit" class="btn btn-success" form="customers-form">
+                        <button type="submit" class="btn buttonSave" form="customers-form">
                             <i class="fas fa-save"></i> {{ __('Update') }}
                         </button>
                     </div>

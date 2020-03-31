@@ -15,18 +15,7 @@
 // Vue Select
 @import '~vue-select/src/scss/vue-select';
 
-
-.required:after {
-    content:" *";
-    color:red;
-}
-
-.thead-dark{
-    background-color: #211F1F;
-    border: 1px solid #918D8D;
-    color: white;
-}
-
-.warning{
-    color:red;
-}
+//scss files
+@import 'buttons';
+@import 'badges';
+@import 'styles';
