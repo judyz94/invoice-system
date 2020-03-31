@@ -72,6 +72,20 @@ class InvoiceSeeder extends Seeder
             'code' => 'A0028',
             'expedition_date' => '2020-03-25',
             'due_date' => '2020-07-20',
+            'seller_id' => '1',
+            'sale_description' => '5 juegos de mesa (ajedrez)',
+            'customer_id' => '1',
+            'vat' => '0.19',
+            'total' => '250000',
+            'total_with_vat' => '297500',
+            'state_id' => '1',
+            'user_id' => '1'
+        ]);
+
+        DB::table('invoices')->insert([
+            'code' => 'A0029',
+            'expedition_date' => '2020-03-25',
+            'due_date' => '2020-07-20',
             'seller_id' => '2',
             'sale_description' => '1 cama de perro',
             'customer_id' => '2',
