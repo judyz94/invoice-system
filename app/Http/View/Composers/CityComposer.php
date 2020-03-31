@@ -17,7 +17,7 @@ class CityComposer
 
     public function compose(View $view)
     {
-        $cities = Cache::remember('cities', 60, function () {
+        $cities = Cache::remember('cities', 1200, function () {
             return $this->cities->orderBy('name', 'asc')->select('id', 'name')->get();
         });
 

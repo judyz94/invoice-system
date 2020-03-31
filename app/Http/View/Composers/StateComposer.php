@@ -6,7 +6,8 @@ use App\State;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
-class StateComposer
+class
+StateComposer
 {
     private $states;
 
@@ -17,7 +18,7 @@ class StateComposer
 
     public function compose(View $view)
     {
-        $states = Cache::remember('states',  60, function () {
+        $states = Cache::remember('states',  1200, function () {
             return $this->states->orderBy('name', 'asc')->select('id', 'name')->get();
         });
 
