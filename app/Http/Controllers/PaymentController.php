@@ -100,7 +100,13 @@ class PaymentController extends Controller
             }
         }
 
-        if ($payment->status == 'REJECTED' or 'PENDING') {
+        if ($payment->status == 'REJECTED') {
+            $invoice->update([
+                'state_id' => '4'
+            ]);
+        }
+
+        if ($payment->status == 'PENDING') {
             $invoice->update([
                 'state_id' => '4'
             ]);
