@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Seller\StoreRequest;
 use App\Http\Requests\Seller\UpdateRequest;
 use Exception;
+use Illuminate\Support\Facades\Cache;
 
 class SellerController extends Controller
 {
@@ -74,6 +75,8 @@ class SellerController extends Controller
 
         $seller->save();
 
+        Cache::forget('sellers');
+
         return redirect()->route('sellers.index');
     }
 
@@ -125,6 +128,8 @@ class SellerController extends Controller
 
         $seller->save();
 
+        Cache::forget('sellers');
+
         return redirect()->route('sellers.index');
     }
 
@@ -138,6 +143,8 @@ class SellerController extends Controller
     public function destroy(Seller $seller)
     {
         $seller->delete();
+
+        Cache::forget('sellers');
 
         return redirect()->route('sellers.index');
     }

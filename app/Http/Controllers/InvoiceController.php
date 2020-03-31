@@ -17,6 +17,7 @@ use App\Http\Requests\Invoice\StoreRequest;
 use App\Http\Requests\Invoice\UpdateRequest;
 use App\Http\Requests\InvoiceProduct\DetailRequest;
 use App\Imports\InvoicesImport;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use Exception;
@@ -47,15 +48,9 @@ class InvoiceController extends Controller
 
         $invoices = Invoice::with(['customer', 'seller'])
             ->searchfor($filter, $search)
-            ->paginate(6);
+            ->paginate(8);
 
-        $now = Carbon::now();
-        /*if($invoice->due_date <= $now) {
-            $invoice->update([
-                'state_id' == '2']);
-            }*/
-
-        return view('invoices.index', compact( 'invoices', 'filter', 'search', 'invoice', 'now'));
+        return view('invoices.index', compact( 'invoices', 'filter', 'search', 'invoice', 'invoices'));
     }
 
     /**
@@ -113,7 +108,7 @@ class InvoiceController extends Controller
      * @param Payment $payment
      * @return Factory|View
      */
-    public function show(Invoice $invoice, Product $product, Payment $payment)
+    public function show(Invoice $invoice, Product $product)
     {
         $states = State::all();
         $customers = Customer::all();
@@ -123,10 +118,13 @@ class InvoiceController extends Controller
 
         $detail = $invoice->products()->exists($product);
 
+        $now = Carbon::now();
+
         $products = Product::whereNotIn('id', $invoice->products->pluck('id')->values())->get();
 
+        Cache::forget('invoice_products');
 
-        return view('invoices.show', compact( 'states', 'sellers', 'customers', 'users', 'invoice', 'products', 'detail', 'payment'));
+        return view('invoices.show', compact( 'states', 'sellers', 'customers', 'users', 'invoice', 'products', 'detail', 'payment', 'now'));
     }
 
     /**
@@ -150,11 +148,10 @@ class InvoiceController extends Controller
      *
      * @param UpdateRequest $request
      * @param Invoice $invoice
-     * @param Payment $payment
      * @return RedirectResponse
      * @throws Exception
      */
-    public function update(UpdateRequest $request, Invoice $invoice, Payment $payment)
+    public function update(UpdateRequest $request, Invoice $invoice)
     {
         $invoice->expedition_date = $request->input('expedition_date');
         $invoice->due_date = $request->input('due_date');

@@ -67,7 +67,7 @@ class PaymentController extends Controller
                 'processUrl' => $response->processUrl(),
                 'date' => $response->status()->date(),
             ]);
-            return redirect()->away($response->processUrl());
+            return redirect($response->processUrl());
         } else {
             $response->status()->message();
         }
@@ -100,7 +100,7 @@ class PaymentController extends Controller
             }
         }
 
-        if ($payment->status == 'REJECTED') {
+        if ($payment->status == 'REJECTED' or 'PENDING') {
             $invoice->update([
                 'state_id' => '4'
             ]);
