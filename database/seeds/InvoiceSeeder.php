@@ -44,14 +44,13 @@ class InvoiceSeeder extends Seeder
             'code' => 'A0026',
             'expedition_date' => '2020-03-19',
             'due_date' => '2020-06-20',
-            'receipt_date' => '2020-03-20',
             'seller_id' => '2',
             'sale_description' => '5 pacas de cuido',
             'customer_id' => '1',
             'vat' => '0.19',
             'total' => '375000',
             'total_with_vat' => '446250',
-            'state_id' => '3',
+            'state_id' => '1',
             'user_id' => '1'
         ]);
 
@@ -66,6 +65,20 @@ class InvoiceSeeder extends Seeder
             'total' => '2400000',
             'total_with_vat' => '2856000',
             'state_id' => '4',
+            'user_id' => '1'
+        ]);
+
+        DB::table('invoices')->insert([
+            'code' => 'A0028',
+            'expedition_date' => '2020-03-25',
+            'due_date' => '2020-07-20',
+            'seller_id' => '2',
+            'sale_description' => '1 cama de perro',
+            'customer_id' => '2',
+            'vat' => '0.19',
+            'total' => '120000',
+            'total_with_vat' => '122800',
+            'state_id' => '1',
             'user_id' => '1'
         ]);
     }

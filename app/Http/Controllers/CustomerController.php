@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Customer\StoreRequest;
 use App\Http\Requests\Customer\UpdateRequest;
 use Exception;
+use Illuminate\Support\Facades\Cache;
 
 class CustomerController extends Controller
 {
@@ -74,6 +75,8 @@ class CustomerController extends Controller
 
         $customer->save();
 
+        Cache::forget('customers');
+
         return redirect()->route('customers.index');
     }
 
@@ -125,6 +128,8 @@ class CustomerController extends Controller
 
         $customer->save();
 
+        Cache::forget('customers');
+
         return redirect()->route('customers.index');
     }
 
@@ -137,6 +142,8 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
+        Cache::forget('customers');
+
         $customer->delete();
 
         return redirect()->route('customers.index');

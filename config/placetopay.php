@@ -5,3 +5,4 @@ return [
     'trankey' => env('PLACETOPAY_TRANKEY'),
     'url' => env('PLACETOPAY_URL'),
 ];
+

@@ -17,7 +17,7 @@ class ProductComposer
 
     public function compose(View $view)
     {
-        $products = Cache::remember('products',  60, function () {
+        $products = Cache::remember('products',  600, function () {
             return $this->products->orderBy('name', 'asc')->select('id', 'name')->get();
         });
 

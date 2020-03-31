@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
-                        <thead class="thead-dark">
+                        <thead class="thead">
                         <tr>
                             <th>{{ __('Transaction #') }}</th>
                             <th>{{ __('Invoice code') }}</th>
