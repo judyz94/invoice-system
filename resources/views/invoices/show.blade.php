@@ -52,7 +52,7 @@
                         <!-- Details of the invoice -->
                         <div class="table-responsive-lg">
                             <table class="table table-hover">
-                                <thead class="thead-dark">
+                                <thead class="thead">
                                 <tr>
                                     <th>{{ __('Product #') }}</th>
                                     <th>{{ __('Product Name') }}</th>
