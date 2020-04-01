@@ -14,7 +14,7 @@ $factory->define(Invoice::class, function (Faker $faker) {
         'total' => $faker->numberBetween(0,1000000000),
         'vat' => $faker->randomFloat(6,1),
         'total_with_vat' => $faker->randomFloat(20,1),
-        'status' => 'New',
+        'state_id' => factory(App\State::class),
         'seller_id' => factory(App\Seller::class),
         'user_id' => factory(App\User::class),
         'customer_id' => factory(App\Customer::class)
