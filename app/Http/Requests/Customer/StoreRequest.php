@@ -17,6 +17,7 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required|min:2',
             'last_name' => 'required|min:2',
+            'full_name' => 'nullable',
             'document_type' => 'required',
             'document' => [
                 'required',

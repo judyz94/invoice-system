@@ -8,7 +8,10 @@ use Faker\Generator as Faker;
 $factory->define(Customer::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'document' => $faker->numberBetween(0,1000000000),
+        'last_name' => $faker->lastName,
+        'full_name' =>$faker->lastName,
+        'document_type' => 'CC',
+        'document' => $faker->unique()->numberBetween(0,1000000000),
         'email' => $faker->unique()->safeEmail,
         'phone' => $faker->phoneNumber,
         'address' => $faker->address,
