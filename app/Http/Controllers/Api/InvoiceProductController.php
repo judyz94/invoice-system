@@ -16,12 +16,12 @@ class InvoiceProductController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Invoice $invoice
      * @return Invoice[]|
      */
-    public function index()
+    public function index(Invoice $invoice)
     {
-        $invoice = Invoice::all();
-        return $invoice->products()->all();
+       return $invoice->products()->all();
     }
 
     /**
