@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Actions\Invoices\StoreAction;
 use App\Actions\Invoices\UpdateAction;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Invoice\StoreRequest;
 use App\Http\Requests\Invoice\UpdateRequest;
 use App\Invoice;
+use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
 class InvoiceController extends Controller
@@ -64,12 +65,14 @@ class InvoiceController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Invoice $invoice
-     * @return void
+     * @return JsonResponse
      * @throws \Exception
      */
     public function destroy(Invoice $invoice)
     {
         $invoice->delete();
+
+        return response()->json(__('The invoice has been removed'));
     }
 }
 

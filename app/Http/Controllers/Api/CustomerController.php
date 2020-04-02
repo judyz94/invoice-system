@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Actions\Customers\StoreAction;
 use App\Actions\Customers\UpdateAction;
-use App\Customer;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\StoreRequest;
 use App\Http\Requests\Customer\UpdateRequest;
+use App\Customer;
+use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 
