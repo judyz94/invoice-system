@@ -2,63 +2,79 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Actions\InvoiceProducts\StoreAction;
+use App\Actions\InvoiceProducts\UpdateAction;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\InvoiceProduct\DetailRequest;
+use App\Http\Requests\InvoiceProduct\UpdateRequest;
+use App\Invoice;
+use App\Product;
+use Illuminate\Http\JsonResponse;
 
 class InvoiceProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Invoice[]|
      */
     public function index()
     {
-        //
+        $invoice = Invoice::all();
+        return $invoice->products()->all();
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param DetailRequest $request
+     * @param Invoice $invoice
+     * @param StoreAction $action
+     * @return void
      */
-    public function store(Request $request)
+    public function store(DetailRequest $request, Invoice $invoice, StoreAction $action)
     {
-        //
-    }
+        //return $action->execute($invoice, $request);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $price = $request->input('price');
+        $quantity = $request->input('quantity');
+        $invoice->products()->attach($request->input('product_id'), [
+            'price' => $price,
+            'quantity' => $quantity,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param UpdateRequest $request
+     * @param Invoice $invoice
+     * @param Product $product
+     * @param UpdateAction $action
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Invoice $invoice, Product $product, UpdateAction $action)
     {
-        //
+        //return $action->execute($invoice, $request);
+
+        $product = $invoice->products()->findOrFail($product);
+        $invoice->products()->updateExistingPivot($product->id, $request->validated());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Invoice $invoice
+     * @param Product $product
+     * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy(Invoice $invoice, Product $product)
     {
-        //
+        //$invoice->delete();
+
+        $invoice->products()->detach($product->id);
+
+        return response()->json(__('The invoice detail has been removed'));
     }
 }
+

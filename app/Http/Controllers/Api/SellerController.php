@@ -2,63 +2,77 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Actions\Sellers\StoreAction;
+use App\Actions\Sellers\UpdateAction;
+use App\Http\Requests\Seller\StoreRequest;
+use App\Http\Requests\Seller\UpdateRequest;
+use App\Seller;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
 class SellerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Seller[]|Collection
      */
     public function index()
     {
-        //
+        return Seller::all();
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreRequest $request
+     * @param Seller $seller
+     * @param StoreAction $action
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request, Seller $seller, StoreAction $action)
     {
-        //
+        return $action->execute($seller, $request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Seller $seller
+     * @return Seller
      */
-    public function show($id)
+    public function show(Seller $seller)
     {
-        //
+        return $seller;
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param UpdateRequest $request
+     * @param Seller $seller
+     * @param UpdateAction $action
+     * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Seller $seller, UpdateAction $action)
     {
-        //
+        return $action->execute($seller, $request);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Seller $seller
+     * @return JsonResponse
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Seller $seller)
     {
-        //
+        $seller->delete();
+
+        return response()->json(__('The seller has been removed'));
     }
 }
+
