@@ -109,6 +109,15 @@
                         </form>
                     </div>
 
+                       <!-- Export form -->
+                       {{--}}<div class="card-footer justify-content-lg-start">
+                           <form action="{{ route('invoices.exportExcel') }}" method="post" enctype="multipart/form-data">
+                               @csrf
+                               <h5><strong>Export Excel File</strong></h5>
+                               <button class="btn buttonSave"><i class="fas fa-file-excel"></i> {{ __('Export') }}</button>
+                           </form>
+                       </div>--}}
+
                 </div>
             </div>
         </div>
