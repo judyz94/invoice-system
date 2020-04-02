@@ -17,8 +17,7 @@ class UpdateAction extends Action
         $invoice->sale_description = $request->input('sale_description');
         $invoice->customer_id = $request->input('customer_id');
         $invoice->state_id = $request->input('state_id');
-
-        $invoice->user_id = auth()->user()->id;
+        $invoice->user_id = $request->input('user_id');
 
         $invoice->save();
 
