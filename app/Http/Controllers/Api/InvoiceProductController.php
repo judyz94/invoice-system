@@ -17,11 +17,11 @@ class InvoiceProductController extends Controller
      * Display a listing of the resource.
      *
      * @param Invoice $invoice
-     * @return Invoice[]|
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function index(Invoice $invoice)
     {
-       return $invoice->products()->all();
+       return $invoice->products;
     }
 
     /**
@@ -34,14 +34,14 @@ class InvoiceProductController extends Controller
      */
     public function store(DetailRequest $request, Invoice $invoice, StoreAction $action)
     {
-        //return $action->execute($invoice, $request);
-
         $price = $request->input('price');
         $quantity = $request->input('quantity');
         $invoice->products()->attach($request->input('product_id'), [
             'price' => $price,
             'quantity' => $quantity,
         ]);
+
+        return response()->json(__('The invoice detail has been created'));
     }
 
     /**
@@ -55,10 +55,10 @@ class InvoiceProductController extends Controller
      */
     public function update(UpdateRequest $request, Invoice $invoice, Product $product, UpdateAction $action)
     {
-        //return $action->execute($invoice, $request);
-
         $product = $invoice->products()->findOrFail($product);
         $invoice->products()->updateExistingPivot($product->id, $request->validated());
+
+        return response()->json(__('The invoice detail has been updated'));
     }
 
     /**
@@ -70,8 +70,6 @@ class InvoiceProductController extends Controller
      */
     public function destroy(Invoice $invoice, Product $product)
     {
-        //$invoice->delete();
-
         $invoice->products()->detach($product->id);
 
         return response()->json(__('The invoice detail has been removed'));

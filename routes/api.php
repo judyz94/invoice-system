@@ -22,6 +22,10 @@ Route::apiResources([
     'customers' => 'Api\CustomerController',
     'sellers' => 'Api\SellerController',
     'products' => 'Api\ProductController',
-    'invoiceProducts' => 'Api\InvoiceProductController',
 ]);
+
+Route::get('invoices/{invoice}/products', 'Api\InvoiceProductController@index');
+Route::post('invoices/{invoice}/products', 'Api\InvoiceProductController@store');
+Route::put('/invoices/{invoice}/products/{product}')->uses('Api\InvoiceProductController@update');
+Route::delete('/invoices/{invoice}/products/{product}', 'Api\InvoiceProductController@destroy');
 
