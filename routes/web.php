@@ -29,3 +29,4 @@ Route::get('/invoiceProduct/invoices', 'InvoiceController@invoiceProduct')->name
 //API integration
 Route::post('/invoices/{invoice}', 'PaymentController@store')->name('payments.store');
 Route::get('/invoices/{invoice}/payments/{payment}', 'PaymentController@show')->name('payments.show');
+Route::get('/payment/show/{invoice}/', 'paymentController@payments')->name('payments');
