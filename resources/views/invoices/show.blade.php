@@ -97,18 +97,24 @@
                     <div class="card-footer d-flex justify-content-end">
                         @if($invoice->state_id == '1' or '4')
                             @if(empty($detail))
-                            <button type="submit" class="btn btn-success"
-                                    data-route="{{ route('invoiceProduct') }}"
-                                    data-toggle="modal"
-                                    data-target="#invoiceProduct"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
-                            </button>
-                        @elseif($invoice->state_id == '2' or $invoice->due_date < $now)
-                            <button type="submit" class="btn btn-success"
-                                    data-route="{{ route('overdueInvoice') }}"
-                                    data-toggle="modal"
-                                    data-target="#overdueInvoice"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
-                            </button>
-                        @elseif($invoice->state_id != '2')
+                                <button type="submit" class="btn buttonSave"
+                                        data-route="{{ route('invoiceProduct') }}"
+                                        data-toggle="modal"
+                                        data-target="#invoiceProduct"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
+                                </button>
+                            @elseif($invoice->state_id == '2' or $invoice->due_date < $now)
+                                <button type="submit" class="btn buttonSave"
+                                        data-route="{{ route('overdueInvoice') }}"
+                                        data-toggle="modal"
+                                        data-target="#overdueInvoice"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
+                                </button>
+                            @elseif($invoice->state_id == '5')
+                                <button type="submit" class="btn buttonSave"
+                                        data-route="{{ route('pendingPayment') }}"
+                                        data-toggle="modal"
+                                        data-target="#pendingPayment"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
+                                </button>
+                            @elseif($invoice->state_id != '2')
                                 @if($invoice->state_id != '3')
                                     @if($invoice->due_date > $now)
                                 <button class="btn btn-success" type="submit"
@@ -120,9 +126,6 @@
                             @endif
                         @endif
                         @endif
-
-
-
 
                             {{--<!-- Button to show payment attempts -->
                             <a href="{{ route('payments.show', [$invoice, $payment]) }}" class="btn btn-secondary">
@@ -162,6 +165,7 @@
     @include('partials.__order_summary')
     @include('partials.__overdue_invoice')
     @include('partials.__invoice_product')
+    @include('partials.__pending_payment')
 @endpush
 
 @push('scripts')
