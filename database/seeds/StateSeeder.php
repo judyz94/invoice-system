@@ -27,6 +27,10 @@ class StateSeeder extends Seeder
         DB::table('states')->insert([
             'name' => 'Rejected',
         ]);
+
+        DB::table('states')->insert([
+            'name' => 'Pending',
+        ]);
     }
 }
 

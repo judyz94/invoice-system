@@ -71,10 +71,11 @@
                                                 <td>{{ $invoice->customer->full_name }}</td>
                                                 <td>{{ $invoice->user->name }}</td>
                                                 <td><h5>
-                                                        @if($invoice->state_id == '1')<span class="badge badge-primary">{{ __('New') }}</span>@endif
-                                                        @if($invoice->state_id == '2')<span class="badge badge-danger">{{ __('Overdue') }}</span>@endif
-                                                        @if($invoice->state_id == '3')<span class="badge badge-success">{{ __('Paid') }}</span>@endif
-                                                        @if($invoice->state_id == '4')<span class="badge badge-light">{{ __('Unpaid') }}</span>@endif
+                                                        @if($invoice->state_id == '1')<span class="badge blue">{{ __('New') }}</span>@endif
+                                                        @if($invoice->state_id == '2')<span class="badge red">{{ __('Overdue') }}</span>@endif
+                                                        @if($invoice->state_id == '3')<span class="badge green">{{ __('Paid') }}</span>@endif
+                                                        @if($invoice->state_id == '4')<span class="badge orange">{{ __('Rejected') }}</span>@endif
+                                                        @if($invoice->state_id == '5')<span class="badge purple">{{ __('Pending') }}</span>@endif
                                                     </h5></td>
                                                 <td class="text-right">
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
