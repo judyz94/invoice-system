@@ -116,6 +116,12 @@
                                         data-toggle="modal"
                                         data-target="#overdueInvoice"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
                                 </button>
+                            @elseif($invoice->state_id == '5')
+                                <button type="submit" class="btn buttonSave"
+                                        data-route="{{ route('pendingPayment') }}"
+                                        data-toggle="modal"
+                                        data-target="#pendingPayment"><i class="fas fa-money-bill"></i> {{ __('Pay') }}
+                                </button>
                             @elseif($invoice->state_id != '2')
                                 @if($invoice->state_id != '3')
                                     @if($invoice->due_date > $now)
@@ -128,11 +134,12 @@
                                 @endif
                             @endif
                         @endif
+                        @endif
 
-                        {{--<!-- Button to show payment attempts -->
-                        <a href="{{ route('payments.show', [$invoice, $payment]) }}" class="btn btn-secondary">
-                            <i class="fas fa-file-invoice-dollar"></i> {{ __('Payment attempts') }}
-                        </a>--}}
+                            {{--<!-- Button to show payment attempts -->
+                            <a href="{{ route('payments.show', [$invoice, $payment]) }}" class="btn btn-secondary">
+                                <i class="fas fa-file-invoice-dollar"></i> {{ __('Payment attempts') }}
+                            </a>--}}
                     </div>
 
                     <!-- Form added invoice details -->
@@ -158,6 +165,7 @@
     @include('partials.__order_summary')
     @include('partials.__overdue_invoice')
     @include('partials.__invoice_product')
+    @include('partials.__pending_payment')
 @endpush
 
 @push('scripts')

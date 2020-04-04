@@ -75,6 +75,7 @@
                                                         @if($invoice->state_id == '2')<span class="badge red">{{ __('Overdue') }}</span>@endif
                                                         @if($invoice->state_id == '3')<span class="badge green">{{ __('Paid') }}</span>@endif
                                                         @if($invoice->state_id == '4')<span class="badge orange">{{ __('Rejected') }}</span>@endif
+                                                        @if($invoice->state_id == '5')<span class="badge purple">{{ __('Pending') }}</span>@endif
                                                     </h5></td>
                                                 <td class="text-right">
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
