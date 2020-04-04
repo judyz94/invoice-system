@@ -233,5 +233,12 @@ class InvoiceController extends Controller
 
         return view('partials.__invoice_product', compact(  'invoice'));
     }
+
+    public function pendingPayment()
+    {
+        $invoice = Invoice::all();
+
+        return view('partials.__pending_payment', compact(  'invoice'));
+    }
 }
 

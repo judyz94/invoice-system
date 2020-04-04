@@ -25,6 +25,7 @@ Route::post('/import/invoices', 'InvoiceController@import')->name('invoices.impo
 Route::get('/orderSummary/invoices', 'InvoiceController@orderSummary')->name('orderSummary');
 Route::get('/overdueInvoice/invoices', 'InvoiceController@overdueInvoice')->name('overdueInvoice');
 Route::get('/invoiceProduct/invoices', 'InvoiceController@invoiceProduct')->name('invoiceProduct');
+Route::get('/pendingPayment/invoices', 'InvoiceController@pendingPayment')->name('pendingPayment');
 
 //API integration
 Route::post('/invoices/{invoice}', 'PaymentController@store')->name('payments.store');
