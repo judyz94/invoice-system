@@ -114,5 +114,16 @@ class PaymentController extends Controller
 
         return view('payments.show', compact('invoice', 'payment', 'response'));
         }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Invoice $invoice
+     * @return Factory|View
+     */
+    public function payments(Invoice $invoice)
+    {
+        return view("payments.show", compact('invoice'));
+    }
 }
 

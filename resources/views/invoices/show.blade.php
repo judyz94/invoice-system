@@ -136,10 +136,10 @@
                         @endif
                         @endif
 
-                            {{--<!-- Button to show payment attempts -->
-                            <a href="{{ route('payments.show', [$invoice, $payment]) }}" class="btn btn-secondary">
-                                <i class="fas fa-file-invoice-dollar"></i> {{ __('Payment attempts') }}
-                            </a>--}}
+                        <!-- Button to show payment attempts -->
+                        <a href="{{ route('payments', $invoice) }}" class="btn buttonBack">
+                            <i class="fas fa-file-invoice-dollar"></i> {{ __('Payment attempts') }}
+                        </a>
                     </div>
 
                     <!-- Form added invoice details -->
