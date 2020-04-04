@@ -17,8 +17,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
-                <button type="submit" form="deleteForm" class="btn btn-danger">{{ __('Delete') }}</button>
+                <button type="button" class="btn buttonBack" data-dismiss="modal">{{ __('Close') }}</button>
+                <button type="submit" form="deleteForm" class="btn buttonCancel">{{ __('Delete') }}</button>
             </div>
         </div>
     </div>

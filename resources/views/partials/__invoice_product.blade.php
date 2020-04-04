@@ -13,7 +13,7 @@
                 <p>{{ __('Please associate the required products with the invoice.') }}</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+                <button type="button" class="btn buttonBack" data-dismiss="modal">{{ __('Close') }}</button>
             </div>
         </div>
     </div>

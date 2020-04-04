@@ -105,7 +105,6 @@ class InvoiceController extends Controller
      *
      * @param Invoice $invoice
      * @param Product $product
-     * @param Payment $payment
      * @return Factory|View
      */
     public function show(Invoice $invoice, Product $product)

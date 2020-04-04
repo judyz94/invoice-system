@@ -1,0 +1,83 @@
+.button {
+    box-shadow: -2px 6px 18px -7px #276873;
+    background: #56C4AF linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    border-radius:11px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: Viga, sans-serif;
+    font-size:15px;
+    padding:7px 11px;
+    text-decoration:none;
+    text-shadow:0 0 0 #3d768a;
+}
+.button:hover {
+    background: #408c99;
+}
+.button:active {
+    position:relative;
+    top:1px;
+}
+
+.buttonSave {
+    box-shadow: -2px 6px 18px -7px #6BB535;
+    background: #92F34B linear-gradient(to bottom, #83C453 5%, #66A03B 100%);
+    border-radius:11px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: Viga, sans-serif;
+    font-size:15px;
+    padding:6px 10px;
+    text-decoration:none;
+    text-shadow:0 0 0 #66A03B;
+}
+.buttonSave:hover {
+    background: #6BB535;
+}
+.buttonSave:active {
+    position:relative;
+    top:1px;
+}
+
+.buttonCancel {
+    box-shadow: -2px 6px 18px -7px #8a2a21;
+    background: #F03030 linear-gradient(to bottom, #f24437 5%, #810e05 100%);
+    border-radius:11px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: Viga, sans-serif;
+    font-size:15px;
+    padding:6px 10px;
+    text-decoration:none;
+    text-shadow:0 0 0 #810e05;
+}
+.buttonCancel:hover {
+    background: #f24437;
+}
+.buttonCancel:active {
+    position:relative;
+    top:1px;
+}
+
+.buttonBack {
+    box-shadow: -2px 6px 18px -7px #5F625E;
+    background: #787C76 linear-gradient(to bottom, #4F554F 5%, #696D69 100%);
+    border-radius:11px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: Viga, sans-serif;
+    font-size:15px;
+    padding:6px 10px;
+    text-decoration:none;
+    text-shadow:0 0 0 #5F625E;
+}
+.buttonBack:hover {
+    background: #7A7B7A;
+}
+.buttonBack:active {
+    position:relative;
+    top:1px;
+}

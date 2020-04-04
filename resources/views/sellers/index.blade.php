@@ -11,7 +11,7 @@
 
                 <!-- Create new seller -->
                 <nav class="navbar navbar-light bg-light">
-                    <a href="{{ route('sellers.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
+                    <a href="{{ route('sellers.create') }}" class="btn button"><i class="fas fa-plus"></i>
                         {{ __('Create a new seller') }}</a>
 
                     <!-- Search form -->

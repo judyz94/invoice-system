@@ -34,7 +34,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: Viga, sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -66,7 +66,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: Viga, sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -6459,7 +6459,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: Viga, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6584,7 +6584,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: Viga, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -17375,8 +17375,6 @@ readers do not read off random characters that represent icons */
   opacity: 1;
 }
 
-<<<<<<< Updated upstream
-=======
 .button {
   box-shadow: -2px 6px 18px -7px #276873;
   background: #56C4AF -webkit-gradient(linear, left top, left bottom, color-stop(5%, #599bb3), to(#408c99));
@@ -17588,7 +17586,6 @@ readers do not read off random characters that represent icons */
   top: 1px;
 }
 
->>>>>>> Stashed changes
 .required:after {
   content: " *";
   color: red;
@@ -17597,6 +17594,7 @@ readers do not read off random characters that represent icons */
 .thead {
   background-color: #211F1F;
   border: 1px solid #918D8D;
+  font-weight: bold;
   color: white;
 }
 
@@ -17610,7 +17608,13 @@ readers do not read off random characters that represent icons */
 }
 
 .font {
-  font-family: a;
-  font-size: 16pt;
+  font-family: Leelawadee, sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+.box {
+  border-radius: 14px 14px 14px 14px;
+  box-shadow: 10px 10px 11px 4px rgba(0, 0, 0, 0.51);
 }
 

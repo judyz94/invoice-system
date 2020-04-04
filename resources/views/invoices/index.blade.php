@@ -10,7 +10,7 @@
 
                    <!-- Create new invoice -->
                    <nav class="navbar navbar-light bg-light">
-                       <a href="{{ route('invoices.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>
+                       <a href="{{ route('invoices.create') }}" class="btn button"><i class="fas fa-plus"></i>
                                {{ __('Create a new invoice') }}
                        </a>
 
@@ -106,7 +106,7 @@
                             <h5><strong>Import Excel File</strong></h5>
                             <input type="file" name="file" class="form-control-file">
                             <br>
-                            <button class="btn btn-success"><i class="fas fa-file-excel"></i> {{ __('Import') }}</button>
+                            <button class="btn buttonSave"><i class="fas fa-file-excel"></i> {{ __('Import') }}</button>
                         </form>
                     </div>
 

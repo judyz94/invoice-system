@@ -103,10 +103,10 @@
                                     </table>
 
                                     <div class="card-footer d-flex justify-content-between">
-                                        <a href="{{ route('customers.index') }}" class="btn btn-secondary">
+                                        <a href="{{ route('customers.index') }}" class="btn buttonBack">
                                             <i class="fas fa-arrow-left"></i> {{ __('Back to Customers') }}
                                         </a>
-                                        <a href="{{ route('invoices.create') }}" class="btn btn-success">
+                                        <a href="{{ route('invoices.create') }}" class="btn buttonSave">
                                             <i class="fas fa-plus"></i>  {{ __('Associate New Invoice') }}
                                         </a>
                                     </div>

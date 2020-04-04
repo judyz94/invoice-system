@@ -51,7 +51,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success"> <i class="fas fa-money-bill"></i> {{ __('Pay') }}</button>
+                    <button type="submit" class="btn buttonSave"> <i class="fas fa-money-bill"></i> {{ __('Pay') }}</button>
                 </div>
             </div>
         </form>
