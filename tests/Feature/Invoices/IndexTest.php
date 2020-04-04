@@ -71,7 +71,7 @@ class IndexTest extends TestCase
 
         $response = $this->actingAs($user)->get(route('invoices.index'));
 
-        $response->assertSee(__('Invoices were not found'));
+        $response->assertSee(__('No invoices were found'));
     }
 
     /**
