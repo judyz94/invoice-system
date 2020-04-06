@@ -17613,6 +17613,13 @@ readers do not read off random characters that represent icons */
   color: white;
 }
 
+.font-title {
+  font-family: Leelawadee, sans-serif;
+  font-size: 35px;
+  line-height: 1.6;
+  color: black;
+}
+
 .box {
   border-radius: 14px 14px 14px 14px;
   box-shadow: 10px 10px 11px 4px rgba(0, 0, 0, 0.51);

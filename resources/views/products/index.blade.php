@@ -6,7 +6,7 @@
             <div class="col-md-10">
                 <div class="card shadow-sm">
                     <div class="card-header d-flex justify-content-between">
-                        <h3 class="card-title mb-0"><strong>{{ __('Products') }}</strong></h3>
+                        <h3 class="card-title mb-0"><strong>{{ __('Products') }}  <i class="fas fa-paw"></i></strong></h3>
                     </div>
 
                     <nav class="navbar navbar-light bg-light">

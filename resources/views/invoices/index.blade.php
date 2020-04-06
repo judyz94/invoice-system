@@ -5,7 +5,7 @@
        <div class="row justify-content-center">
                <div class="card shadow-sm">
                 <div class="card-header d-flex justify-content-between">
-                    <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}</strong></h3>
+                    <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}  <i class="fas fa-paw"></i></strong></h3>
                 </div>
 
                    <!-- Create new invoice -->
