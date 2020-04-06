@@ -23,7 +23,7 @@
 @stack('modals')
 <div id="app">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #353131;">
-        <nav class="navbar-brand font"> <a class="nav-link" href="{{ route('home') }}"><h5>{{ __('Animal Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>
+        <nav class="navbar-brand font"> <a class="nav-link" href="{{ route('home') }}"><h5>{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

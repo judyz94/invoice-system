@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header text-center">
-                    <h1 class="card-title font-title"><strong>{{ __('Welcome to Invoice System for Animal Friends!') }}  <i class="fas fa-dog"></i> <i class="fas fa-cat"></i></strong></h1>
+                    <h1 class="card-title font-title"><strong>{{ __('Welcome to Invoice System for Pet Friends!') }}  <i class="fas fa-dog"></i> <i class="fas fa-cat"></i></strong></h1>
             </div>
 
                 <div class="card-body text-center m-lg-5">
