@@ -6,11 +6,12 @@ Auth::routes();
 //Home
 Route::get('/', 'HomeController@index')->name('home');
 
-//Resource invoices, customers, sellers, products
+//Resource invoices, customers, sellers, products, users
 Route::resource('invoices', 'InvoiceController');
 Route::resource('customers', 'CustomerController');
 Route::resource('sellers', 'SellerController');
 Route::resource('products', 'ProductController');
+Route::resource('users', 'UserController')->except('create', 'store');
 
 //Resource invoice details
 Route::post('invoices/{invoice}/products')->uses('InvoiceController@addProduct')->name('invoices.products.store');
