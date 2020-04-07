@@ -10,10 +10,10 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::resource('invoices', 'InvoiceController');
 Route::resource('customers', 'CustomerController');
 Route::resource('sellers', 'SellerController');
-Route::resource('products', 'ProductController');
+Route::resource('products', 'ProductController')->except('show');
 Route::resource('users', 'UserController')->except('create', 'store');
 
-//Resource invoice details
+//Invoice details
 Route::post('invoices/{invoice}/products')->uses('InvoiceController@addProduct')->name('invoices.products.store');
 Route::get('/invoices/{invoice}/products/{product}/edit', 'InvoiceProductController@edit')->name('invoiceProduct.edit');
 Route::put('/invoices/{invoice}/products/{product}')->uses('InvoiceProductController@update')->name('invoiceProduct.update');
