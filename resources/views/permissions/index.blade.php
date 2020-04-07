@@ -9,7 +9,7 @@
                         <h3 class="card-title mb-0"><strong>{{ __('Permissions') }}  <i class="fas fa-paw"></i></strong></h3>
                     </div>
 
-                    <!-- Create new customer -->
+                    <!-- Create new permission -->
                     <nav class="navbar navbar-light bg-light">
                         <a href="{{ route('permissions.create') }}"
                            class="btn button">

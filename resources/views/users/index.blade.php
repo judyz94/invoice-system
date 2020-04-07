@@ -9,6 +9,7 @@
                         <h3 class="card-title mb-0"><strong>{{ __('Users') }}  <i class="fas fa-paw"></i></strong></h3>
                     </div>
 
+                    <!-- Create new user -->
                     <nav class="navbar navbar-light bg-light">
                         <a href="{{ route('register') }}" class="btn button"><i class="fas fa-plus"></i>
                             {{ __('Create a new user') }}</a>
