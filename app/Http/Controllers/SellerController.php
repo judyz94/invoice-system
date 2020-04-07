@@ -21,6 +21,11 @@ class SellerController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:sellers.index')->only(['index']);
+        $this->middleware('can:sellers.create')->only(['create', 'store']);
+        $this->middleware('can:sellers.edit')->only(['edit', 'update']);
+        $this->middleware('can:sellers.show')->only(['show']);
+        $this->middleware('can:sellers.destroy')->only(['destroy']);
     }
 
     /**
