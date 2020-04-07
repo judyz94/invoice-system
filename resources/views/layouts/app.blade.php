@@ -45,6 +45,9 @@
                 <li class="nav-item font">
                     <a class="nav-link" href="{{ route('users.index') }}"> {{ __('Users') }}</a>
                 </li>
+                <li class="nav-item font">
+                    <a class="nav-link" href="{{ route('permissions.index') }}"> {{ __('Permissions') }}</a>
+                </li>
             </ul>
         </div>
 
