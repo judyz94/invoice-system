@@ -55,7 +55,6 @@
                                         </div>
                                     </td>
                                 </tr>
-
                             <!-- Alert when there are no permissions -->
                             @empty
                                 <tr>

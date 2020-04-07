@@ -119,6 +119,31 @@ class PermissionSeeder extends Seeder
             'description' => 'Show user details'
         ]);
 
+        //Permissions
+        DB::table('permissions')->insert([
+            'name' => 'CustomersPermissions index',
+            'slug' => 'permissions.index',
+            'description' => 'List all permissions'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Permissions create',
+            'slug' => 'permissions.create',
+            'description' => 'Create permissions'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Permissions edit',
+            'slug' => 'permissions.edit',
+            'description' => 'Edit permissions'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Permissions delete',
+            'slug' => 'permissions.destroy',
+            'description' => 'Delete permissions'
+        ]);
+
         //Products
         DB::table('permissions')->insert([
             'name' => 'Products index',
