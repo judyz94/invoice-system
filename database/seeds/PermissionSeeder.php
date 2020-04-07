@@ -38,15 +38,172 @@ class PermissionSeeder extends Seeder
         ]);
 
         DB::table('permissions')->insert([
-        'name' => 'Invoices show',
-        'slug' => 'invoices.show',
-        'description' => 'Show invoice details'
+            'name' => 'Invoices show',
+            'slug' => 'invoices.show',
+            'description' => 'Show invoice details'
         ]);
 
         DB::table('permissions')->insert([
             'name' => 'Invoices import',
             'slug' => 'invoices.import',
             'description' => 'Import invoices'
+        ]);
+
+
+        //Invoice details
+        DB::table('permissions')->insert([
+            'name' => 'Invoice details create',
+            'slug' => 'invoices.products.store',
+            'description' => 'Create invoice details'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Invoice details edit',
+            'slug' => 'invoiceProduct.edit',
+            'description' => 'Edit invoice details'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Invoice details delete',
+            'slug' => 'invoiceProduct.destroy',
+            'description' => 'Delete invoice invoice details'
+        ]);
+
+        //Payment attempts
+        DB::table('permissions')->insert([
+            'name' => 'Payments attempt create',
+            'slug' => 'payments.store',
+            'description' => 'Create payment attempts'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Payment attempts index',
+            'slug' => 'payments',
+            'description' => 'List all payment attempts'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Payment attempts show',
+            'slug' => 'payments.show',
+            'description' => 'Details of payment attempt'
+        ]);
+
+        //Users
+        DB::table('permissions')->insert([
+            'name' => 'Users index',
+            'slug' => 'users.index',
+            'description' => 'List all users'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Users create',
+            'slug' => 'register',
+            'description' => 'Create users'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Users edit',
+            'slug' => 'users.edit',
+            'description' => 'Edit users'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Users delete',
+            'slug' => 'users.destroy',
+            'description' => 'Delete users'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Users show',
+            'slug' => 'users.show',
+            'description' => 'Show user details'
+        ]);
+
+        //Products
+        DB::table('permissions')->insert([
+            'name' => 'Products index',
+            'slug' => 'products.index',
+            'description' => 'List all products'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Products create',
+            'slug' => 'products.create',
+            'description' => 'Create products'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Products edit',
+            'slug' => 'products.edit',
+            'description' => 'Edit products'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Products delete',
+            'slug' => 'products.destroy',
+            'description' => 'Delete products'
+        ]);
+
+        //Sellers
+        DB::table('permissions')->insert([
+            'name' => 'Sellers index',
+            'slug' => 'sellers.index',
+            'description' => 'List all sellers'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Sellers create',
+            'slug' => 'sellers.create',
+            'description' => 'Create sellers'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Sellers edit',
+            'slug' => 'sellers.edit',
+            'description' => 'Edit sellers'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Sellers delete',
+            'slug' => 'sellers.destroy',
+            'description' => 'Delete sellers'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Sellers show',
+            'slug' => 'sellers.show',
+            'description' => 'Show seller details'
+        ]);
+
+        //Customers
+        DB::table('permissions')->insert([
+            'name' => 'Customers index',
+            'slug' => 'customers.index',
+            'description' => 'List all customers'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Customers create',
+            'slug' => 'customers.create',
+            'description' => 'Create customers'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Customers edit',
+            'slug' => 'customers.edit',
+            'description' => 'Edit customers'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Customers delete',
+            'slug' => 'customers.destroy',
+            'description' => 'Delete customers'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Customers show',
+            'slug' => 'customers.show',
+            'description' => 'Show customer details'
         ]);
     }
 }
