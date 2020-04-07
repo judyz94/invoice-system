@@ -15,13 +15,10 @@
                             <dt class="col-md-3">{{ __('ID') }}</dt>
                             <dd class="col-md-3">{{ $seller->document }}</dd>
 
-                            <dt class="col-md-3">{{ __('Type') }}</dt>
-                            <dd class="col-md-3">{{ $seller->document_type }}</dd>
-
                             <dt class="col-md-3">{{ __('Name') }}</dt>
                             <dd class="col-md-3">{{ $seller->full_name }}</dd>
 
-                            <dt class="col-md-3">{{ __('Email') }}</dt>
+                            <dt class="col-md-3">{{ __('E-mail') }}</dt>
                             <dd class="col-md-3">{{ $seller->email }}</dd>
 
                             <dt class="col-md-3">{{ __('Phone') }}</dt>
@@ -45,10 +42,7 @@
                                         <th>{{ __('Expedition date') }}</th>
                                         <th>{{ __('Due date') }}</th>
                                         <th>{{ __('Receipt date') }}</th>
-                                        <th>{{ __('Sale description') }}</th>
-                                        <th>{{ __('Total') }}</th>
                                         <th>{{ __('Total with VAT') }}</th>
-                                        <th>{{ __('Seller') }}</th>
                                         <th>{{ __('Customer') }}</th>
                                         <th>{{ __('Created by') }}</th>
                                         <th>{{ __('Status') }}</th>
@@ -63,10 +57,7 @@
                                             <td>{{ $invoice->expedition_date }}</td>
                                             <td>{{ $invoice->due_date }}</td>
                                             <td>{{ $invoice->receipt_date }}</td>
-                                            <td>{{ $invoice->sale_description }}</td>
-                                            <td>${{ number_format($invoice->total, 2) }}</td>
                                             <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
-                                            <td>{{ $invoice->seller->full_name }}</td>
                                             <td>{{ $invoice->customer->full_name }}</td>
                                             <td>{{ $invoice->user->name }}</td>
                                             <td><h5>

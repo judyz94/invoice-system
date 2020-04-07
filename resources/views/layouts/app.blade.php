@@ -42,6 +42,9 @@
                 <li class="nav-item font">
                     <a class="nav-link" href="{{ route('products.index') }}"> {{ __('Products') }}</a>
                 </li>
+                <li class="nav-item font">
+                    <a class="nav-link" href="{{ route('users.index') }}"> {{ __('Users') }}</a>
+                </li>
             </ul>
         </div>
 

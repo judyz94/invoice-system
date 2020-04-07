@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-sm-10">
+            <div class="col-xl-10">
                 <div class="card shadow-sm">
                     <div class="card-header d-flex justify-content-between">
                         <h3 class="card-title mb-0"><strong>{{ __('Customers') }}  <i class="fas fa-paw"></i></strong></h3>
@@ -36,13 +36,13 @@
 
                     <!-- Customers list -->
                     <div class="table-responsive-xl">
-                        <table class="table table-hover" style="width:100%">
+                        <table class="table table-hover">
                             <thead>
                             <tr>
                                 <th>{{ __('ID') }}</th>
                                 <th>{{ __('Type') }}</th>
                                 <th>{{ __('Full Name') }}</th>
-                                <th>{{ __('Email') }}</th>
+                                <th>{{ __('E-mail') }}</th>
                                 <th>{{ __('Phone') }}</th>
                                 <th>{{ __('City') }}</th>
                                 <th>{{ __('Address') }}</th>
@@ -61,9 +61,9 @@
                                     <td>{{ $customer->city->name }}</td>
                                     <td>{{ $customer->address }}</td>
                                     <td class="text-right">
-                                        <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
 
                                             <!-- CRUD buttons -->
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
                                             <a href="{{ route('customers.show', $customer) }}"
                                                class="btn btn-link" title="{{ __('Show Details') }}">
                                                 <i class="fas fa-eye" style="color:black"></i>

@@ -134,7 +134,6 @@
                                 @endif
                             @endif
                         @endif
-                        @endif
 
                         <!-- Button to show payment attempts -->
                         <a href="{{ route('payments', $invoice) }}" class="btn buttonBack">

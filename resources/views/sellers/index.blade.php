@@ -33,14 +33,14 @@
                 </nav>
 
                 <!-- Sellers list -->
-                <div class="table-responsive-xl">
+                <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>{{ __('ID') }}</th>
                             <th>{{ __('Type') }}</th>
                             <th>{{ __('Full Name') }}</th>
-                            <th>{{ __('Email') }}</th>
+                            <th>{{ __('E-mail') }}</th>
                             <th>{{ __('Phone') }}</th>
                             <th>{{ __('City') }}</th>
                             <th>{{ __('Address') }}</th>
@@ -79,7 +79,6 @@
                                                 title="{{ __('Delete seller') }}">
                                             <i class="fas fa-trash"></i>
                                         </button>
-
                                     </div>
                                 </td>
                             </tr>
@@ -92,7 +91,6 @@
                                 </p>
                             </tr>
                         @endforelse
-
                         </tbody>
                     </table>
 

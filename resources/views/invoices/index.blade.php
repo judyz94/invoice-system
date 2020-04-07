@@ -26,9 +26,7 @@
                             <th>{{ __('Code') }}</th>
                             <th>{{ __('Expedition date') }}</th>
                             <th>{{ __('Due date') }}</th>
-                            <th>{{ __('Receipt date') }}</th>
-                            <th>{{ __('Sale description') }}</th>
-                            <th>{{ __('Total') }}</th>
+                            <th>{{ __('Description') }}</th>
                             <th>{{ __('Total with VAT') }}</th>
                             <th>{{ __('Seller') }}</th>
                             <th>{{ __('Customer') }}</th>
@@ -44,9 +42,7 @@
                                 <td>{{ $invoice->code }}</td>
                                 <td>{{ $invoice->expedition_date }}</td>
                                 <td>{{ $invoice->due_date }}</td>
-                                <td>{{ $invoice->receipt_date }}</td>
                                 <td>{{ $invoice->sale_description }}</td>
-                                <td>${{ number_format($invoice->total, 2) }}</td>
                                 <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
                                 <td>{{ $invoice->seller->full_name }}</td>
                                 <td>{{ $invoice->customer->full_name }}</td>
