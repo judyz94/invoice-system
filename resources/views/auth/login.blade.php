@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+        <div class="col-md-6">
+            <div class="card shadow-sm box">
                 <div class="card-header pb-0">
                     <h4 class="card-title"><strong>{{ __('Login') }}</strong></h4>
                 </div>

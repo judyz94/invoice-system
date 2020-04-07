@@ -20,6 +20,7 @@
 
 </head>
 <body>
+<div class="background">
 @stack('modals')
 <div id="app">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #353131;">
@@ -107,5 +108,6 @@
 <script src="{{ asset(mix('js/app.js')) }}"></script>
 
 @stack('scripts')
+</div>
 </body>
 </html>
