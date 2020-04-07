@@ -72,6 +72,7 @@
                                             <i class="fas fa-edit" style="color:black"></i>
                                         </a>
 
+                                        @can('sellers.destroy')
                                         <button type="button" class="btn btn-link text-danger"
                                                 data-route="{{ route('sellers.destroy', $seller) }}"
                                                 data-toggle="modal"
@@ -79,6 +80,7 @@
                                                 title="{{ __('Delete seller') }}">
                                             <i class="fas fa-trash"></i>
                                         </button>
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>

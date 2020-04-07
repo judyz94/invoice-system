@@ -53,6 +53,8 @@
                                            title="{{ __('Edit Product') }}">
                                             <i class="fas fa-edit" style="color:black"></i>
                                         </a>
+
+                                        @can('products.destroy')
                                         <button type="button" class="btn btn-link text-danger"
                                                 data-route="{{ route('products.destroy', $product) }}"
                                                 data-toggle="modal"
@@ -60,6 +62,7 @@
                                                 title="{{ __('Delete Product') }}">
                                             <i class="fas fa-trash"></i>
                                         </button>
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>

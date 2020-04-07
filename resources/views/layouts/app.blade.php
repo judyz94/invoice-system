@@ -43,15 +43,21 @@
                 <li class="nav-item font">
                     <a class="nav-link" href="{{ route('products.index') }}"> {{ __('Products') }}</a>
                 </li>
+                @can('users.index')
                 <li class="nav-item font">
                     <a class="nav-link" href="{{ route('users.index') }}"> {{ __('Users') }}</a>
                 </li>
+                @endcan
+                @can('permissions.index')
                 <li class="nav-item font">
                     <a class="nav-link" href="{{ route('permissions.index') }}"> {{ __('Permissions') }}</a>
                 </li>
+                @endcan
+                @can('roles.index')
                 <li class="nav-item font">
                     <a class="nav-link" href="{{ route('roles.index') }}"> {{ __('Roles') }}</a>
                 </li>
+                @endcan
             </ul>
         </div>
 

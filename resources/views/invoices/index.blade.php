@@ -68,12 +68,14 @@
                                             <i class="fas fa-edit" style="color:black"></i>
                                         </a>
 
+                                        @can('invoices.destroy')
                                         <button type="button" class="btn btn-link text-danger"
                                                 data-route="{{ route('invoices.destroy', $invoice) }}"
                                                 data-toggle="modal" data-target="#confirmDeleteModal"
                                                 title="{{ __('Delete Invoice') }}">
                                             <i class="fas fa-trash"></i>
                                         </button>
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>
