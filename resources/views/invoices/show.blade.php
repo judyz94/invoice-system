@@ -2,10 +2,9 @@
 
 @section('content')
     <div class="container">
-
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card shadow-sm">
+                <div class="card shadow-lg">
                     <div class="card-header d-flex ">
                         <h4 class="card-title justify-content-center"><strong>{{ __('Details Invoice') }} #{{ $invoice->code }}</strong></h4>
                     </div>

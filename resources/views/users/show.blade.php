@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-14">
-                <div class="card shadow-sm">
+                <div class="card shadow-lg">
                     <div class="card-header pb-0">
                         <h4 class="card-title"><strong>{{ __('User') }}  {{ $user->name }}</strong></h4>
                     </div>

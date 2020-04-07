@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-10">
-                <div class="card shadow-sm">
+                <div class="card shadow-lg">
                     <div class="card-header d-flex justify-content-between">
                         <h3 class="card-title mb-0"><strong>{{ __('Permissions') }}  <i class="fas fa-paw"></i></strong></h3>
                     </div>
@@ -26,7 +26,7 @@
                                 <th>{{ __('Name') }}</th>
                                 <th>{{ __('Slug') }}</th>
                                 <th>{{ __('Description') }}</th>
-                                <th>{{ __('Actions') }}</th>
+                                <th class="text-right">{{ __('Actions') }}</th>
                             </tr>
                             </thead>
 

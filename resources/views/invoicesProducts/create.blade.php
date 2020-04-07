@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card shadow-lg">
                     <div class="card-header pb-0">
                         <h4 class="card-title"><strong>{{ __('New Details for Invoice') }}
                                 #{{ $invoice->code }}</strong></h4>
