@@ -12,23 +12,23 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        /*DB::table('permissions')->insert([
+        DB::table('roles')->insert([
             'name' => 'Admin',
-            'slug' => '',
-            'description' => 'Total access'
+            'slug' => 'Admin',
+            'special' => 'all-access'
         ]);
 
-        DB::table('permissions')->insert([
+        DB::table('roles')->insert([
             'name' => 'Commercial advisor',
-            'slug' => '',
+            'slug' => 'Advisor',
             'description' => 'Partial access'
         ]);
 
-        DB::table('permissions')->insert([
-            'name' => 'Guest',
-            'slug' => '',
+        DB::table('roles')->insert([
+            'name' => 'Customer',
+            'slug' => 'Customer',
             'description' => 'Pay'
-        ]);*/
+        ]);
     }
 }
 

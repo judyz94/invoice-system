@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'invoices',
             'invoice_product',
             'permissions',
-            'roles'
+            'roles',
         ]);
 
         $this->call(CitySeeder::class);

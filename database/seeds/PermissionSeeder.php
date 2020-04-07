@@ -255,6 +255,31 @@ class PermissionSeeder extends Seeder
             'slug' => 'customers.show',
             'description' => 'Show customer details'
         ]);
+
+        //Modals
+        DB::table('permissions')->insert([
+            'name' => 'Order summary',
+            'slug' => 'orderSummary',
+            'description' => 'See order summary of sale'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Overdue invoice',
+            'slug' => 'overdueInvoice',
+            'description' => 'Warning overdue invoice'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'No products in detail',
+            'slug' => 'invoiceProduct',
+            'description' => 'Warning when detail not have products'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Pending payment',
+            'slug' => 'pendingPayment',
+            'description' => 'Warning pending payment'
+        ]);
     }
 }
 
