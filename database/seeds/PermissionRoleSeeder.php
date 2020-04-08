@@ -12,6 +12,50 @@ class PermissionRoleSeeder extends Seeder
      */
     public function run()
     {
+        //Customer - Invoice
+        DB::table('permission_role')->insert([
+            'permission_id' => '5',
+            'role_id' => '3',
+        ]);
+
+        //Customer - Payment attempts
+        DB::table('permission_role')->insert([
+            'permission_id' => '10',
+            'role_id' => '3',
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '11',
+            'role_id' => '3',
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '12',
+            'role_id' => '3',
+        ]);
+
+        //Customer - Modals warning
+        DB::table('permission_role')->insert([
+            'permission_id' => '40',
+            'role_id' => '3',
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '41',
+            'role_id' => '3',
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '42',
+            'role_id' => '3',
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '43',
+            'role_id' => '3',
+        ]);
+
+
         //Comercial advisor - Invoices
         DB::table('permission_role')->insert([
             'permission_id' => '1',
