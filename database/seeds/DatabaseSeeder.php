@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
             'invoice_product',
             'permissions',
             'roles',
+            'role_user',
+            'permission_role',
         ]);
 
         $this->call(CitySeeder::class);
@@ -35,6 +37,8 @@ class DatabaseSeeder extends Seeder
         $this->call(InvoiceProductSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(RoleSeeder::class);
+        $this->call(RoleUserSeeder::class);
+        $this->call(PermissionRoleSeeder::class);
     }
 
     public function truncateTables(array $tables): void
