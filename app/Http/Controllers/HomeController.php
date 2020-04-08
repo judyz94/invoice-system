@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Invoice;
+use Caffeinated\Shinobi\Models\Role;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\View\View;
+
 class HomeController extends Controller
 {
     /**
@@ -17,11 +22,14 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
+     * @param Invoice $invoice
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Invoice $invoice)
     {
-        return view('home');
+        $role = Role::all();
+
+        return view('home', compact( 'invoice', 'role'));
     }
 }
 

@@ -23,12 +23,14 @@
 <div class="background">
 @stack('modals')
 <div id="app">
+    @can('invoices.show')
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #353131;">
-        <nav class="navbar-brand font"> <a class="nav-link" href="{{ route('home') }}"><h5>{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>
+        <nav class="navbar-brand font"> <a class="nav-link" @can('invoices.index')href="{{ route('home') }}"@endcan><h5>{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        @can('invoices.index')
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item font">
@@ -43,6 +45,7 @@
                 <li class="nav-item font">
                     <a class="nav-link" href="{{ route('products.index') }}"> {{ __('Products') }}</a>
                 </li>
+        @endcan
                 @can('users.index')
                 <li class="nav-item font">
                     <a class="nav-link" href="{{ route('users.index') }}"> {{ __('Users') }}</a>
@@ -65,6 +68,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+    @can('invoices.show')
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto"></ul>
@@ -82,6 +86,7 @@
                             </li>
                         @endif
                     @else
+
                         <li class="nav-item dropdown font">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret font"></span>
@@ -102,8 +107,8 @@
                     @endguest
                 </ul>
             </div>
+    @endcan
     </nav>
-
     <main class="py-4">
         @yield('content')
     </main>
@@ -115,5 +120,6 @@
 
 @stack('scripts')
 </div>
+@endcan
 </body>
 </html>
