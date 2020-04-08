@@ -9,12 +9,14 @@
                         <h4 class="card-title justify-content-center"><strong>{{ __('Details Invoice') }} #{{ $invoice->code }}</strong></h4>
                     </div>
 
+                    @can('invoices.index')
                     <!-- Button to return -->
                     <div class="card-header d-flex justify-content-start">
                         <a href="{{ route('invoices.index') }}" class="btn buttonBack">
                             <i class="fas fa-arrow-left"></i> {{ __('Back to Invoices') }}
                         </a>
                     </div>
+                    @endcan
 
                     <!-- Invoice detail information -->
                     <div class="card-body">
@@ -66,7 +68,9 @@
                                     <th>{{ __('Unit Price') }}</th>
                                     <th>{{ __('Quantity') }}</th>
                                     <th>{{ __('Total Products') }}</th>
+                                    @can('invoiceProduct.destroy')
                                     <th>{{ __('Actions') }}</th>
+                                    @endcan
                                 </tr>
                                 </thead>
 
@@ -78,6 +82,7 @@
                                         <td>${{ number_format($product->pivot->price) }}</td>
                                         <td>{{ $product->pivot->quantity }}</td>
                                         <td>${{ number_format($acum = $product->pivot->price * $product->pivot->quantity) }}</td>
+                                        @can('invoiceProduct.destroy')
                                         <td>
                                             <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
                                                 <a href="{{ route('invoiceProduct.edit', [$invoice, $product]) }}" class="btn btn-link"
@@ -93,6 +98,7 @@
                                                 </button>
                                             </div>
                                         </td>
+                                        @endcan
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -140,6 +146,7 @@
                         </a>
                     </div>
 
+                    @can('invoices.products.store')
                     <!-- Form added invoice details -->
                         <div class="card-header d-flex justify-content-between">
                             <h5><strong>{{ __('Add a new product to this invoice') }}</strong></h5>
@@ -151,6 +158,7 @@
                                 <button class="btn buttonSave btn-block col-md-1" type="submit"><i class="fas fa-plus"></i> {{ __('Add') }}</button>
                             </div>
                         </form>
+                    @endcan
                     <br>
                 </div>
             </div>
