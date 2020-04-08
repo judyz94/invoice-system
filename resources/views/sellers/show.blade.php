@@ -36,7 +36,7 @@
                             <div class="col-md-12">
                                 <br><h5><strong>{{ __('Associated invoices') }}</strong></h5>
                                 <table class="table table-hover">
-                                    <thead>
+                                    <thead class="thead-dark">
                                     <tr>
                                         <th>{{ __('Code') }}</th>
                                         <th>{{ __('Expedition date') }}</th>
@@ -95,10 +95,10 @@
                                     </table>
 
                                     <div class="card-footer d-flex justify-content-between">
-                                        <a href="{{ route('sellers.index') }}" class="btn btn-secondary">
+                                        <a href="{{ route('sellers.index') }}" class="btn buttonBack">
                                             <i class="fas fa-arrow-left"></i> {{ __('Back to Sellers') }}
                                         </a>
-                                        <a href="{{ route('invoices.create') }}" class="btn btn-success">
+                                        <a href="{{ route('invoices.create') }}" class="btn buttonSave">
                                             <i class="fas fa-plus"></i>  {{ __('Associate New Invoice') }}
                                         </a>
                                     </div>

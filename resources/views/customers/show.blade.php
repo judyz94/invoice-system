@@ -37,7 +37,7 @@
                             <div class="col-md-12">
                                 <br><h5><strong>{{ __('Associated invoices') }}</strong></h5>
                                 <table class="table table-hover">
-                                    <thead>
+                                    <thead class="thead-dark">
                                     <tr>
                                         <th>{{ __('Code') }}</th>
                                         <th>{{ __('Expedition date') }}</th>
