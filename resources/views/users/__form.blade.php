@@ -35,24 +35,24 @@
     </select>
     </div>
 
-    {{--<select class="mdb-select colorful-select dropdown-primary md-form" multiple searchable="Search here..">
-        <option value="" disabled selected>{{ __('Select a role') }}</option>
-        @foreach($roles as $role)
-            <option value="{{$role->id}}"
-                {{ old('name') == $role->id ? 'selected' : ''}}>{{$role->name}}
-            </option>
-        @endforeach
-    </select>--}}
+  {{--<select class="mdb-select colorful-select dropdown-primary md-form" multiple searchable="Search here..">
+      <option value="" disabled selected>{{ __('Select a role') }}</option>
+      @foreach($roles as $role)
+          <option value="{{$role->id}}"
+              {{ old('name') == $role->id ? 'selected' : ''}}>{{$role->name}}
+          </option>
+      @endforeach
+  </select>--}}
 
-    {{--<div class="col-md-6">
-        <input id="email" type="email" class="form-control @error('name') is-invalid @enderror" name="role" value="{{ old('name', $role->name) }}" required>
+  {{--<div class="col-md-6">
+      <input id="email" type="email" class="form-control @error('name') is-invalid @enderror" name="role" value="{{ old('name', $role->name) }}" required>
 
-        @error('name')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-    </div>--}}
+      @error('name')
+      <span class="invalid-feedback" role="alert">
+          <strong>{{ $message }}</strong>
+      </span>
+      @enderror
+  </div>--}}
 </div>
 
 

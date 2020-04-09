@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Http\Requests\User\UserRequest;
 use App\User;
 use Caffeinated\Shinobi\Models\Role;
