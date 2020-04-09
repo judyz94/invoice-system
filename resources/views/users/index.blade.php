@@ -1,6 +1,7 @@
 @extends ('layouts.app')
 
 @section('content')
+    @can('users.index')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
@@ -34,6 +35,7 @@
                         <thead>
                         <tr>
                             <th>{{ __('Name') }}</th>
+                            <th>{{ __('Document') }}</th>
                             <th>{{ __('E-Mail') }}</th>
                             <th>{{ __('Role') }}</th>
                             <th class="text-right">{{ __('Actions') }}</th>
@@ -44,6 +46,7 @@
                         @forelse($users as $user)
                             <tr>
                                 <td>{{ $user->name }}</td>
+                                <td>{{ $user->document }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td></td>
                                 <td class="text-right">
@@ -86,6 +89,7 @@
             </div>
         </div>
     </div>
+@endcan
 @endsection
 
 @push('modals')
