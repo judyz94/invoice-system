@@ -31,5 +31,12 @@ class HomeController extends Controller
 
         return view('home', compact( 'invoice', 'role'));
     }
+
+    public function customer(Invoice $invoice)
+    {
+        $role = Role::all();
+
+        return view('homeCustomer', compact( 'invoice', 'role'));
+    }
 }
 

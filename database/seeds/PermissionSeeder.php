@@ -12,6 +12,13 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+        //Home
+        DB::table('permissions')->insert([
+            'name' => 'Home customer',
+            'slug' => 'homeCustomer',
+            'description' => 'Home customer to pay'
+        ]);
+
         //Invoices
         DB::table('permissions')->insert([
             'name' => 'Invoices index',
