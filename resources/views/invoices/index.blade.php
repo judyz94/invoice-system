@@ -20,7 +20,7 @@
 
                    <!-- Invoices list -->
                    <div class="table-responsive-xl">
-                    <table class="table table-hover">
+                    <table class="table table-hover text-center">
                         <thead>
                         <tr>
                             <th>{{ __('Code') }}</th>
@@ -40,10 +40,10 @@
                         @forelse($invoices as $invoice)
                             <tr>
                                 <td>{{ $invoice->code }}</td>
-                                <td>{{ $invoice->expedition_date }}</td>
-                                <td>{{ $invoice->due_date }}</td>
+                                <td style="width:120px">{{ $invoice->expedition_date }}</td>
+                                <td style="width:100px">{{ $invoice->due_date }}</td>
                                 <td>{{ $invoice->sale_description }}</td>
-                                <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
+                                <td style="width:150px">${{ number_format($invoice->total_with_vat, 2) }}</td>
                                 <td>{{ $invoice->seller->full_name }}</td>
                                 <td>{{ $invoice->customer->full_name }}</td>
                                 <td>{{ $invoice->user->name }}</td>

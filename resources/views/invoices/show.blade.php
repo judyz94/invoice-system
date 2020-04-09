@@ -30,14 +30,16 @@
                             <dt class="col-md-3">{{ __('Due date') }}</dt>
                             <dd class="col-md-3">{{ $invoice->due_date }}</dd>
 
+                            @isset($invoice->receipt_date)
                             <dt class="col-md-3">{{ __('Receipt date') }}</dt>
                             <dd class="col-md-3">{{ $invoice->receipt_date }}</dd>
+                            @endisset
 
-                            <dt class="col-md-3">{{ __('Sale description') }}</dt>
-                            <dd class="col-md-3">{{ $invoice->sale_description }}</dd>
+                            <dt class="col-md-3">{{ __('Total') }}</dt>
+                            <dd class="col-md-3">${{ number_format($invoice->total, 2) }}</dd>
 
                             <dt class="col-md-3">{{ __('Total with VAT') }}</dt>
-                            <dd class="col-md-3">{{ $invoice->total_with_vat }}</dd>
+                            <dd class="col-md-3">${{ number_format($invoice->total_with_vat, 2) }}</dd>
 
                             <dt class="col-md-3">{{ __('Seller') }}</dt>
                             <dd class="col-md-3">{{ $invoice->seller->full_name }}</dd>

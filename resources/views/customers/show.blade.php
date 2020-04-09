@@ -42,12 +42,12 @@
                                         <th>{{ __('Code') }}</th>
                                         <th>{{ __('Expedition date') }}</th>
                                         <th>{{ __('Due date') }}</th>
-                                        <th>{{ __('Receipt date') }}</th>
+                                        <th>{{ __('Sale description') }}</th>
                                         <th>{{ __('Total with VAT') }}</th>
                                         <th>{{ __('Seller') }}</th>
                                         <th>{{ __('Created by') }}</th>
                                         <th>{{ __('Status') }}</th>
-                                        <th>{{ __('Actions') }}</th>
+                                        <th class="text-right">{{ __('Actions') }}</th>
                                     </tr>
                                     </thead>
 
@@ -56,8 +56,8 @@
                                             <tr>
                                                 <td>{{ $invoice->code }}</td>
                                                 <td>{{ $invoice->expedition_date }}</td>
-                                                <td>{{ $invoice->due_date }}</td>
-                                                <td>{{ $invoice->receipt_date }}</td>
+                                                <td style="width:100px">{{ $invoice->due_date }}</td>
+                                                <td>{{ $invoice->sale_description }}</td>
                                                 <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
                                                 <td>{{ $invoice->seller->full_name }}</td>
                                                 <td>{{ $invoice->user->name }}</td>

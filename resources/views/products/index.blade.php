@@ -34,7 +34,7 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>{{ __('Code') }}</th>
+                            <th>{{ __('N°') }}</th>
                             <th>{{ __('Name') }}</th>
                             <th>{{ __('Unit Price') }}</th>
                             <th class="text-right">{{ __('Actions') }}</th>

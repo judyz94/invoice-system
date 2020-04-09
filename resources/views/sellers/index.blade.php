@@ -3,11 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-sm-10">
-            <div class="card shadow-lg">
-                <div class="card-header d-flex justify-content-between">
-                    <h3 class="card-title mb-0"><strong>{{ __('Sellers') }}  <i class="fas fa-paw"></i></strong></h3>
-                </div>
+            <div class="col-xl-14">
+                <div class="card shadow-lg">
+                    <div class="card-header d-flex justify-content-between">
+                        <h3 class="card-title mb-0"><strong>{{ __('Sellers') }}  <i class="fas fa-paw"></i></strong></h3>
+                    </div>
 
                 <!-- Create new seller -->
                 <nav class="navbar navbar-light bg-light">

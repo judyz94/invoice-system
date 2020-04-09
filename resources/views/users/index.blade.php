@@ -23,7 +23,6 @@
                             <th>{{ __('Name') }}</th>
                             <th>{{ __('E-Mail') }}</th>
                             <th>{{ __('Role') }}</th>
-                            <th>{{ __('Permissions') }}</th>
                             <th class="text-right">{{ __('Actions') }}</th>
                         </tr>
                         </thead>
@@ -33,7 +32,6 @@
                             <tr>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td></td>
                                 <td></td>
                                 <td class="text-right">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">

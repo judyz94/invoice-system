@@ -24,12 +24,12 @@
                             <div class="col-md-12">
                                 <br><h5><strong>{{ __('Associated invoices') }}</strong></h5>
                                 <table class="table table-hover">
-                                    <thead>
+                                    <thead class="thead-dark">
                                     <tr>
                                         <th>{{ __('Code') }}</th>
                                         <th>{{ __('Expedition date') }}</th>
                                         <th>{{ __('Due date') }}</th>
-                                        <th>{{ __('Receipt date') }}</th>
+                                        <th>{{ __('Sale description') }}</th>
                                         <th>{{ __('Total with VAT') }}</th>
                                         <th>{{ __('Seller') }}</th>
                                         <th>{{ __('Customer') }}</th>
@@ -43,8 +43,8 @@
                                         <tr>
                                             <td>{{ $invoice->code }}</td>
                                             <td>{{ $invoice->expedition_date }}</td>
-                                            <td>{{ $invoice->due_date }}</td>
-                                            <td>{{ $invoice->receipt_date }}</td>
+                                            <td style="width:100px">{{ $invoice->due_date }}</td>
+                                            <td>{{ $invoice->sale_description }}</td>
                                             <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
                                             <td>{{ $invoice->seller->full_name }}</td>
                                             <td>{{ $invoice->customer->full_name }}</td>
@@ -81,7 +81,7 @@
                                     </table>
 
                                     <div class="card-footer d-flex justify-content-between">
-                                        <a href="{{ route('users.index') }}" class="btn btn-secondary">
+                                        <a href="{{ route('users.index') }}" class="btn buttonBack">
                                             <i class="fas fa-arrow-left"></i> {{ __('Back to Users') }}
                                         </a>
                                     </div>
