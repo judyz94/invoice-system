@@ -16,30 +16,6 @@
                         </div>
                     @endif
 
-                    <!-- Customer rol pay -->
-                        <div class="row justify-content-center">
-                        <div class="card box" style="width: 18rem;" >
-                            <div class="card-body">
-                                <h4 class="card-title"><strong>How to pay my invoice?</strong></h4>
-                                <p class="card-text">
-                                    <strong>1.</strong> The button at the end of the box will take you to a page where you can view the details of your invoice.
-                                </p>
-                                <p class="card-text">
-                                    <strong>2.</strong> There you will find the "sale summary" button, click on it.
-                                </p>
-                                <p class="card-text">
-                                    <strong>3.</strong> Then it will display a window with the "pay" button that will redirect you to our payment gateway, PlaceToPay!
-                                </p>
-
-                                @can('invoices.show')
-                                <a href="{{ route('invoices.show', $invoice) }}" type="submit" class="btn buttonSave">
-                                    <i class="fas fa-bil"></i> {{ __('Go to invoice details') }}
-                                </a>
-                                @endcan
-                            </div>
-                        </div>
-                        </div>
-
                     @can('invoices.index')
                     <div class="card-columns">
                         <div class="card box" style="width: 18rem;">
