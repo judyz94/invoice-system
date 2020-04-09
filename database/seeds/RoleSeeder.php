@@ -20,13 +20,6 @@ class RoleSeeder extends Seeder
         ]);
 
         DB::table('roles')->insert([
-            'name' => 'Suspended',
-            'slug' => 'Suspended',
-            'description' => 'No access',
-            'special' => 'no-access'
-        ]);
-
-        DB::table('roles')->insert([
             'name' => 'Commercial advisor',
             'slug' => 'Advisor',
             'description' => 'Partial access'
@@ -36,6 +29,13 @@ class RoleSeeder extends Seeder
             'name' => 'Customer',
             'slug' => 'Customer',
             'description' => 'Pay'
+        ]);
+
+        DB::table('roles')->insert([
+            'name' => 'Suspended',
+            'slug' => 'Suspended',
+            'description' => 'No access',
+            'special' => 'no-access'
         ]);
     }
 }
