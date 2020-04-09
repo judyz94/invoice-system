@@ -28,6 +28,20 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="document" class="required col-md-4 col-form-label text-md-right">{{ __('Document') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="document" type="text" class="form-control @error('document') is-invalid @enderror" name="document" value="{{ old('document') }}" required autocomplete="document">
+
+                                @error('document')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="required col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">
@@ -65,10 +79,12 @@
                     </form>
                 </div>
 
+                @can('invoices.index')
                     <div class="card-footer d-flex justify-content-between">
                         <a href="{{ route('users.index') }}" class="btn buttonCancel">
                             <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
                         </a>
+                 @endcan
                         <button type="submit" class="btn buttonSave" form="users-form">
                             <i class="fas fa-save"></i> {{ __('Submit') }}
                         </button>
