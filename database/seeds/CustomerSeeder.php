@@ -50,8 +50,8 @@ class CustomerSeeder extends Seeder
 
         DB::table('customers')->insert([
             'name' => 'Maria Isabel',
-            'last_name' => 'Mendez Cardona',
-            'full_name' => 'Maria Isabel Mendez Cardona',
+            'last_name' => 'Mendez',
+            'full_name' => 'Maria Isabel Mendez',
             'document_type' => 'CC',
             'document' => '347983854',
             'email' => 'maria@gmail.com',
