@@ -41,10 +41,6 @@ class RegisterController extends Controller
 
     /*public function __construct()
     {
-        $this->middleware('can:users.index');
-    }
-    public function __construct()
-    {
         $this->middleware('guest');
     }*/
 
@@ -52,7 +48,6 @@ class RegisterController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('can:register')->only(['create', 'validator']);
-        $this->middleware('can:users.index')->only(['index']);
     }
 
     /**
@@ -87,14 +82,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-    }
-
-    public function index(User $user)
-    {
-        $users = User::paginate(5);
-        $roles = $user->roles();
-
-        return view('users.index', compact( 'users', 'roles'));
     }
 }
 
