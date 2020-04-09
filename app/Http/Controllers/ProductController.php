@@ -71,7 +71,7 @@ class ProductController extends Controller
 
         Cache::forget('products');
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('info', 'Product successfully created.');
     }
 
     /**
@@ -103,7 +103,7 @@ class ProductController extends Controller
 
         Cache::forget('products');
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('info', 'Product successfully updated.');
     }
 
     /**
@@ -119,7 +119,7 @@ class ProductController extends Controller
 
         Cache::forget('products');
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('info', 'Product successfully deleted.');
     }
 }
 

@@ -82,7 +82,7 @@ class SellerController extends Controller
 
         Cache::forget('sellers');
 
-        return redirect()->route('sellers.index');
+        return redirect()->route('sellers.index')->with('info', 'Seller successfully created.');
     }
 
     /**
@@ -135,7 +135,7 @@ class SellerController extends Controller
 
         Cache::forget('sellers');
 
-        return redirect()->route('sellers.index');
+        return redirect()->route('sellers.index')->with('info', 'Seller successfully updated.');
     }
 
     /**
@@ -151,7 +151,7 @@ class SellerController extends Controller
 
         Cache::forget('sellers');
 
-        return redirect()->route('sellers.index');
+        return redirect()->route('sellers.index')->with('info', 'Seller successfully deleted.');
     }
 }
 

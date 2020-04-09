@@ -102,7 +102,7 @@ class InvoiceController extends Controller
             'code' => 'A' . str_pad($invoice->id, 4, 0, STR_PAD_LEFT),
         ]);
 
-        return redirect()->route('invoices.show', $invoice);
+        return redirect()->route('invoices.show', $invoice)->with('info', 'Invoice successfully created.');
     }
 
     /**
@@ -169,7 +169,7 @@ class InvoiceController extends Controller
 
         $invoice->save();
 
-        return redirect()->route('invoices.index');
+        return redirect()->route('invoices.index')->with('info', 'Invoice successfully updated.');
     }
 
     /**
@@ -183,7 +183,7 @@ class InvoiceController extends Controller
     {
         $invoice->delete();
 
-        return redirect()->route('invoices.index');
+        return redirect()->route('invoices.index')->with('info', 'Invoice successfully deleted.');
     }
 
     public function addProduct(Invoice $invoice, DetailRequest $request)
@@ -204,7 +204,7 @@ class InvoiceController extends Controller
 
         $invoice->save();
 
-        return redirect()->route('invoices.show', $invoice);
+        return redirect()->route('invoices.show', $invoice)->with('info', 'Detail successfully created.');
     }
 
     public function import(Request $request)
@@ -213,7 +213,7 @@ class InvoiceController extends Controller
 
         Excel::import(new InvoicesImport, $file);
 
-        return view('invoices.index', compact( 'file'));
+        return view('invoices.index', compact( 'file'))->with('info', 'Invoices successfully imported.');
     }
 
     public function orderSummary()

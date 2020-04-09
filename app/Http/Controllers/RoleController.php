@@ -66,7 +66,7 @@ class RoleController extends Controller
 
         $role->save();
 
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('info', 'Role successfully created.');
     }
 
     /**
@@ -95,7 +95,7 @@ class RoleController extends Controller
 
         $role->save();
 
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('info', 'Role successfully updated.');
     }
 
     /**
@@ -109,7 +109,7 @@ class RoleController extends Controller
     {
         $role->delete();
 
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('info', 'Role successfully deleted.');
     }
 }
 

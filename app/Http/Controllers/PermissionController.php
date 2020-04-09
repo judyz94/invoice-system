@@ -66,7 +66,7 @@ class PermissionController extends Controller
 
         $permission->save();
 
-        return redirect()->route('permissions.index');
+        return redirect()->route('permissions.index')->with('info', 'Permission successfully created.');
     }
 
     /**
@@ -95,7 +95,7 @@ class PermissionController extends Controller
 
         $permission->save();
 
-        return redirect()->route('permissions.index');
+        return redirect()->route('permissions.index')->with('info', 'Permission successfully updated.');
     }
 
     /**
@@ -109,7 +109,7 @@ class PermissionController extends Controller
     {
         $permission->delete();
 
-        return redirect()->route('permissions.index');
+        return redirect()->route('permissions.index')->with('info', 'Permission successfully deleted.');
     }
 }
 

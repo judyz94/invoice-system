@@ -4,6 +4,19 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
+
+                @if(session('info'))
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 col-md-offset-2">
+                                <div class="alert alert-info">
+                                    {{ session('info') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
                 <div class="card shadow-lg">
                     <div class="card-header d-flex justify-content-between">
                         <h3 class="card-title mb-0"><strong>{{ __('Roles') }}  <i class="fas fa-paw"></i></strong></h3>

@@ -82,7 +82,7 @@ class CustomerController extends Controller
 
         Cache::forget('customers');
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('info', 'Customer successfully created.');
     }
 
     /**
@@ -135,7 +135,7 @@ class CustomerController extends Controller
 
         Cache::forget('customers');
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('info', 'Customer successfully updated.');
     }
 
     /**
@@ -151,7 +151,7 @@ class CustomerController extends Controller
 
         $customer->delete();
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('info', 'Customer successfully deleted.');
     }
 }
 

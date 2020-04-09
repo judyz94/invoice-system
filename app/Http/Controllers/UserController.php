@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\UserRequest;
 use App\User;
+use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Contracts\View\Factory;
 use Exception;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
@@ -27,20 +29,21 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Factory|\Illuminate\View\View
+     * @return Factory|View
      */
-    public function index()
+    public function index(User $user)
     {
         $users = User::paginate(5);
+        $roles = $user->roles();
 
-        return view('users.index', compact( 'users'));
+        return view('users.index', compact( 'users', 'roles'));
     }
 
     /**
      * Display the specified resource.
      *
      * @param User $user
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function show(User $user)
     {
@@ -51,11 +54,13 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param User $user
-     * @return Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function edit(User $user)
     {
-        return view('users.edit',  compact('user'));
+        $roles = Role::all();
+
+        return view('users.edit',  compact('user', 'roles'));
     }
 
     /**
@@ -69,10 +74,11 @@ class UserController extends Controller
     {
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-
         $user->save();
 
-        return redirect()->route('users.index');
+        $user->roles()->sync($request->input('roles'));
+
+        return redirect()->route('users.index')->with('info', 'User successfully updated.');
     }
 
     /**
@@ -86,7 +92,7 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('info', 'User successfully deleted.');
     }
 }
 
