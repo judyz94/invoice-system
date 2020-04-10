@@ -12,13 +12,6 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        //Home
-        DB::table('permissions')->insert([
-            'name' => 'Home customer',
-            'slug' => 'homeCustomer',
-            'description' => 'Home customer to pay'
-        ]);
-
         //Invoices
         DB::table('permissions')->insert([
             'name' => 'Invoices index',
@@ -95,36 +88,6 @@ class PermissionSeeder extends Seeder
             'description' => 'Details of payment attempt'
         ]);
 
-        //Users
-        DB::table('permissions')->insert([
-            'name' => 'Users index',
-            'slug' => 'users.index',
-            'description' => 'List all users'
-        ]);
-
-        DB::table('permissions')->insert([
-            'name' => 'Users create',
-            'slug' => 'register',
-            'description' => 'Create users'
-        ]);
-
-        DB::table('permissions')->insert([
-            'name' => 'Users edit',
-            'slug' => 'users.edit',
-            'description' => 'Edit users'
-        ]);
-
-        DB::table('permissions')->insert([
-            'name' => 'Users delete',
-            'slug' => 'users.destroy',
-            'description' => 'Delete users'
-        ]);
-
-        DB::table('permissions')->insert([
-            'name' => 'Users show',
-            'slug' => 'users.show',
-            'description' => 'Show user details'
-        ]);
 
         //Permissions
         DB::table('permissions')->insert([
@@ -286,6 +249,45 @@ class PermissionSeeder extends Seeder
             'name' => 'Pending payment',
             'slug' => 'pendingPayment',
             'description' => 'Warning pending payment'
+        ]);
+
+
+        //Users
+        DB::table('permissions')->insert([
+            'name' => 'Users index',
+            'slug' => 'users.index',
+            'description' => 'List all users'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Users edit',
+            'slug' => 'users.edit',
+            'description' => 'Edit users'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Users delete',
+            'slug' => 'users.destroy',
+            'description' => 'Delete users'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Users show',
+            'slug' => 'users.show',
+            'description' => 'Show user details'
+        ]);
+
+        /*DB::table('permissions')->insert([
+            'name' => 'Users create',
+            'slug' => 'register',
+            'description' => 'Create users'
+        ]);*/
+
+        //Home
+        DB::table('permissions')->insert([
+            'name' => 'Home customer',
+            'slug' => 'homeCustomer',
+            'description' => 'Home customer to pay'
         ]);
     }
 }

@@ -36,22 +36,22 @@ class PermissionRoleSeeder extends Seeder
 
         //Customer - Modals warning
         DB::table('permission_role')->insert([
-            'permission_id' => '40',
+            'permission_id' => '35',
             'role_id' => '3',
         ]);
 
         DB::table('permission_role')->insert([
-            'permission_id' => '41',
+            'permission_id' => '36',
             'role_id' => '3',
         ]);
 
         DB::table('permission_role')->insert([
-            'permission_id' => '42',
+            'permission_id' => '37',
             'role_id' => '3',
         ]);
 
         DB::table('permission_role')->insert([
-            'permission_id' => '43',
+            'permission_id' => '38',
             'role_id' => '3',
         ]);
 
@@ -116,6 +116,27 @@ class PermissionRoleSeeder extends Seeder
 
         //Comercial advisor - Products
         DB::table('permission_role')->insert([
+            'permission_id' => '21',
+            'role_id' => '2',
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '22',
+            'role_id' => '2',
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '23',
+            'role_id' => '2',
+        ]);
+
+        //Comercial advisor - Sellers
+        DB::table('permission_role')->insert([
+            'permission_id' => '25',
+            'role_id' => '2',
+        ]);
+
+        DB::table('permission_role')->insert([
             'permission_id' => '26',
             'role_id' => '2',
         ]);
@@ -126,11 +147,11 @@ class PermissionRoleSeeder extends Seeder
         ]);
 
         DB::table('permission_role')->insert([
-            'permission_id' => '28',
+            'permission_id' => '29',
             'role_id' => '2',
         ]);
 
-        //Comercial advisor - Sellers
+        //Comercial advisor - Customers
         DB::table('permission_role')->insert([
             'permission_id' => '30',
             'role_id' => '2',
@@ -151,7 +172,7 @@ class PermissionRoleSeeder extends Seeder
             'role_id' => '2',
         ]);
 
-        //Comercial advisor - Customers
+        //Comercial advisor - Modals warning
         DB::table('permission_role')->insert([
             'permission_id' => '35',
             'role_id' => '2',
@@ -168,28 +189,7 @@ class PermissionRoleSeeder extends Seeder
         ]);
 
         DB::table('permission_role')->insert([
-            'permission_id' => '39',
-            'role_id' => '2',
-        ]);
-
-        //Comercial advisor - Modals warning
-        DB::table('permission_role')->insert([
-            'permission_id' => '40',
-            'role_id' => '2',
-        ]);
-
-        DB::table('permission_role')->insert([
-            'permission_id' => '41',
-            'role_id' => '2',
-        ]);
-
-        DB::table('permission_role')->insert([
-            'permission_id' => '42',
-            'role_id' => '2',
-        ]);
-
-        DB::table('permission_role')->insert([
-            'permission_id' => '43',
+            'permission_id' => '38',
             'role_id' => '2',
         ]);
     }
