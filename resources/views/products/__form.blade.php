@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-10">
         <div class="form-group">
             <label for="name" class="required">{{ __('Name') }}</label>
             <input type="text" class="form-control" id="name" name="name"
@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-10">
         <div class="form-group">
             <label for="unit_price" class="required">{{ __('Unit Price') }}</label>
             <input type="text" class="form-control" id="unit_price" name="unit_price"

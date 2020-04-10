@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div class="card shadow-lg">
                     <div class="card-header pb-0">
                         <h4 class="card-title"><strong>{{ __('New Permission') }}  <i class="fas fa-hand-paper"></i></strong></h4>
