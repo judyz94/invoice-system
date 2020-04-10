@@ -49,16 +49,15 @@
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-10 text-center">
         <div class="form-group">
-            <label for="permission_id">{{ __('Permissions') }}</label>
-            <ul class="list-unstyled" id="permission_id">
+            <label for="permission_id">{{ __('Permissions') }} <em>({{ 'Choose the permissions' }})</em></label>
+            <ul class="list-unstyled column" id="permission_id">
                 @foreach($permissions as $permission)
                     <li>
                         <label>
-                            {{ Form::checkbox('permission_id[]', $permission->id, null) }}
-                            {{ $permission->name }}
-                            <em>({{ $permission->description ?: 'Does not apply' }})</em>
+                        {{ Form::checkbox('permission_id[]', $permission->id, old('permission_id')) }}
+                        {{ $permission->name }}
                         </label>
                     </li>
                 @endforeach

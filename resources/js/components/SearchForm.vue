@@ -6,19 +6,19 @@
                 <option value="expedition_date" selected>Expedition date</option>
                 <option value="due_date" selected>Due date</option>
                 <option value="sale_description" selected >Sale description</option>
-                <option value="status" selected>Status</option>
+                <option value="state_id" selected>Status</option>
             </select>
 
             <input class="form-control" type="text" name="search" v-model="value" v-if="filter === 'code'" required>
             <input class="form-control" type="date" name="search" v-model="value" v-if="filter === 'expedition_date'" required>
             <input class="form-control" type="date" name="search" v-model="value" v-if="filter === 'due_date'" required>
             <input class="form-control" type="text" name="search" v-model="value" v-if="filter === 'sale_description'" required>
-            <select class="custom-select" name="search" v-model="value" v-if="filter === 'status'">
-                <option value="New">New</option>
-                <option value="Sent">Sent</option>
-                <option value="Overdue">Overdue</option>
-                <option value="Paid">Paid</option>
-                <option value="Cancelled">Cancelled</option>
+            <select class="custom-select" name="search" v-model="value" v-if="filter === 'state_id'">
+                <option value="1">New</option>
+                <option value="2">Overdue</option>
+                <option value="3">Paid</option>
+                <option value="4">Rejected</option>
+                <option value="5">Pending</option>
             </select>
         </div>
         <div class="form-group">
