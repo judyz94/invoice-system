@@ -277,12 +277,6 @@ class PermissionSeeder extends Seeder
             'description' => 'Show user details'
         ]);
 
-        /*DB::table('permissions')->insert([
-            'name' => 'Users create',
-            'slug' => 'register',
-            'description' => 'Create users'
-        ]);*/
-
         //Home
         DB::table('permissions')->insert([
             'name' => 'Home customer',

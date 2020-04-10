@@ -21,7 +21,6 @@ class UserController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('can:users.index')->only(['index']);
-        //$this->middleware('can:users.create')->only(['create', 'store']);
         $this->middleware('can:users.edit')->only(['edit', 'update']);
         $this->middleware('can:users.show')->only(['show']);
         $this->middleware('can:users.destroy')->only(['destroy']);
@@ -30,6 +29,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param User $user
      * @return Factory|View
      */
     public function index(User $user)
@@ -40,31 +40,6 @@ class UserController extends Controller
         return view('users.index', compact( 'users', 'roles'));
     }
 
-    /*public function create(User $user)
-    {
-        $roles = Role::all();
-
-        return view('users.create', compact('user', 'roles'));
-    }*/
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param StoreRequest $request
-     * @param User $user
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    /*public function store(StoreRequest $request, User $user)
-    {
-        $user->name = $request->input('name');
-        $user->document = $request->input('document');
-        $user->email = $request->input('email');
-        $user->save();
-
-        $user->roles()->sync($request->input('roles'));
-
-        return redirect()->route('users.index')->with('info', 'User successfully created.');
-    }*/
     /**
      * Display the specified resource.
      *

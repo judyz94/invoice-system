@@ -24,10 +24,9 @@
                     </div>
 
                     <!-- Create new user -->
-                    <nav class="navbar navbar-light bg-light">
-                        <a href="{{ route('register') }}" class="btn button"><i class="fas fa-plus"></i>
-                            {{ __('Create a new user') }}</a>
-                    </nav>
+                    <div class="card-header d-flex justify-content-between">
+
+                    </div>
 
                     <!-- Users list -->
                     <div class="table-responsive-lg">
@@ -37,7 +36,6 @@
                             <th>{{ __('Name') }}</th>
                             <th>{{ __('Document') }}</th>
                             <th>{{ __('E-Mail') }}</th>
-                            <th>{{ __('Role') }}</th>
                             <th class="text-right">{{ __('Actions') }}</th>
                         </tr>
                         </thead>
@@ -48,7 +46,6 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->document }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td></td>
                                 <td class="text-right">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
                                         <a href="{{ route('users.show', $user) }}" class="btn btn-link"
