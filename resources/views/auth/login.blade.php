@@ -58,10 +58,6 @@
                                 <button type="submit" class="btn button">
                                     {{ __('Login') }}
                                 </button>
-                                {{--}}
-                                <a href="{{ route('register') }}" type="submit" class="btn buttonBack">
-                                    {{ __('Register') }}
-                                </a>--}}
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">

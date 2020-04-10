@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
 @section('content')
 <div class="container">
@@ -6,15 +6,15 @@
         <div class="col-md-8">
             <div class="card shadow-lg">
                 <div class="card-header pb-0">
-                    <h4 class="card-title"><strong>{{ __('New User') }}</strong></h4>
+                    <h4 class="card-title"><strong>{{ __('Register') }}</strong></h4>
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" id="users-form">
+                    <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class=" required col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="required col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="required col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                            <label for="email" class="required col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -76,20 +76,16 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn buttonSave">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
-
-                @can('invoices.index')
-                    <div class="card-footer d-flex justify-content-between">
-                        <a href="{{ route('users.index') }}" class="btn buttonCancel">
-                            <i class="fas fa-arrow-left"></i> {{ __('Cancel') }}
-                        </a>
-                 @endcan
-                        <button type="submit" class="btn buttonSave" form="users-form">
-                            <i class="fas fa-save"></i> {{ __('Submit') }}
-                        </button>
-                    </div>
-
             </div>
         </div>
     </div>
