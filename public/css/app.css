@@ -17634,9 +17634,9 @@ readers do not read off random characters that represent icons */
   -webkit-column-count: 4;
      -moz-column-count: 4;
           column-count: 4;
-  -webkit-column-width: 10em;
-     -moz-column-width: 10em;
-          column-width: 10em;
+  -webkit-column-width: 12em;
+     -moz-column-width: 12em;
+          column-width: 12em;
   -webkit-column-gap: 3em;
      -moz-column-gap: 3em;
           column-gap: 3em;

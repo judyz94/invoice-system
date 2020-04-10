@@ -35,9 +35,9 @@ class UserController extends Controller
     public function index(User $user)
     {
         $users = User::paginate(5);
-        $roles = $user->roles();
+        $role = $user->roles();
 
-        return view('users.index', compact( 'users', 'roles'));
+        return view('users.index', compact( 'users', 'role'));
     }
 
     /**

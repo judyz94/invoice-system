@@ -56,10 +56,13 @@
                 @foreach($permissions as $permission)
                     <li>
                         <label>
-                        {{ Form::checkbox('permission_id[]', $permission->id, old('permission_id')) }}
-                        {{ $permission->name }}
+                            {{ Form::checkbox('permission_id[]', $permission->id, old('permission_id[]')) }}
+                            {{ $permission->name }}
                         </label>
                     </li>
+                            {{--}}<input type="checkbox" name="permission_id[]" value="{{$permission->id}}"
+                                {{ old('permission_id') == $permission->id ? 'selected' : ''}}>{{$permission->name}}
+                            <em>({{ $permission->description ?: 'Does not apply' }})</em>--}}
                 @endforeach
             </ul>
         </div>
