@@ -27,9 +27,9 @@
 
     <div class="col-md-4">
         <div class="form-group">
-            <label for="description" class="required">{{ __('Description') }}</label>
+            <label for="description">{{ __('Description') }}</label>
             <input type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description" placeholder="{{ __('Type a description') }}"
-                   value="{{ old('description', $permission->description) }}" required>
+                   value="{{ old('description', $permission->description) }}">
             @error('description')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

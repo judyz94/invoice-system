@@ -33,6 +33,7 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
+                            <th>{{ __('ID') }}</th>
                             <th>{{ __('Name') }}</th>
                             <th>{{ __('Document') }}</th>
                             <th>{{ __('E-Mail') }}</th>
@@ -43,6 +44,7 @@
                         <tbody>
                         @forelse($users as $user)
                             <tr>
+                                <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->document }}</td>
                                 <td>{{ $user->email }}</td>

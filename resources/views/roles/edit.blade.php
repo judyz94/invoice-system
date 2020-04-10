@@ -6,8 +6,7 @@
             <div class="col-md-10">
                 <div class="card shadow-lg">
                     <div class="card-header pb-0">
-                        <h4 class="card-title"><strong>{{ __('Edit Role') }}
-                                {{ $role->name }}</strong></h4>
+                        <h4 class="card-title"><strong>{{ __('Edit Role') }} {{ $role->name }}  <i class="fas fa-user-tag"></i></strong></h4>
                     </div>
 
                     <div class="card-body">

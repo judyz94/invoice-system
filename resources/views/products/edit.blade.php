@@ -6,7 +6,7 @@
             <div class="col-md-10">
                 <div class="card shadow-lg">
                     <div class="card-header pb-0">
-                        <h4 class="card-title"><strong>{{ __('Edit Product') }} #{{ $product->id }}</strong></h4>
+                        <h4 class="card-title"><strong>{{ __('Edit Product') }} N°{{ $product->id }}   <i class="fas fa-box-open"></i></strong></h4>
                     </div>
 
             <div class="card-body">

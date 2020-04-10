@@ -6,23 +6,23 @@
             <div class="col-xl-14">
                 <div class="card shadow-lg">
                     <div class="card-header pb-0">
-                        <h4 class="card-title"><strong>{{ __('User') }}  {{ $user->name }}</strong></h4>
+                        <h4 class="card-title"><strong>{{ __('User') }} {{ $user->name }}</strong></h4>
                     </div>
 
                     <!-- User detail information -->
                     <div class="card-body">
                         <dl class="row">
-                            <dt class="col-md-3">{{ __('Name') }}</dt>
+                            <dt class="col-md-6">{{ __('Name') }}</dt>
                             <dd class="col-md-3">{{ $user->name }}</dd>
 
-                            <dt class="col-md-3">{{ __('Role') }}</dt>
-                            <dd class="col-md-3"></dd>
+                            <dt class="col-md-6">{{ __('Document') }}</dt>
+                            <dd class="col-md-3">{{ $user->document }}</dd>
                         </dl>
 
                         <!-- Details of the associated invoices -->
                         <div class="row">
                             <div class="col-md-12">
-                                <br><h5><strong>{{ __('Associated invoices') }}</strong></h5>
+                                <br><h4><strong>{{ __('Associated invoices') }}</strong></h4><br>
                                 <table class="table table-hover">
                                     <thead class="thead-dark">
                                     <tr>

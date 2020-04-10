@@ -19,7 +19,7 @@
 
                 <div class="card shadow-lg">
                     <div class="card-header d-flex ">
-                        <h4 class="card-title justify-content-center"><strong>{{ __('Details Invoice') }} #{{ $invoice->code }}</strong></h4>
+                        <h4 class="card-title justify-content-center"><strong>{{ __('Details Invoice') }} {{ $invoice->code }}</strong></h4>
                     </div>
 
                     @can('invoices.index')
@@ -164,7 +164,7 @@
                     @can('invoices.products.store')
                     <!-- Form added invoice details -->
                         <div class="card-header d-flex justify-content-between">
-                            <h5><strong>{{ __('Add a new product to this invoice') }}</strong></h5>
+                            <h4><strong>{{ __('Add a new product to this invoice') }}</strong></h4>
                         </div>
                         <form action="{{ route('invoices.products.store', $invoice) }}" method="post">
                             @csrf

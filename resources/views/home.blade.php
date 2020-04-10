@@ -41,7 +41,7 @@
 
                             <div class="card box" style="width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title"><i class="fas fa-shopping-cart"></i> <strong>Products</strong></h5>
+                                    <h5 class="card-title"><i class="fas fa-box-open"></i> <strong>Products</strong></h5>
                                     <p class="card-text">In this section, you can see the list of all the products with the
                                         unit prices, create new ones, edit and delete the old ones.</p>
                                     <a href="{{ route('products.index') }}" class="btn btn-primary button">Go <i class="fas fa-paw"></i></a>

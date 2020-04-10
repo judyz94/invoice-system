@@ -34,7 +34,7 @@
                         <!-- Details of the associated invoices -->
                         <div class="row">
                             <div class="col-md-12">
-                                <br><h5><strong>{{ __('Associated invoices') }}</strong></h5>
+                                <br><h4><strong>{{ __('Associated invoices') }}</strong></h4><br>
                                 <table class="table table-hover">
                                     <thead class="thead-dark">
                                     <tr>
