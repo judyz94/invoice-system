@@ -34,7 +34,8 @@ class UpdateRequest extends FormRequest
                 'required',
                 Rule::unique('roles', 'slug')->ignore($this->route('role')->id)
             ],
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'special' => 'nullable'
         ];
     }
 

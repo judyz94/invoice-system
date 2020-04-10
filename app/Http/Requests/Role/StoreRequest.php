@@ -34,7 +34,8 @@ class StoreRequest extends FormRequest
                 'required',
                 Rule::unique('roles', 'slug')
             ],
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'special' => 'nullable'
         ];
     }
 

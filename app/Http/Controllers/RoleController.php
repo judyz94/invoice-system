@@ -63,6 +63,7 @@ class RoleController extends Controller
         $role->name = $request->input('name');
         $role->slug = $request->input('slug');
         $role->description = $request->input('description');
+        $role->special = $request->input('special');
 
         $role->save();
 
@@ -92,6 +93,7 @@ class RoleController extends Controller
         $role->name = $request->input('name');
         $role->slug = $request->input('slug');
         $role->description = $request->input('description');
+        $role->special = $request->input('special');
 
         $role->save();
 
