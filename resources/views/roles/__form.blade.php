@@ -43,9 +43,26 @@
             <label for="special">{{ __('Special role') }}</label>
             <select class="custom-select" id="special" name="special">
                 <option value="">{{ __('Select a special role') }}</option>
-                <option value="all-access" {{ $role->special == 'all-access' ? 'selected' : ''  }}>{{ __('all-access') }}</option>
-                <option value="no-access" {{ $role->special == 'no-access' ? 'selected' : ''  }}>{{ __('no-access') }}</option>
+                <option value="all-access" {{ $role->special == 'all-access' ? 'selected' : ''  }}>{{ __('Total permission') }}</option>
+                <option value="no-access" {{ $role->special == 'no-access' ? 'selected' : ''  }}>{{ __('No permission') }}</option>
             </select>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="permission_id">{{ __('Permissions') }}</label>
+            <ul class="list-unstyled" id="permission_id">
+                @foreach($permissions as $permission)
+                    <li>
+                        <label>
+                            {{ Form::checkbox('permission_id[]', $permission->id, null) }}
+                            {{ $permission->name }}
+                            <em>({{ $permission->description ?: 'Does not apply' }})</em>
+                        </label>
+                    </li>
+                @endforeach
+            </ul>
         </div>
     </div>
 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Role\StoreRequest;
 use App\Http\Requests\Role\UpdateRequest;
+use Caffeinated\Shinobi\Models\Permission;
 use Caffeinated\Shinobi\Models\Role;
 use Exception;
 use Illuminate\Contracts\View\Factory;
@@ -47,8 +48,9 @@ class RoleController extends Controller
     public function create(Role $role)
     {
         $role = new Role();
+        $permissions = Permission::all();
 
-        return view('roles.create', compact('role'));
+        return view('roles.create', compact('role', 'permissions'));
     }
 
     /**
@@ -64,8 +66,9 @@ class RoleController extends Controller
         $role->slug = $request->input('slug');
         $role->description = $request->input('description');
         $role->special = $request->input('special');
-
         $role->save();
+
+        $role->permissions()->sync($request->input('permission_id'));
 
         return redirect()->route('roles.index')->with('info', 'Role successfully created.');
     }
@@ -78,7 +81,9 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('roles.edit',  compact('role'));
+        $permissions = Permission::all();
+
+        return view('roles.edit',  compact('role', 'permissions'));
     }
 
     /**
@@ -94,8 +99,9 @@ class RoleController extends Controller
         $role->slug = $request->input('slug');
         $role->description = $request->input('description');
         $role->special = $request->input('special');
-
         $role->save();
+
+        $role->permissions()->sync($request->input('permission_id'));
 
         return redirect()->route('roles.index')->with('info', 'Role successfully updated.');
     }
