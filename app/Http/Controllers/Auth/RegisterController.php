@@ -7,7 +7,6 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -30,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'users';
+    protected $redirectTo = '/home';
 
 
     /**
@@ -39,15 +38,9 @@ class RegisterController extends Controller
      * @return void
      */
 
-    /*public function __construct()
-    {
-        $this->middleware('guest');
-    }*/
-
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('can:register')->only(['create', 'validator']);
+        $this->middleware('guest');
     }
 
     /**
@@ -60,9 +53,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'document' => ['required', 'string', 'unique:users'
-                //Rule::unique('users', 'document')
-            ],
+            'document' => ['required', 'string', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
