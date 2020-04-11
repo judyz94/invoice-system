@@ -18,7 +18,12 @@ class PermissionRoleSeeder extends Seeder
             'role_id' => '3',
         ]);
 
-        //Customer - Invoice
+        //Customer - Invoices
+        DB::table('permission_role')->insert([
+            'permission_id' => '1',
+            'role_id' => '3',
+        ]);
+
         DB::table('permission_role')->insert([
             'permission_id' => '5',
             'role_id' => '3',

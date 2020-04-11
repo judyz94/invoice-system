@@ -21,6 +21,7 @@
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}  <i class="fas fa-paw"></i></strong></h3>
                 </div>
 
+                   @can('invoices.edit')
                    <!-- Create new invoice -->
                    <nav class="navbar navbar-light bg-light">
                        <a href="{{ route('invoices.create') }}" class="btn button"><i class="fas fa-plus"></i>
@@ -30,6 +31,7 @@
                        <!-- Search form -->
                        <search-form action="{{ route('invoices.index') }}" method="GET"></search-form>
                    </nav>
+                   @endcan
 
                    <!-- Invoices list -->
                    <div class="table-responsive-xl">
@@ -76,11 +78,12 @@
                                             <i class="fas fa-eye" style="color:black"></i>
                                         </a>
 
+                                        @can('invoices.edit')
                                         <a href="{{ route('invoices.edit', $invoice) }}" class="btn btn-link"
                                            title="{{ __('Edit Invoice') }}">
                                             <i class="fas fa-edit" style="color:black"></i>
                                         </a>
-
+                                        @endcan
                                         @can('invoices.destroy')
                                         <button type="button" class="btn btn-link text-danger"
                                                 data-route="{{ route('invoices.destroy', $invoice) }}"
@@ -110,6 +113,7 @@
                         {{ $invoices->appends(['filter' => $filter, 'search' => $search])->links() }}
                     </ul>
 
+                    @can('invoices.edit')
                     <!-- Import form -->
                     <div class="card-footer justify-content-lg-start">
                         <form action="{{ route('invoices.import') }}" method="post" enctype="multipart/form-data">
@@ -120,6 +124,7 @@
                             <button class="btn buttonSave"><i class="fas fa-file-excel"></i> {{ __('Import') }}</button>
                         </form>
                     </div>
+                    @endcan
 
                 </div>
             </div>

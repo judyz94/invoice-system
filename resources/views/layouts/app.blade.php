@@ -25,12 +25,12 @@
 
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #353131;">
-            <nav class="navbar-brand font"> <a class="nav-link" @can('invoices.index')href="{{ route('home') }}"@endcan><h5>{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>
+            <nav class="navbar-brand font"> <a class="nav-link" href="{{ route('home') }}"><h5>{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            @can('invoices.index')
+            @can('invoices.edit')
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item font">
@@ -45,7 +45,7 @@
                         <li class="nav-item font">
                             <a class="nav-link" href="{{ route('products.index') }}"> {{ __('Products') }}</a>
                         </li>
-                        @endcan
+            @endcan
                         @can('users.index')
                             <li class="nav-item font">
                                 <a class="nav-link" href="{{ route('users.index') }}"> {{ __('Users') }}</a>
