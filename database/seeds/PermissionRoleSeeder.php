@@ -12,6 +12,12 @@ class PermissionRoleSeeder extends Seeder
      */
     public function run()
     {
+        //Customer - Home
+        DB::table('permission_role')->insert([
+            'permission_id' => '43',
+            'role_id' => '3',
+        ]);
+
         //Customer - Invoice
         DB::table('permission_role')->insert([
             'permission_id' => '5',
