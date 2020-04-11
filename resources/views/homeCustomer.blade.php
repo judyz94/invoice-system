@@ -31,11 +31,9 @@
                                     <strong>3.</strong> Then it will display a window with the "pay" button that will redirect you to our payment gateway, PlaceToPay!
                                 </p>
 
-                                @can('invoices.show')
                                 <a href="{{ route('invoices.show', $invoice) }}" type="submit" class="btn buttonSave">
                                     <i class="fas fa-bil"></i> {{ __('Go to invoice details') }}
                                 </a>
-                                @endcan
                             </div>
                         </div>
                         </div>

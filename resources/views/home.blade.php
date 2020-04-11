@@ -16,7 +16,7 @@
                         </div>
                     @endif
 
-                    @can('invoices.index')
+                    @can('invoices.edit')
                         <div class="card-columns">
                             <div class="card box" style="width: 18rem;">
                                 <div class="card-body">
