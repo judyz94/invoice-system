@@ -20,7 +20,6 @@ class CustomerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
         $this->middleware('can:customers.index')->only(['index']);
         $this->middleware('can:customers.create')->only(['create', 'store']);
         $this->middleware('can:customers.edit')->only(['edit', 'update']);

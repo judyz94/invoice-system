@@ -20,7 +20,6 @@ class RoleController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
         $this->middleware('can:roles.index')->only(['index']);
         $this->middleware('can:roles.create')->only(['create', 'store']);
         $this->middleware('can:roles.edit')->only(['edit', 'update']);

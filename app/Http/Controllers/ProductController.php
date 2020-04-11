@@ -19,7 +19,6 @@ class ProductController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
         $this->middleware('can:products.index')->only(['index']);
         $this->middleware('can:products.create')->only(['create', 'store']);
         $this->middleware('can:products.edit')->only(['edit', 'update']);

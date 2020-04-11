@@ -31,7 +31,6 @@ class InvoiceController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
         $this->middleware('can:invoices.index')->only(['index']);
         $this->middleware('can:invoices.create')->only(['create', 'store']);
         $this->middleware('can:invoices.edit')->only(['edit', 'update']);

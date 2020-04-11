@@ -19,7 +19,6 @@ class PermissionController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
         $this->middleware('can:permissions.index')->only(['index']);
         $this->middleware('can:permissions.create')->only(['create', 'store']);
         $this->middleware('can:permissions.edit')->only(['edit', 'update']);

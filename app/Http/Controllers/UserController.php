@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\User\StoreRequest;
 use App\Http\Requests\User\UserRequest;
 use App\User;
 use Caffeinated\Shinobi\Models\Role;
@@ -19,7 +18,6 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
         $this->middleware('can:users.index')->only(['index']);
         $this->middleware('can:users.edit')->only(['edit', 'update']);
         $this->middleware('can:users.show')->only(['show']);
