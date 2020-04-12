@@ -17,7 +17,9 @@ use App\Http\Requests\Invoice\StoreRequest;
 use App\Http\Requests\Invoice\UpdateRequest;
 use App\Http\Requests\InvoiceProduct\DetailRequest;
 use App\Imports\InvoicesImport;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use Exception;
@@ -244,5 +246,25 @@ class InvoiceController extends Controller
 
         return view('partials.__pending_payment', compact(  'invoice'));
     }
+
+    public function indexCustomer(Request $request, Invoice $invoice)
+    {
+        $user = Auth::user();
+        $customer = DB::table('customers')->where('document', $user->document)->get();
+
+        if ($user->roles[0]->name == 'Customer') {
+            if ($user->document == $customer[0]->document) {
+                $invoices = Invoice::with(['customer', 'seller'])
+                    ->where('customer_id', $customer[0]->id)
+                    ->get();
+
+                return response()->view('invoices.index_custom', compact('invoices', 'customer'));
+            } else {
+                return response()->view('invoices.index_custom')->with('info', 'You have no associated invoices.');
+            }
+        }
+
+        return view('invoices.index_custom', compact('invoices','invoice', 'invoices', 'user'));
+        }
 }
 
