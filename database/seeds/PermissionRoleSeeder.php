@@ -150,6 +150,12 @@ class PermissionRoleSeeder extends Seeder
         ]);
 
 
+        //Customer - Home
+        DB::table('permission_role')->insert([
+            'permission_id' => '44',
+            'role_id' => '4',
+        ]);
+
         //Customer - Invoices
         DB::table('permission_role')->insert([
             'permission_id' => '43',

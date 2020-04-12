@@ -3,7 +3,7 @@
 Auth::routes();
 Route::get('/',  'Auth\LoginController@system');
 Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('/homeCustomer', 'HomeController@customer')->name('homeCustomer')->middleware('can:homeCustomer');
+Route::get('/homeCustomer', 'HomeController@customer')->name('homeCustomer')->middleware('can:homeCustomer');
 
 Route::middleware(['auth'])->group(function () {
 

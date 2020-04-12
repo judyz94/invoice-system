@@ -6,7 +6,8 @@
         <div class="col-md-12">
             <div class="card shadow-lg box">
                 <div class="card-header text-center shadow-sm">
-                    <h1 class="card-title font-title"><strong>{{ __('Welcome to Invoice System for Pet Friends!') }}  <i class="fas fa-dog"></i> <i class="fas fa-cat"></i></strong></h1>
+                    <h1 class="card-title"><strong> {{ Auth::user()->name }}  <i class="fas fa-cat"></i></strong></h1>
+                    <h3 class="card-title font-title"><strong>{{ __('Welcome to Invoice System for Pet Friends!') }} </strong></h3>
                 </div>
 
                 <div class="card-body text-center m-lg-5">
@@ -22,17 +23,20 @@
                             <div class="card-body">
                                 <h4 class="card-title"><strong>How to pay my invoice?</strong></h4>
                                 <p class="card-text">
-                                    <strong>1.</strong> The button at the end of the box will take you to a page where you can view the details of your invoice.
+                                    <strong>1.</strong> The button at the end of the box will take you to a page where you can view your invoices.
                                 </p>
                                 <p class="card-text">
-                                    <strong>2.</strong> There you will find the "sale summary" button, click on it.
+                                    <strong>2.</strong> There, you click the eye-shaped button (Show details), to see the details of your invoice.
                                 </p>
                                 <p class="card-text">
-                                    <strong>3.</strong> Then it will display a window with the "pay" button that will redirect you to our payment gateway, PlaceToPay!
+                                    <strong>3.</strong> There you will find the "sale summary" button, click on it.
+                                </p>
+                                <p class="card-text">
+                                    <strong>4.</strong> Then it will display a window with the "pay" button that will redirect you to our payment gateway, PlaceToPay!
                                 </p>
 
-                                <a href="{{ route('invoices.show', $invoice) }}" type="submit" class="btn buttonSave">
-                                    <i class="fas fa-bil"></i> {{ __('Go to invoice details') }}
+                                <a href="{{ route('invoices.index.customer') }}" type="submit" class="btn buttonSave">
+                                    <i class="fas fa-bil"></i> {{ __('Go to my invoices') }}
                                 </a>
                             </div>
                         </div>

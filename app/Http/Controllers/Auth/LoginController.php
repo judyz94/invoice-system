@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
+use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -20,14 +23,16 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /*public function redirectPath()
-    {
-        if (auth()->user()->role) {
-            return redirect()->route('homeCustomer');
-        }
+    public function redirectPath() {
+        $user = Auth::user();
 
-        return '/home';
-    }*/
+        if($user->roles[0]->name == 'Customer'){
+            return $redirectTo = '/homeCustomer';
+        } else {
+            return $redirectTo = '/home';
+        }
+    }
+
 
     /**
      * Where to redirect users after login.

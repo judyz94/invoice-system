@@ -285,11 +285,11 @@ class PermissionSeeder extends Seeder
         ]);
 
         //Home
-        /*DB::table('permissions')->insert([
+        DB::table('permissions')->insert([
             'name' => 'Home customer',
             'slug' => 'homeCustomer',
             'description' => 'Home customer to pay'
-        ]);*/
+        ]);
     }
 }
 
