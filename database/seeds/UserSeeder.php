@@ -12,6 +12,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        //Admin -> 1
         DB::table('users')->insert([
             'name' => 'Judy Zapata',
             'document' => '213617392',
@@ -19,6 +20,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('judyzapata94%'),
         ]);
 
+        //Advisor -> 2
         DB::table('users')->insert([
             'name' => 'Yuliana Pérez Castañeda',
             'document' => '533546356',
@@ -26,6 +28,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('judyzapata94%'),
         ]);
 
+        //Advisor -> 3
         DB::table('users')->insert([
             'name' => 'Pedro Nel Morales Gómez',
             'document' => '18989239234',
@@ -33,17 +36,19 @@ class UserSeeder extends Seeder
             'password' => bcrypt('judyzapata94%'),
         ]);
 
+        //Customer -> 4
+        DB::table('users')->insert([
+            'name' => 'Juliana Pérez',
+            'document' => '1017221571',
+            'email' => 'judy.766@hotmail.com',
+            'password' => bcrypt('judyzapata94%'),
+        ]);
+
+        //Suspended -> 5
         DB::table('users')->insert([
             'name' => 'Roberto Antonio Cardona Serna',
             'document' => '421841434',
             'email' => 'roberto@gmail.com',
-            'password' => bcrypt('judyzapata94%'),
-        ]);
-
-        DB::table('users')->insert([
-            'name' => 'Maria Isabel Mendez',
-            'document' => '347983854',
-            'email' => 'maria@gmail.com',
             'password' => bcrypt('judyzapata94%'),
         ]);
     }

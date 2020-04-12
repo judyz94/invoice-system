@@ -12,6 +12,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
+        // 1
         DB::table('roles')->insert([
             'name' => 'Admin',
             'slug' => 'Admin',
@@ -19,23 +20,26 @@ class RoleSeeder extends Seeder
             'special' => 'all-access'
         ]);
 
+        // 2
         DB::table('roles')->insert([
             'name' => 'Commercial advisor',
             'slug' => 'Advisor',
             'description' => 'Partial access'
         ]);
 
-        DB::table('roles')->insert([
-            'name' => 'Customer',
-            'slug' => 'Customer',
-            'description' => 'Pay'
-        ]);
-
+        // 3
         DB::table('roles')->insert([
             'name' => 'Suspended',
             'slug' => 'Suspended',
             'description' => 'No access',
             'special' => 'no-access'
+        ]);
+
+        // 4
+        DB::table('roles')->insert([
+            'name' => 'Customer',
+            'slug' => 'Customer',
+            'description' => 'Pay'
         ]);
     }
 }

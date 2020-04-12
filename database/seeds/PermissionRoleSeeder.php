@@ -12,61 +12,6 @@ class PermissionRoleSeeder extends Seeder
      */
     public function run()
     {
-        //Customer - Home
-        DB::table('permission_role')->insert([
-            'permission_id' => '43',
-            'role_id' => '3',
-        ]);
-
-        //Customer - Invoices
-        DB::table('permission_role')->insert([
-            'permission_id' => '1',
-            'role_id' => '3',
-        ]);
-
-        DB::table('permission_role')->insert([
-            'permission_id' => '5',
-            'role_id' => '3',
-        ]);
-
-        //Customer - Payment attempts
-        DB::table('permission_role')->insert([
-            'permission_id' => '10',
-            'role_id' => '3',
-        ]);
-
-        DB::table('permission_role')->insert([
-            'permission_id' => '11',
-            'role_id' => '3',
-        ]);
-
-        DB::table('permission_role')->insert([
-            'permission_id' => '12',
-            'role_id' => '3',
-        ]);
-
-        //Customer - Modals warning
-        DB::table('permission_role')->insert([
-            'permission_id' => '35',
-            'role_id' => '3',
-        ]);
-
-        DB::table('permission_role')->insert([
-            'permission_id' => '36',
-            'role_id' => '3',
-        ]);
-
-        DB::table('permission_role')->insert([
-            'permission_id' => '37',
-            'role_id' => '3',
-        ]);
-
-        DB::table('permission_role')->insert([
-            'permission_id' => '38',
-            'role_id' => '3',
-        ]);
-
-
         //Comercial advisor - Invoices
         DB::table('permission_role')->insert([
             'permission_id' => '1',
@@ -203,6 +148,61 @@ class PermissionRoleSeeder extends Seeder
             'permission_id' => '38',
             'role_id' => '2',
         ]);
+
+
+        //Customer - Invoices
+        DB::table('permission_role')->insert([
+            'permission_id' => '43',
+            'role_id' => '4',
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '5',
+            'role_id' => '4',
+        ]);
+
+        //Customer - Payment attempts
+        DB::table('permission_role')->insert([
+            'permission_id' => '10',
+            'role_id' => '4',
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '11',
+            'role_id' => '4',
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '12',
+            'role_id' => '4',
+        ]);
+
+        //Customer - Modals warning
+        DB::table('permission_role')->insert([
+            'permission_id' => '35',
+            'role_id' => '4',
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '36',
+            'role_id' => '4',
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '37',
+            'role_id' => '4',
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id' => '38',
+            'role_id' => '4',
+        ]);
+
+        //Customer - Home
+        /*DB::table('permission_role')->insert([
+            'permission_id' => '43',
+            'role_id' => '4',
+        ]);*/
     }
 }
 

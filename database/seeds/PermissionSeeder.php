@@ -277,12 +277,19 @@ class PermissionSeeder extends Seeder
             'description' => 'Show user details'
         ]);
 
-        //Home
+        //Invoices customer index
         DB::table('permissions')->insert([
+            'name' => 'Invoices index for customers',
+            'slug' => 'invoices.index.customer',
+            'description' => 'List all invoices for customers'
+        ]);
+
+        //Home
+        /*DB::table('permissions')->insert([
             'name' => 'Home customer',
             'slug' => 'homeCustomer',
             'description' => 'Home customer to pay'
-        ]);
+        ]);*/
     }
 }
 
