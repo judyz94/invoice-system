@@ -3,10 +3,9 @@
 Auth::routes();
 Route::get('/',  'Auth\LoginController@system');
 Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/homeCustomer', 'HomeController@customer')->name('homeCustomer')->middleware('can:homeCustomer');
 
 Route::middleware(['auth'])->group(function () {
-    //Home
-    Route::get('/homeCustomer', 'HomeController@customer')->name('homeCustomer')->middleware('can:homeCustomer');
 
     //Resource invoices, customers, sellers, products, users, permissions, roles
     Route::resource('invoices', 'InvoiceController');
@@ -16,6 +15,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('users', 'UserController')->except('create', 'store');
     Route::resource('permissions', 'PermissionController')->except('show');
     Route::resource('roles', 'RoleController')->except('show');
+
+    //Invoices for customers
+    Route::get('invoices', 'InvoiceController@indexCustomer')->name('invoices.index.customer')
+        ->middleware('can:invoices.index.customer');
 
     //Invoice details
     Route::post('invoices/{invoice}/products')->uses('InvoiceController@addProduct')->name('invoices.products.store')
