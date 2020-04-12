@@ -37,6 +37,7 @@
                             <th>{{ __('Name') }}</th>
                             <th>{{ __('Document') }}</th>
                             <th>{{ __('E-Mail') }}</th>
+                            <th>{{ __('Role') }}</th>
                             <th class="text-right">{{ __('Actions') }}</th>
                         </tr>
                         </thead>
@@ -48,6 +49,7 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->document }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>{{ $user->roles[0]->name }}</td>
                                 <td class="text-right">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
                                         <a href="{{ route('users.show', $user) }}" class="btn btn-link"

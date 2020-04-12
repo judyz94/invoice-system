@@ -43,6 +43,9 @@
                 <label>
                     {{ Form::checkbox('roles[]', $role->id, old('roles[]')) }}
                     {{ $role->name }}
+
+                    {{--<input type="checkbox" name="roles[]" value="{{$role->id}}"
+                        {{ old('roles') == $role->id ? 'checked' : ''}}>{{$role->name}}--}}
                 </label>
             </li>
         @endforeach
