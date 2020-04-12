@@ -259,8 +259,6 @@ class InvoiceController extends Controller
                     ->get();
 
                 return response()->view('invoices.index_custom', compact('invoices', 'customer'));
-            } else {
-                return response()->view('invoices.index_custom')->with('info', 'You have no associated invoices.');
             }
         }
 
