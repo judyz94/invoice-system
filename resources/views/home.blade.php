@@ -6,7 +6,8 @@
         <div class="col-md-12">
             <div class="card shadow-lg box">
                 <div class="card-header text-center shadow-sm">
-                    <h1 class="card-title font-title"><strong>{{ __('Welcome to Invoice System for Pet Friends!') }}  <i class="fas fa-dog"></i> <i class="fas fa-cat"></i></strong></h1>
+                    <h1 class="card-title"><strong> {{ Auth::user()->name }}  <i class="fas fa-cat"></i></strong></h1>
+                    <h3 class="card-title font-title"><strong>{{ __('Welcome to Invoice System for Pet Friends!') }} </strong></h3>
                 </div>
 
                 <div class="card-body text-center m-lg-5">
@@ -61,7 +62,7 @@
                         </div>
                     @endcan
 
-                        @can('homeCustomer')
+                        @can('invoices.index.customer')
                         <!-- Customer rol pay -->
                             <div class="row justify-content-center">
                                 <div class="card box" style="width: 18rem;" >
@@ -85,7 +86,7 @@
                                             <strong>4.</strong> Then it will display a window with the "pay" button that will redirect you to our payment gateway, PlaceToPay!
                                         </p>
 
-                                        <a href="{{ route('invoices.index') }}" type="submit" class="btn buttonSave">
+                                        <a href="{{ route('invoices.index.customer') }}" type="submit" class="btn buttonSave">
                                             <i class="fas fa-bil"></i> {{ __('Go to my invoices') }}
                                         </a>
                                     </div>

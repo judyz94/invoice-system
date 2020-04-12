@@ -31,6 +31,16 @@
                     </div>
                     @endcan
 
+                    @can('invoices.index.customer')
+                    <!-- Button to return -->
+                        <div class="card-header d-flex justify-content-start">
+                            <a href="{{ route('invoices.index.customer') }}" class="btn buttonBack">
+                                <i class="fas fa-arrow-left"></i> {{ __('Back to Invoices') }}
+                            </a>
+                        </div>
+                    @endcan
+
+
                     <!-- Invoice detail information -->
                     <div class="card-body">
                         <dl class="row">
@@ -57,14 +67,18 @@
                             <dt class="col-md-3">{{ __('Seller') }}</dt>
                             <dd class="col-md-3">{{ $invoice->seller->full_name }}</dd>
 
+                            @can('invoices.edit')
                             <dt class="col-md-3">{{ __('Seller ID') }}</dt>
                             <dd class="col-md-3">{{ $invoice->seller->document }}</dd>
+                            @endcan
 
                             <dt class="col-md-3">{{ __('Customer') }}</dt>
                             <dd class="col-md-3">{{ $invoice->customer->full_name }}</dd>
 
+                            @can('invoices.edit')
                             <dt class="col-md-3">{{ __('Customer ID') }}</dt>
                             <dd class="col-md-3">{{ $invoice->customer->document }}</dd>
+                            @endcan
 
                             <dt class="col-md-3">{{ __('Status') }}</dt>
                             <dd class="col-md-3">{{ $invoice->state->name }}</dd>
