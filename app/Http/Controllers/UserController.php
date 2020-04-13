@@ -7,6 +7,7 @@ use App\User;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Contracts\View\Factory;
 use Exception;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class UserController extends Controller
@@ -77,6 +78,8 @@ class UserController extends Controller
 
         $user->roles()->sync($request->input('roles'));
 
+        Cache::forget('roles');
+
         return redirect()->route('users.index')->with('info', 'User successfully updated.');
     }
 
@@ -90,6 +93,8 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
+
+        Cache::forget('roles');
 
         return redirect()->route('users.index')->with('info', 'User successfully deleted.');
     }
