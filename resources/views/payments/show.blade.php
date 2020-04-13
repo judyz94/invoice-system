@@ -6,7 +6,7 @@
             <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header d-flex justify-content-between">
-                    <h4 class="card-title"><strong>{{ __('Payments attempts of Invoice #') }} {{ $invoice->code }}</strong></h4>
+                    <h4 class="card-title"><strong>{{ __('Payments attempts of Invoice') }} {{ $invoice->code }}</strong></h4>
                 </div>
 
                 <!-- Details of the payments attempts -->

@@ -31,14 +31,14 @@
                     </div>
                     @endcan
 
-                    @can('invoices.index.customer')
+                    @if(Auth::user()->roles[0]->name == 'Customer')
                     <!-- Button to return -->
                         <div class="card-header d-flex justify-content-start">
-                            <a href="{{ route('invoices.index.customer') }}" class="btn buttonBack">
+                            <a href="{{ route('invoices.index') }}" class="btn buttonBack">
                                 <i class="fas fa-arrow-left"></i> {{ __('Back to Invoices') }}
                             </a>
                         </div>
-                    @endcan
+                    @endif
 
 
                     <!-- Invoice detail information -->
@@ -178,7 +178,7 @@
                     @can('invoices.products.store')
                     <!-- Form added invoice details -->
                         <div class="card-header d-flex justify-content-between">
-                            <h4><strong>{{ __('Add a new product to this invoice') }}</strong></h4>
+                            <h4><strong><i class="fas fa-cart-plus"></i>  {{ __('Add a new product to this invoice') }}</strong></h4>
                         </div>
                         <form action="{{ route('invoices.products.store', $invoice) }}" method="post">
                             @csrf

@@ -22,30 +22,29 @@
 <body>
 <div class="background">
     @stack('modals')
-
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #353131;">
-            @can('invoices.edit')<nav class="navbar-brand font"> <a class="nav-link" href="{{ route('home') }}"><h5 class="title">{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>@endcan
-                @if(Auth::user()->roles[0]->name == 'Customer')<nav class="navbar-brand font"> <a class="nav-link" href="{{ route('homeCustomer') }}"><h5 class="title">{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>@endif
+            @if(Auth::user()->roles[0]->name == 'Suspended')<nav class="navbar-brand sidebar-header"> <h5>{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></nav>@endif
+            @can('invoices.edit')<nav class="navbar-brand sidebar-header"> <a class="nav-link" href="{{ route('home') }}"><h5 class="title">{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>@endcan
+            @if(Auth::user()->roles[0]->name == 'Customer')<nav class="navbar-brand sidebar-header"> <a class="nav-link" href="{{ route('homeCustomer') }}"><h5 class="title">{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>@endif
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         @can('invoices.edit')
-                        <li class="nav-item font">
-                            <a class="nav-link" href="{{ route('invoices.index') }}"> {{ __('Invoices') }}</a>
-                        </li>
-                        <li class="nav-item font">
-                            <a class="nav-link" href="{{ route('customers.index') }}"> {{ __('Customers') }}</a>
-                        </li>
-                        <li class="nav-item font">
-                            <a class="nav-link" href="{{ route('sellers.index') }}"> {{ __('Sellers') }}</a>
-                        </li>
-                        <li class="nav-item font">
-                            <a class="nav-link" href="{{ route('products.index') }}"> {{ __('Products') }}</a>
-                        </li>
+                            <li class="nav-item font">
+                                <a class="nav-link" href="{{ route('invoices.index') }}"> {{ __('Invoices') }}</a>
+                            </li>
+                            <li class="nav-item font">
+                                <a class="nav-link" href="{{ route('customers.index') }}"> {{ __('Customers') }}</a>
+                            </li>
+                            <li class="nav-item font">
+                                <a class="nav-link" href="{{ route('sellers.index') }}"> {{ __('Sellers') }}</a>
+                            </li>
+                            <li class="nav-item font">
+                                <a class="nav-link" href="{{ route('products.index') }}"> {{ __('Products') }}</a>
+                            </li>
                         @endcan
                         @can('users.index')
                             <li class="nav-item font">
@@ -112,11 +111,12 @@
             </div>
         </nav>
 
+
         <main class="mainApp">
             @yield('content')
         </main>
-    </div>
 
+    </div>
     <script src="{{ asset(mix('js/manifest.js')) }}"></script>
     <script src="{{ asset(mix('js/vendor.js')) }}"></script>
     <script src="{{ asset(mix('js/app.js')) }}"></script>
