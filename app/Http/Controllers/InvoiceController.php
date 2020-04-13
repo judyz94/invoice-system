@@ -17,7 +17,9 @@ use App\Http\Requests\Invoice\StoreRequest;
 use App\Http\Requests\Invoice\UpdateRequest;
 use App\Http\Requests\InvoiceProduct\DetailRequest;
 use App\Imports\InvoicesImport;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use Exception;
@@ -31,7 +33,11 @@ class InvoiceController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('can:invoices.index')->only(['index']);
+        $this->middleware('can:invoices.create')->only(['create', 'store']);
+        $this->middleware('can:invoices.edit')->only(['edit', 'update']);
+        $this->middleware('can:invoices.show')->only(['show']);
+        $this->middleware('can:invoices.destroy')->only(['destroy']);
     }
 
     /**
@@ -39,10 +45,23 @@ class InvoiceController extends Controller
      *
      * @param Request $request
      * @param Invoice $invoice
-     * @return Factory|View
+     * @return \Illuminate\Http\Response
      */
     public function index(Request $request, Invoice $invoice)
     {
+        $user = Auth::user();
+        $customer = DB::table('customers')->where('document', $user->document)->get();
+
+        if ($user->roles[0]->name == 'Customer') {
+            if ($user->document == $customer[0]->document) {
+                $invoices = Invoice::with(['customer', 'seller'])
+                    ->where('customer_id', $customer[0]->id)
+                    ->get();
+
+                return response()->view('invoices.index', compact('invoices', 'customer'));
+            }
+        return view('invoices.index', compact('invoices','invoice', 'invoices', 'user'));
+    } else
         $filter = $request->input('filter');
         $search = $request->input('search');
 
@@ -97,7 +116,7 @@ class InvoiceController extends Controller
             'code' => 'A' . str_pad($invoice->id, 4, 0, STR_PAD_LEFT),
         ]);
 
-        return redirect()->route('invoices.show', $invoice);
+        return redirect()->route('invoices.show', $invoice)->with('info', 'Invoice successfully created.');
     }
 
     /**
@@ -164,7 +183,7 @@ class InvoiceController extends Controller
 
         $invoice->save();
 
-        return redirect()->route('invoices.index');
+        return redirect()->route('invoices.index')->with('info', 'Invoice successfully updated.');
     }
 
     /**
@@ -178,7 +197,7 @@ class InvoiceController extends Controller
     {
         $invoice->delete();
 
-        return redirect()->route('invoices.index');
+        return redirect()->route('invoices.index')->with('info', 'Invoice successfully deleted.');
     }
 
     public function addProduct(Invoice $invoice, DetailRequest $request)
@@ -199,7 +218,7 @@ class InvoiceController extends Controller
 
         $invoice->save();
 
-        return redirect()->route('invoices.show', $invoice);
+        return redirect()->route('invoices.show', $invoice)->with('info', 'Detail successfully created.');
     }
 
     public function import(Request $request)
@@ -208,7 +227,7 @@ class InvoiceController extends Controller
 
         Excel::import(new InvoicesImport, $file);
 
-        return view('invoices.index', compact( 'file'));
+        return view('invoices.index', compact( 'file'))->with('info', 'Invoices successfully imported.');
     }
 
     public function orderSummary()

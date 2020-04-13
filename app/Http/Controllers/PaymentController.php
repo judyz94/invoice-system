@@ -95,7 +95,7 @@ class PaymentController extends Controller
             ]);
             if (empty($invoice->receipt_date)) {
                 $invoice->update([
-                    'receipt_date' => Carbon::now()
+                    'receipt_date' => $response->status()->date()
                 ]);
             }
         }

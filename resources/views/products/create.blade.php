@@ -4,9 +4,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
-            <div class="card shadow-sm">
+            <div class="card shadow-lg">
                 <div class="card-header pb-0">
-                    <h4 class="card-title"><strong>{{ __('New Product') }}</strong></h4>
+                    <h4 class="card-title"><strong>{{ __('New Product') }}  <i class="fas fa-box-open"></i></strong></h4>
                 </div>
 
         <div class="card-body">
