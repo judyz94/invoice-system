@@ -25,8 +25,8 @@
 
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #353131;">
-            @can('home')<nav class="navbar-brand font"> <a class="nav-link" href="{{ route('home') }}"><h5>{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>@endcan
-                @can('homeCustomer')<nav class="navbar-brand font"> <a class="nav-link" href="{{ route('homeCustomer') }}"><h5>{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>@endcan
+            @can('invoices.index')<nav class="navbar-brand font"> <a class="nav-link" href="{{ route('home') }}"><h5 class="title">{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>@endcan
+                @if(Auth::user()->role == 'Customer')<nav class="navbar-brand font"> <a class="nav-link" href="{{ route('homeCustomer') }}"><h5>{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>@endif
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

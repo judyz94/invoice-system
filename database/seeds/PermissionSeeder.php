@@ -279,7 +279,7 @@ class PermissionSeeder extends Seeder
 
         //Invoices customer index
         DB::table('permissions')->insert([
-            'name' => 'Invoices index for customers',
+            'name' => 'Invoices index custom',
             'slug' => 'invoices.index.customer',
             'description' => 'List all invoices for customers'
         ]);

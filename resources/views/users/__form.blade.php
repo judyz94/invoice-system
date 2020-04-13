@@ -35,24 +35,23 @@
 </div>
 
 <div class="form-group row">
-    <label for="roles" class="required col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+    <label class="required col-md-4 col-form-label text-md-right">{{ __('Select roles') }}</label>
     <div class="col-md-6">
-    <ul class="list-unstyled">
+        <ul class="list-unstyled">
         @foreach($roles as $role)
             <li>
-                <label>
-                    {{ Form::checkbox('roles[]', $role->id, old('roles[]')) }}
-                    {{ $role->name }}
-
-                    {{--<input type="checkbox" name="roles[]" value="{{$role->id}}"
-                        {{ old('roles') == $role->id ? 'checked' : ''}}>{{$role->name}}--}}
-                </label>
+                <div class="pretty p-icon p-jelly p-round p-bigger">
+                    <input type="checkbox" name="roles[]" value="{{ old('$roles', $role->id) }}"
+                           @isset($user->id)
+                           @if($user->roles->contains($role->id)) checked="checked"@endif
+                        @endisset >
+                    <div class="state p-info">
+                        <i class="icon material-icons fa fa-check"></i>
+                        <label> {{ $role->name }} </label>
+                    </div>
+                </div>
             </li>
         @endforeach
-    </ul>
+        </ul>
     </div>
 </div>
-
-
-
-

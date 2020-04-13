@@ -67,7 +67,7 @@ class RoleController extends Controller
         $role->special = $request->input('special');
         $role->save();
 
-        $role->permissions()->sync($request->input('permission_id'));
+        $role->permissions()->sync($request->input('permissions'));
 
         return redirect()->route('roles.index')->with('info', 'Role successfully created.');
     }
@@ -100,7 +100,7 @@ class RoleController extends Controller
         $role->special = $request->input('special');
         $role->save();
 
-        $role->permissions()->sync($request->input('permission_id'));
+        $role->permissions()->sync($request->input('permissions'));
 
         return redirect()->route('roles.index')->with('info', 'Role successfully updated.');
     }
