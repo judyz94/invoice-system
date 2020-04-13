@@ -57,10 +57,8 @@ class InvoiceController extends Controller
                 $invoices = Invoice::with(['customer', 'seller'])
                     ->where('customer_id', $customer[0]->id)
                     ->get();
-
-                return response()->view('invoices.index', compact('invoices', 'customer'));
             }
-        return view('invoices.index', compact('invoices','invoice', 'invoices', 'user'));
+        return view('invoices.index', compact('invoices','invoice', 'invoices', 'user', 'customer'));
     } else
         $filter = $request->input('filter');
         $search = $request->input('search');
@@ -103,7 +101,6 @@ class InvoiceController extends Controller
         $invoice->id = $request->input('id');
         $invoice->expedition_date = $request->input('expedition_date');
         $invoice->due_date = $request->input('due_date');
-        //$invoice->receipt_date = $request->input('receipt_date');
         $invoice->seller_id = $request->input('seller_id');
         $invoice->sale_description = $request->input('sale_description');
         $invoice->customer_id = $request->input('customer_id');
