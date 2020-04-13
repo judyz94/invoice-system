@@ -18,6 +18,9 @@
 
                <div class="card shadow-lg">
                 <div class="card-header d-flex justify-content-between">
+                    @if(Auth::user()->role == 'Customer')
+                        <h3 class="card-title mb-0"><strong>{{ Auth::user()->name }} {{ __('Invoices') }} </strong></h3>
+                    @endif
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}  <i class="fas fa-paw"></i></strong></h3>
                 </div>
 
@@ -47,7 +50,11 @@
                             <th>{{ __('Customer') }}</th>
                             <th>{{ __('Created by') }}</th>
                             <th>{{ __('Status') }}</th>
-                            <th>{{ __('Actions') }}</th>
+                            @if(Auth::user()->roles[0]->name == 'Customer')
+                            <th class="text-right">{{ __('Show details') }}</th>
+                            @else
+                                <th>{{ __('Actions') }}</th>
+                            @endif
                         </tr>
                         </thead>
 
@@ -73,7 +80,7 @@
 
                                     <!-- CRUD buttons -->
                                     <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
-                                        <a href="{{ route('invoices.show', $invoice) }}" class="btn btn-link"
+                                       <a href="{{ route('invoices.show', $invoice) }}" class="btn btn-link"
                                            title="{{ __('Show Details') }}">
                                             <i class="fas fa-eye" style="color:black"></i>
                                         </a>
@@ -108,12 +115,12 @@
                         </tbody>
                     </table>
 
+                   @can('invoices.edit')
                     <!-- Pagination -->
                     <ul class="pagination justify-content-center">
                         {{ $invoices->appends(['filter' => $filter, 'search' => $search])->links() }}
                     </ul>
 
-                    @can('invoices.edit')
                     <!-- Import form -->
                     <div class="card-footer justify-content-lg-start">
                         <form action="{{ route('invoices.import') }}" method="post" enctype="multipart/form-data">

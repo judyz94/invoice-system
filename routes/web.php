@@ -16,10 +16,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('permissions', 'PermissionController')->except('show');
     Route::resource('roles', 'RoleController')->except('show');
 
-    //Invoices for customers
-    Route::get('invoices', 'InvoiceController@indexCustomer')->name('invoices.index.customer')
-        ->middleware('can:invoices.index.customer');
-
     //Invoice details
     Route::post('invoices/{invoice}/products')->uses('InvoiceController@addProduct')->name('invoices.products.store')
         ->middleware('can:invoices.products.store');

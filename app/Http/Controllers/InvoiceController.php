@@ -45,10 +45,23 @@ class InvoiceController extends Controller
      *
      * @param Request $request
      * @param Invoice $invoice
-     * @return Factory|View
+     * @return \Illuminate\Http\Response
      */
     public function index(Request $request, Invoice $invoice)
     {
+        $user = Auth::user();
+        $customer = DB::table('customers')->where('document', $user->document)->get();
+
+        if ($user->roles[0]->name == 'Customer') {
+            if ($user->document == $customer[0]->document) {
+                $invoices = Invoice::with(['customer', 'seller'])
+                    ->where('customer_id', $customer[0]->id)
+                    ->get();
+
+                return response()->view('invoices.index', compact('invoices', 'customer'));
+            }
+        return view('invoices.index', compact('invoices','invoice', 'invoices', 'user'));
+    } else
         $filter = $request->input('filter');
         $search = $request->input('search');
 
@@ -246,23 +259,5 @@ class InvoiceController extends Controller
 
         return view('partials.__pending_payment', compact(  'invoice'));
     }
-
-    public function indexCustomer(Request $request, Invoice $invoice)
-    {
-        $user = Auth::user();
-        $customer = DB::table('customers')->where('document', $user->document)->get();
-
-        if ($user->roles[0]->name == 'Customer') {
-            if ($user->document == $customer[0]->document) {
-                $invoices = Invoice::with(['customer', 'seller'])
-                    ->where('customer_id', $customer[0]->id)
-                    ->get();
-
-                return response()->view('invoices.index_custom', compact('invoices', 'customer'));
-            }
-        }
-
-        return view('invoices.index_custom', compact('invoices','invoice', 'invoices', 'user'));
-        }
 }
 

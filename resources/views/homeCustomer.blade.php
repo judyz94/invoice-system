@@ -35,7 +35,7 @@
                                     <strong>4.</strong> Then it will display a window with the "pay" button that will redirect you to our payment gateway, PlaceToPay!
                                 </p>
 
-                                <a href="{{ route('invoices.index.customer') }}" type="submit" class="btn buttonSave">
+                                <a href="{{ route('invoices.index') }}" type="submit" class="btn buttonSave">
                                     <i class="fas fa-bil"></i> {{ __('Go to my invoices') }}
                                 </a>
                             </div>
