@@ -9,6 +9,7 @@ use Caffeinated\Shinobi\Models\Role;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class RoleController extends Controller
@@ -69,6 +70,8 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->input('permissions'));
 
+        Cache::forget('permissions');
+
         return redirect()->route('roles.index')->with('info', 'Role successfully created.');
     }
 
@@ -102,6 +105,8 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->input('permissions'));
 
+        Cache::forget('permissions');
+
         return redirect()->route('roles.index')->with('info', 'Role successfully updated.');
     }
 
@@ -115,6 +120,8 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
+
+        Cache::forget('permissions');
 
         return redirect()->route('roles.index')->with('info', 'Role successfully deleted.');
     }
