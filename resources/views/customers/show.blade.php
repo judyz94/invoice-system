@@ -4,10 +4,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-14">
-                <div class="card shadow-sm">
+                <div class="card shadow-lg">
                     <div class="card-header pb-0">
-                        <h4 class="card-title"><strong>{{ __('Customer') }}
-                                {{ $customer->full_name }}</strong></h4>
+                        <h4 class="card-title"><strong>{{ __('Customer') }} {{ $customer->full_name }}</strong></h4>
                     </div>
 
                     <!-- Customer detail information -->
@@ -16,13 +15,10 @@
                         <dt class="col-md-3">{{ __('ID') }}</dt>
                         <dd class="col-md-3">{{ $customer->document }}</dd>
 
-                        <dt class="col-md-3">{{ __('Type') }}</dt>
-                        <dd class="col-md-3">{{ $customer->document_type }}</dd>
-
                         <dt class="col-md-3">{{ __('Full Name') }}</dt>
                         <dd class="col-md-3">{{ $customer->full_name }}</dd>
 
-                        <dt class="col-md-3">{{ __('Email') }}</dt>
+                        <dt class="col-md-3">{{ __('E-mail') }}</dt>
                         <dd class="col-md-3">{{ $customer->email }}</dd>
 
                         <dt class="col-md-3">{{ __('Phone') }}</dt>
@@ -38,22 +34,19 @@
                         <!-- Details of the associated invoices -->
                         <div class="row">
                             <div class="col-md-12">
-                                <br><h5><strong>{{ __('Associated invoices') }}</strong></h5>
+                                <br><h4><strong>{{ __('Associated invoices') }}</strong></h4><br>
                                 <table class="table table-hover">
-                                    <thead>
+                                    <thead class="thead-dark">
                                     <tr>
                                         <th>{{ __('Code') }}</th>
                                         <th>{{ __('Expedition date') }}</th>
                                         <th>{{ __('Due date') }}</th>
-                                        <th>{{ __('Receipt date') }}</th>
                                         <th>{{ __('Sale description') }}</th>
-                                        <th>{{ __('Total') }}</th>
                                         <th>{{ __('Total with VAT') }}</th>
                                         <th>{{ __('Seller') }}</th>
-                                        <th>{{ __('Customer') }}</th>
                                         <th>{{ __('Created by') }}</th>
                                         <th>{{ __('Status') }}</th>
-                                        <th>{{ __('Actions') }}</th>
+                                        <th class="text-right">{{ __('Actions') }}</th>
                                     </tr>
                                     </thead>
 
@@ -62,13 +55,10 @@
                                             <tr>
                                                 <td>{{ $invoice->code }}</td>
                                                 <td>{{ $invoice->expedition_date }}</td>
-                                                <td>{{ $invoice->due_date }}</td>
-                                                <td>{{ $invoice->receipt_date }}</td>
+                                                <td style="width:100px">{{ $invoice->due_date }}</td>
                                                 <td>{{ $invoice->sale_description }}</td>
-                                                <td>${{ number_format($invoice->total, 2) }}</td>
                                                 <td>${{ number_format($invoice->total_with_vat, 2) }}</td>
                                                 <td>{{ $invoice->seller->full_name }}</td>
-                                                <td>{{ $invoice->customer->full_name }}</td>
                                                 <td>{{ $invoice->user->name }}</td>
                                                 <td><h5>
                                                         @if($invoice->state_id == '1')<span class="badge blue">{{ __('New') }}</span>@endif
@@ -89,12 +79,14 @@
                                                             <i class="fas fa-edit" style="color:black"></i>
                                                         </a>
 
+                                                        @can('invoices.destroy')
                                                         <button type="button" class="btn btn-link text-danger"
                                                                 data-route="{{ route('invoices.destroy', $invoice) }}"
                                                                 data-toggle="modal" data-target="#confirmDeleteModal"
                                                                 title="{{ __('Delete Invoice') }}">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
+                                                        @endcan
                                                     </div>
                                                 </td>
                                             </tr>

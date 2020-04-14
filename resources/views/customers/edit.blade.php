@@ -4,10 +4,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <div class="card shadow-sm">
+                <div class="card shadow-lg">
                     <div class="card-header pb-0">
-                        <h4 class="card-title"><strong>{{ __('Edit Customer') }}
-                                {{ $customer->name }}</strong></h4>
+                        <h4 class="card-title"><strong>{{ __('Edit Customer') }} {{ $customer->name }}  <i class="fas fa-users"></i></strong></h4>
                     </div>
 
                     <div class="card-body">

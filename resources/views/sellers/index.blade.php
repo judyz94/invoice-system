@@ -3,11 +3,24 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-sm-10">
-            <div class="card shadow-sm">
-                <div class="card-header d-flex justify-content-between">
-                    <h3 class="card-title mb-0"><strong>{{ __('Sellers') }}</strong></h3>
-                </div>
+            <div class="col-xl-14">
+
+                @if(session('info'))
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 col-md-offset-2">
+                                <div class="alert alert-info">
+                                    {{ session('info') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                <div class="card shadow-lg">
+                    <div class="card-header d-flex justify-content-between">
+                        <h3 class="card-title mb-0"><strong>{{ __('Sellers') }}  <i class="fas fa-paw"></i></strong></h3>
+                    </div>
 
                 <!-- Create new seller -->
                 <nav class="navbar navbar-light bg-light">
@@ -33,14 +46,14 @@
                 </nav>
 
                 <!-- Sellers list -->
-                <div class="table-responsive-xl">
+                <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>{{ __('ID') }}</th>
                             <th>{{ __('Type') }}</th>
                             <th>{{ __('Full Name') }}</th>
-                            <th>{{ __('Email') }}</th>
+                            <th>{{ __('E-mail') }}</th>
                             <th>{{ __('Phone') }}</th>
                             <th>{{ __('City') }}</th>
                             <th>{{ __('Address') }}</th>
@@ -72,6 +85,7 @@
                                             <i class="fas fa-edit" style="color:black"></i>
                                         </a>
 
+                                        @can('sellers.destroy')
                                         <button type="button" class="btn btn-link text-danger"
                                                 data-route="{{ route('sellers.destroy', $seller) }}"
                                                 data-toggle="modal"
@@ -79,7 +93,7 @@
                                                 title="{{ __('Delete seller') }}">
                                             <i class="fas fa-trash"></i>
                                         </button>
-
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>
@@ -92,7 +106,6 @@
                                 </p>
                             </tr>
                         @endforelse
-
                         </tbody>
                     </table>
 

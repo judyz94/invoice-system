@@ -20,7 +20,11 @@ class CustomerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('can:customers.index')->only(['index']);
+        $this->middleware('can:customers.create')->only(['create', 'store']);
+        $this->middleware('can:customers.edit')->only(['edit', 'update']);
+        $this->middleware('can:customers.show')->only(['show']);
+        $this->middleware('can:customers.destroy')->only(['destroy']);
     }
 
     /**
@@ -77,7 +81,7 @@ class CustomerController extends Controller
 
         Cache::forget('customers');
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('info', 'Customer successfully created.');
     }
 
     /**
@@ -130,7 +134,7 @@ class CustomerController extends Controller
 
         Cache::forget('customers');
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('info', 'Customer successfully updated.');
     }
 
     /**
@@ -146,7 +150,7 @@ class CustomerController extends Controller
 
         $customer->delete();
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('info', 'Customer successfully deleted.');
     }
 }
 

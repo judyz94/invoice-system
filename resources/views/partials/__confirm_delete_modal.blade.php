@@ -3,13 +3,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title"><i class="fas fa-exclamation-circle warning"></i>
-                    {{ __('Are you sure?') }}
+                    {{ __('Delete') }}
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+                <p>{{ __('Are you sure?') }}</p>
                 <p>{{ __('This action cannot be undone!') }}</p>
                 <form id="deleteForm" action="" method="post">
                     @method('DELETE')

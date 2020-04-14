@@ -19,7 +19,10 @@ class ProductController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('can:products.index')->only(['index']);
+        $this->middleware('can:products.create')->only(['create', 'store']);
+        $this->middleware('can:products.edit')->only(['edit', 'update']);
+        $this->middleware('can:products.destroy')->only(['destroy']);
     }
 
     /**
@@ -67,7 +70,7 @@ class ProductController extends Controller
 
         Cache::forget('products');
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('info', 'Product successfully created.');
     }
 
     /**
@@ -99,7 +102,7 @@ class ProductController extends Controller
 
         Cache::forget('products');
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('info', 'Product successfully updated.');
     }
 
     /**
@@ -115,7 +118,7 @@ class ProductController extends Controller
 
         Cache::forget('products');
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('info', 'Product successfully deleted.');
     }
 }
 

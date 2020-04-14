@@ -71,7 +71,7 @@ class IndexTest extends TestCase
 
         $response = $this->actingAs($user)->get(route('sellers.index'));
 
-        $response->assertSee(__('Sellers were not found'));
+        $response->assertSee(__('No sellers were found'));
     }
 
     /**
