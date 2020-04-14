@@ -42,7 +42,7 @@
             <li>
                 <div class="pretty p-icon p-jelly p-round p-bigger">
                     <input type="checkbox" name="roles[]" value="{{ old('$roles', $role->id) }}"
-                           @isset($user->id)
+                        @isset($user->id)
                            @if($user->roles->contains($role->id)) checked="checked"@endif
                         @endisset >
                     <div class="state p-info">
