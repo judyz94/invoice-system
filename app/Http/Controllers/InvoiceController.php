@@ -44,30 +44,32 @@ class InvoiceController extends Controller
      * Display a listing of the resource.
      *
      * @param Request $request
-     * @param Invoice $invoice
-     * @return \Illuminate\Http\Response
+     * @return Factory|View
      */
-    public function index(Request $request, Invoice $invoice)
+    public function index(Request $request)
     {
         $user = Auth::user();
-        $customer = DB::table('customers')->where('document', $user->document)->get();
+        $customer = DB::table('customers')
+            ->where('document', $user->document)
+            ->get();
 
         if ($user->roles[0]->name == 'Customer') {
             if ($user->document == $customer[0]->document) {
                 $invoices = Invoice::with(['customer', 'seller'])
                     ->where('customer_id', $customer[0]->id)
                     ->get();
+
+                return view('invoices.index', compact('invoices', 'user', 'customer'));
             }
-        return view('invoices.index', compact('invoices','invoice', 'invoices', 'user', 'customer'));
-    } else
-        $filter = $request->input('filter');
-        $search = $request->input('search');
+        } else
+            $filter = $request->input('filter');
+            $search = $request->input('search');
 
-        $invoices = Invoice::with(['customer', 'seller'])
-            ->searchfor($filter, $search)
-            ->paginate(8);
+            $invoices = Invoice::with(['customer', 'seller'])
+                ->searchfor($filter, $search)
+                ->paginate(8);
 
-        return view('invoices.index', compact( 'invoices', 'filter', 'search', 'invoice', 'invoices'));
+            return view('invoices.index', compact( 'invoices', 'filter', 'search'));
     }
 
     /**
@@ -129,7 +131,7 @@ class InvoiceController extends Controller
         $customers = Customer::all();
         $sellers = Seller::all();
         $users = User::all();
-        $payment = Payment::all(); ///
+        $payment = Payment::all();
 
         $detail = $invoice->products()->exists($product);
 
