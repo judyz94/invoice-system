@@ -36,7 +36,7 @@ class ProductController extends Controller
         $type = $request->input('type');
         $search = $request->input('search');
 
-        $products = Product::searchfor($type, $search)->paginate(8);
+        $products = Product::searchfor($type, $search)->paginate(5);
 
         return view('products.index', compact( 'products', 'type', 'search'));
     }
