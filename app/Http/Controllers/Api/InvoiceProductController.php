@@ -30,7 +30,7 @@ class InvoiceProductController extends Controller
      * @param DetailRequest $request
      * @param Invoice $invoice
      * @param StoreAction $action
-     * @return void
+     * @return JsonResponse
      */
     public function store(DetailRequest $request, Invoice $invoice, StoreAction $action)
     {
@@ -51,7 +51,7 @@ class InvoiceProductController extends Controller
      * @param Invoice $invoice
      * @param Product $product
      * @param UpdateAction $action
-     * @return void
+     * @return JsonResponse
      */
     public function update(UpdateRequest $request, Invoice $invoice, Product $product, UpdateAction $action)
     {

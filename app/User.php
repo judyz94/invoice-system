@@ -5,6 +5,7 @@ namespace App;
 use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
 use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -14,7 +15,7 @@ class User extends Authenticatable
 
     protected $guarded = [];
 
-    use Notifiable, HasRolesAndPermissions;
+    use Notifiable, HasRolesAndPermissions, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
