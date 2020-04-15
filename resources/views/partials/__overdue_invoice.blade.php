@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>{{ __('Please contact your bank to generate a new payment rate.') }}</p>
+                <p class="text-color">{{ __('Please contact your bank to generate a new payment rate.') }}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn buttonBack" data-dismiss="modal">{{ __('Close') }}</button>

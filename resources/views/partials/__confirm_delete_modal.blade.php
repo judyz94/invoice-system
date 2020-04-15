@@ -10,8 +10,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>{{ __('Are you sure?') }}</p>
-                <p>{{ __('This action cannot be undone!') }}</p>
+                <p class="text-color">{{ __('Are you sure?') }}</p>
+                <p class="text-color">{{ __('This action cannot be undone!') }}</p>
                 <form id="deleteForm" action="" method="post">
                     @method('DELETE')
                     @csrf()
