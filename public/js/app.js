@@ -528,7 +528,7 @@ var render = function() {
               [_vm._v("Sale description")]
             ),
             _vm._v(" "),
-            _c("option", { attrs: { value: "status", selected: "" } }, [
+            _c("option", { attrs: { value: "state_id", selected: "" } }, [
               _vm._v("Status")
             ])
           ]
@@ -630,7 +630,7 @@ var render = function() {
             })
           : _vm._e(),
         _vm._v(" "),
-        _vm.filter === "status"
+        _vm.filter === "state_id"
           ? _c(
               "select",
               {
@@ -661,19 +661,15 @@ var render = function() {
                 }
               },
               [
-                _c("option", { attrs: { value: "New" } }, [_vm._v("New")]),
+                _c("option", { attrs: { value: "1" } }, [_vm._v("New")]),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "Sent" } }, [_vm._v("Sent")]),
+                _c("option", { attrs: { value: "2" } }, [_vm._v("Overdue")]),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "Overdue" } }, [
-                  _vm._v("Overdue")
-                ]),
+                _c("option", { attrs: { value: "3" } }, [_vm._v("Paid")]),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "Paid" } }, [_vm._v("Paid")]),
+                _c("option", { attrs: { value: "4" } }, [_vm._v("Rejected")]),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "Cancelled" } }, [
-                  _vm._v("Cancelled")
-                ])
+                _c("option", { attrs: { value: "5" } }, [_vm._v("Pending")])
               ]
             )
           : _vm._e()

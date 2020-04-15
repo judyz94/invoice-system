@@ -13,32 +13,32 @@ class ProductSeeder extends Seeder
     public function run()
     {
         DB::table('products')->insert([
-            'name' => 'Sofá',
+            'name' => 'Gimnasio gato',
             'unit_price' => '220000'
         ]);
 
         DB::table('products')->insert([
-            'name' => 'Pintura',
+            'name' => 'Cama perro',
             'unit_price' => '80000'
         ]);
 
         DB::table('products')->insert([
-            'name' => 'Laptop',
-            'unit_price' => '2400000'
+            'name' => 'Caja de arena gato',
+            'unit_price' => '240000'
         ]);
 
         DB::table('products')->insert([
-            'name' => 'Celular',
+            'name' => 'Comedero programable',
             'unit_price' => '900000'
         ]);
 
         DB::table('products')->insert([
-            'name' => 'Juego de mesa',
-            'unit_price' => '50000'
+            'name' => 'Guacal gato',
+            'unit_price' => '150000'
         ]);
 
         DB::table('products')->insert([
-            'name' => 'Paca de cuido',
+            'name' => 'Paca de cuido Chunky adulto',
             'unit_price' => '75000'
         ]);
     }

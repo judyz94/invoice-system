@@ -4,13 +4,26 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <div class="card shadow-sm">
+
+                @if(session('info'))
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 col-md-offset-2">
+                                <div class="alert alert-info">
+                                    {{ session('info') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                <div class="card shadow-lg">
                     <div class="card-header d-flex justify-content-between">
-                        <h3 class="card-title mb-0"><strong>{{ __('Products') }}</strong></h3>
+                        <h3 class="card-title mb-0"><strong>{{ __('Products') }}  <i class="fas fa-paw"></i></strong></h3>
                     </div>
 
                     <nav class="navbar navbar-light bg-light">
-                        <a href="{{ route('products.create') }}" class="btn buttonSave"><i class="fas fa-plus"></i>
+                        <a href="{{ route('products.create') }}" class="btn button"><i class="fas fa-plus"></i>
                             {{ __('Create a new product') }}</a>
 
                         <!-- Search form -->
@@ -34,7 +47,7 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>{{ __('Code') }}</th>
+                            <th>{{ __('N°') }}</th>
                             <th>{{ __('Name') }}</th>
                             <th>{{ __('Unit Price') }}</th>
                             <th class="text-right">{{ __('Actions') }}</th>
@@ -53,6 +66,8 @@
                                            title="{{ __('Edit Product') }}">
                                             <i class="fas fa-edit" style="color:black"></i>
                                         </a>
+
+                                        @can('products.destroy')
                                         <button type="button" class="btn btn-link text-danger"
                                                 data-route="{{ route('products.destroy', $product) }}"
                                                 data-toggle="modal"
@@ -60,6 +75,7 @@
                                                 title="{{ __('Delete Product') }}">
                                             <i class="fas fa-trash"></i>
                                         </button>
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>

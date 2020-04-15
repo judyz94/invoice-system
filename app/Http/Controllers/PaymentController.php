@@ -95,7 +95,7 @@ class PaymentController extends Controller
             ]);
             if (empty($invoice->receipt_date)) {
                 $invoice->update([
-                    'receipt_date' => Carbon::now()
+                    'receipt_date' => $response->status()->date()
                 ]);
             }
         }
@@ -108,11 +108,22 @@ class PaymentController extends Controller
 
         if ($payment->status == 'PENDING') {
             $invoice->update([
-                'state_id' => '4'
+                'state_id' => '5'
             ]);
         }
 
         return view('payments.show', compact('invoice', 'payment', 'response'));
         }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Invoice $invoice
+     * @return Factory|View
+     */
+    public function payments(Invoice $invoice)
+    {
+        return view("payments.show", compact('invoice'));
+    }
 }
 

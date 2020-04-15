@@ -44,7 +44,7 @@ class StoreRequest extends FormRequest
             'document.required' => 'Please enter the identification number.',
             'document.numeric'  => 'Enter a valid identification number.',
             'document.unique'  => 'The identification number already exists.',
-            'email.required' => 'Please enter the identification number.',
+            'email.required' => 'Please enter the e-mail address.',
             'email.email'  => 'Enter a valid email with the format "example@mail.com".',
             'email.unique'  => 'The email already exists.',
             'city_id.required' => 'Please select the city name of residence.',

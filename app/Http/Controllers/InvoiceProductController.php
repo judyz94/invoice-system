@@ -36,7 +36,7 @@ class InvoiceProductController extends Controller
 
         $invoice->products()->updateExistingPivot($product->id, $request->validated());
 
-        return redirect()->route('invoices.show', $invoice);
+        return redirect()->route('invoices.show', $invoice)->with('info', 'Detail successfully updated.');
     }
 
     /**
@@ -50,7 +50,7 @@ class InvoiceProductController extends Controller
     {
         $invoice->products()->detach($product->id);
 
-        return redirect()->route('invoices.show',  $invoice);
+        return redirect()->route('invoices.show',  $invoice)->with('info', 'Detail successfully deleted.');
 
     }
 }

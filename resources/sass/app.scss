@@ -1,6 +1,8 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
 // Variables
 @import 'variables';
 
@@ -12,6 +14,9 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
+// Pretty Checkbox
+@import '~pretty-checkbox/src/pretty-checkbox.scss';
+
 // Vue Select
 @import '~vue-select/src/scss/vue-select';
 
@@ -19,4 +24,5 @@
 @import 'buttons';
 @import 'badges';
 @import 'styles';
+
 

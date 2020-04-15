@@ -6,8 +6,7 @@ use App\State;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
-class
-StateComposer
+class StateComposer
 {
     private $states;
 

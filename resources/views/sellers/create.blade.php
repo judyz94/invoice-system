@@ -4,9 +4,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <div class="card shadow-sm">
+                <div class="card shadow-lg">
                     <div class="card-header pb-0">
-                        <h4 class="card-title"><strong>{{ __('New seller') }}</strong></h4>
+                        <h4 class="card-title"><strong>{{ __('New seller') }}  <i class="fas fa-users-cog"></i></strong></h4>
                     </div>
 
                     <div class="card-body">

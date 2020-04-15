@@ -25,7 +25,67 @@
     color: white;
 }
 
+.font-title {
+    font-family: Leelawadee, sans-serif;
+    font-size: 35px;
+    line-height: 1.6;
+    color: black;
+}
+
 .box {
     border-radius: 14px 14px 14px 14px;
     box-shadow: 10px 10px 11px 4px rgba(0,0,0,0.51);
+}
+
+.text-color {
+    color: black;
+}
+
+.background {
+    background-color: #ebe8f0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='96' viewBox='0 0 60 96'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2392acab' fill-opacity='0.38'%3E%3Cpath d='M36 10a6 6 0 0 1 12 0v12a6 6 0 0 1-6 6 6 6 0 0 0-6 6 6 6 0 0 1-12 0 6 6 0 0 0-6-6 6 6 0 0 1-6-6V10a6 6 0 1 1 12 0 6 6 0 0 0 12 0zm24 78a6 6 0 0 1-6-6 6 6 0 0 0-6-6 6 6 0 0 1-6-6V58a6 6 0 1 1 12 0 6 6 0 0 0 6 6v24zM0 88V64a6 6 0 0 0 6-6 6 6 0 0 1 12 0v12a6 6 0 0 1-6 6 6 6 0 0 0-6 6 6 6 0 0 1-6 6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: relative;
+}
+
+.mainBase {
+    margin: -110px;
+    padding: 190px;
+    width: -100%;
+    height: 130%;
+}
+
+.mainApp {
+    margin: -120px;
+    padding: 195px;
+    width: 120%;
+    height: 100%;
+}
+
+.column {
+    column-count: 4;
+    column-width: 12em;
+    column-gap: 3em;
+    text-align: justify;
+}
+
+.title {
+    color: #4bcddb;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
 }
