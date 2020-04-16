@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
-use App\Exports\InvoicesExport;
 use App\Invoice;
 use App\Payment;
 use App\Product;
