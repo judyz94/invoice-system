@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade as PDF;
 use Exception;
 
 class InvoiceController extends Controller
@@ -258,6 +259,23 @@ class InvoiceController extends Controller
         $invoice = Invoice::all();
 
         return view('partials.__pending_payment', compact(  'invoice'));
+    }
+
+    public function downloadPDF(Invoice $invoice, Product $product )
+    {
+        $invoices = Invoice::all();
+        $states = State::all();
+        $customers = Customer::all();
+        $sellers = Seller::all();
+        $users = User::all();
+
+        $data = [
+            'title' => 'InvoicePetFriends'
+        ];
+
+        $pdf = PDF::loadView('invoices.invoice_download', $data, compact('invoice', 'invoices', 'states', 'sellers', 'customers', 'users', 'product'));
+
+        return $pdf->download('InvoicePetFriends.pdf');
     }
 }
 

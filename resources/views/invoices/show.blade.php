@@ -22,24 +22,18 @@
                         <h4 class="card-title justify-content-center"><strong>{{ __('Details Invoice') }} {{ $invoice->code }}</strong></h4>
                     </div>
 
-                    @can('invoices.index')
+
                     <!-- Button to return -->
                     <div class="card-header d-flex justify-content-start">
                         <a href="{{ route('invoices.index') }}" class="btn buttonBack">
                             <i class="fas fa-arrow-left"></i> {{ __('Back to Invoices') }}
                         </a>
+
+                    <!-- Button PDF export -->
+                    <a href="{{ route('downloadPDF', $invoice) }}" class="btn buttonCancel">
+                        <i class="fas fa-file-pdf"></i> {{ __('Download PDF') }}
+                    </a>
                     </div>
-                    @endcan
-
-                    @if(Auth::user()->roles[0]->name == 'Customer')
-                    <!-- Button to return -->
-                        <div class="card-header d-flex justify-content-start">
-                            <a href="{{ route('invoices.index') }}" class="btn buttonBack">
-                                <i class="fas fa-arrow-left"></i> {{ __('Back to Invoices') }}
-                            </a>
-                        </div>
-                    @endif
-
 
                     <!-- Invoice detail information -->
                     <div class="card-body">

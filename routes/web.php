@@ -55,4 +55,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/payment/show/{invoice}/', 'paymentController@payments')->name('payments')
         ->middleware('can:payments');
+
+    //Exports
+    Route::get('/invoices/{invoice}/downloadPDF/', 'InvoiceController@downloadPDF')->name('downloadPDF');
+    Route::get('/payments/{invoice}/downloadPDF/', 'PaymentController@downloadPDF')->name('downloadPDF.payment');
 });
