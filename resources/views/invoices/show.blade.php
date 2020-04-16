@@ -22,7 +22,6 @@
                         <h4 class="card-title justify-content-center"><strong>{{ __('Details Invoice') }} {{ $invoice->code }}</strong></h4>
                     </div>
 
-
                     <!-- Button to return -->
                     <div class="card-header d-flex justify-content-start">
                         <a href="{{ route('invoices.index') }}" class="btn buttonBack">

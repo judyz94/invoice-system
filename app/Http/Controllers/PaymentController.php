@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Invoice;
 use App\Payment;
+use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Dnetix\Redirection\Exceptions\PlacetoPayException;
 use Illuminate\Contracts\View\Factory;
@@ -124,6 +125,20 @@ class PaymentController extends Controller
     public function payments(Invoice $invoice)
     {
         return view("payments.show", compact('invoice'));
+    }
+
+    public function downloadPDF(Invoice $invoice)
+    {
+        $payments = Payment::all();
+
+        $data = [
+            'title' => 'PaymentAttemptsPetFriends'
+        ];
+
+        $pdf = PDF::loadView('payments.payment_download', $data, compact('invoice', 'payments'));
+        $pdf->setPaper('a4', 'landscape');
+
+        return $pdf->download('PaymentAttemptsPetFriends.pdf');
     }
 }
 
