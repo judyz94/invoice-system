@@ -22,6 +22,24 @@
                         <h3 class="card-title mb-0"><strong>{{ Auth::user()->name }} {{ __('Invoices') }} </strong></h3>
                     @endif
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}  <i class="fas fa-paw"></i></strong></h3>
+
+                        <!-- Export invoice reports-->
+                        <a href="{{ route('downloadExcel') }}" class="btn buttonBack">
+                                <i class="fas fa-file-excel"></i>
+                                <i class="fas fa-file-csv"></i>
+                                <i class="fas fa-file-alt"></i>
+                                {{ __('Export Invoice Report') }}
+                        </a>
+                        {{--
+                        <button type="submit" class="btn buttonBack"
+                                data-route="{{ route('invoiceReport') }}"
+                                data-toggle="modal"
+                                data-target="#invoiceReport">
+                                <i class="fas fa-file-excel"></i>
+                            <i class="fas fa-file-csv"></i>
+                            <i class="fas fa-file-alt"></i>
+                            {{ __('Export Invoice Report') }}
+                        </button>--}}
                 </div>
 
                    @can('invoices.edit')
@@ -133,15 +151,13 @@
                     </div>
                     @endcan
 
-                       <!-- Export form -->
-                       {{--}}<div class="card-footer justify-content-lg-start">
-                           <form action="{{ route('invoices.exportExcel') }}" method="post" enctype="multipart/form-data">
-                               @csrf
-                               <h5><strong>Export Excel File</strong></h5>
-                               <button class="btn buttonSave"><i class="fas fa-file-excel"></i> {{ __('Export') }}</button>
-                           </form>
-                       </div>--}}
-
+                       {{--
+                   <!-- Export form -->
+                       <form action="{{ route('downloadExcel') }}" method="post" enctype="multipart/form-data">
+                           @csrf
+                           <h5><strong>Export Invoice Report</strong></h5>
+                           <button class="btn buttonSave"><i class="fas fa-file-excel"></i> {{ __('Export') }}</button>
+                       </form>--}}
                 </div>
             </div>
         </div>
@@ -150,6 +166,7 @@
 
 @push('modals')
     @include('partials.__confirm_delete_modal')
+    @include('partials.__invoice_report')
 @endpush
 @push('scripts')
     <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>

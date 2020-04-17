@@ -2,20 +2,28 @@
 
 namespace App\Exports;
 
-use App\Invoice;
 use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class InvoicesExport implements FromQuery
+class InvoicesExport implements WithMultipleSheets
 {
     use Exportable;
+
+    private $date;
+
+    public function forDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
 
     /**
      * @inheritDoc
      */
-    public function query()
+    public function sheets(): array
     {
-        return Invoice::query();
+        // TODO: Implement sheets() method.
     }
 }
 
