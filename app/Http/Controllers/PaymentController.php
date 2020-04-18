@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Invoice;
 use App\Payment;
+use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Dnetix\Redirection\Exceptions\PlacetoPayException;
 use Illuminate\Contracts\View\Factory;

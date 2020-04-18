@@ -40,6 +40,11 @@ class Invoice extends Model
         return $this->hasMany(Payment::class);
     }
 
+    public function state(): BelongsTo
+    {
+        return $this->belongsTo(State::class);
+    }
+
     public function scopeSearchFor($query, $filter, $search)
     {
         if (($filter) && ($search)) {
@@ -47,9 +52,5 @@ class Invoice extends Model
         }
     }
 
-    public function state(): BelongsTo
-    {
-        return $this->belongsTo(State::class);
-    }
 }
 

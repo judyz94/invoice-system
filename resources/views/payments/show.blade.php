@@ -6,14 +6,14 @@
             <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header d-flex justify-content-between">
-                    <h4 class="card-title"><strong>{{ __('Payments attempts of Invoice') }} {{ $invoice->code }}</strong></h4>
+                    <h4 class="card-title"><strong>{{ __('Invoice payments attempts') }} {{ $invoice->code }}</strong></h4>
                 </div>
 
                 <!-- Details of the payments attempts -->
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
-                        <thead class="thead">
+                        <thead class="thead-dark">
                         <tr>
                             <th>{{ __('Transaction #') }}</th>
                             <th>{{ __('Invoice code') }}</th>
@@ -41,7 +41,12 @@
                     <div class="card-footer d-flex justify-content-between">
                         <a href="{{ route('invoices.show', $invoice) }}" class="btn buttonBack">
                             <i class="fas fa-arrow-left"></i> {{ __('Back to Invoice Details') }}
-                        </a></div>
+                        </a>
+
+                        <a href="{{ route('downloadPDF.payment', $invoice) }}" class="btn buttonCancel">
+                            <i class="fas fa-file-pdf"></i> {{ __('Download PDF') }}
+                        </a>
+                    </div>
                 </div>
                 </div>
             </div>
