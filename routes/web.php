@@ -46,7 +46,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pendingPayment/invoices', 'InvoiceController@pendingPayment')->name('pendingPayment')
         ->middleware('can:pendingPayment');
 
-    Route::get('/invoiceReport/invoices', 'InvoiceController@invoiceReport')->name('invoiceReport');
 
     //API integration
     Route::post('/invoices/{invoice}', 'PaymentController@store')->name('payments.store')
@@ -59,8 +58,11 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('can:payments');
 
     //Exports
-    Route::get('/invoices/{invoice}/downloadPDF/', 'InvoiceController@downloadPDF')->name('downloadPDF');
-    Route::get('/payments/{invoice}/downloadPDF/', 'PaymentController@downloadPDF')->name('downloadPDF.payment');
+    Route::get('/invoices/{invoice}/downloadPDF/', 'ExportController@downloadPDF')->name('downloadPDF');
+    Route::get('/payments/{invoice}/downloadPDF/', 'ExportController@downloadPaymentPDF')->name('downloadPDF.payment');
+    Route::get('/invoiceReport/invoices', 'ExportController@invoiceReport')->name('invoiceReport');
+    Route::get('/downloadXLS/invoices', 'ExportController@downloadXLS')->name('downloadXLS');
+    Route::get('/downloadCSV/invoices', 'ExportController@downloadCSV')->name('downloadCSV');
+    Route::get('/downloadTSV/invoices', 'ExportController@downloadTSV')->name('downloadTSV');
 
-    Route::get('/invoices/downloadExcel/', 'InvoiceController@downloadExcel')->name('downloadExcel');
 });
