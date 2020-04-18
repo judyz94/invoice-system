@@ -22,6 +22,19 @@
                         <h3 class="card-title mb-0"><strong>{{ Auth::user()->name }} {{ __('Invoices') }} </strong></h3>
                     @endif
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}  <i class="fas fa-paw"></i></strong></h3>
+
+                        @can('invoice.edit')
+                        <!-- Export invoice reports-->
+                        <button type="submit" class="btn buttonBack"
+                                data-route="{{ route('invoiceReport') }}"
+                                data-toggle="modal"
+                                data-target="#invoiceReport">
+                                <i class="fas fa-file-excel"></i>
+                            <i class="fas fa-file-csv"></i>
+                            <i class="fas fa-file-alt"></i>
+                            {{ __('Export Invoice Report') }}
+                        </button>
+                        @endcan
                 </div>
 
                    @can('invoices.edit')
@@ -132,7 +145,6 @@
                         </form>
                     </div>
                     @endcan
-
                 </div>
             </div>
         </div>
@@ -141,6 +153,7 @@
 
 @push('modals')
     @include('partials.__confirm_delete_modal')
+    @include('partials.__invoice_report')
 @endpush
 @push('scripts')
     <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>
