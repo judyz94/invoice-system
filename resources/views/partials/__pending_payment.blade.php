@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>{{ __('Please click the redirect button to return to the site and complete the payment.') }}</p>
+                <p class="text-color">{{ __('Please click the redirect button to return to the site and complete the payment.') }}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn buttonBack" data-dismiss="modal">{{ __('Close') }}</button>
