@@ -23,14 +23,8 @@
                     @endif
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}  <i class="fas fa-paw"></i></strong></h3>
 
+                        @can('invoice.edit')
                         <!-- Export invoice reports-->
-                        <a href="{{ route('downloadExcel') }}" class="btn buttonBack">
-                                <i class="fas fa-file-excel"></i>
-                                <i class="fas fa-file-csv"></i>
-                                <i class="fas fa-file-alt"></i>
-                                {{ __('Export Invoice Report') }}
-                        </a>
-                        {{--
                         <button type="submit" class="btn buttonBack"
                                 data-route="{{ route('invoiceReport') }}"
                                 data-toggle="modal"
@@ -39,7 +33,8 @@
                             <i class="fas fa-file-csv"></i>
                             <i class="fas fa-file-alt"></i>
                             {{ __('Export Invoice Report') }}
-                        </button>--}}
+                        </button>
+                        @endcan
                 </div>
 
                    @can('invoices.edit')
@@ -150,14 +145,6 @@
                         </form>
                     </div>
                     @endcan
-
-                       {{--
-                   <!-- Export form -->
-                       <form action="{{ route('downloadExcel') }}" method="post" enctype="multipart/form-data">
-                           @csrf
-                           <h5><strong>Export Invoice Report</strong></h5>
-                           <button class="btn buttonSave"><i class="fas fa-file-excel"></i> {{ __('Export') }}</button>
-                       </form>--}}
                 </div>
             </div>
         </div>
