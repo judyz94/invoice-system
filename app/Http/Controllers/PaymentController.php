@@ -126,19 +126,5 @@ class PaymentController extends Controller
     {
         return view("payments.show", compact('invoice'));
     }
-
-    public function downloadPDF(Invoice $invoice)
-    {
-        $payments = Payment::all();
-
-        $data = [
-            'title' => 'PaymentAttemptsPetFriends'
-        ];
-
-        $pdf = PDF::loadView('payments.payment_download', $data, compact('invoice', 'payments'));
-        $pdf->setPaper('a4', 'landscape');
-
-        return $pdf->download('PaymentAttemptsPetFriends.pdf');
-    }
 }
 

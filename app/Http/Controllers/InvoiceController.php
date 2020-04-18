@@ -2,28 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Customer;
 use App\Invoice;
+use App\Customer;
 use App\Payment;
 use App\Product;
 use App\Seller;
 use App\State;
 use App\User;
 use Carbon\Carbon;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Exception;
 use App\Http\Requests\Invoice\StoreRequest;
 use App\Http\Requests\Invoice\UpdateRequest;
 use App\Http\Requests\InvoiceProduct\DetailRequest;
 use App\Imports\InvoicesImport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
-use Maatwebsite\Excel\Facades\Excel;
-use Barryvdh\DomPDF\Facade as PDF;
-use Exception;
 
 class InvoiceController extends Controller
 {
@@ -258,23 +257,6 @@ class InvoiceController extends Controller
         $invoice = Invoice::all();
 
         return view('partials.__pending_payment', compact(  'invoice'));
-    }
-
-    public function downloadPDF(Invoice $invoice, Product $product )
-    {
-        $invoices = Invoice::all();
-        $states = State::all();
-        $customers = Customer::all();
-        $sellers = Seller::all();
-        $users = User::all();
-
-        $data = [
-            'title' => 'InvoicePetFriends'
-        ];
-
-        $pdf = PDF::loadView('invoices.invoice_download', $data, compact('invoice', 'invoices', 'states', 'sellers', 'customers', 'users', 'product'));
-
-        return $pdf->download('InvoicePetFriends.pdf');
     }
 }
 
