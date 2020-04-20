@@ -31,34 +31,34 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav mr-auto text-center">
                         @can('invoices.edit')
                             <li class="nav-item font">
-                                <a class="nav-link" href="{{ route('invoices.index') }}"> {{ __('Invoices') }}</a>
+                                <a class="nav-link" href="{{ route('invoices.index') }}"><i class="fas fa-file-alt"></i> {{ __('Invoices') }}</a>
                             </li>
                             <li class="nav-item font">
-                                <a class="nav-link" href="{{ route('customers.index') }}"> {{ __('Customers') }}</a>
+                                <a class="nav-link" href="{{ route('customers.index') }}"><i class="fas fa-users"></i> {{ __('Customers') }}</a>
                             </li>
                             <li class="nav-item font">
-                                <a class="nav-link" href="{{ route('sellers.index') }}"> {{ __('Sellers') }}</a>
+                                <a class="nav-link" href="{{ route('sellers.index') }}"><i class="fas fa-users-cog"></i> {{ __('Sellers') }}</a>
                             </li>
                             <li class="nav-item font">
-                                <a class="nav-link" href="{{ route('products.index') }}"> {{ __('Products') }}</a>
+                                <a class="nav-link" href="{{ route('products.index') }}"><i class="fas fa-box-open"></i> {{ __('Products') }}</a>
                             </li>
                         @endcan
                         @can('users.index')
                             <li class="nav-item font">
-                                <a class="nav-link" href="{{ route('users.index') }}"> {{ __('Users') }}</a>
+                                <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user"></i> {{ __('Users') }}</a>
                             </li>
                         @endcan
                         @can('roles.index')
                             <li class="nav-item font">
-                                <a class="nav-link" href="{{ route('roles.index') }}"> {{ __('Roles') }}</a>
+                                <a class="nav-link" href="{{ route('roles.index') }}"><i class="fas fa-user-tag"></i>  {{ __('Roles') }}</a>
                             </li>
                         @endcan
                         @can('permissions.index')
                             <li class="nav-item font">
-                                <a class="nav-link" href="{{ route('permissions.index') }}"> {{ __('Permissions') }}</a>
+                                <a class="nav-link" href="{{ route('permissions.index') }}"><i class="fas fa-hand-paper"></i> {{ __('Permissions') }}</a>
                             </li>
                         @endcan
                     </ul>

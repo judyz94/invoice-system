@@ -27,30 +27,31 @@
                         <!-- Export invoice reports-->
                         <div class="justify-content-end">
                             <div class="btn btn-group">
-                                <button type="submit" class="btn buttonBack"
+                                <button type="submit" class="btn-sm buttonBack"
                                         data-route="{{ route('invoiceReport') }}"
                                         data-toggle="modal"
                                         data-target="#invoiceReport">
                                     <i class="fas fa-filter"></i>
                                     {{ __('Filters to export') }}
-                                </button>
 
-                                <a href="{{ route('downloadXLS', [$since_date, $until_date]) }}" class="btn buttonSave">
+
+                                <a href="{{ route('downloadXLS', [$since_date, $until_date]) }}" class="btn-sm buttonSave">
                                     <i class="fas fa-file-excel"></i> {{ __('XLS') }}
                                 </a>
-                                <a href="{{ route('downloadCSV', [$since_date, $until_date]) }}" class="btn buttonGray">
+                                <a href="{{ route('downloadCSV', [$since_date, $until_date]) }}" class="btn-sm button">
                                     <i class="fas fa-file-csv"></i> {{ __('CSV') }}
                                 </a>
-                                <a href="{{ route('downloadTXT', [$since_date, $until_date]) }}" class="btn button">
+                                <a href="{{ route('downloadTXT', [$since_date, $until_date]) }}" class="btn-sm buttonBlue">
                                     <i class="fas fa-file-alt"></i> {{ __('TXT') }}
                                 </a>
 
-                                <button class="btn buttonBack" type="submit" onClick="window.history.back();">
+                                </button>
+                                <button class="btn-sm buttonBack" type="submit" onClick="window.history.back();">
                                     <i class="fas fa-redo-alt"></i>
                                 </button>
                             </div>
 
-                            <button type="submit" class="btn buttonBlue"
+                            <button type="submit" class="btn buttonSea"
                                     data-route="{{ route('exportAll') }}"
                                     data-toggle="modal"
                                     data-target="#exportAll">

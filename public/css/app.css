@@ -18439,23 +18439,23 @@ readers do not read off random characters that represent icons */
   top: 1px;
 }
 
-.buttonGray {
-  box-shadow: -2px 6px 18px -7px #9e9b9e;
-  background: #9e9b9e -webkit-gradient(linear, left top, left bottom, color-stop(5%, #9e9b9e), to(#9e9b9e));
-  background: #9e9b9e linear-gradient(to bottom, #9e9b9e 5%, #9e9b9e 100%);
+.buttonSea {
+  box-shadow: -2px 6px 18px -7px #389C91;
+  background: #49BDB1 -webkit-gradient(linear, left top, left bottom, color-stop(5%, #49BDB1), to(#49BDB1));
+  background: #49BDB1 linear-gradient(to bottom, #49BDB1 5%, #49BDB1 100%);
   border-radius: 11px;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: Viga, sans-serif;
+  font-family: Poppins, sans-serif;
   font-size: 15px;
   padding: 6px 10px;
   text-decoration: none;
-  text-shadow: 0 0 0 #5F625E;
+  text-shadow: 0 0 0 #389C91;
 }
 
 .buttonBack:hover {
-  background: #9e9b9e;
+  background: #56B7AC;
 }
 
 .buttonBack:active {
@@ -18465,21 +18465,21 @@ readers do not read off random characters that represent icons */
 
 .buttonBlue {
   box-shadow: -2px 6px 18px -7px #2e466e;
-  background: #2e466e -webkit-gradient(linear, left top, left bottom, color-stop(5%, #2e466e), to(#2e466e));
-  background: #2e466e linear-gradient(to bottom, #2e466e 5%, #2e466e 100%);
+  background: #2e466e -webkit-gradient(linear, left top, left bottom, color-stop(5%, #355795), to(#2D4D86));
+  background: #2e466e linear-gradient(to bottom, #355795 5%, #2D4D86 100%);
   border-radius: 11px;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: Viga, sans-serif;
+  font-family: Poppins, sans-serif;
   font-size: 15px;
   padding: 7px 11px;
   text-decoration: none;
-  text-shadow: 0 0 0 #3d768a;
+  text-shadow: 0 0 0 #2D4D86;
 }
 
 .button:hover {
-  background: #2e466e;
+  background: #355795;
 }
 
 .button:active {
