@@ -3,16 +3,54 @@
 namespace App\Exports;
 
 use App\Invoice;
-use Maatwebsite\Excel\Concerns\Exportable;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class InvoicesExport implements FromQuery
+class InvoicesExport implements FromQuery, ShouldQueue, WithHeadings
 {
-    use Exportable;
+    use Exportable, InteractsWithQueue, Queueable;
+
+    /**
+     * @var string
+     */
+    private $since_date, $until_date;
+
+    public function __construct(string $since_date, string $until_date)
+    {
+        $this->since_date = $since_date;
+        $this->until_date = $until_date;
+    }
 
     public function query()
     {
-        return Invoice::query();
+        return Invoice::query()
+            ->whereDate('created_at',">=", $this->since_date)
+            ->whereDate('created_at',  '<=', $this->until_date);
+    }
+
+    public function headings(): array
+    {
+        return [
+            'ID',
+            'Code',
+            'Expedition Date',
+            'Due Date',
+            'Receipt Date',
+            'Sale description',
+            'Total',
+            'VAT',
+            'Total with VAT',
+            'State ID',
+            'Seller ID',
+            'Customer ID',
+            'User ID',
+            'Created at',
+            'Updated at'
+        ];
     }
 }
 

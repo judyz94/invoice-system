@@ -23,7 +23,8 @@ class InvoiceSeeder extends Seeder
             'total' => '380000',
             'total_with_vat' => '452200',
             'state_id' => '1',
-            'user_id' => '1'
+            'user_id' => '1',
+            'created_at' => '2019-12-19'
         ]);
 
         DB::table('invoices')->insert([
@@ -37,7 +38,8 @@ class InvoiceSeeder extends Seeder
             'total' => '900000',
             'total_with_vat' => '1071000',
             'state_id' => '2',
-            'user_id' => '1'
+            'user_id' => '1',
+            'created_at' => '2020-11-19'
         ]);
 
         DB::table('invoices')->insert([
@@ -51,7 +53,8 @@ class InvoiceSeeder extends Seeder
             'total' => '375000',
             'total_with_vat' => '446250',
             'state_id' => '1',
-            'user_id' => '1'
+            'user_id' => '1',
+            'created_at' => '2020-03-19'
         ]);
 
         DB::table('invoices')->insert([
@@ -65,7 +68,8 @@ class InvoiceSeeder extends Seeder
             'total' => '240000',
             'total_with_vat' => '285600',
             'state_id' => '4',
-            'user_id' => '1'
+            'user_id' => '1',
+            'created_at' => '2020-03-25'
         ]);
 
         DB::table('invoices')->insert([
@@ -79,7 +83,8 @@ class InvoiceSeeder extends Seeder
             'total' => '750000',
             'total_with_vat' => '892500',
             'state_id' => '1',
-            'user_id' => '1'
+            'user_id' => '1',
+            'created_at' => '2020-03-25'
         ]);
 
         DB::table('invoices')->insert([
@@ -93,7 +98,8 @@ class InvoiceSeeder extends Seeder
             'total' => '120000',
             'total_with_vat' => '122800',
             'state_id' => '1',
-            'user_id' => '1'
+            'user_id' => '1',
+            'created_at' => '2020-03-25'
         ]);
     }
 }

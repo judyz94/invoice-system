@@ -64,12 +64,15 @@ class InvoiceController extends Controller
         } else
             $filter = $request->input('filter');
             $search = $request->input('search');
+            $since_date = $request->input('since_date');
+            $until_date = $request->input('until_date');
 
-            $invoices = Invoice::with(['customer', 'seller'])
+        $invoices = Invoice::with(['customer', 'seller'])
                 ->searchfor($filter, $search)
+                ->export('created_at', $since_date, $until_date)
                 ->paginate(8);
 
-            return view('invoices.index', compact( 'invoices', 'filter', 'search'));
+            return view('invoices.index', compact( 'invoices', 'filter', 'search', 'since_date', 'until_date'));
     }
 
     /**
