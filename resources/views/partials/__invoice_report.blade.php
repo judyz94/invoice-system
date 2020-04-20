@@ -11,49 +11,6 @@
 
                 <div class="modal-body">
                     <div class="row">
-                        {{--
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <select name="filter" class="form-control mr-sm-2" id="filter">
-                                <option value="">{{ __('All') }}</option>
-                                <option value="code" {{ request()->input('filter') == 'code' ? 'selected' : '' }}>{{ __('code') }}</option>
-                                <option value="expedition_date" {{ request()->input('filter') == 'expedition_date' ? 'selected' : '' }}>{{ __('expedition_date') }}</option>
-                                <option value="due_date" {{ request()->input('filter') == 'due_date' ? 'selected' : '' }}>{{ __('due_date') }}</option>
-                                <option value="sale_description" {{ request()->input('filter') == 'sale_description' ? 'selected' : '' }}>{{ __('sale_description') }}</option>
-                            </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                           <div class="form-group">
-                               <input name="search" id="search" value="{{ request()->input('search') }}" class="form-control mr-sm-2" type="search" placeholder="{{ __('Search...') }}">
-                           </div>
-                        </div>-
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                        <label for="filter">{{ __('Filter by status') }}</label>
-                            <select name="filter" class="form-control mr-sm-2" id="filter">
-                                <option value="">{{ __('None') }}</option>
-                                <option value="state_id" {{ request()->input('filter') == 'state_id' ? 'selected' : '' }}>{{ __('Status') }}</option>
-                            </select>
-                        </div>
-                    </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="state_id">{{ __('Select status') }}</label>
-                                <select class="custom-select" id="state_id" name="state_id">
-                                    <option value="">{{ __('All') }}</option>
-                                    <option value="New">{{ __('New') }}</option>
-                                    <option value="Paid">{{ __('Paid') }}</option>
-                                    <option value="Overdue">{{ __('Overdue') }}</option>
-                                    <option value="Rejected">{{ __('Rejected') }}</option>
-                                    <option value="Pending">{{ __('Pending') }}</option>
-                                </select>
-                            </div>
-                        </div>--}}
-
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="type">{{ __('Filter by date') }}</label>
@@ -80,7 +37,7 @@
                                 </div>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <button class="btn buttonSave my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> {{ __('Filter') }}</button>
+                        <button class="btn buttonSave my-2 my-sm-0" type="submit"><i class="fas fa-filter"></i> {{ __('Filter') }}</button>
                     </div>
                 </div>
             </div>

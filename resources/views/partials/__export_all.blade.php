@@ -19,7 +19,7 @@
                     <a href="{{ route('CSV') }}" class="btn buttonBack">
                         <i class="fas fa-file-csv"></i> {{ __('CSV') }}
                     </a>
-                    <a href="{{ route('TSV') }}" class="btn button">
+                    <a href="{{ route('TXT') }}" class="btn button">
                         <i class="fas fa-file-alt"></i> {{ __('TXT') }}
                     </a>
             </div>

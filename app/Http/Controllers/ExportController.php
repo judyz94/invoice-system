@@ -67,7 +67,7 @@ class ExportController extends Controller
         ]);
     }
 
-    public function TSV()
+    public function TXT()
     {
         return (new InvoicesExportAll)->download('InvoicesPetFriends.txt', \Maatwebsite\Excel\Excel::TSV, [
             'Content-Type' => 'text/plain',
@@ -104,7 +104,7 @@ class ExportController extends Controller
         ]);
     }
 
-    public function downloadTSV($since_date, $until_date)
+    public function downloadTXT($since_date, $until_date)
     {
         return (new InvoicesExport($since_date, $until_date))->download('ReportPetFriends.txt', \Maatwebsite\Excel\Excel::TSV, [
             'Content-Type' => 'text/plain',
