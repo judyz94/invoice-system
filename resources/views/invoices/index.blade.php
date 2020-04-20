@@ -24,41 +24,8 @@
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}  <i class="fas fa-paw"></i></strong></h3>
 
                         @can('invoices.edit')
-                        <!-- Export invoice reports-->
-                        <div class="justify-content-end">
-                            <div class="btn btn-group">
-                                <button type="submit" class="btn-sm buttonBack"
-                                        data-route="{{ route('invoiceReport') }}"
-                                        data-toggle="modal"
-                                        data-target="#invoiceReport">
-                                    <i class="fas fa-filter"></i>
-                                    {{ __('Filters to export') }}
-
-
-                                <a href="{{ route('downloadXLS', [$since_date, $until_date]) }}" class="btn-sm buttonSave">
-                                    <i class="fas fa-file-excel"></i> {{ __('XLS') }}
-                                </a>
-                                <a href="{{ route('downloadCSV', [$since_date, $until_date]) }}" class="btn-sm button">
-                                    <i class="fas fa-file-csv"></i> {{ __('CSV') }}
-                                </a>
-                                <a href="{{ route('downloadTXT', [$since_date, $until_date]) }}" class="btn-sm buttonBlue">
-                                    <i class="fas fa-file-alt"></i> {{ __('TXT') }}
-                                </a>
-
-                                </button>
-                                <button class="btn-sm buttonBack" type="submit" onClick="window.history.back();">
-                                    <i class="fas fa-redo-alt"></i>
-                                </button>
-                            </div>
-
-                            <button type="submit" class="btn buttonSea"
-                                    data-route="{{ route('exportAll') }}"
-                                    data-toggle="modal"
-                                    data-target="#exportAll">
-                                <i class="fas fa-file-download"></i>
-                                {{ __('Export all') }}
-                            </button>
-                        </div>
+                        <!-- Search form -->
+                            <search-form action="{{ route('invoices.index') }}" method="GET"></search-form>
                         @endcan
                 </div>
 
@@ -69,8 +36,49 @@
                                {{ __('Create a new invoice') }}
                        </a>
 
-                       <!-- Search form -->
-                       <search-form action="{{ route('invoices.index') }}" method="GET"></search-form>
+                       <!-- Export invoice reports-->
+                       <div class="justify-content-end">
+                           <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                               <button type="submit" class="btn buttonBack"
+                                       data-route="{{ route('exportAll') }}"
+                                       data-toggle="modal"
+                                       data-target="#exportAll">
+                                   <i class="fas fa-file-download"></i>
+                                   {{ __('Export all') }}
+                               </button>
+                               <button type="submit" class="btn buttonBack"
+                                       data-route="{{ route('invoiceReport') }}"
+                                       data-toggle="modal"
+                                       data-target="#invoiceReport">
+                                   <i class="fas fa-filter"></i>
+                                   {{ __('Filters to export') }}
+                               </button>
+
+                               <div class="btn-group" role="group">
+                                   <button id="btnGroupDrop1" type="button" class="btn buttonBack dropdown-toggle"
+                                           data-toggle="dropdown"
+                                           aria-haspopup="true"
+                                           aria-expanded="false">
+                                       <i class="fas fa-check"></i>
+                                       {{ __('Select format') }}
+                                   </button>
+                                   <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                       <h2>{{ $exception->getMessage() }}</h2>
+                                       <a class="dropdown-item" href="{{ route('downloadXLS', [$since_date, $until_date]) }}" class=" buttonSave">
+                                           <i class="fas fa-file-excel"></i> {{ __('XLS') }}</a>
+                                       <a class="dropdown-item" href="{{ route('downloadCSV', [$since_date, $until_date]) }}" class="button">
+                                           <i class="fas fa-file-csv"></i> {{ __('CSV') }}</a>
+                                       <a class="dropdown-item" href="{{ route('downloadTXT', [$since_date, $until_date]) }}" class="buttonBlue">
+                                           <i class="fas fa-file-alt"></i> {{ __('TXT') }}
+                                       </a>
+                                   </div>
+                               </div>
+
+                               <button class="btn buttonBack" type="submit" onClick="window.history.back();">
+                                   <i class="fas fa-redo-alt"></i>
+                               </button>
+                           </div>
+                       </div>
                    </nav>
                    @endcan
 
