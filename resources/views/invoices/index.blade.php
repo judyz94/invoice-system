@@ -27,15 +27,6 @@
                         @can('invoice.edit')
                         <!-- Export invoice reports-->
                         <div class="btn btn-group">
-                            <a href="{{ route('downloadXLS', [$since_date, $until_date]) }}" class="btn buttonSave">
-                                <i class="fas fa-file-excel"></i> {{ __('XLS') }}
-                            </a>
-                            <a href="{{ route('downloadCSV', [$since_date, $until_date]) }}" class="btn buttonBack">
-                                <i class="fas fa-file-csv"></i> {{ __('CSV') }}
-                            </a>
-                            <a href="{{ route('downloadTSV', [$since_date, $until_date]) }}" class="btn button">
-                                <i class="fas fa-file-alt"></i> {{ __('TXT') }}
-                            </a>
                             <button type="submit" class="btn buttonBack"
                                     data-route="{{ route('invoiceReport') }}"
                                     data-toggle="modal"
@@ -43,9 +34,20 @@
                                 <i class="fas fa-filter"></i>
                                 {{ __('Filters to export') }}
                             </button>
+
+                            <a href="{{ route('downloadXLS', [$since_date, $until_date]) }}" class="btn buttonSave">
+                                <i class="fas fa-file-excel"></i> {{ __('XLS') }}
+                            </a>
+                            <a href="{{ route('downloadCSV', [$since_date, $until_date]) }}" class="btn buttonGray">
+                                <i class="fas fa-file-csv"></i> {{ __('CSV') }}
+                            </a>
+                            <a href="{{ route('downloadTSV', [$since_date, $until_date]) }}" class="btn button">
+                                <i class="fas fa-file-alt"></i> {{ __('TXT') }}
+                            </a>
+
                         </div>
 
-                            <button type="submit" class="btn buttonCancel"
+                            <button type="submit" class="btn buttonBlue"
                                     data-route="{{ route('exportAll') }}"
                                     data-toggle="modal"
                                     data-target="#exportAll">
