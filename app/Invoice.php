@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Invoice extends Model
 {
     protected $fillable = ['code', 'expedition_date', 'due_date', 'receipt_date', 'seller_id', 'sale_description',
-        'customer_id', 'total', 'vat', 'total_with_vat', 'state_id', 'user_id'];
+        'customer_id', 'total', 'vat', 'total_with_vat', 'state_id', 'user_id', 'created_at'];
 
     protected $guarded = [];
 
@@ -52,5 +52,11 @@ class Invoice extends Model
         }
     }
 
+    public function scopeExport($query, $type, $since_date, $until_date)
+    {
+        if ($type && $since_date && $until_date) {
+            return $query->whereDate("$type", ">=", "$since_date")->whereDate("$type", '<=', "$until_date");
+        }
+    }
 }
 

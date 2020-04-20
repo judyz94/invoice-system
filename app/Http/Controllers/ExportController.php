@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Exports\InvoicesExport;
+use App\Exports\InvoicesExportAll;
 use App\Invoice;
 use App\Payment;
 use App\Product;
@@ -47,33 +48,65 @@ class ExportController extends Controller
         return $pdf->download('PaymentAttemptsPetFriends.pdf');
     }
 
-    public function invoiceReport(Request $request)
+    public function exportAll()
     {
-        $filter = $request->input('filter');
-        $search = $request->input('search');
-
-        $invoices = Invoice::with(['customer', 'seller'])
-            ->searchfor($filter, $search);
-
-        return view('partials.__invoice_report', compact( 'invoices', 'filter', 'search'));
+        return view('partials.__export_all');
     }
 
-    public function downloadXLS()
+    public function XLS()
     {
-        return Excel::download(new InvoicesExport, 'ReportPetFriends.xls');
+        return (new InvoicesExportAll)->download('InvoicesPetFriends.xls');
     }
 
-    public function downloadCSV()
+
+    public function CSV()
     {
-        return (new InvoicesExport)->download('ReportPetFriends.csv', \Maatwebsite\Excel\Excel::CSV, [
+        return (new InvoicesExportAll)->download('InvoicesPetFriends.csv', \Maatwebsite\Excel\Excel::CSV, [
             'Content-Type' => 'text/csv',
             'Content-disposition: attachment'
         ]);
     }
 
-    public function downloadTSV()
+    public function TSV()
     {
-        return (new InvoicesExport)->download('ReportPetFriends.txt', \Maatwebsite\Excel\Excel::TSV, [
+        return (new InvoicesExportAll)->download('InvoicesPetFriends.txt', \Maatwebsite\Excel\Excel::TSV, [
+            'Content-Type' => 'text/plain',
+        ]);
+    }
+
+    public function invoiceReport()
+    {
+        return view('partials.__invoice_report');
+    }
+
+    public function filter(Request $request)
+    {
+        $since_date = $request->get('since_date');
+        $until_date = $request->get('until_date');
+
+        $invoices = Invoice::orderBy('id', 'ASC')
+            ->export('created_at', $since_date, $until_date)
+            ->paginate(10);
+
+        return view('invoices.index', compact('invoices', 'since_date', 'until_date'));
+    }
+
+    public function downloadXLS($since_date, $until_date)
+    {
+        return (new InvoicesExport($since_date, $until_date))->download('ReportPetFriends.xls');
+    }
+
+    public function downloadCSV($since_date, $until_date)
+    {
+        return (new InvoicesExport($since_date, $until_date))->download('ReportPetFriends.csv', \Maatwebsite\Excel\Excel::CSV, [
+            'Content-Type' => 'text/csv',
+            'Content-disposition: attachment'
+        ]);
+    }
+
+    public function downloadTSV($since_date, $until_date)
+    {
+        return (new InvoicesExport($since_date, $until_date))->download('ReportPetFriends.txt', \Maatwebsite\Excel\Excel::TSV, [
             'Content-Type' => 'text/plain',
         ]);
     }

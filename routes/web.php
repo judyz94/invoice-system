@@ -58,11 +58,18 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('can:payments');
 
     //Exports
+    Route::get('/invoiceReport/invoices', 'ExportController@invoiceReport')->name('invoiceReport');
+    Route::get('/invoices/export/filter', 'ExportController@filter')->name('invoices.filter');
+
     Route::get('/invoices/{invoice}/downloadPDF/', 'ExportController@downloadPDF')->name('downloadPDF');
     Route::get('/payments/{invoice}/downloadPDF/', 'ExportController@downloadPaymentPDF')->name('downloadPDF.payment');
-    Route::get('/invoiceReport/invoices', 'ExportController@invoiceReport')->name('invoiceReport');
-    Route::get('/downloadXLS/invoices', 'ExportController@downloadXLS')->name('downloadXLS');
-    Route::get('/downloadCSV/invoices', 'ExportController@downloadCSV')->name('downloadCSV');
-    Route::get('/downloadTSV/invoices', 'ExportController@downloadTSV')->name('downloadTSV');
+    Route::get('/invoices/downloadXLS/{since_date}/{until_date}', 'ExportController@downloadXLS')->name('downloadXLS');
+    Route::get('/invoices/downloadCSV/{since_date}/{until_date}', 'ExportController@downloadCSV')->name('downloadCSV');
+    Route::get('/invoices/downloadTSV/{since_date}/{until_date}', 'ExportController@downloadTSV')->name('downloadTSV');
+
+    Route::get('/exportAll/invoices', 'ExportController@exportAll')->name('exportAll');
+    Route::get('/XLS/invoices', 'ExportController@XLS')->name('XLS');
+    Route::get('/CSV/invoices', 'ExportController@CSV')->name('CSV');
+    Route::get('/TSV/invoices', 'ExportController@TSV')->name('TSV');
 
 });

@@ -23,17 +23,37 @@
                     @endif
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}  <i class="fas fa-paw"></i></strong></h3>
 
+                        <div class="justify-content-end">
                         @can('invoice.edit')
                         <!-- Export invoice reports-->
-                        <button type="submit" class="btn buttonBack"
-                                data-route="{{ route('invoiceReport') }}"
-                                data-toggle="modal"
-                                data-target="#invoiceReport">
-                                <i class="fas fa-file-excel"></i>
-                            <i class="fas fa-file-csv"></i>
-                            <i class="fas fa-file-alt"></i>
-                            {{ __('Export Invoice Report') }}
-                        </button>
+                        <div class="btn btn-group">
+                            <a href="{{ route('downloadXLS', [$since_date, $until_date]) }}" class="btn buttonSave">
+                                <i class="fas fa-file-excel"></i> {{ __('XLS') }}
+                            </a>
+                            <a href="{{ route('downloadCSV', [$since_date, $until_date]) }}" class="btn buttonBack">
+                                <i class="fas fa-file-csv"></i> {{ __('CSV') }}
+                            </a>
+                            <a href="{{ route('downloadTSV', [$since_date, $until_date]) }}" class="btn button">
+                                <i class="fas fa-file-alt"></i> {{ __('TXT') }}
+                            </a>
+                            <button type="submit" class="btn buttonBack"
+                                    data-route="{{ route('invoiceReport') }}"
+                                    data-toggle="modal"
+                                    data-target="#invoiceReport">
+                                <i class="fas fa-filter"></i>
+                                {{ __('Filters to export') }}
+                            </button>
+                        </div>
+
+                            <button type="submit" class="btn buttonCancel"
+                                    data-route="{{ route('exportAll') }}"
+                                    data-toggle="modal"
+                                    data-target="#exportAll">
+                                <i class="fas fa-file-download"></i>
+                                {{ __('Export all') }}
+                            </button>
+                        </div>
+
                         @endcan
                 </div>
 
@@ -131,7 +151,8 @@
                    @can('invoices.edit')
                     <!-- Pagination -->
                     <ul class="pagination justify-content-center">
-                        {{ $invoices->appends(['filter' => $filter, 'search' => $search])->links() }}
+                        {{ $invoices->links() }}
+                        {{--appends(['filter' => $filter, 'search' => $search])--}}
                     </ul>
 
                     <!-- Import form -->
@@ -154,6 +175,7 @@
 @push('modals')
     @include('partials.__confirm_delete_modal')
     @include('partials.__invoice_report')
+    @include('partials.__export_all')
 @endpush
 @push('scripts')
     <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>
