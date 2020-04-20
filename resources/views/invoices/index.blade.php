@@ -44,7 +44,6 @@
                             <a href="{{ route('downloadTSV', [$since_date, $until_date]) }}" class="btn button">
                                 <i class="fas fa-file-alt"></i> {{ __('TXT') }}
                             </a>
-
                         </div>
 
                             <button type="submit" class="btn buttonBlue"
@@ -55,7 +54,6 @@
                                 {{ __('Export all') }}
                             </button>
                         </div>
-
                         @endcan
                 </div>
 
