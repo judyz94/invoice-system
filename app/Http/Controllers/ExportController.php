@@ -6,17 +6,25 @@ use App\Customer;
 use App\Exports\InvoicesExport;
 use App\Exports\InvoicesExportAll;
 use App\Invoice;
+use App\Jobs\NotifyUserOfCompletedExport;
 use App\Payment;
 use App\Product;
 use App\Seller;
 use App\State;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExportController extends Controller
 {
+
+    private $user, $since_date, $until_date, $file;
+
     public function downloadPDF(Invoice $invoice, Product $product )
     {
         $invoices = Invoice::all();
@@ -70,7 +78,7 @@ class ExportController extends Controller
     public function TXT()
     {
         return (new InvoicesExportAll)->download('InvoicesPetFriends.txt', \Maatwebsite\Excel\Excel::TSV, [
-            'Content-Type' => 'text/plain',
+            'Content-Type' => 'text/plain'
         ]);
     }
 
@@ -93,22 +101,50 @@ class ExportController extends Controller
 
     public function downloadXLS($since_date, $until_date)
     {
-        return (new InvoicesExport($since_date, $until_date))->download('ReportPetFriends.xls');
+        $date = new DateTime();
+        $date = $date->format('Y-m-d H-i-s');
+        $extension = 'xls';
+        $file = 'public/XLS Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
+        $user = Auth::user();
+
+        (new InvoicesExport($since_date, $until_date))->store($file)->chain([
+            new NotifyUserOfCompletedExport(auth()->user(), $since_date, $until_date, $file)
+        ]);
+
+        //$user->notify(new NotifyUserOfCompletedExport($user, $since_date, $until_date, $file));
+        //Notification::send($user, new NotifyUserOfCompletedExport($user, $since_date, $until_date, $file));
+
+        return back()->with('info', 'XLS file export in process');
     }
 
     public function downloadCSV($since_date, $until_date)
     {
-        return (new InvoicesExport($since_date, $until_date))->download('ReportPetFriends.csv', \Maatwebsite\Excel\Excel::CSV, [
-            'Content-Type' => 'text/csv',
-            'Content-disposition: attachment'
+        $date = new DateTime();
+        $date = $date->format('Y-m-d H-i-s');
+        $extension = 'csv';
+        $file = 'public/CSV Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
+        (new InvoicesExport($since_date, $until_date))->store($file)->chain([
+            (new NotifyUserOfCompletedExport(auth()->user(), $since_date, $until_date, $file))
         ]);
+        return back()->with('info', 'CSV file export in process');
     }
 
     public function downloadTXT($since_date, $until_date)
     {
-        return (new InvoicesExport($since_date, $until_date))->download('ReportPetFriends.txt', \Maatwebsite\Excel\Excel::TSV, [
-            'Content-Type' => 'text/plain',
+        $date = new DateTime();
+        $date = $date->format('Y-m-d H-i-s');
+        $extension = 'tsv';
+        $file = 'public/TXT Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
+        (new InvoicesExport($since_date, $until_date))->store($file)->chain([
+            (new NotifyUserOfCompletedExport(auth()->user(), $since_date, $until_date, $file))
         ]);
+        return back()->with('info', 'TSV file export in process');
+    }
+
+    public function show()
+    {
+        $user = Auth::user();
+        return view('exports.show', compact('user'));
     }
 }
 

@@ -6,13 +6,14 @@ use App\Invoice;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class InvoicesExport implements FromQuery, ShouldQueue, WithHeadings
+class InvoicesExport implements FromQuery, WithHeadings, ShouldQueue
 {
-    use Exportable, InteractsWithQueue, Queueable;
+    use Exportable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
      * @var string

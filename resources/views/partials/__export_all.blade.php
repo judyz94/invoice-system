@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>{{ __('Choose the format to download.') }}</p>
+                <p class="text-color">{{ __('Choose the format to download.') }}</p>
             </div>
             <div class="modal-footer">
                     <a href="{{ route('XLS') }}" class="btn buttonSave">
