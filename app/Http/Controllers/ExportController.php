@@ -6,8 +6,9 @@ use App\Customer;
 use App\Exports\InvoicesExport;
 use App\Exports\InvoicesExportAll;
 use App\Invoice;
-use App\Jobs\ExportReports;
 use App\Jobs\NotifyUserOfCompletedExport;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Notifications\Notifiable;
 use App\Payment;
 use App\Product;
 use App\Seller;
@@ -18,7 +19,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
-use function GuzzleHttp\Promise\queue;
 
 class ExportController extends Controller
 {
@@ -98,12 +98,9 @@ class ExportController extends Controller
 
     public function downloadXLS($since_date, $until_date)
     {
-        /*$date = Carbon::now();
-        $report = 'ReportPetFriends.xls';
-        $save= asset('storage/' . $report);*/
-        (new InvoicesExport($since_date, $until_date))->store('ReportPetFriends.xls')/*->chain([
-            new NotifyUserOfCompletedExport(request()->user())
-        ])*/;
+        (new InvoicesExport($since_date, $until_date))->store('ReportPetFriends.xls')->chain([
+            new NotifyUserOfCompletedExport($user = Auth::user(), $since_date, $until_date)
+        ]);
         return back()->with('info', 'XLS file export in process');
     }
 
