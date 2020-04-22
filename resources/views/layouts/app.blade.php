@@ -89,6 +89,9 @@
                             @endif
                         @else
                             <li class="nav-item font dropdown">
+                                <a id="navbarDropdown" class="nav-link" href="#">{{ __('Notifications') }} <span class="badge badge-info badge-pill">1</span></a>
+                            </li>
+                            <li class="nav-item font dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>

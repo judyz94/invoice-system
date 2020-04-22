@@ -108,7 +108,7 @@
                             <tr>
                                 <td>{{ $invoice->code }}</td>
                                 <td style="width:120px">{{ $invoice->expedition_date }}</td>
-                                <td style="width:100px">{{ $invoice->due_date }}</td>
+                                <td style="width:120px">{{ $invoice->due_date }}</td>
                                 <td>{{ $invoice->sale_description }}</td>
                                 <td style="width:150px">${{ number_format($invoice->total_with_vat, 2) }}</td>
                                 <td>{{ $invoice->seller->full_name }}</td>
