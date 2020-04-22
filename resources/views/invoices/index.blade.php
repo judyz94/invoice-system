@@ -63,7 +63,6 @@
                                        {{ __('Select format') }}
                                    </button>
                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                       <h2>{{ $exception->getMessage() }}</h2>
                                        <a class="dropdown-item" href="{{ route('downloadXLS', [$since_date, $until_date]) }}" class=" buttonSave">
                                            <i class="fas fa-file-excel"></i> {{ __('XLS') }}</a>
                                        <a class="dropdown-item" href="{{ route('downloadCSV', [$since_date, $until_date]) }}" class="button">
