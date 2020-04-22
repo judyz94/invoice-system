@@ -75,7 +75,7 @@ class ExportController extends Controller
     public function TXT()
     {
         return (new InvoicesExportAll)->download('InvoicesPetFriends.txt', \Maatwebsite\Excel\Excel::TSV, [
-            'Content-Type' => 'text/plain',
+            'Content-Type' => 'text/plain'
         ]);
     }
 
@@ -96,7 +96,7 @@ class ExportController extends Controller
         return view('invoices.index', compact('invoices', 'since_date', 'until_date'));
     }
 
-    public function downloadXLS(Request $request, $since_date, $until_date)
+    public function downloadXLS($since_date, $until_date)
     {
         /*$date = Carbon::now();
         $report = 'ReportPetFriends.xls';
@@ -109,18 +109,14 @@ class ExportController extends Controller
 
     public function downloadCSV($since_date, $until_date)
     {
-        (new ExportReports($since_date, $until_date))->queue('ReportPetFriends.csv');
+        (new InvoicesExport($since_date, $until_date))->store('ReportPetFriends.csv');
         return back()->with('info', 'CSV file export in process');
     }
 
     public function downloadTXT($since_date, $until_date)
     {
-        return (new ExportReports($since_date, $until_date))->download('ReportPetFriends.txt', \Maatwebsite\Excel\Excel::TSV, [
-            'Content-Type' => 'text/plain',
-        ]);
-
-        /*(new ExportReports($since_date, $until_date))->queue('ReportPetFriends.txt');
-        return back()->with('info', 'TXT file export in process');*/
+        (new InvoicesExport($since_date, $until_date))->store('ReportPetFriends.tsv');
+        return back()->with('info', 'TSV file export in process');
     }
 }
 
