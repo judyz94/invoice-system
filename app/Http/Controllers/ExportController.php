@@ -13,16 +13,17 @@ use App\Seller;
 use App\State;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
-use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExportController extends Controller
 {
 
-    private $user;
+    private $user, $since_date, $until_date, $file;
 
     public function downloadPDF(Invoice $invoice, Product $product )
     {
@@ -104,9 +105,15 @@ class ExportController extends Controller
         $date = $date->format('Y-m-d H-i-s');
         $extension = 'xls';
         $file = 'public/XLS Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
+        $user = Auth::user();
+
         (new InvoicesExport($since_date, $until_date))->store($file)->chain([
-           (new NotifyUserOfCompletedExport(auth()->user(), $since_date, $until_date, $file))
+            new NotifyUserOfCompletedExport(auth()->user(), $since_date, $until_date, $file)
         ]);
+
+        //$user->notify(new NotifyUserOfCompletedExport($user, $since_date, $until_date, $file));
+        //Notification::send($user, new NotifyUserOfCompletedExport($user, $since_date, $until_date, $file));
+
         return back()->with('info', 'XLS file export in process');
     }
 
@@ -132,6 +139,12 @@ class ExportController extends Controller
             (new NotifyUserOfCompletedExport(auth()->user(), $since_date, $until_date, $file))
         ]);
         return back()->with('info', 'TSV file export in process');
+    }
+
+    public function show()
+    {
+        $user = Auth::user();
+        return view('exports.show', compact('user'));
     }
 }
 
