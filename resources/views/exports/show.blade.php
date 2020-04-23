@@ -16,6 +16,8 @@
                                 <thead>
                                 <tr>
                                     <th>{{ __('Notification') }}</th>
+                                    <th>{{ __('Since date') }}</th>
+                                    <th>{{ __('Until date') }}</th>
                                 </tr>
                                 </thead>
 
@@ -23,6 +25,8 @@
                                 @foreach ($user->notifications as $notification)
                                     <tr>
                                         <td>{{ $notification->type }}</td>
+                                        <td>{{ $notification->data['since_date'] }}</td>
+                                        <td>{{ $notification->data['until_date'] }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
