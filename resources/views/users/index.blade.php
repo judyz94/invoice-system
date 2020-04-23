@@ -22,11 +22,7 @@
                     <div class="card-header d-flex justify-content-between">
                         <h3 class="card-title mb-0"><strong>{{ __('Users') }}  <i class="fas fa-paw"></i></strong></h3>
                     </div>
-
-                    <!-- Create new user -->
-                    <div class="card-header d-flex justify-content-between">
-
-                    </div>
+                    <div class="card-header d-flex justify-content-between"></div>
 
                     <!-- Users list -->
                     <div class="table-responsive-lg">

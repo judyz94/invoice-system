@@ -25,7 +25,9 @@ class InvoicesExport implements
     private $until_date;
 
     /**
-     * @var string
+     *
+     * @param string $since_date
+     * @param string $until_date
      */
     public function __construct(string $since_date, string $until_date)
     {

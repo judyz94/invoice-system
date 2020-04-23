@@ -38,19 +38,6 @@ class ExportReady extends Notification
         return ['database'];
     }
 
-    /*public function toDatabase($notifiable)
-    {
-        return [
-            'since_date' => $this->since_date,
-            'until_date' => $this->until_date,
-            'file' => $this->file,
-            //'post' => Post::find($this->comment->post_id),
-            'user' => User::find([
-                $this->since_date->user_id,
-                $this->until_date->user_id]),
-        ];
-    }*/
-
     /**
      * Get the array representation of the notification.
      *

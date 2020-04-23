@@ -102,11 +102,8 @@ class ExportController extends Controller
         $user = Auth::user();
 
         (new InvoicesExport($since_date, $until_date))->store($file)->chain([
-            new NotifyUserOfCompletedExport(auth()->user(), $since_date, $until_date, $file)
+            new NotifyUserOfCompletedExport($user, $since_date, $until_date, $file)
         ]);
-
-        //$user->notify(new NotifyUserOfCompletedExport($user, $since_date, $until_date, $file));
-        //Notification::send($user, new NotifyUserOfCompletedExport($user, $since_date, $until_date, $file));
 
         return back()->with('info', 'XLS file export in process');
     }
@@ -117,8 +114,10 @@ class ExportController extends Controller
         $date = $date->format('Y-m-d H-i-s');
         $extension = 'csv';
         $file = 'public/CSV Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
+        $user = Auth::user();
+
         (new InvoicesExport($since_date, $until_date))->store($file)->chain([
-            (new NotifyUserOfCompletedExport(auth()->user(), $since_date, $until_date, $file))
+            (new NotifyUserOfCompletedExport($user, $since_date, $until_date, $file))
         ]);
         return back()->with('info', 'CSV file export in process');
     }
@@ -129,8 +128,10 @@ class ExportController extends Controller
         $date = $date->format('Y-m-d H-i-s');
         $extension = 'tsv';
         $file = 'public/TXT Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
+        $user = Auth::user();
+
         (new InvoicesExport($since_date, $until_date))->store($file)->chain([
-            (new NotifyUserOfCompletedExport(auth()->user(), $since_date, $until_date, $file))
+            (new NotifyUserOfCompletedExport($user, $since_date, $until_date, $file))
         ]);
         return back()->with('info', 'TSV file export in process');
     }

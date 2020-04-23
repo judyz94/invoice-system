@@ -88,12 +88,23 @@
                                 </li>
                             @endif
                         @else
+                            @can('invoices.edit')
                             <li class="nav-item font dropdown">
-                            <a href="{{ route('exports.show') }}" id="navbarDropdown" class="nav-link" role="button" aria-expanded="false">
+                            <a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ __('Notifications') }}
-                                <span class="badge-info badge-pill">{{count(Auth::user()->unreadNotifications)}}</span>
+                                <span class="badge-info badge-pill">{{count(Auth::user()->Notifications)}}</span>
                             </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <ol>
+                                        @foreach (Auth::user()->Notifications as $notification)
+                                            <li>
+                                                <a href="{{ route('exports.show') }}">Export done on {{ $notification->created_at }}.</a>
+                                            </li>
+                                        @endforeach
+                                    </ol>
+                                </ul>
                             </li>
+                            @endcan
 
                             <li class="nav-item font dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

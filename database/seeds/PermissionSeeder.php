@@ -350,6 +350,12 @@ class PermissionSeeder extends Seeder
             'slug' => 'TXT',
             'description' => 'Invoices all TXT export'
         ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Exports show',
+            'slug' => 'exports.show',
+            'description' => 'Show all notifications export'
+        ]);
     }
 }
 
