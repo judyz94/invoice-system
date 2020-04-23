@@ -13,9 +13,15 @@ use Illuminate\Queue\SerializesModels;
 
 class NotifyUserOfCompletedExport implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
-    public $user, $since_date, $until_date, $file;
+    public $user;
+    public $since_date;
+    public $until_date;
+    public $file;
 
     /**
      * NotifyUserOfCompletedExport constructor.

@@ -3,28 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
-use App\Exports\InvoicesExport;
-use App\Exports\InvoicesExportAll;
 use App\Invoice;
-use App\Jobs\NotifyUserOfCompletedExport;
 use App\Payment;
 use App\Product;
 use App\Seller;
 use App\State;
 use App\User;
-use Barryvdh\DomPDF\Facade as PDF;
 use DateTime;
 use Illuminate\Http\Request;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Notifications\Notification;
+use Barryvdh\DomPDF\Facade as PDF;
+use App\Exports\InvoicesExport;
+use App\Exports\InvoicesExportAll;
+use App\Jobs\NotifyUserOfCompletedExport;
 use Illuminate\Support\Facades\Auth;
-use Maatwebsite\Excel\Facades\Excel;
 
 class ExportController extends Controller
 {
-
-    private $user, $since_date, $until_date, $file;
-
     public function downloadPDF(Invoice $invoice, Product $product )
     {
         $invoices = Invoice::all();
