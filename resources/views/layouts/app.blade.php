@@ -95,11 +95,13 @@
                                 <span class="badge-info badge-pill">{{count(Auth::user()->Notifications)}}</span>
                             </a>
                                 <ul class="dropdown-menu" role="menu">
+                                    <ol>
                                         @foreach (Auth::user()->Notifications as $notification)
-                                            <ul>
-                                                <a href="{{ route('exports.show') }}"><i>Export done.</i></a>
-                                            </ul>
+                                            <li>
+                                                <a href="{{ route('exports.show') }}">Export done on {{ $notification->created_at }}.</a>
+                                            </li>
                                         @endforeach
+                                    </ol>
                                 </ul>
                             </li>
                             @endcan

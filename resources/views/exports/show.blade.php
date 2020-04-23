@@ -7,24 +7,27 @@
 
                     <div class="card shadow-lg">
                         <div class="card-header d-flex justify-content-between">
-                            <h3 class="card-title mb-0"><strong>{{ __('Exports Notifications') }}  <i class="fas fa-paw"></i></strong></h3>
+                            <h3 class="card-title mb-0"><strong>{{ __('Exports Notifications') }}  <i class="fas fa-bell"></i></strong></h3>
                         </div>
+                        <div class="card-header d-flex justify-content-between"></div>
 
                         <!-- Notifications list -->
                         <div class="table-responsive-lg">
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th>{{ __('Notification') }}</th>
-                                    <th>{{ __('Since date') }}</th>
-                                    <th>{{ __('Until date') }}</th>
+                                    <th>{{ __('Notification N°') }}</th>
+                                    <th>{{ __('Created') }}</th>
+                                    <th>{{ __('Filter: Since date') }}</th>
+                                    <th>{{ __('Filter: Until date') }}</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
                                 @foreach ($user->notifications as $notification)
                                     <tr>
-                                        <td>{{ $notification->type }}</td>
+                                        <td>{{ $notification->notifiable_id }}</td>
+                                        <td>{{ $notification->created_at }}</td>
                                         <td>{{ $notification->data['since_date'] }}</td>
                                         <td>{{ $notification->data['until_date'] }}</td>
                                     </tr>

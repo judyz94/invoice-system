@@ -87,6 +87,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/TXT/invoices', 'ExportController@TXT')->name('TXT')->middleware('can:TXT');
 
-    Route::get('/export/show/', 'ExportController@show')->name('exports.show');
+    Route::get('/export/show/', 'ExportController@show')->name('exports.show')->middleware('can:exports.show');
 });
 
