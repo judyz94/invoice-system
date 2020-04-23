@@ -16,7 +16,9 @@ class InvoicesExport implements FromQuery, WithHeadings, ShouldQueue
     use Exportable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
-     * @var string
+     *
+     * @param string $since_date
+     * @param string $until_date
      */
     private $since_date, $until_date;
 
