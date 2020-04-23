@@ -7,7 +7,9 @@ use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class InvoicesExportAll implements FromQuery, WithHeadings
+class InvoicesExportAll implements
+    FromQuery,
+    WithHeadings
 {
     use Exportable;
 

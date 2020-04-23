@@ -3,14 +3,15 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class ExportReady extends Notification implements ShouldQueue
+class ExportReady extends Notification
 {
     use Queueable;
 
-    private $since_date, $until_date, $file;
+    private $since_date;
+    private $file;
+    private $until_date;
 
     /**
      * Create a new notification instance.

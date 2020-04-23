@@ -11,15 +11,22 @@ use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class InvoicesExport implements FromQuery, WithHeadings, ShouldQueue
+class InvoicesExport implements
+    FromQuery,
+    WithHeadings,
+    ShouldQueue
 {
-    use Exportable, InteractsWithQueue, Queueable, SerializesModels;
+    use Exportable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
+
+    private $since_date;
+    private $until_date;
 
     /**
      * @var string
      */
-    private $since_date, $until_date;
-
     public function __construct(string $since_date, string $until_date)
     {
         $this->since_date = $since_date;
