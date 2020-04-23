@@ -18,30 +18,30 @@ class NotifyUserOfCompletedExport implements ShouldQueue
     use SerializesModels;
 
     public $user;
-    public $since_date;
-    public $until_date;
+    private $sinceDate;
+    private $untilDate;
     public $file;
 
     /**
      * NotifyUserOfCompletedExport constructor.
      * @param mixed $user
-     * @param $since_date
-     * @param $until_date
+     * @param $sinceDate
+     * @param $untilDate
      * @param $file
      */
-    public function __construct(User $user, $since_date, $until_date, $file)
+    public function __construct(User $user, $sinceDate, $untilDate, $file)
     {
         $this->user = $user;
-        $this->since_date = $since_date;
-        $this->until_date = $until_date;
+        $this->sinceDate = $sinceDate;
+        $this->untilDate = $untilDate;
         $this->file = $file;
     }
 
     public function handle()
     {
         $this->user->notify(new ExportReady(
-            $this->since_date,
-            $this->until_date,
+            $this->sinceDate,
+            $this->untilDate,
             $this->file
         ));
     }

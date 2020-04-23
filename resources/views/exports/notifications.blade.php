@@ -28,8 +28,8 @@
                                     <tr>
                                         <td>{{ $notification->data['file'] }}</td>
                                         <td>{{ $notification->created_at }}</td>
-                                        <td>{{ $notification->data['since_date'] }}</td>
-                                        <td>{{ $notification->data['until_date'] }}</td>
+                                        <td>{{ $notification->data['sinceDate'] }}</td>
+                                        <td>{{ $notification->data['untilDate'] }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

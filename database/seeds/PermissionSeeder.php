@@ -352,9 +352,9 @@ class PermissionSeeder extends Seeder
         ]);
 
         DB::table('permissions')->insert([
-            'name' => 'Exports show',
-            'slug' => 'exports.show',
-            'description' => 'Show all notifications export'
+            'name' => 'Export notifications',
+            'slug' => 'export.notifications',
+            'description' => 'List all export notifications'
         ]);
     }
 }

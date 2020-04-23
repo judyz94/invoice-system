@@ -81,12 +81,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/exportAll/invoices', 'ExportController@exportAll')->name('exportAll')
         ->middleware('can:exportAll');
 
-    Route::get('/XLS/invoices', 'ExportController@XLS')->name('XLS')->middleware('can:XLS');
+    Route::get('/XLS/invoices', 'ExportController@XLS')->name('XLS')
+        ->middleware('can:XLS');
 
-    Route::get('/CSV/invoices', 'ExportController@CSV')->name('CSV')->middleware('can:CSV');
+    Route::get('/CSV/invoices', 'ExportController@CSV')->name('CSV')
+        ->middleware('can:CSV');
 
-    Route::get('/TXT/invoices', 'ExportController@TXT')->name('TXT')->middleware('can:TXT');
+    Route::get('/TXT/invoices', 'ExportController@TXT')->name('TXT')
+        ->middleware('can:TXT');
 
-    Route::get('/export/show/', 'ExportController@show')->name('exports.show')->middleware('can:exports.show');
+    Route::get('/export/notifications', 'ExportController@exportNotifications')->name('export.notifications')
+        ->middleware('can:export.notifications');
 });
 

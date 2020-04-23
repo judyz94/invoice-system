@@ -86,7 +86,7 @@ class PermissionController extends Controller
      * @param Permission $permission
      * @return RedirectResponse
      */
-    public function update(UpdateRequest$request, Permission $permission)
+    public function update(UpdateRequest $request, Permission $permission)
     {
         $permission->name = $request->input('name');
         $permission->slug = $request->input('slug');

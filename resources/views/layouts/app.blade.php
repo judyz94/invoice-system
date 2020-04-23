@@ -98,7 +98,7 @@
                                     <ol>
                                         @foreach (Auth::user()->Notifications as $notification)
                                             <li>
-                                                <a href="{{ route('exports.show') }}">Export done on {{ $notification->created_at }}.</a>
+                                                <a href="{{ route('export.notifications') }}">Export done on {{ $notification->created_at }}.</a>
                                             </li>
                                         @endforeach
                                     </ol>
