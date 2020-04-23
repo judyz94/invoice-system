@@ -16,6 +16,7 @@ use App\Exports\InvoicesExport;
 use App\Exports\InvoicesExportAll;
 use App\Jobs\NotifyUserOfCompletedExport;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ExportController extends Controller
 {

@@ -16,7 +16,7 @@
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th>{{ __('Notification N°') }}</th>
+                                    <th>{{ __('File') }}</th>
                                     <th>{{ __('Created') }}</th>
                                     <th>{{ __('Filter: Since date') }}</th>
                                     <th>{{ __('Filter: Until date') }}</th>
@@ -26,7 +26,7 @@
                                 <tbody>
                                 @foreach ($user->notifications as $notification)
                                     <tr>
-                                        <td>{{ $notification->notifiable_id }}</td>
+                                        <td>{{ $notification->data['file'] }}</td>
                                         <td>{{ $notification->created_at }}</td>
                                         <td>{{ $notification->data['since_date'] }}</td>
                                         <td>{{ $notification->data['until_date'] }}</td>
