@@ -17,9 +17,9 @@
                                 <thead>
                                 <tr>
                                     <th>{{ __('File') }}</th>
-                                    <th>{{ __('Created') }}</th>
-                                    <th>{{ __('Filter: Since date') }}</th>
-                                    <th>{{ __('Filter: Until date') }}</th>
+                                    <th>{{ __('Export date') }}</th>
+                                    <th>{{ __('Type date') }}</th>
+                                    <th style="width:220px">{{ __('Since date / Until date') }}</th>
                                 </tr>
                                 </thead>
 
@@ -28,8 +28,14 @@
                                     <tr>
                                         <td>{{ $notification->data['file'] }}</td>
                                         <td>{{ $notification->created_at }}</td>
-                                        <td>{{ $notification->data['sinceDate'] }}</td>
-                                        <td>{{ $notification->data['untilDate'] }}</td>
+                                        <td>
+                                            @if($notification->data['type'] == 'expedition_date'){{ __('Expedition date') }}
+                                                @elseif($notification->data['type'] == 'due_date'){{ __('Due date') }}
+                                                @else
+                                                {{ __('Receipt date') }}
+                                            @endif
+                                        </td>
+                                        <td style="width:220px">{{ $notification->data['sinceDate'] . ' / ' . $notification->data['untilDate'] }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

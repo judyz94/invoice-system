@@ -298,13 +298,13 @@ class PermissionSeeder extends Seeder
         ]);
 
         DB::table('permissions')->insert([
-            'name' => 'Invoice detail PDF download',
+            'name' => 'Invoice detail PDF',
             'slug' => 'downloadPDF',
             'description' => 'Invoice detail PDF download'
         ]);
 
         DB::table('permissions')->insert([
-            'name' => 'Payment attempts PDF download',
+            'name' => 'Payment attempts PDF',
             'slug' => 'downloadPDF.payment',
             'description' => 'Payment attempts PDF download'
         ]);

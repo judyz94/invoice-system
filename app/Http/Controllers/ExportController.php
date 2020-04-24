@@ -85,17 +85,18 @@ class ExportController extends Controller
 
     public function filter(Request $request)
     {
-        $sinceDate = $request->get('sinceDate');
-        $untilDate = $request->get('untilDate');
+        $type = $request->input('type');
+        $sinceDate = $request->input('sinceDate');
+        $untilDate = $request->input('untilDate');
 
         $invoices = Invoice::orderBy('id', 'ASC')
-            ->export('created_at', $sinceDate, $untilDate)
+            ->export($type, $sinceDate, $untilDate)
             ->paginate(10);
 
-        return view('invoices.index', compact('invoices', 'sinceDate', 'untilDate'));
+        return view('invoices.index', compact('invoices', 'type', 'sinceDate', 'untilDate'));
     }
 
-    public function downloadXLS($sinceDate, $untilDate)
+    public function downloadXLS($type, $sinceDate, $untilDate)
     {
         $date = new DateTime();
         $date = $date->format('Y-m-d H-i-s');
@@ -103,14 +104,14 @@ class ExportController extends Controller
         $file = 'public/XLS Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
         $user = Auth::user();
 
-        (new InvoicesExport($sinceDate, $untilDate))->store($file)->chain([
-            new NotifyUserOfCompletedExport($user, $sinceDate, $untilDate, $file)
+        (new InvoicesExport($type, $sinceDate, $untilDate))->store($file)->chain([
+            new NotifyUserOfCompletedExport($user, $type, $sinceDate, $untilDate, $file)
         ]);
 
         return back()->with('info', 'XLS file export in process');
     }
 
-    public function downloadCSV($sinceDate, $untilDate)
+    public function downloadCSV($type, $sinceDate, $untilDate)
     {
         $date = new DateTime();
         $date = $date->format('Y-m-d H-i-s');
@@ -118,13 +119,13 @@ class ExportController extends Controller
         $file = 'public/CSV Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
         $user = Auth::user();
 
-        (new InvoicesExport($sinceDate, $untilDate))->store($file)->chain([
-            (new NotifyUserOfCompletedExport($user, $sinceDate, $untilDate, $file))
+        (new InvoicesExport($type, $sinceDate, $untilDate))->store($file)->chain([
+            (new NotifyUserOfCompletedExport($user, $type, $sinceDate, $untilDate, $file))
         ]);
         return back()->with('info', 'CSV file export in process');
     }
 
-    public function downloadTXT($sinceDate, $untilDate)
+    public function downloadTXT($type, $sinceDate, $untilDate)
     {
         $date = new DateTime();
         $date = $date->format('Y-m-d H-i-s');
@@ -132,13 +133,13 @@ class ExportController extends Controller
         $file = 'public/TXT Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
         $user = Auth::user();
 
-        (new InvoicesExport($sinceDate, $untilDate))->store($file)->chain([
-            (new NotifyUserOfCompletedExport($user, $sinceDate, $untilDate, $file))
+        (new InvoicesExport($type, $sinceDate, $untilDate))->store($file)->chain([
+            (new NotifyUserOfCompletedExport($user, $type, $sinceDate, $untilDate, $file))
         ]);
         return back()->with('info', 'TSV file export in process');
     }
 
-    public function exportNotifications()
+    public function exportNotifications(Request $request)
     {
         $user = Auth::user();
         return view('exports.notifications', compact('user'));

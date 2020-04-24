@@ -69,13 +69,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/payments/{invoice}/downloadPDF/', 'ExportController@downloadPaymentPDF')->name('downloadPDF.payment')
         ->middleware('can:downloadPDF.payment');
 
-    Route::get('/invoices/downloadXLS/{since_date}/{until_date}', 'ExportController@downloadXLS')->name('downloadXLS')
+    Route::get('/invoices/downloadXLS/{type}/{sinceDate}/{untilDate}', 'ExportController@downloadXLS')->name('downloadXLS')
         ->middleware('can:downloadXLS');
 
-    Route::get('/invoices/downloadCSV/{since_date}/{until_date}', 'ExportController@downloadCSV')->name('downloadCSV')
+    Route::get('/invoices/downloadCSV/{type}/{sinceDate}/{untilDate}', 'ExportController@downloadCSV')->name('downloadCSV')
         ->middleware('can:downloadCSV');
 
-    Route::get('/invoices/downloadTXT/{since_date}/{until_date}', 'ExportController@downloadTXT')->name('downloadTXT')
+    Route::get('/invoices/downloadTXT/{type}/{sinceDate}/{untilDate}', 'ExportController@downloadTXT')->name('downloadTXT')
         ->middleware('can:downloadTXT');
 
     Route::get('/exportAll/invoices', 'ExportController@exportAll')->name('exportAll')

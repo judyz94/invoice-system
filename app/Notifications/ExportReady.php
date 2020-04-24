@@ -12,16 +12,19 @@ class ExportReady extends Notification
     private $sinceDate;
     private $file;
     private $untilDate;
+    private $type;
 
     /**
      * Create a new notification instance.
      *
+     * @param $type
      * @param $sinceDate
      * @param $untilDate
      * @param $file
      */
-    public function __construct($sinceDate, $untilDate, $file)
+    public function __construct($type, $sinceDate, $untilDate, $file)
     {
+        $this->type = $type;
         $this->sinceDate = $sinceDate;
         $this->untilDate = $untilDate;
         $this->file = $file;
@@ -47,11 +50,11 @@ class ExportReady extends Notification
     public function toArray($notifiable)
     {
         return [
-            'since_date' => $this->sinceDate,
-            'until_date' => $this->untilDate,
+            'type' => $this->type,
+            'sinceDate' => $this->sinceDate,
+            'untilDate' => $this->untilDate,
             'file' => $this->file
         ];
     }
-
 }
 
