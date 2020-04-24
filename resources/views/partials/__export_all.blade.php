@@ -13,13 +13,13 @@
                 <p class="text-color">{{ __('Choose the format to download.') }}</p>
             </div>
             <div class="modal-footer">
-                    <a href="{{ route('XLS') }}" class="btn buttonSave">
+                    <a href="{{ route('downloadXLS') }}" class="btn buttonSave">
                         <i class="fas fa-file-excel"></i> {{ __('XLS') }}
                     </a>
-                    <a href="{{ route('CSV') }}" class="btn buttonBack">
+                    <a href="{{ route('downloadCSV') }}" class="btn buttonBack">
                         <i class="fas fa-file-csv"></i> {{ __('CSV') }}
                     </a>
-                    <a href="{{ route('TXT') }}" class="btn button">
+                    <a href="{{ route('downloadTXT') }}" class="btn button">
                         <i class="fas fa-file-alt"></i> {{ __('TXT') }}
                     </a>
             </div>

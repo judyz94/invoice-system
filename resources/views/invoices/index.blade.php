@@ -63,11 +63,11 @@
                                        {{ __('Select format') }}
                                    </button>
                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                       <a class="dropdown-item" href="{{ route('downloadXLS', [$type, $sinceDate, $untilDate]) }}" class=" buttonSave">
+                                       <a class="dropdown-item" href="{{ route('export.report', [$type, $sinceDate, $untilDate, 'xls']) }}" class=" buttonSave">
                                            <i class="fas fa-file-excel"></i> {{ __('XLS') }}</a>
-                                       <a class="dropdown-item" href="{{ route('downloadCSV', [$type, $sinceDate, $untilDate]) }}" class="button">
+                                       <a class="dropdown-item" href="{{ route('export.report', [$type, $sinceDate, $untilDate, 'csv']) }}" class="button">
                                            <i class="fas fa-file-csv"></i> {{ __('CSV') }}</a>
-                                       <a class="dropdown-item" href="{{ route('downloadTXT', [$type, $sinceDate, $untilDate]) }}" class="buttonBlue">
+                                       <a class="dropdown-item" href="{{ route('export.report', [$type, $sinceDate, $untilDate, 'tsv']) }}" class="buttonBlue">
                                            <i class="fas fa-file-alt"></i> {{ __('TXT') }}
                                        </a>
                                    </div>

@@ -29,7 +29,7 @@
                         </a>
 
                     <!-- Button PDF export -->
-                    <a href="{{ route('downloadPDF', $invoice) }}" class="btn buttonCancel">
+                    <a href="{{ route('downloadPDF.invoice', $invoice) }}" class="btn buttonCancel">
                         <i class="fas fa-file-pdf"></i> {{ __('Download PDF') }}
                     </a>
                     </div>

@@ -299,7 +299,7 @@ class PermissionSeeder extends Seeder
 
         DB::table('permissions')->insert([
             'name' => 'Invoice detail PDF',
-            'slug' => 'downloadPDF',
+            'slug' => 'downloadPDF.invoice',
             'description' => 'Invoice detail PDF download'
         ]);
 
@@ -312,43 +312,31 @@ class PermissionSeeder extends Seeder
         DB::table('permissions')->insert([
             'name' => 'Invoices XLS export',
             'slug' => 'downloadXLS',
-            'description' => 'Invoices XLS export'
+            'description' => 'Invoices all XLS export'
         ]);
 
         DB::table('permissions')->insert([
             'name' => 'Invoices CSV export',
             'slug' => 'downloadCSV',
-            'description' => 'Invoices CSV export'
+            'description' => 'Invoices all CSV export'
         ]);
 
         DB::table('permissions')->insert([
             'name' => 'Invoices TXT export',
             'slug' => 'downloadTXT',
-            'description' => 'Invoices TXT export'
+            'description' => 'Invoices all TXT export'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Invoice report export',
+            'slug' => 'export.report',
+            'description' => 'Invoice report export'
         ]);
 
         DB::table('permissions')->insert([
             'name' => 'Modal export all invoices',
             'slug' => 'exportAll',
             'description' => 'Modal export all invoices'
-        ]);
-
-        DB::table('permissions')->insert([
-            'name' => 'Invoices all XLS export',
-            'slug' => 'XLS',
-            'description' => 'Invoices all XLS export'
-        ]);
-
-        DB::table('permissions')->insert([
-            'name' => 'Invoices all CSV export',
-            'slug' => 'CSV',
-            'description' => 'Invoices all CSV export'
-        ]);
-
-        DB::table('permissions')->insert([
-            'name' => 'Invoices all TXT export',
-            'slug' => 'TXT',
-            'description' => 'Invoices all TXT export'
         ]);
 
         DB::table('permissions')->insert([

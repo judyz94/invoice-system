@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ExportController extends Controller
 {
-    public function downloadPDF(Invoice $invoice, Product $product )
+    public function downloadPDF(Invoice $invoice, Product $product)
     {
         $invoices = Invoice::all();
         $states = State::all();
@@ -57,13 +57,13 @@ class ExportController extends Controller
         return view('partials.__export_all');
     }
 
-    public function XLS()
+    public function downloadXLS()
     {
         return (new InvoicesExportAll)->download('InvoicesPetFriends.xls');
     }
 
 
-    public function CSV()
+    public function downloadCSV()
     {
         return (new InvoicesExportAll)->download('InvoicesPetFriends.csv', \Maatwebsite\Excel\Excel::CSV, [
             'Content-Type' => 'text/csv',
@@ -71,7 +71,7 @@ class ExportController extends Controller
         ]);
     }
 
-    public function TXT()
+    public function downloadTXT()
     {
         return (new InvoicesExportAll)->download('InvoicesPetFriends.txt', \Maatwebsite\Excel\Excel::TSV, [
             'Content-Type' => 'text/plain'
@@ -96,53 +96,41 @@ class ExportController extends Controller
         return view('invoices.index', compact('invoices', 'type', 'sinceDate', 'untilDate'));
     }
 
-    public function downloadXLS($type, $sinceDate, $untilDate)
+    public function exportReport($type, $sinceDate, $untilDate, $extension)
     {
         $date = new DateTime();
         $date = $date->format('Y-m-d H-i-s');
-        $extension = 'xls';
-        $file = 'public/XLS Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
+        $path = 'public/Reports/';
+        $file = $path.'ReportPetFriends' .$date. '.' .$extension;
         $user = Auth::user();
 
-        (new InvoicesExport($type, $sinceDate, $untilDate))->store($file)->chain([
-            new NotifyUserOfCompletedExport($user, $type, $sinceDate, $untilDate, $file)
+        (new InvoicesExport($type, $sinceDate, $untilDate, $extension))->store($file)->chain([
+            new NotifyUserOfCompletedExport($user, $type, $sinceDate, $untilDate, $extension, $file)
         ]);
 
-        return back()->with('info', 'XLS file export in process');
-    }
-
-    public function downloadCSV($type, $sinceDate, $untilDate)
-    {
-        $date = new DateTime();
-        $date = $date->format('Y-m-d H-i-s');
-        $extension = 'csv';
-        $file = 'public/CSV Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
-        $user = Auth::user();
-
-        (new InvoicesExport($type, $sinceDate, $untilDate))->store($file)->chain([
-            (new NotifyUserOfCompletedExport($user, $type, $sinceDate, $untilDate, $file))
-        ]);
-        return back()->with('info', 'CSV file export in process');
-    }
-
-    public function downloadTXT($type, $sinceDate, $untilDate)
-    {
-        $date = new DateTime();
-        $date = $date->format('Y-m-d H-i-s');
-        $extension = 'tsv';
-        $file = 'public/TXT Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
-        $user = Auth::user();
-
-        (new InvoicesExport($type, $sinceDate, $untilDate))->store($file)->chain([
-            (new NotifyUserOfCompletedExport($user, $type, $sinceDate, $untilDate, $file))
-        ]);
-        return back()->with('info', 'TSV file export in process');
+        return back()->with('info', 'File export in process.');
     }
 
     public function exportNotifications(Request $request)
     {
         $user = Auth::user();
+
         return view('exports.notifications', compact('user'));
     }
+
+    public function downloadFile($date, $extension)
+    {
+        $path = 'public/TXT/';
+        $file = $path.'ReportPetFriends' .$date. '.' .$extension;
+        return response()->download($file);
+    }
+
+    public function destroy($file)
+    {
+        $file->delete();
+
+        return redirect()->route('report.destroy')->with('info', 'Report successfully deleted.');
+    }
 }
+
 

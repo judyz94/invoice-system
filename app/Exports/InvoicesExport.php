@@ -24,18 +24,21 @@ class InvoicesExport implements
     private $type;
     private $sinceDate;
     private $untilDate;
+    private $extension;
 
     /**
      *
      * @param string $type
      * @param string $sinceDate
      * @param string $untilDate
+     * @param string $extension
      */
-    public function __construct(string $type, string $sinceDate, string $untilDate)
+    public function __construct(string $type, string $sinceDate, string $untilDate, string $extension)
     {
         $this->type = $type;
         $this->sinceDate = $sinceDate;
         $this->untilDate = $untilDate;
+        $this->extension = $extension;
     }
 
     public function query()
