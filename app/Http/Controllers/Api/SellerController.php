@@ -14,14 +14,20 @@ use Illuminate\Http\Response;
 
 class SellerController extends Controller
 {
+    public $successStatus = 200;
+
     /**
      * Display a listing of the resource.
      *
-     * @return Seller[]|Collection
+     * @return JsonResponse
      */
     public function index()
     {
-        return Seller::all();
+        $seller = Seller::all();
+
+        return response()->json([
+            'success' => $seller],
+            $this-> successStatus);
     }
 
     /**
@@ -30,22 +36,27 @@ class SellerController extends Controller
      * @param StoreRequest $request
      * @param Seller $seller
      * @param StoreAction $action
-     * @return Response
+     * @return JsonResponse
      */
     public function store(StoreRequest $request, Seller $seller, StoreAction $action)
     {
-        return $action->execute($seller, $request);
+        return response()->json([
+            'message' => 'Seller successfully created.',
+            'success' => $action->execute($seller, $request)],
+            $this-> successStatus);
     }
 
     /**
      * Display the specified resource.
      *
      * @param Seller $seller
-     * @return Seller
+     * @return JsonResponse
      */
     public function show(Seller $seller)
     {
-        return $seller;
+        return response()->json([
+            'success' => $seller],
+            $this-> successStatus);
     }
 
     /**
@@ -54,11 +65,14 @@ class SellerController extends Controller
      * @param UpdateRequest $request
      * @param Seller $seller
      * @param UpdateAction $action
-     * @return Response
+     * @return JsonResponse
      */
     public function update(UpdateRequest $request, Seller $seller, UpdateAction $action)
     {
-        return $action->execute($seller, $request);
+        return response()->json([
+            'message' => 'Seller successfully updated.',
+            'success' => $action->execute($seller, $request)],
+            $this-> successStatus);
     }
 
     /**
@@ -72,7 +86,9 @@ class SellerController extends Controller
     {
         $seller->delete();
 
-        return response()->json(__('The seller has been removed'));
+        return response()->json([
+            'message' => 'Seller successfully deleted.'],
+            $this-> successStatus);
     }
 }
 

@@ -13,15 +13,19 @@ use Illuminate\Http\JsonResponse;
 
 class InvoiceProductController extends Controller
 {
+    public $successStatus = 200;
+
     /**
      * Display a listing of the resource.
      *
      * @param Invoice $invoice
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return JsonResponse
      */
     public function index(Invoice $invoice)
     {
-       return $invoice->products;
+        return response()->json([
+            'success' => $invoice->products],
+            $this-> successStatus);
     }
 
     /**
@@ -36,12 +40,16 @@ class InvoiceProductController extends Controller
     {
         $price = $request->input('price');
         $quantity = $request->input('quantity');
+
         $invoice->products()->attach($request->input('product_id'), [
             'price' => $price,
             'quantity' => $quantity,
         ]);
 
-        return response()->json(__('The invoice detail has been created'));
+        return response()->json([
+            'message' => 'Invoice detail successfully created.'],
+            //'success' => $invoice->products],
+            $this-> successStatus);
     }
 
     /**
@@ -58,7 +66,9 @@ class InvoiceProductController extends Controller
         $product = $invoice->products()->findOrFail($product);
         $invoice->products()->updateExistingPivot($product->id, $request->validated());
 
-        return response()->json(__('The invoice detail has been updated'));
+        return response()->json([
+            'message' => 'Invoice detail successfully updated.'],
+            $this-> successStatus);
     }
 
     /**
@@ -72,7 +82,8 @@ class InvoiceProductController extends Controller
     {
         $invoice->products()->detach($product->id);
 
-        return response()->json(__('The invoice detail has been removed'));
-    }
+        return response()->json([
+            'message' => 'Invoice detail successfully deleted.'],
+            $this-> successStatus);    }
 }
 

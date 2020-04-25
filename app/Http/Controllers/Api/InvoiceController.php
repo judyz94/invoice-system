@@ -14,14 +14,20 @@ use Illuminate\Http\Response;
 
 class InvoiceController extends Controller
 {
+    public $successStatus = 200;
+
     /**
      * Display a listing of the resource.
      *
-     * @return Invoice[]|Collection
+     * @return JsonResponse
      */
     public function index()
     {
-        return Invoice::all();
+        $invoice = Invoice::all();
+
+        return response()->json([
+            'success' => $invoice],
+            $this-> successStatus);
     }
 
     /**
@@ -30,22 +36,27 @@ class InvoiceController extends Controller
      * @param StoreRequest $request
      * @param Invoice $invoice
      * @param StoreAction $action
-     * @return Response
+     * @return JsonResponse
      */
     public function store(StoreRequest $request, Invoice $invoice, StoreAction $action)
     {
-        return $action->execute($invoice, $request);
+        return response()->json([
+            'message' => 'Invoice successfully created.',
+            'success' => $action->execute($invoice, $request)],
+            $this-> successStatus);
     }
 
     /**
      * Display the specified resource.
      *
      * @param Invoice $invoice
-     * @return Invoice
+     * @return JsonResponse
      */
     public function show(Invoice $invoice)
     {
-        return $invoice;
+        return response()->json([
+            'success' => $invoice],
+            $this-> successStatus);
     }
 
     /**
@@ -54,11 +65,14 @@ class InvoiceController extends Controller
      * @param UpdateRequest $request
      * @param Invoice $invoice
      * @param UpdateAction $action
-     * @return Response
+     * @return JsonResponse
      */
     public function update(UpdateRequest $request, Invoice $invoice, UpdateAction $action)
     {
-        return $action->execute($invoice, $request);
+        return response()->json([
+            'message' => 'Invoice successfully updated.',
+            'success' => $action->execute($invoice, $request)],
+            $this-> successStatus);
     }
 
     /**
@@ -72,7 +86,9 @@ class InvoiceController extends Controller
     {
         $invoice->delete();
 
-        return response()->json(__('The invoice has been removed'));
+        return response()->json([
+            'message' => 'Invoice successfully deleted.'],
+            $this-> successStatus);
     }
 }
 
