@@ -55,6 +55,10 @@
                                                title="{{ __('Download Report') }}">
                                                 <i class="fas fa-download" style="color:forestgreen"></i>
                                             </a>
+                                            {{--<a href="{{ route('report.download', $notification) }}" class="btn btn-link"
+                                               title="{{ __('Download Report') }}">
+                                                <i class="fas fa-download" style="color:forestgreen"></i>
+                                            </a>--}}
                                             <button type="button" class="btn btn-link text-danger"
                                                     data-route="{{ route('report.destroy', $notification) }}"
                                                     data-toggle="modal" data-target="#confirmDeleteModal"

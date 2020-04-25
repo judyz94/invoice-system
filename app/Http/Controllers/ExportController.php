@@ -48,8 +48,8 @@ class ExportController extends Controller
         $date = new DateTime();
         $date = $date->format('Y-m-d H-i-s');
         $path = 'public/Reports/';
-        $name = 'ReportPetFriends' .$date. '.' .$extension;
-        $file = $path.'ReportPetFriends' .$date. '.' .$extension;
+        $name = 'ReportPetFriends' . '.' . $extension;
+        $file = $path . 'ReportPetFriends' . $date . '.' . $extension;
         $url = asset('storage/' . $file);
         $user = Auth::user();
 
@@ -70,17 +70,19 @@ class ExportController extends Controller
         return view('exports.index', compact('user'));
     }
 
-    /*public function downloadFile($file)
+    public function downloadFile($id)
     {
-        return Storage::download($file);
-    }*/
+        foreach (Auth::user()->notifications as $notification) {
+           return Storage::download($notification);
+        }
+    }
 
     public function destroy($id)
     {
         foreach (Auth::user()->notifications as $notification) {
             if ($notification->id == $id) {
                 $notification->delete();
-                return redirect()->route('report.index')->with('info', 'Report successfully deleted.');
+                return redirect()->route('reports.index')->with('info', 'Report successfully deleted.');
             }
         }
     }

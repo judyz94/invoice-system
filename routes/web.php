@@ -90,6 +90,6 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/report/destroy/{notification}', 'ExportController@destroy')->name('report.destroy');
 
 
-    Route::get('/report/download/{url}', 'ExportController@downloadFile')->name('report.download');
+    Route::get('/report/download/{notification}', 'ExportController@downloadFile')->name('report.download');
 });
 
