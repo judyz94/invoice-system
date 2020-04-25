@@ -340,9 +340,15 @@ class PermissionSeeder extends Seeder
         ]);
 
         DB::table('permissions')->insert([
-            'name' => 'Export notifications',
-            'slug' => 'export.notifications',
-            'description' => 'List all export notifications'
+            'name' => 'Exported reports index',
+            'slug' => 'reports.index',
+            'description' => 'List all export reports'
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'Delete exports',
+            'slug' => 'report.destroy',
+            'description' => 'Delete exported report'
         ]);
     }
 }
