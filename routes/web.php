@@ -81,13 +81,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/TXT/invoices', 'ExportController@downloadTXT')->name('downloadTXT')
         ->middleware('can:downloadTXT');
 
-    Route::get('/invoices/exportReports/{type}/{sinceDate}/{untilDate}/{extension}', 'ExportController@exportReport')->name('export.report')
+    Route::get('/export/report/{type}/{sinceDate}/{untilDate}/{extension}', 'ExportController@exportReport')->name('export.report')
         ->middleware('can:export.report');
 
     Route::get('/export/notifications', 'ExportController@exportNotifications')->name('export.notifications')
         ->middleware('can:export.notifications');
 
-    Route::get('/report/download', 'ExportController@downloadFile')->name('report.download');
+
+    Route::get('/report/download/{url}', 'ExportController@downloadFile')->name('report.download');
+
+    Route::get('/export/reports/', 'ExportController@index')->name('report.index');
 
     Route::delete('/report/destroy/{notification}', 'ExportController@destroy')->name('report.destroy');
 });
