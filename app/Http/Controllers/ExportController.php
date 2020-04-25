@@ -15,6 +15,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use App\Exports\InvoicesExport;
 use App\Exports\InvoicesExportAll;
 use App\Jobs\NotifyUserOfCompletedExport;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -49,7 +50,7 @@ class ExportController extends Controller
         $date = $date->format('Y-m-d H-i-s');
         $path = 'public/Reports/';
         $name = 'ReportPetFriends' . '.' . $extension;
-        $file = $path . 'ReportPetFriends' . $date . '.' . $extension;
+        $file = $path . 'ReportPetFriends-' . $date . '.' . $extension;
         $url = asset('storage/' . $file);
         $user = Auth::user();
 
@@ -70,10 +71,11 @@ class ExportController extends Controller
         return view('exports.index', compact('user'));
     }
 
-    public function downloadFile($id)
+    public function downloadFile()
     {
         foreach (Auth::user()->notifications as $notification) {
-           return Storage::download($notification);
+            $notification = $notification->data['url'];
+            return Storage::download($notification);
         }
     }
 
