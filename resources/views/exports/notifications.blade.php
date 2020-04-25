@@ -20,14 +20,12 @@
                                     <th>{{ __('Export date') }}</th>
                                     <th>{{ __('Type date') }}</th>
                                     <th style="width:220px">{{ __('Since date / Until date') }}</th>
-                                    <th>{{ __('Actions') }}</th>
                                 </tr>
                                 </thead>
-
                                 <tbody>
                                 @forelse ($user->notifications as $notification)
                                     <tr>
-                                        <td>{{ $notification->data['file'] }}</td>
+                                        <td>{{ $notification->data['url'] }}</td>
                                         <td>{{ $notification->created_at }}</td>
                                         <td>
                                             @if($notification->data['type'] == 'expedition_date'){{ __('Expedition date') }}
@@ -37,20 +35,6 @@
                                             @endif
                                         </td>
                                         <td style="width:220px">{{ $notification->data['sinceDate'] . ' / ' . $notification->data['untilDate'] }}</td>
-                                        <td>
-                                        <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
-                                            <a href="{{ 'report.download' }}" class="btn btn-link"
-                                               title="{{ __('Download Report') }}">
-                                                <i class="fas fa-download" style="color:forestgreen"></i>
-                                            </a>
-                                            <button type="button" class="btn btn-link text-danger"
-                                                    data-route="{{ route('report.destroy', $notification->data['file']) }}"
-                                                    data-toggle="modal" data-target="#confirmDeleteModal"
-                                                    title="{{ __('Delete Report') }}">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </div>
-                                        </td>
                                     </tr>
                                     <!-- Alert when there are no notifications -->
                                 @empty
