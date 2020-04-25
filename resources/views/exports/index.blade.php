@@ -28,7 +28,7 @@
                                 <thead>
                                 <tr>
                                     <th>{{ __('File') }}</th>
-                                    <th>{{ __('Export date') }}</th>
+                                    <th style="width:150px">{{ __('Export date') }}</th>
                                     <th>{{ __('Type date') }}</th>
                                     <th style="width:220px">{{ __('Since date / Until date') }}</th>
                                     <th>{{ __('Actions') }}</th>
@@ -38,8 +38,8 @@
                                 <tbody>
                                 @forelse ($user->notifications as $notification)
                                     <tr>
-                                        <td>{{ $notification->data['url'] }}</td>
-                                        <td>{{ $notification->created_at }}</td>
+                                        <td>{{ $notification->data['name'] }}</td>
+                                        <td style="width:150px">{{ $notification->created_at }}</td>
                                         <td>
                                             @if($notification->data['type'] == 'expedition_date'){{ __('Expedition date') }}
                                                 @elseif($notification->data['type'] == 'due_date'){{ __('Due date') }}
@@ -51,7 +51,7 @@
 
                                         <td>
                                         <div class="btn-group btn-group-sm" role="group" aria-label="{{ __('Actions') }}">
-                                            <a href="{{ $notification->data['url']}}" class="btn btn-link"
+                                            <a href="{{ $notification->data['url'] }}" class="btn btn-link"
                                                title="{{ __('Download Report') }}">
                                                 <i class="fas fa-download" style="color:forestgreen"></i>
                                             </a>
@@ -64,11 +64,11 @@
                                         </div>
                                         </td>
                                     </tr>
-                                    <!-- Alert when there are no notifications -->
+                                    <!-- Alert when there are no exports -->
                                 @empty
                                     <tr>
                                         <p class="alert alert-secondary text-center">
-                                            {{ __('No notifications were found') }}
+                                            {{ __('No exports were found') }}
                                         </p>
                                     </tr>
                                 @endforelse

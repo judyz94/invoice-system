@@ -63,7 +63,7 @@
                         @endcan
                             @can('invoices.edit')
                                 <li class="nav-item font">
-                                    <a class="nav-link" href="{{ route('report.index') }}"><i class="fas fa-file-export"></i> {{ __('Exports') }}</a>
+                                    <a class="nav-link" href="{{ route('reports.index') }}"><i class="fas fa-file-export"></i> {{ __('Exports') }}</a>
                                 </li>
                             @endcan
                     </ul>
@@ -93,7 +93,7 @@
                                 </li>
                             @endif
                         @else
-                            @can('invoices.edit')
+                            @can('reports.index')
                             <li class="nav-item font dropdown">
                             <a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ __('Notifications') }}
@@ -103,7 +103,7 @@
                                     <ol>
                                         @foreach (Auth::user()->unreadNotifications as $notification)
                                             <li>
-                                                <a href="{{ route('export.notifications') }}">Export done on {{ $notification->created_at }}.</a>
+                                                <a href="{{ route('reports.index') }}">Export done on {{ $notification->created_at }}.</a>
                                             </li>
                                         @endforeach
                                     </ol>

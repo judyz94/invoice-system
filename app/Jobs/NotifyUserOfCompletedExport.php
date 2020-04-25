@@ -22,7 +22,8 @@ class NotifyUserOfCompletedExport implements ShouldQueue
     private $untilDate;
     private $type;
     private $extension;
-    public $file;
+    public $name;
+    public $url;
 
     /**
      * NotifyUserOfCompletedExport constructor.
@@ -31,16 +32,18 @@ class NotifyUserOfCompletedExport implements ShouldQueue
      * @param $sinceDate
      * @param $untilDate
      * @param $extension
-     * @param $file
+     * @param $name
+     * @param $url
      */
-    public function __construct(User $user, $type, $sinceDate, $untilDate, $extension, $file)
+    public function __construct(User $user, $type, $sinceDate, $untilDate, $extension, $name, $url)
     {
         $this->user = $user;
         $this->type = $type;
         $this->sinceDate = $sinceDate;
         $this->untilDate = $untilDate;
         $this->extension = $extension;
-        $this->file = $file;
+        $this->name = $name;
+        $this->url = $url;
     }
 
     public function handle()
@@ -50,7 +53,8 @@ class NotifyUserOfCompletedExport implements ShouldQueue
             $this->sinceDate,
             $this->untilDate,
             $this->extension,
-            $this->file
+            $this->name,
+            $this->url
         ));
     }
 }

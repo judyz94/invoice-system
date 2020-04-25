@@ -46,6 +46,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pendingPayment/invoices', 'InvoiceController@pendingPayment')->name('pendingPayment')
         ->middleware('can:pendingPayment');
 
+    Route::get('/invoiceReport/invoices', 'ExportController@invoiceReport')->name('invoiceReport')
+        ->middleware('can:invoiceReport');
+
+    Route::get('/exportAll/invoices', 'ExportController@exportAll')->name('exportAll')
+        ->middleware('can:exportAll');
+
     //API integration
     Route::post('/invoices/{invoice}', 'PaymentController@store')->name('payments.store')
         ->middleware('can:payments.store');
@@ -56,42 +62,34 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/payment/show/{invoice}/', 'paymentController@payments')->name('payments')
         ->middleware('can:payments');
 
-    //Exports
-    Route::get('/invoiceReport/invoices', 'ExportController@invoiceReport')->name('invoiceReport')
-        ->middleware('can:invoiceReport');
-
-    Route::get('/invoices/export/filter', 'ExportController@filter')->name('invoices.filter')
-        ->middleware('can:invoices.filter');
-
-    Route::get('/invoices/{invoice}/downloadPDF/', 'ExportController@downloadPDF')->name('downloadPDF.invoice')
+    //Download
+    Route::get('/invoices/{invoice}/downloadPDF/', 'DownloadController@downloadInvoicePDF')->name('downloadPDF.invoice')
         ->middleware('can:downloadPDF.invoice');
 
-    Route::get('/payments/{invoice}/downloadPDF/', 'ExportController@downloadPaymentPDF')->name('downloadPDF.payment')
+    Route::get('/payments/{invoice}/downloadPDF/', 'DownloadController@downloadPaymentPDF')->name('downloadPDF.payment')
         ->middleware('can:downloadPDF.payment');
 
-    Route::get('/exportAll/invoices', 'ExportController@exportAll')->name('exportAll')
-        ->middleware('can:exportAll');
-
-    Route::get('/XLS/invoices', 'ExportController@downloadXLS')->name('downloadXLS')
+    Route::get('/XLS/invoices', 'DownloadController@downloadXLS')->name('downloadXLS')
         ->middleware('can:downloadXLS');
 
-    Route::get('/CSV/invoices', 'ExportController@downloadCSV')->name('downloadCSV')
+    Route::get('/CSV/invoices', 'DownloadController@downloadCSV')->name('downloadCSV')
         ->middleware('can:downloadCSV');
 
-    Route::get('/TXT/invoices', 'ExportController@downloadTXT')->name('downloadTXT')
+    Route::get('/TXT/invoices', 'DownloadController@downloadTXT')->name('downloadTXT')
         ->middleware('can:downloadTXT');
+
+    //Exports
+    Route::get('/invoices/export/filter', 'ExportController@filter')->name('invoices.filter')
+        ->middleware('can:invoices.filter');
 
     Route::get('/export/report/{type}/{sinceDate}/{untilDate}/{extension}', 'ExportController@exportReport')->name('export.report')
         ->middleware('can:export.report');
 
-    Route::get('/export/notifications', 'ExportController@exportNotifications')->name('export.notifications')
-        ->middleware('can:export.notifications');
+    Route::get('/export/reports/', 'ExportController@index')->name('reports.index');
+
+    Route::delete('/report/destroy/{notification}', 'ExportController@destroy')->name('report.destroy');
 
 
     Route::get('/report/download/{url}', 'ExportController@downloadFile')->name('report.download');
-
-    Route::get('/export/reports/', 'ExportController@index')->name('report.index');
-
-    Route::delete('/report/destroy/{notification}', 'ExportController@destroy')->name('report.destroy');
 });
 

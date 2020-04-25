@@ -20,62 +20,9 @@ use Illuminate\Support\Facades\Storage;
 
 class ExportController extends Controller
 {
-    public function downloadPDF(Invoice $invoice, Product $product)
-    {
-        $invoices = Invoice::all();
-        $states = State::all();
-        $customers = Customer::all();
-        $sellers = Seller::all();
-        $users = User::all();
-
-        $data = [
-            'title' => 'InvoicePetFriends'
-        ];
-
-        $pdf = PDF::loadView('invoices.invoice_download', $data,
-            compact('invoice', 'invoices', 'states', 'sellers', 'customers', 'users', 'product'));
-
-        return $pdf->download('InvoicePetFriends.pdf');
-    }
-
-    public function downloadPaymentPDF(Invoice $invoice)
-    {
-        $payments = Payment::all();
-
-        $data = [
-            'title' => 'PaymentAttemptsPetFriends'
-        ];
-
-        $pdf = PDF::loadView('payments.payment_download', $data, compact('invoice', 'payments'));
-        $pdf->setPaper('a4', 'landscape');
-
-        return $pdf->download('PaymentAttemptsPetFriends.pdf');
-    }
-
     public function exportAll()
     {
         return view('partials.__export_all');
-    }
-
-    public function downloadXLS()
-    {
-        return (new InvoicesExportAll)->download('InvoicesPetFriends.xls');
-    }
-
-
-    public function downloadCSV()
-    {
-        return (new InvoicesExportAll)->download('InvoicesPetFriends.csv', \Maatwebsite\Excel\Excel::CSV, [
-            'Content-Type' => 'text/csv',
-            'Content-disposition: attachment'
-        ]);
-    }
-
-    public function downloadTXT()
-    {
-        return (new InvoicesExportAll)->download('InvoicesPetFriends.txt', \Maatwebsite\Excel\Excel::TSV, [
-            'Content-Type' => 'text/plain'
-        ]);
     }
 
     public function invoiceReport()
@@ -101,44 +48,32 @@ class ExportController extends Controller
         $date = new DateTime();
         $date = $date->format('Y-m-d H-i-s');
         $path = 'public/Reports/';
+        $name = 'ReportPetFriends' .$date. '.' .$extension;
         $file = $path.'ReportPetFriends' .$date. '.' .$extension;
         $url = asset('storage/' . $file);
         $user = Auth::user();
 
         (new InvoicesExport($type, $sinceDate, $untilDate, $extension))->store($file, 'public')->chain([
-            new NotifyUserOfCompletedExport($user, $type, $sinceDate, $untilDate, $extension, $url)
+            new NotifyUserOfCompletedExport($user, $type, $sinceDate, $untilDate, $extension, $name, $url)
         ]);
 
         return back()->with('info', 'File export in process.');
     }
 
-    public function exportNotifications()
-    {
-        $user = Auth::user();
-        $user->unreadNotifications->markAsRead();
-
-        foreach ($user->unreadNotifications as $notification) {
-            $notification->type;
-        }
-
-        return view('exports.notifications', compact('user'));
-    }
-
-    public function downloadFile($file)
-    {
-        return Storage::download($file);
-    }
-
     public function index()
     {
         $user = Auth::user();
-
-        foreach ($user->notifications as $notification) {
-            $notification->type;
+        foreach ($user->unreadNotifications as $notification) {
+            $notification->markAsRead();
         }
 
         return view('exports.index', compact('user'));
     }
+
+    /*public function downloadFile($file)
+    {
+        return Storage::download($file);
+    }*/
 
     public function destroy($id)
     {
