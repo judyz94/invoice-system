@@ -10,10 +10,10 @@ class ExportReady extends Notification
     use Queueable;
 
     private $sinceDate;
-    private $file;
     private $untilDate;
     private $type;
     private $extension;
+    public $file;
 
     /**
      * Create a new notification instance.
@@ -57,7 +57,7 @@ class ExportReady extends Notification
             'sinceDate' => $this->sinceDate,
             'untilDate' => $this->untilDate,
             'extension' => $this->extension,
-            'file' => $this->file
+            'url' => $this->file
         ];
     }
 }

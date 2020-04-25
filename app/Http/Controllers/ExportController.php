@@ -102,34 +102,52 @@ class ExportController extends Controller
         $date = $date->format('Y-m-d H-i-s');
         $path = 'public/Reports/';
         $file = $path.'ReportPetFriends' .$date. '.' .$extension;
+        $url = asset('storage/' . $file);
         $user = Auth::user();
 
-        (new InvoicesExport($type, $sinceDate, $untilDate, $extension))->store($file)->chain([
-            new NotifyUserOfCompletedExport($user, $type, $sinceDate, $untilDate, $extension, $file)
+        (new InvoicesExport($type, $sinceDate, $untilDate, $extension))->store($file, 'public')->chain([
+            new NotifyUserOfCompletedExport($user, $type, $sinceDate, $untilDate, $extension, $url)
         ]);
 
         return back()->with('info', 'File export in process.');
     }
 
-    public function exportNotifications(Request $request)
+    public function exportNotifications()
     {
         $user = Auth::user();
+        $user->unreadNotifications->markAsRead();
+
+        foreach ($user->unreadNotifications as $notification) {
+            $notification->type;
+        }
 
         return view('exports.notifications', compact('user'));
     }
 
-    public function downloadFile($date, $extension)
+    public function downloadFile($file)
     {
-        $path = 'public/TXT/';
-        $file = $path.'ReportPetFriends' .$date. '.' .$extension;
-        return response()->download($file);
+        return Storage::download($file);
     }
 
-    public function destroy($file)
+    public function index()
     {
-        $file->delete();
+        $user = Auth::user();
 
-        return redirect()->route('report.destroy')->with('info', 'Report successfully deleted.');
+        foreach ($user->notifications as $notification) {
+            $notification->type;
+        }
+
+        return view('exports.index', compact('user'));
+    }
+
+    public function destroy($id)
+    {
+        foreach (Auth::user()->notifications as $notification) {
+            if ($notification->id == $id) {
+                $notification->delete();
+                return redirect()->route('report.index')->with('info', 'Report successfully deleted.');
+            }
+        }
     }
 }
 
