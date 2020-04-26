@@ -27,20 +27,6 @@ use Illuminate\View\View;
 class InvoiceController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('can:invoices.index')->only(['index']);
-        $this->middleware('can:invoices.create')->only(['create', 'store']);
-        $this->middleware('can:invoices.edit')->only(['edit', 'update']);
-        $this->middleware('can:invoices.show')->only(['show']);
-        $this->middleware('can:invoices.destroy')->only(['destroy']);
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @param Request $request

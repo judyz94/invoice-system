@@ -8,16 +8,22 @@ Route::get('/homeCustomer', 'HomeController@customer')->name('homeCustomer')->mi
 Route::middleware(['auth'])->group(function () {
 
     //Resource invoices, customers, sellers, products, users, permissions, roles
-    Route::resource('invoices', 'InvoiceController');
+    Route::resource('users', 'UserController')->except('create', 'store');
+    Route::resource('permissions', 'PermissionController')->except('show');
+    Route::resource('roles', 'RoleController')->except('show');
+    
     Route::resource('customers', 'CustomerController');
     Route::resource('sellers', 'SellerController');
     Route::resource('products', 'ProductController')->except('show');
 
-    Route::resource('users', 'UserController')->except('create', 'store');
-    Route::resource('permissions', 'PermissionController')->except('show');
-    Route::resource('roles', 'RoleController')->except('show');
-
-    //Import invoices
+    //Invoices
+    Route::get('/invoices/', 'InvoiceController@index')->name('invoices.index')->middleware('can:invoices.index');
+    Route::get('/invoices/create', 'InvoiceController@create')->name('invoices.create')->middleware('can:invoices.create');
+    Route::post('/invoices/', 'InvoiceController@store')->name('invoices.store')->middleware('can:invoices.create');
+    Route::get('/invoices/{invoice}/edit', 'InvoiceController@edit')->name('invoices.edit')->middleware('can:invoices.edit');
+    Route::put('/invoices/{invoice}/', 'InvoiceController@update')->name('invoices.update')->middleware('can:invoices.edit');
+    Route::get('/invoices/{invoice}/', 'InvoiceController@show')->name('invoices.show')->middleware('can:invoices.show');
+    Route::delete('/invoices/{invoice}', 'InvoiceController@destroy')->name('invoices.destroy')->middleware('can:invoices.destroy');
     Route::post('/import/invoices', 'InvoiceController@import')->name('invoices.import')
         ->middleware('can:invoices.import');
 
