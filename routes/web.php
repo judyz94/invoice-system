@@ -7,33 +7,35 @@ Route::get('/homeCustomer', 'HomeController@customer')->name('homeCustomer')->mi
 
 Route::middleware(['auth'])->group(function () {
 
-    //Resource invoices, customers, sellers, products, users, permissions, roles
+    //Resource users, permissions, roles
     Route::resource('users', 'UserController')->except('create', 'store');
     Route::resource('permissions', 'PermissionController')->except('show');
     Route::resource('roles', 'RoleController')->except('show');
 
-    Route::resource('sellers', 'SellerController');
-    Route::resource('products', 'ProductController')->except('show');
-
     //Invoices
-    Route::get('/invoices/', 'InvoiceController@index')->name('invoices.index')->middleware('can:invoices.index');
-    Route::get('/invoices/create', 'InvoiceController@create')->name('invoices.create')->middleware('can:invoices.create');
-    Route::post('/invoices/', 'InvoiceController@store')->name('invoices.store')->middleware('can:invoices.create');
-    Route::get('/invoices/{invoice}/edit', 'InvoiceController@edit')->name('invoices.edit')->middleware('can:invoices.edit');
-    Route::put('/invoices/{invoice}/', 'InvoiceController@update')->name('invoices.update')->middleware('can:invoices.edit');
-    Route::get('/invoices/{invoice}/', 'InvoiceController@show')->name('invoices.show')->middleware('can:invoices.show');
-    Route::delete('/invoices/{invoice}', 'InvoiceController@destroy')->name('invoices.destroy')->middleware('can:invoices.destroy');
+    Route::get('/invoices/', 'InvoiceController@index')->name('invoices.index')
+        ->middleware('can:invoices.index');
+
+    Route::get('/invoices/create', 'InvoiceController@create')->name('invoices.create')
+        ->middleware('can:invoices.create');
+
+    Route::post('/invoices/', 'InvoiceController@store')->name('invoices.store')
+        ->middleware('can:invoices.create');
+
+    Route::get('/invoices/{invoice}/edit', 'InvoiceController@edit')->name('invoices.edit')
+        ->middleware('can:invoices.edit');
+
+    Route::put('/invoices/{invoice}/', 'InvoiceController@update')->name('invoices.update')
+        ->middleware('can:invoices.edit');
+
+    Route::get('/invoices/{invoice}/', 'InvoiceController@show')->name('invoices.show')
+        ->middleware('can:invoices.show');
+
+    Route::delete('/invoices/{invoice}', 'InvoiceController@destroy')->name('invoices.destroy')
+        ->middleware('can:invoices.destroy');
+
     Route::post('/import/invoices', 'InvoiceController@import')->name('invoices.import')
         ->middleware('can:invoices.import');
-
-    //Customers
-    Route::get('/customers/', 'CustomerController@index')->name('customers.index')->middleware('can:customers.index');
-    Route::get('/customers/create', 'CustomerController@create')->name('customers.create')->middleware('can:customers.create');
-    Route::post('/customers/', 'CustomerController@store')->name('customers.store')->middleware('can:customers.create');
-    Route::get('/customers/{customer}/edit', 'CustomerController@edit')->name('customers.edit')->middleware('can:customers.edit');
-    Route::put('/customers/{customer}/', 'CustomerController@update')->name('customers.update')->middleware('can:invoices.edit');
-    Route::get('/customers/{customer}/', 'CustomerController@show')->name('customers.show')->middleware('can:customers.show');
-    Route::delete('/customers/{customer}', 'CustomerController@destroy')->name('customers.destroy')->middleware('can:customers.destroy');
 
     //Invoice details
     Route::post('invoices/{invoice}/products')->uses('InvoiceController@addProduct')->name('invoices.products.store')
@@ -47,6 +49,69 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('/invoices/{invoice}/products/{product}', 'InvoiceProductController@destroy')->name('invoiceProduct.destroy')
         ->middleware('can:details.destroy');
+
+    //Customers
+    Route::get('/customers/', 'CustomerController@index')->name('customers.index')
+        ->middleware('can:customers.index');
+
+    Route::get('/customers/create', 'CustomerController@create')->name('customers.create')
+        ->middleware('can:customers.create');
+
+    Route::post('/customers/', 'CustomerController@store')->name('customers.store')
+        ->middleware('can:customers.create');
+
+    Route::get('/customers/{customer}/edit', 'CustomerController@edit')->name('customers.edit')
+        ->middleware('can:customers.edit');
+
+    Route::put('/customers/{customer}/', 'CustomerController@update')->name('customers.update')
+        ->middleware('can:invoices.edit');
+
+    Route::get('/customers/{customer}/', 'CustomerController@show')->name('customers.show')
+        ->middleware('can:customers.show');
+
+    Route::delete('/customers/{customer}', 'CustomerController@destroy')->name('customers.destroy')
+        ->middleware('can:customers.destroy');
+
+    //Sellers
+    Route::get('/sellers/', 'SellerController@index')->name('sellers.index')
+        ->middleware('can:sellers.index');
+
+    Route::get('/sellers/create', 'SellerController@create')->name('sellers.create')
+        ->middleware('can:sellers.create');
+
+    Route::post('/sellers/', 'SellerController@store')->name('sellers.store')
+        ->middleware('can:sellers.create');
+
+    Route::get('/sellers/{seller}/edit', 'SellerController@edit')->name('sellers.edit')
+        ->middleware('can:sellers.edit');
+
+    Route::put('/sellers/{seller}/', 'SellerController@update')->name('sellers.update')
+        ->middleware('can:sellers.edit');
+
+    Route::get('/sellers/{seller}/', 'SellerController@show')->name('sellers.show')
+        ->middleware('can:sellers.show');
+
+    Route::delete('/sellers/{seller}', 'SellerController@destroy')->name('sellers.destroy')
+        ->middleware('can:sellers.destroy');
+
+    //Products
+    Route::get('/products/', 'ProductController@index')->name('products.index')
+        ->middleware('can:products.index');
+
+    Route::get('/products/create', 'ProductController@create')->name('products.create')
+        ->middleware('can:products.create');
+
+    Route::post('/products/', 'ProductController@store')->name('products.store')
+        ->middleware('can:products.create');
+
+    Route::get('/products/{product}/edit', 'ProductController@edit')->name('products.edit')
+        ->middleware('can:products.edit');
+
+    Route::put('/products/{product}/', 'ProductController@update')->name('products.update')
+        ->middleware('can:products.edit');
+
+    Route::delete('/products/{product}', 'ProductController@destroy')->name('products.destroy')
+        ->middleware('can:products.destroy');
 
     //Modals
     Route::get('/orderSummary/invoices', 'InvoiceController@orderSummary')->name('orderSummary')
@@ -100,10 +165,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/export/report/{type}/{sinceDate}/{untilDate}/{extension}', 'ExportController@exportReport')->name('export.report')
         ->middleware('can:export.report');
 
-    Route::get('/export/reports/', 'ExportController@index')->name('reports.index');
+    Route::get('/export/reports/', 'ExportController@index')->name('reports.index')
+        ->middleware('can:reports.index');
 
-    Route::delete('/report/destroy/{notification}', 'ExportController@destroy')->name('reports.destroy');
-
+    Route::delete('/report/destroy/{notification}', 'ExportController@destroy')->name('reports.destroy')
+        ->middleware('can:reports.destroy');
 
     Route::get('/report/download/{notification}', 'ExportController@downloadFile')->name('report.download');
 });

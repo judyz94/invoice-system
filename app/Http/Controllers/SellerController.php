@@ -14,20 +14,6 @@ use Illuminate\Support\Facades\Cache;
 class SellerController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('can:sellers.index')->only(['index']);
-        $this->middleware('can:sellers.create')->only(['create', 'store']);
-        $this->middleware('can:sellers.edit')->only(['edit', 'update']);
-        $this->middleware('can:sellers.show')->only(['show']);
-        $this->middleware('can:sellers.destroy')->only(['destroy']);
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @param Request $request
