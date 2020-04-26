@@ -11,8 +11,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('users', 'UserController')->except('create', 'store');
     Route::resource('permissions', 'PermissionController')->except('show');
     Route::resource('roles', 'RoleController')->except('show');
-    
-    Route::resource('customers', 'CustomerController');
+
     Route::resource('sellers', 'SellerController');
     Route::resource('products', 'ProductController')->except('show');
 
@@ -26,6 +25,15 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/invoices/{invoice}', 'InvoiceController@destroy')->name('invoices.destroy')->middleware('can:invoices.destroy');
     Route::post('/import/invoices', 'InvoiceController@import')->name('invoices.import')
         ->middleware('can:invoices.import');
+
+    //Customers
+    Route::get('/customers/', 'CustomerController@index')->name('customers.index')->middleware('can:customers.index');
+    Route::get('/customers/create', 'CustomerController@create')->name('customers.create')->middleware('can:customers.create');
+    Route::post('/customers/', 'CustomerController@store')->name('customers.store')->middleware('can:customers.create');
+    Route::get('/customers/{customer}/edit', 'CustomerController@edit')->name('customers.edit')->middleware('can:customers.edit');
+    Route::put('/customers/{customer}/', 'CustomerController@update')->name('customers.update')->middleware('can:invoices.edit');
+    Route::get('/customers/{customer}/', 'CustomerController@show')->name('customers.show')->middleware('can:customers.show');
+    Route::delete('/customers/{customer}', 'CustomerController@destroy')->name('customers.destroy')->middleware('can:customers.destroy');
 
     //Invoice details
     Route::post('invoices/{invoice}/products')->uses('InvoiceController@addProduct')->name('invoices.products.store')

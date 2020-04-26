@@ -14,20 +14,6 @@ use Illuminate\Support\Facades\Cache;
 class CustomerController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('can:customers.index')->only(['index']);
-        $this->middleware('can:customers.create')->only(['create', 'store']);
-        $this->middleware('can:customers.edit')->only(['edit', 'update']);
-        $this->middleware('can:customers.show')->only(['show']);
-        $this->middleware('can:customers.destroy')->only(['destroy']);
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @param Request $request
