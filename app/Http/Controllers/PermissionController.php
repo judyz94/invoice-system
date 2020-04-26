@@ -13,19 +13,6 @@ use Illuminate\View\View;
 class PermissionController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('can:permissions.index')->only(['index']);
-        $this->middleware('can:permissions.create')->only(['create', 'store']);
-        $this->middleware('can:permissions.edit')->only(['edit', 'update']);
-        $this->middleware('can:permissions.destroy')->only(['destroy']);
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return Factory|View

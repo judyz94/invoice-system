@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Auth::routes();
 Route::get('/',  'Auth\LoginController@system');
 Route::get('/home', 'HomeController@index')->name('home');
@@ -7,12 +10,24 @@ Route::get('/homeCustomer', 'HomeController@customer')->name('homeCustomer')->mi
 
 Route::middleware(['auth'])->group(function () {
 
-    //Resource users, permissions, roles
-    Route::resource('users', 'UserController')->except('create', 'store');
-    Route::resource('permissions', 'PermissionController')->except('show');
-    Route::resource('roles', 'RoleController')->except('show');
+    //USERS
+    Route::get('/users/', 'UserController@index')->name('users.index')
+        ->middleware('can:users.index');
 
-    //Invoices
+    Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit')
+        ->middleware('can:users.edit');
+
+    Route::put('/users/{user}/', 'UserController@update')->name('users.update')
+        ->middleware('can:users.edit');
+
+    Route::get('/users/{user}/', 'UserController@show')->name('users.show')
+        ->middleware('can:users.show');
+
+    Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy')
+        ->middleware('can:users.destroy');
+
+
+    //INVOICES
     Route::get('/invoices/', 'InvoiceController@index')->name('invoices.index')
         ->middleware('can:invoices.index');
 
@@ -37,7 +52,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/import/invoices', 'InvoiceController@import')->name('invoices.import')
         ->middleware('can:invoices.import');
 
-    //Invoice details
+
+    //INVOICE DETAILS
     Route::post('invoices/{invoice}/products')->uses('InvoiceController@addProduct')->name('invoices.products.store')
         ->middleware('can:details.create');
 
@@ -50,7 +66,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/invoices/{invoice}/products/{product}', 'InvoiceProductController@destroy')->name('invoiceProduct.destroy')
         ->middleware('can:details.destroy');
 
-    //Customers
+
+    //CUSTOMERS
     Route::get('/customers/', 'CustomerController@index')->name('customers.index')
         ->middleware('can:customers.index');
 
@@ -72,7 +89,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/customers/{customer}', 'CustomerController@destroy')->name('customers.destroy')
         ->middleware('can:customers.destroy');
 
-    //Sellers
+
+    //SELLERS
     Route::get('/sellers/', 'SellerController@index')->name('sellers.index')
         ->middleware('can:sellers.index');
 
@@ -94,7 +112,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/sellers/{seller}', 'SellerController@destroy')->name('sellers.destroy')
         ->middleware('can:sellers.destroy');
 
-    //Products
+
+    //PRODUCTS
     Route::get('/products/', 'ProductController@index')->name('products.index')
         ->middleware('can:products.index');
 
@@ -113,7 +132,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/products/{product}', 'ProductController@destroy')->name('products.destroy')
         ->middleware('can:products.destroy');
 
-    //Modals
+
+    //MODALS
     Route::get('/orderSummary/invoices', 'InvoiceController@orderSummary')->name('orderSummary')
         ->middleware('can:order.summary');
 
@@ -132,7 +152,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/exportAll/invoices', 'ExportController@exportAll')->name('exportAll')
         ->middleware('can:export.all');
 
-    //API integration
+
+    //API INTEGRATION
     Route::post('/invoices/{invoice}', 'PaymentController@store')->name('payments.store')
         ->middleware('can:payments.store');
 
@@ -142,7 +163,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/payment/show/{invoice}/', 'paymentController@payments')->name('payments')
         ->middleware('can:payments.index');
 
-    //Download
+
+    //DOWNLOAD
     Route::get('/invoices/{invoice}/downloadPDF/', 'DownloadController@downloadInvoicePDF')->name('downloadPDF.invoice')
         ->middleware('can:download.PDF.invoice');
 
@@ -158,7 +180,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/TXT/invoices', 'DownloadController@downloadTXT')->name('downloadTXT')
         ->middleware('can:download.TXT');
 
-    //Exports
+
+    //EXPORTS
     Route::get('/invoices/export/filter', 'ExportController@filter')->name('invoices.filter')
         ->middleware('can:invoices.filter');
 
@@ -172,5 +195,45 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('can:reports.destroy');
 
     Route::get('/report/download/{notification}', 'ExportController@downloadFile')->name('report.download');
+
+
+    //PERMISSIONS
+    Route::get('/permissions/', 'PermissionController@index')->name('permissions.index')
+        ->middleware('can:permissions.index');
+
+    Route::get('/permissions/create', 'PermissionController@create')->name('permissions.create')
+        ->middleware('can:permissions.create');
+
+    Route::post('/permissions/', 'PermissionController@store')->name('permissions.store')
+        ->middleware('can:permissions.create');
+
+    Route::get('/permissions/{permission}/edit', 'PermissionController@edit')->name('permissions.edit')
+        ->middleware('can:permissions.edit');
+
+    Route::put('/permissions/{permission}/', 'PermissionController@update')->name('permissions.update')
+        ->middleware('can:permissions.edit');
+
+    Route::delete('/permissions/{permission}', 'PermissionController@destroy')->name('permissions.destroy')
+        ->middleware('can:permissions.destroy');
+
+
+    //ROLES
+    Route::get('/roles/', 'RoleController@index')->name('roles.index')
+        ->middleware('can:roles.index');
+
+    Route::get('/roles/create', 'RoleController@create')->name('roles.create')
+        ->middleware('can:roles.create');
+
+    Route::post('/roles/', 'RoleController@store')->name('roles.store')
+        ->middleware('can:roles.create');
+
+    Route::get('/roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
+        ->middleware('can:roles.edit');
+
+    Route::put('/roles/{role}/', 'RoleController@update')->name('roles.update')
+        ->middleware('can:roles.edit');
+
+    Route::delete('/roles/{role}', 'RoleController@destroy')->name('roles.destroy')
+        ->middleware('can:roles.destroy');
 });
 
