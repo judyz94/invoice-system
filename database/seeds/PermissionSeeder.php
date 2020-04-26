@@ -53,19 +53,19 @@ class PermissionSeeder extends Seeder
         //Invoice details
         DB::table('permissions')->insert([
             'name' => 'Invoice details create',
-            'slug' => 'invoices.products.store',
+            'slug' => 'details.create',
             'description' => 'Create invoice details'
         ]);
 
         DB::table('permissions')->insert([
             'name' => 'Invoice details edit',
-            'slug' => 'invoiceProduct.edit',
+            'slug' => 'details.edit',
             'description' => 'Edit invoice details'
         ]);
 
         DB::table('permissions')->insert([
             'name' => 'Invoice details delete',
-            'slug' => 'invoiceProduct.destroy',
+            'slug' => 'details.destroy',
             'description' => 'Delete invoice invoice details'
         ]);
 
@@ -78,7 +78,7 @@ class PermissionSeeder extends Seeder
 
         DB::table('permissions')->insert([
             'name' => 'Payment attempts index',
-            'slug' => 'payments',
+            'slug' => 'payments.index',
             'description' => 'List all payment attempts'
         ]);
 
@@ -280,14 +280,14 @@ class PermissionSeeder extends Seeder
         //Home - 43
         DB::table('permissions')->insert([
             'name' => 'Home customer',
-            'slug' => 'homeCustomer',
+            'slug' => 'home.customer',
             'description' => 'Home customer to pay'
         ]);
 
         //Exports - 44
         DB::table('permissions')->insert([
             'name' => 'Invoice report',
-            'slug' => 'invoiceReport',
+            'slug' => 'invoice.report',
             'description' => 'Filter invoices to export'
         ]);
 
@@ -299,31 +299,31 @@ class PermissionSeeder extends Seeder
 
         DB::table('permissions')->insert([
             'name' => 'Invoice detail PDF',
-            'slug' => 'downloadPDF.invoice',
+            'slug' => 'download.PDF.invoice',
             'description' => 'Invoice detail PDF download'
         ]);
 
         DB::table('permissions')->insert([
             'name' => 'Payment attempts PDF',
-            'slug' => 'downloadPDF.payment',
+            'slug' => 'download.PDF.payment',
             'description' => 'Payment attempts PDF download'
         ]);
 
         DB::table('permissions')->insert([
             'name' => 'Invoices XLS export',
-            'slug' => 'downloadXLS',
+            'slug' => 'download.XLS',
             'description' => 'Invoices all XLS export'
         ]);
 
         DB::table('permissions')->insert([
             'name' => 'Invoices CSV export',
-            'slug' => 'downloadCSV',
+            'slug' => 'download.CSV',
             'description' => 'Invoices all CSV export'
         ]);
 
         DB::table('permissions')->insert([
             'name' => 'Invoices TXT export',
-            'slug' => 'downloadTXT',
+            'slug' => 'download.TXT',
             'description' => 'Invoices all TXT export'
         ]);
 
@@ -335,7 +335,7 @@ class PermissionSeeder extends Seeder
 
         DB::table('permissions')->insert([
             'name' => 'Modal export all invoices',
-            'slug' => 'exportAll',
+            'slug' => 'export.all',
             'description' => 'Modal export all invoices'
         ]);
 
@@ -347,8 +347,14 @@ class PermissionSeeder extends Seeder
 
         DB::table('permissions')->insert([
             'name' => 'Delete exports',
-            'slug' => 'report.destroy',
+            'slug' => 'reports.destroy',
             'description' => 'Delete exported report'
+        ]);
+
+        //API - Invoice details
+        DB::table('permissions')->insert([
+            'name' => 'Invoice details index',
+            'slug' => 'details.index',
         ]);
     }
 }

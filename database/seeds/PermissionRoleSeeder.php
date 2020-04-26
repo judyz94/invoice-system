@@ -205,6 +205,13 @@ class PermissionRoleSeeder extends Seeder
             'role_id' => '2',
         ]);
 
+        //Comercial advisor - API
+        DB::table('permission_role')->insert([
+            'permission_id' => '55',
+            'role_id' => '2',
+        ]);
+
+
         //Customer - Home
         DB::table('permission_role')->insert([
             'permission_id' => '43',
@@ -267,6 +274,12 @@ class PermissionRoleSeeder extends Seeder
 
         DB::table('permission_role')->insert([
             'permission_id' => '47',
+            'role_id' => '4',
+        ]);
+
+        //Customer - API
+        DB::table('permission_role')->insert([
+            'permission_id' => '55',
             'role_id' => '4',
         ]);
     }
