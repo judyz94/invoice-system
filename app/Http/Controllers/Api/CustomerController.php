@@ -22,7 +22,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customer = Customer::all();
+        $customer = Customer::with(['city'])->get();
 
         return response()->json([
             'success' => $customer],

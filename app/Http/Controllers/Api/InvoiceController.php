@@ -32,7 +32,7 @@ class InvoiceController extends Controller
 
         if ($user->roles[0]->name == 'Customer') {
             if ($user->document == $customer[0]->document) {
-                $invoice = Invoice::with(['customer', 'seller'])
+                $invoice = Invoice::with(['state', 'customer', 'seller', 'user'])
                     ->where('customer_id', $customer[0]->id)
                     ->get();
                 return response()->json([

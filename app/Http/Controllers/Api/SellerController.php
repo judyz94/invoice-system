@@ -23,7 +23,7 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $seller = Seller::all();
+        $seller = Seller::with(['city'])->get();
 
         return response()->json([
             'success' => $seller],
