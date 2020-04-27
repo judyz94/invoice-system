@@ -24,7 +24,7 @@
     @stack('modals')
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #353131;">
-            @if(Auth::user()->roles[0]->name == 'Suspended')<nav class="navbar-brand sidebar-header"> <h5>{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></nav>@endif
+            @if(Auth::user()->hasRole('special' == 'no-access'))<nav class="navbar-brand sidebar-header"> <h5>{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></nav>@endif
             @can('invoices.edit')<nav class="navbar-brand sidebar-header"> <a class="nav-link" href="{{ route('home') }}"><h5 class="title">{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>@endcan
             @if(Auth::user()->roles[0]->name == 'Customer')<nav class="navbar-brand sidebar-header"> <a class="nav-link" href="{{ route('homeCustomer') }}"><h5 class="title">{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>@endif
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

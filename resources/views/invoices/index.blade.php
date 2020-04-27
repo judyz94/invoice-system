@@ -18,9 +18,6 @@
 
                <div class="card shadow-lg">
                 <div class="card-header d-flex justify-content-between">
-                    @if(Auth::user()->role == 'Customer')
-                        <h3 class="card-title mb-0"><strong>{{ Auth::user()->name }} {{ __('Invoices') }} </strong></h3>
-                    @endif
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}  <i class="fas fa-paw"></i></strong></h3>
 
                         @can('invoices.edit')
