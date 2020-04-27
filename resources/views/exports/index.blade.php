@@ -60,7 +60,7 @@
                                                 <i class="fas fa-download" style="color:forestgreen"></i>
                                             </a>--}}
                                             <button type="button" class="btn btn-link text-danger"
-                                                    data-route="{{ route('report.destroy', $notification) }}"
+                                                    data-route="{{ route('reports.destroy', $notification) }}"
                                                     data-toggle="modal" data-target="#confirmDeleteModal"
                                                     title="{{ __('Delete Report') }}">
                                                 <i class="fas fa-trash"></i>

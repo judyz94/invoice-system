@@ -21,7 +21,7 @@ class IndexInvoiceTest extends TestCase
         $permission = Permission::create([
             'name' => 'Invoices index',
             'slug' => 'invoices.index']);
-        
+
         $user = factory(User::class)->create()->can($permission);
 
         $response = $this->actingAs($user)->get(route('invoices.index'));
