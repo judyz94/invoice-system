@@ -15,65 +15,15 @@ use Barryvdh\DomPDF\Facade as PDF;
 use App\Exports\InvoicesExport;
 use App\Exports\InvoicesExportAll;
 use App\Jobs\NotifyUserOfCompletedExport;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ExportController extends Controller
 {
-    public function downloadPDF(Invoice $invoice, Product $product )
-    {
-        $invoices = Invoice::all();
-        $states = State::all();
-        $customers = Customer::all();
-        $sellers = Seller::all();
-        $users = User::all();
-
-        $data = [
-            'title' => 'InvoicePetFriends'
-        ];
-
-        $pdf = PDF::loadView('invoices.invoice_download', $data, compact('invoice', 'invoices', 'states', 'sellers', 'customers', 'users', 'product'));
-
-        return $pdf->download('InvoicePetFriends.pdf');
-    }
-
-    public function downloadPaymentPDF(Invoice $invoice)
-    {
-        $payments = Payment::all();
-
-        $data = [
-            'title' => 'PaymentAttemptsPetFriends'
-        ];
-
-        $pdf = PDF::loadView('payments.payment_download', $data, compact('invoice', 'payments'));
-        $pdf->setPaper('a4', 'landscape');
-
-        return $pdf->download('PaymentAttemptsPetFriends.pdf');
-    }
-
     public function exportAll()
     {
         return view('partials.__export_all');
-    }
-
-    public function XLS()
-    {
-        return (new InvoicesExportAll)->download('InvoicesPetFriends.xls');
-    }
-
-
-    public function CSV()
-    {
-        return (new InvoicesExportAll)->download('InvoicesPetFriends.csv', \Maatwebsite\Excel\Excel::CSV, [
-            'Content-Type' => 'text/csv',
-            'Content-disposition: attachment'
-        ]);
-    }
-
-    public function TXT()
-    {
-        return (new InvoicesExportAll)->download('InvoicesPetFriends.txt', \Maatwebsite\Excel\Excel::TSV, [
-            'Content-Type' => 'text/plain'
-        ]);
     }
 
     public function invoiceReport()
@@ -83,63 +33,61 @@ class ExportController extends Controller
 
     public function filter(Request $request)
     {
-        $since_date = $request->get('since_date');
-        $until_date = $request->get('until_date');
+        $type = $request->input('type');
+        $sinceDate = $request->input('sinceDate');
+        $untilDate = $request->input('untilDate');
 
         $invoices = Invoice::orderBy('id', 'ASC')
-            ->export('created_at', $since_date, $until_date)
+            ->export($type, $sinceDate, $untilDate)
             ->paginate(10);
 
-        return view('invoices.index', compact('invoices', 'since_date', 'until_date'));
+        return view('invoices.index', compact('invoices', 'type', 'sinceDate', 'untilDate'));
     }
 
-    public function downloadXLS($since_date, $until_date)
+    public function exportReport($type, $sinceDate, $untilDate, $extension)
     {
         $date = new DateTime();
         $date = $date->format('Y-m-d H-i-s');
-        $extension = 'xls';
-        $file = 'public/XLS Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
+        $path = 'public/Reports/';
+        $name = 'ReportPetFriends' . '.' . $extension;
+        $file = $path . 'ReportPetFriends-' . $date . '.' . $extension;
+        $url = asset('storage/' . $file);
         $user = Auth::user();
 
-        (new InvoicesExport($since_date, $until_date))->store($file)->chain([
-            new NotifyUserOfCompletedExport($user, $since_date, $until_date, $file)
+        (new InvoicesExport($type, $sinceDate, $untilDate, $extension))->store($file, 'public')->chain([
+            new NotifyUserOfCompletedExport($user, $type, $sinceDate, $untilDate, $extension, $name, $url)
         ]);
 
-        return back()->with('info', 'XLS file export in process');
+        return back()->with('info', 'File export in process.');
     }
 
-    public function downloadCSV($since_date, $until_date)
+    public function index()
     {
-        $date = new DateTime();
-        $date = $date->format('Y-m-d H-i-s');
-        $extension = 'csv';
-        $file = 'public/CSV Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
         $user = Auth::user();
+        foreach ($user->unreadNotifications as $notification) {
+            $notification->markAsRead();
+        }
 
-        (new InvoicesExport($since_date, $until_date))->store($file)->chain([
-            (new NotifyUserOfCompletedExport($user, $since_date, $until_date, $file))
-        ]);
-        return back()->with('info', 'CSV file export in process');
+        return view('exports.index', compact('user'));
     }
 
-    public function downloadTXT($since_date, $until_date)
+    public function downloadFile()
     {
-        $date = new DateTime();
-        $date = $date->format('Y-m-d H-i-s');
-        $extension = 'tsv';
-        $file = 'public/TXT Reports/'. 'ReportPetFriends' .$date. '.' .$extension;
-        $user = Auth::user();
-
-        (new InvoicesExport($since_date, $until_date))->store($file)->chain([
-            (new NotifyUserOfCompletedExport($user, $since_date, $until_date, $file))
-        ]);
-        return back()->with('info', 'TSV file export in process');
+        foreach (Auth::user()->notifications as $notification) {
+            $notification = $notification->data['url'];
+            return Storage::download($notification);
+        }
     }
 
-    public function show()
+    public function destroy($id)
     {
-        $user = Auth::user();
-        return view('exports.show', compact('user'));
+        foreach (Auth::user()->notifications as $notification) {
+            if ($notification->id == $id) {
+                $notification->delete();
+                return redirect()->route('reports.index')->with('info', 'Report successfully deleted.');
+            }
+        }
     }
 }
+
 

@@ -13,19 +13,6 @@ use Illuminate\View\View;
 class PermissionController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('can:permissions.index')->only(['index']);
-        $this->middleware('can:permissions.create')->only(['create', 'store']);
-        $this->middleware('can:permissions.edit')->only(['edit', 'update']);
-        $this->middleware('can:permissions.destroy')->only(['destroy']);
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return Factory|View
@@ -40,10 +27,9 @@ class PermissionController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @param Permission $permission
      * @return Factory|View
      */
-    public function create(Permission $permission)
+    public function create()
     {
         $permission = new Permission();
 
@@ -86,7 +72,7 @@ class PermissionController extends Controller
      * @param Permission $permission
      * @return RedirectResponse
      */
-    public function update(UpdateRequest$request, Permission $permission)
+    public function update(UpdateRequest $request, Permission $permission)
     {
         $permission->name = $request->input('name');
         $permission->slug = $request->input('slug');

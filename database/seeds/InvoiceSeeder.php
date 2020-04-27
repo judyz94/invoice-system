@@ -29,7 +29,7 @@ class InvoiceSeeder extends Seeder
 
         DB::table('invoices')->insert([
             'code' => 'A0025',
-            'expedition_date' => '2020-11-19',
+            'expedition_date' => '2019-11-19',
             'due_date' => '2020-02-20',
             'seller_id' => '4',
             'sale_description' => '1 comedero programable',
@@ -74,7 +74,7 @@ class InvoiceSeeder extends Seeder
 
         DB::table('invoices')->insert([
             'code' => 'A0028',
-            'expedition_date' => '2020-03-25',
+            'expedition_date' => '2020-04-10',
             'due_date' => '2020-07-20',
             'seller_id' => '4',
             'sale_description' => '5 guacales para gato',
@@ -89,8 +89,8 @@ class InvoiceSeeder extends Seeder
 
         DB::table('invoices')->insert([
             'code' => 'A0029',
-            'expedition_date' => '2020-03-25',
-            'due_date' => '2020-07-20',
+            'expedition_date' => '2020-04-25',
+            'due_date' => '2020-06-15',
             'seller_id' => '1',
             'sale_description' => '1 cama de gato',
             'customer_id' => '2',

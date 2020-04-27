@@ -13,19 +13,6 @@ use Illuminate\Support\Facades\Cache;
 class ProductController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('can:products.index')->only(['index']);
-        $this->middleware('can:products.create')->only(['create', 'store']);
-        $this->middleware('can:products.edit')->only(['edit', 'update']);
-        $this->middleware('can:products.destroy')->only(['destroy']);
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @param Request $request

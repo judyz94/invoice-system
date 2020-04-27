@@ -13,14 +13,20 @@ use Illuminate\Http\JsonResponse;
 
 class CustomerController extends Controller
 {
+    public $successStatus = 200;
+
     /**
      * Display a listing of the resource.
      *
-     * @return Customer[]|Collection
+     * @return JsonResponse
      */
     public function index()
     {
-        return Customer::all();
+        $customer = Customer::all();
+
+        return response()->json([
+            'success' => $customer],
+            $this-> successStatus);
     }
 
     /**
@@ -29,22 +35,27 @@ class CustomerController extends Controller
      * @param StoreRequest $request
      * @param Customer $customer
      * @param StoreAction $action
-     * @return void
+     * @return JsonResponse
      */
     public function store(StoreRequest $request, Customer $customer, StoreAction $action)
     {
-        return $action->execute($customer, $request);
+        return response()->json([
+            'message' => 'Customer successfully created.',
+            'success' => $action->execute($customer, $request)],
+            $this-> successStatus);
     }
 
     /**
      * Display the specified resource.
      *
      * @param Customer $customer
-     * @return Customer
+     * @return JsonResponse
      */
     public function show(Customer $customer)
     {
-        return $customer;
+        return response()->json([
+            'success' => $customer],
+            $this-> successStatus);
     }
 
     /**
@@ -53,11 +64,14 @@ class CustomerController extends Controller
      * @param UpdateRequest $request
      * @param Customer $customer
      * @param UpdateAction $action
-     * @return void
+     * @return JsonResponse
      */
     public function update(UpdateRequest $request, Customer $customer, UpdateAction $action)
     {
-        return $action->execute($customer, $request);
+        return response()->json([
+            'message' => 'Customer successfully updated.',
+            'success' => $action->execute($customer, $request)],
+            $this-> successStatus);
     }
 
     /**
@@ -71,7 +85,9 @@ class CustomerController extends Controller
     {
         $customer->delete();
 
-        return response()->json(__('The client has been removed'));
+        return response()->json([
+            'message' => 'Customer successfully deleted.'],
+            $this-> successStatus);
     }
 }
 

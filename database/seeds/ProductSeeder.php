@@ -41,6 +41,11 @@ class ProductSeeder extends Seeder
             'name' => 'Paca de cuido Chunky adulto',
             'unit_price' => '75000'
         ]);
+
+        DB::table('products')->insert([
+            'name' => 'Cama gato',
+            'unit_price' => '120000'
+        ]);
     }
 }
 

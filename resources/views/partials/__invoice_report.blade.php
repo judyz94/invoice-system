@@ -15,24 +15,29 @@
                                 <div class="form-group">
                                     <label for="type">{{ __('Filter by date') }}</label>
                                     <select name="type" class="form-control mr-sm-2" id="type">
-                                        <option disabled selected>{{ __('Select a date type') }}</option>
-                                        <option value="expedition_date">{{ __('Expedition date') }}</option>
-                                        <option value="due_date">{{ __('Due date') }}</option>
-                                        <option value="receipt_date">{{ __('Receipt date') }}</option>
+                                        <option value="">{{ __('Select a date type') }}</option>
+                                        <option value="expedition_date" {{ request()->input('type') == 'expedition_date' ? 'selected' : '' }}>
+                                            {{ __('Expedition date') }}</option>
+                                        <option value="due_date" {{ request()->input('type') == 'due_date' ? 'selected' : '' }}>
+                                            {{ __('Due date') }}</option>
+                                        <option value="receipt_date" {{ request()->input('type') == 'receipt_date' ? 'selected' : '' }}>
+                                            {{ __('Receipt date') }}</option>
                                     </select>
                                 </div>
                             </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="since_date" data-success="right">{{ __('Since this date') }}</label>
-                                        <input type="date" class="form-control mr-sm-2" id="since_date" name="since_date" data-date-format="YYYY-MM-DD" value="{{ request()->input('since_date') }}">
+                                        <label for="sinceDate" data-success="right">{{ __('Since this date') }}</label>
+                                        <input type="date" class="form-control mr-sm-2" id="sinceDate" name="sinceDate" data-date-format="YYYY-MM-DD"
+                                               value="{{ request()->input('sinceDate') }}">
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="until_date" data-success="right">{{ __('Until this date') }}</label>
-                                        <input type="date" class="form-control mr-sm-2" id="until_date" name="until_date" data-date-format="YYYY-MM-DD" value="{{ request()->input('until_date') }}">
+                                        <label for="untilDate" data-success="right">{{ __('Until this date') }}</label>
+                                        <input type="date" class="form-control mr-sm-2" id="untilDate" name="untilDate" data-date-format="YYYY-MM-DD"
+                                               value="{{ request()->input('untilDate') }}">
                                     </div>
                                 </div>
                     </div>

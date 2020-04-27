@@ -14,14 +14,20 @@ use Illuminate\Http\Response;
 
 class ProductController extends Controller
 {
+    public $successStatus = 200;
+
     /**
      * Display a listing of the resource.
      *
-     * @return Product[]|Collection
+     * @return JsonResponse
      */
     public function index()
     {
-        return Product::all();
+        $product = Product::all();
+
+        return response()->json([
+            'success' => $product],
+            $this-> successStatus);
     }
 
     /**
@@ -30,22 +36,27 @@ class ProductController extends Controller
      * @param ProductRequest $request
      * @param Product $product
      * @param StoreAction $action
-     * @return Response
+     * @return JsonResponse
      */
     public function store(ProductRequest $request, Product $product, StoreAction $action)
     {
-        return $action->execute($product, $request);
+        return response()->json([
+            'message' => 'Product successfully created.',
+            'success' => $action->execute($product, $request)],
+            $this-> successStatus);
     }
 
     /**
      * Display the specified resource.
      *
      * @param Product $product
-     * @return Product
+     * @return JsonResponse
      */
     public function show(Product $product)
     {
-        return $product;
+        return response()->json([
+            'success' => $product],
+            $this-> successStatus);
     }
 
     /**
@@ -54,11 +65,14 @@ class ProductController extends Controller
      * @param UpdateRequest $request
      * @param Product $product
      * @param UpdateAction $action
-     * @return Response
+     * @return JsonResponse
      */
     public function update(UpdateRequest $request, Product $product, UpdateAction $action)
     {
-        return $action->execute($product, $request);
+        return response()->json([
+            'message' => 'Product successfully updated.',
+            'success' => $action->execute($product, $request)],
+            $this-> successStatus);
     }
 
     /**
@@ -72,7 +86,9 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return response()->json(__('The product has been removed'));
+        return response()->json([
+            'message' => 'Product successfully deleted.'],
+            $this-> successStatus);
     }
 }
 

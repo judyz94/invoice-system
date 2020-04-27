@@ -24,7 +24,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($invoice->payments as $payment)
+                        @forelse($invoice->payments as $payment)
                             <tr>
                                 <td>{{ $payment->requestId }}</td>
                                 <td>{{ $payment->invoice->code }}</td>
@@ -33,7 +33,14 @@
                                 <td>{{ $payment->message}}</td>
                                 <td>${{number_format($payment->amount, 2 )}}</td>
                             </tr>
-                        @endforeach
+                            <!-- Alert when there are no payment attempts -->
+                        @empty
+                            <tr>
+                                <p class="alert alert-secondary text-center">
+                                    {{ __('No payment attempts were found') }}
+                                </p>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
 

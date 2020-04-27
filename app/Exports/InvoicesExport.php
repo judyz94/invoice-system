@@ -21,25 +21,31 @@ class InvoicesExport implements
     use Queueable;
     use SerializesModels;
 
-    private $since_date;
-    private $until_date;
+    private $type;
+    private $sinceDate;
+    private $untilDate;
+    private $extension;
 
     /**
      *
-     * @param string $since_date
-     * @param string $until_date
+     * @param string $type
+     * @param string $sinceDate
+     * @param string $untilDate
+     * @param string $extension
      */
-    public function __construct(string $since_date, string $until_date)
+    public function __construct(string $type, string $sinceDate, string $untilDate, string $extension)
     {
-        $this->since_date = $since_date;
-        $this->until_date = $until_date;
+        $this->type = $type;
+        $this->sinceDate = $sinceDate;
+        $this->untilDate = $untilDate;
+        $this->extension = $extension;
     }
 
     public function query()
     {
         return Invoice::query()
-            ->whereDate('created_at',">=", $this->since_date)
-            ->whereDate('created_at',  '<=', $this->until_date);
+            ->whereDate($this->type,">=", $this->sinceDate)
+            ->whereDate($this->type,  '<=', $this->untilDate);
     }
 
     public function headings(): array
@@ -63,4 +69,3 @@ class InvoicesExport implements
         ];
     }
 }
-

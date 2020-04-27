@@ -18,9 +18,6 @@
 
                <div class="card shadow-lg">
                 <div class="card-header d-flex justify-content-between">
-                    @if(Auth::user()->role == 'Customer')
-                        <h3 class="card-title mb-0"><strong>{{ Auth::user()->name }} {{ __('Invoices') }} </strong></h3>
-                    @endif
                     <h3 class="card-title mb-0"><strong>{{ __('Invoices') }}  <i class="fas fa-paw"></i></strong></h3>
 
                         @can('invoices.edit')
@@ -63,11 +60,11 @@
                                        {{ __('Select format') }}
                                    </button>
                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                       <a class="dropdown-item" href="{{ route('downloadXLS', [$since_date, $until_date]) }}" class=" buttonSave">
+                                       <a class="dropdown-item" href="{{ route('export.report', [$type, $sinceDate, $untilDate, 'xls']) }}" class=" buttonSave">
                                            <i class="fas fa-file-excel"></i> {{ __('XLS') }}</a>
-                                       <a class="dropdown-item" href="{{ route('downloadCSV', [$since_date, $until_date]) }}" class="button">
+                                       <a class="dropdown-item" href="{{ route('export.report', [$type, $sinceDate, $untilDate, 'csv']) }}" class="button">
                                            <i class="fas fa-file-csv"></i> {{ __('CSV') }}</a>
-                                       <a class="dropdown-item" href="{{ route('downloadTXT', [$since_date, $until_date]) }}" class="buttonBlue">
+                                       <a class="dropdown-item" href="{{ route('export.report', [$type, $sinceDate, $untilDate, 'tsv']) }}" class="buttonBlue">
                                            <i class="fas fa-file-alt"></i> {{ __('TXT') }}
                                        </a>
                                    </div>

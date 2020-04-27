@@ -24,7 +24,7 @@
     @stack('modals')
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #353131;">
-            @if(Auth::user()->roles[0]->name == 'Suspended')<nav class="navbar-brand sidebar-header"> <h5>{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></nav>@endif
+            @if(Auth::user()->hasRole('special' == 'no-access'))<nav class="navbar-brand sidebar-header"> <h5>{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></nav>@endif
             @can('invoices.edit')<nav class="navbar-brand sidebar-header"> <a class="nav-link" href="{{ route('home') }}"><h5 class="title">{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>@endcan
             @if(Auth::user()->roles[0]->name == 'Customer')<nav class="navbar-brand sidebar-header"> <a class="nav-link" href="{{ route('homeCustomer') }}"><h5 class="title">{{ __('Pet Friends') }}  <i class="fas fa-paw"></i></h5></a></nav>@endif
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,6 +61,11 @@
                                 <a class="nav-link" href="{{ route('permissions.index') }}"><i class="fas fa-hand-paper"></i> {{ __('Permissions') }}</a>
                             </li>
                         @endcan
+                            @can('invoices.edit')
+                                <li class="nav-item font">
+                                    <a class="nav-link" href="{{ route('reports.index') }}"><i class="fas fa-file-export"></i> {{ __('Exports') }}</a>
+                                </li>
+                            @endcan
                     </ul>
                 </div>
 
@@ -88,17 +93,17 @@
                                 </li>
                             @endif
                         @else
-                            @can('invoices.edit')
+                            @can('reports.index')
                             <li class="nav-item font dropdown">
                             <a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ __('Notifications') }}
-                                <span class="badge-info badge-pill">{{count(Auth::user()->Notifications)}}</span>
+                                <span class="badge-info badge-pill">{{count(Auth::user()->unreadNotifications)}}</span>
                             </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <ol>
-                                        @foreach (Auth::user()->Notifications as $notification)
+                                        @foreach (Auth::user()->unreadNotifications as $notification)
                                             <li>
-                                                <a href="{{ route('exports.show') }}">Export done on {{ $notification->created_at }}.</a>
+                                                <a href="{{ route('reports.index') }}">Export done on {{ $notification->created_at }}.</a>
                                             </li>
                                         @endforeach
                                     </ol>

@@ -27,20 +27,6 @@ use Illuminate\View\View;
 class InvoiceController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('can:invoices.index')->only(['index']);
-        $this->middleware('can:invoices.create')->only(['create', 'store']);
-        $this->middleware('can:invoices.edit')->only(['edit', 'update']);
-        $this->middleware('can:invoices.show')->only(['show']);
-        $this->middleware('can:invoices.destroy')->only(['destroy']);
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @param Request $request
@@ -64,15 +50,16 @@ class InvoiceController extends Controller
         } else
             $filter = $request->input('filter');
             $search = $request->input('search');
-            $since_date = $request->input('since_date');
-            $until_date = $request->input('until_date');
+            $type = $request->input('type');
+            $sinceDate = $request->input('sinceDate');
+            $untilDate = $request->input('untilDate');
 
         $invoices = Invoice::with(['customer', 'seller'])
                 ->searchfor($filter, $search)
-                ->export('created_at', $since_date, $until_date)
+                ->export($type, $sinceDate, $untilDate)
                 ->paginate(8);
 
-            return view('invoices.index', compact( 'invoices', 'filter', 'search', 'since_date', 'until_date'));
+            return view('invoices.index', compact( 'invoices', 'filter', 'search', 'type', 'sinceDate', 'untilDate'));
     }
 
     /**

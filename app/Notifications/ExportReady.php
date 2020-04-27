@@ -9,22 +9,31 @@ class ExportReady extends Notification
 {
     use Queueable;
 
-    private $since_date;
-    private $file;
-    private $until_date;
+    private $sinceDate;
+    private $untilDate;
+    private $type;
+    private $extension;
+    public $name;
+    public $url;
 
     /**
      * Create a new notification instance.
      *
-     * @param $since_date
-     * @param $until_date
-     * @param $file
+     * @param $type
+     * @param $sinceDate
+     * @param $untilDate
+     * @param $extension
+     * @param $name
+     * @param $url
      */
-    public function __construct($since_date, $until_date, $file)
+    public function __construct($type, $sinceDate, $untilDate, $extension, $name, $url)
     {
-        $this->since_date = $since_date;
-        $this->until_date = $until_date;
-        $this->file = $file;
+        $this->type = $type;
+        $this->sinceDate = $sinceDate;
+        $this->untilDate = $untilDate;
+        $this->extension = $extension;
+        $this->name = $name;
+        $this->url = $url;
     }
 
     /**
@@ -47,11 +56,13 @@ class ExportReady extends Notification
     public function toArray($notifiable)
     {
         return [
-            'since_date' => $this->since_date,
-            'until_date' => $this->until_date,
-            'file' => $this->file
+            'type' => $this->type,
+            'sinceDate' => $this->sinceDate,
+            'untilDate' => $this->untilDate,
+            'extension' => $this->extension,
+            'name' => $this->name,
+            'url' => $this->url
         ];
     }
-
 }
 

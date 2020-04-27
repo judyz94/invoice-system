@@ -52,10 +52,10 @@ class Invoice extends Model
         }
     }
 
-    public function scopeExport($query, $type, $since_date, $until_date)
+    public function scopeExport($query, $type, $sinceDate, $untilDate)
     {
-        if ($type && $since_date && $until_date) {
-            return $query->whereDate("$type", ">=", "$since_date")->whereDate("$type", "<=", "$until_date");
+        if (($type && $sinceDate && $untilDate)) {
+            return $query->whereDate("$type", ">=", "$sinceDate")->whereDate("$type", "<=", "$untilDate");
         }
     }
 }
