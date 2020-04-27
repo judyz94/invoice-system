@@ -4,6 +4,7 @@ namespace Tests\Feature\Invoices;
 
 use App\Invoice;
 use App\User;
+use Caffeinated\Shinobi\Models\Permission;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;

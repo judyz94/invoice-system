@@ -27,10 +27,9 @@ class PermissionController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @param Permission $permission
      * @return Factory|View
      */
-    public function create(Permission $permission)
+    public function create()
     {
         $permission = new Permission();
 
