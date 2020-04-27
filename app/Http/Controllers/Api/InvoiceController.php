@@ -11,6 +11,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
 {
@@ -23,11 +25,21 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoice = Invoice::all();
+        $user = Auth::user();
+        $customer = DB::table('customers')
+            ->where('document', $user->document)
+            ->get();
 
-        return response()->json([
-            'success' => $invoice],
-            $this-> successStatus);
+        if ($user->roles[0]->name == 'Customer') {
+            if ($user->document == $customer[0]->document) {
+                $invoice = Invoice::with(['customer', 'seller'])
+                    ->where('customer_id', $customer[0]->id)
+                    ->get();
+                return response()->json([
+                    'success' => $invoice],
+                    $this->successStatus);
+            }
+        }
     }
 
     /**

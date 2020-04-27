@@ -2,20 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Customer;
 use App\Invoice;
-use App\Payment;
-use App\Product;
-use App\Seller;
-use App\State;
-use App\User;
 use DateTime;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade as PDF;
 use App\Exports\InvoicesExport;
-use App\Exports\InvoicesExportAll;
 use App\Jobs\NotifyUserOfCompletedExport;
-use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -89,5 +80,4 @@ class ExportController extends Controller
         }
     }
 }
-
 

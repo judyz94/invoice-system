@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('invoices', 'Api\InvoiceController@index')->middleware('can:invoices.index');
     Route::post('invoices', 'Api\InvoiceController@store')->middleware('can:invoices.create');
     Route::put('invoices/{invoice}', 'Api\InvoiceController@update')->middleware('can:invoices.edit');
+    Route::get('invoices/{invoice}', 'Api\InvoiceController@show')->middleware('can:invoices.show');
     Route::delete('invoices/{invoice}', 'Api\InvoiceController@destroy')->middleware('can:invoices.destroy');
 
     //Invoice details

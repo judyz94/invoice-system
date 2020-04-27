@@ -59,7 +59,7 @@ class InvoiceController extends Controller
                 ->export($type, $sinceDate, $untilDate)
                 ->paginate(8);
 
-            return view('invoices.index', compact( 'invoices', 'filter', 'search', 'type', 'sinceDate', 'untilDate'));
+        return view('invoices.index', compact( 'invoices', 'filter', 'search', 'type', 'sinceDate', 'untilDate'));
     }
 
     /**
