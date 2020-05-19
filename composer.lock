@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "02463fd7b5b73b237bbc1339e0312dbc",
+    "content-hash": "867053d2a7de07b71d8c35fd29497acf",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -776,16 +776,16 @@
         },
         {
             "name": "fortawesome/font-awesome",
-            "version": "5.11.2",
+            "version": "5.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FortAwesome/Font-Awesome.git",
-                "reference": "1c1b102b2ba19518d77e60e97cf1b4ebf133bba0"
+                "reference": "4e6402443679e0a9d12c7401ac8783ef4646657f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/1c1b102b2ba19518d77e60e97cf1b4ebf133bba0",
-                "reference": "1c1b102b2ba19518d77e60e97cf1b4ebf133bba0",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/4e6402443679e0a9d12c7401ac8783ef4646657f",
+                "reference": "4e6402443679e0a9d12c7401ac8783ef4646657f",
                 "shasum": ""
             },
             "type": "library",
@@ -835,7 +835,7 @@
                 "icon",
                 "svg"
             ],
-            "time": "2019-09-23T18:57:22+00:00"
+            "time": "2020-03-23T18:53:09+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -7025,5 +7025,6 @@
     "platform": {
         "php": "^7.2"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
