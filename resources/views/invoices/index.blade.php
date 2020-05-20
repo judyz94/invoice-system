@@ -59,6 +59,7 @@
                                        <i class="fas fa-check"></i>
                                        {{ __('Select format') }}
                                    </button>
+                                   {{--
                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                        <a class="dropdown-item" href="{{ route('export.report', [$type, $sinceDate, $untilDate, 'xls']) }}" class=" buttonSave">
                                            <i class="fas fa-file-excel"></i> {{ __('XLS') }}</a>
@@ -67,7 +68,7 @@
                                        <a class="dropdown-item" href="{{ route('export.report', [$type, $sinceDate, $untilDate, 'tsv']) }}" class="buttonBlue">
                                            <i class="fas fa-file-alt"></i> {{ __('TXT') }}
                                        </a>
-                                   </div>
+                                   </div>--}}
                                </div>
 
                                <button class="btn buttonBack" type="submit" onClick="window.history.back();">
